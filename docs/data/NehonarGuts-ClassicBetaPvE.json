@@ -11,10 +11,56 @@
     "threads": null,
     "motto": ""
   },
-  "level": 13,
+  "level": 14,
   "realm": "Classic Beta PvE",
   "stories": [],
   "encargos": [
+    {
+      "id": 98423,
+      "title": "El tratado de entendimiento",
+      "zone": "El Salón de los Feudales",
+      "subzone": "Relicario de los Reyes",
+      "objectives": "Entrega el tratado de entendimiento a Magni Barbabronce en Forjaz.",
+      "original": "\u003cDentro de la cámara encuentras una tablilla que detalla los términos de un tratado de paz entre los clanes Barbabronce y Martillo Salvaje. Parece que data de un periodo justo posterior a la Guerra de los Tres Martillos, y es muy probable que se trate de una pieza de suma importancia para los enanos. Seguro que el rey de Forjaz estaría interesado en este artefacto\u003e.",
+      "state": "entregada"
+    },
+    {
+      "id": 96395,
+      "title": "Un agravio antiguo",
+      "zone": "El Salón de los Feudales",
+      "objectives": "Devuelve el espíritu de Faldrim Yunquemar a su descanso eterno y luego vuelve con el auxiliar fantasmal en el Salón de los Feudales.",
+      "original": "El... señor... Mi excelso... señor feudal... Necesita... descanso.\r\n\r\nTe lo imploro... Ayúdalo. Ayúdalo a... descansar.\r\n\r\nConsumido... por un rencor... ancestral. No... descansa...",
+      "state": "entregada"
+    },
+    {
+      "id": 96403,
+      "title": "Reliquias importantes",
+      "giver": "Thom Filch",
+      "zone": "Forjaz",
+      "objectives": "Recupera 8 reliquias enanas en el Salón de los Feudales.",
+      "original": "Oye, tú... Me vendría muy bien tu ayuda.\r\n\r\nEstaba colándome... digo... patrullando por las cámaras cuando surgió de las profundidades un montón de enanos Hierro Negro en máquinas topo. No sé qué harán aquí, pero hay un botín de valor incalculable... esto, mejor dicho... ¡importantes reliquias culturales ahí abajo! Por favor, recupera cualquier reliquia que veas y tráemela.\r\n\r\nTe aseguro que todo lo que recuperes se catalogará y se devolverá a su lugar correspondiente.",
+      "state": "entregada"
+    },
+    {
+      "id": 176,
+      "title": "SE BUSCA: Hogger",
+      "giver": "Cartel de Se busca",
+      "zone": "Bosque de Elwynn",
+      "subzone": "Cuartel Arroyoeste",
+      "objectives": "Mata al gnoll Hogger y trae su enorme garra gnoll al alguacil Dughan.",
+      "original": "Se busca: Hogger.\n\nUn gnoll enorme, Hogger, está al acecho en el bosque al suroeste de Elwynn. Ha sofocado todos los intentos de capturarlo.\n\nEl ejército de Ventormenta ofrece una generosa recompensa por atrapar al gnoll. Para ganarla, los caza recompensas tendrán que traer una prueba de la derrota de Hogger al alguacil Dughan de Villadorada.",
+      "state": "activa"
+    },
+    {
+      "id": 11,
+      "title": "Recompensas por los gnolls Zarparrío",
+      "giver": "Ayudante del alguacil Rainer",
+      "zone": "Bosque de Elwynn",
+      "subzone": "Cuartel Arroyoeste",
+      "objectives": "Lleva 8 brazaletes gnoll violáceos al ayudante del alguacil Rainer al Cuartel.",
+      "original": "En las fronteras del Bosque de Elwynn se han avistado gnolls, unas criaturas salvajes que seguramente no están allí por trabajo. Un grupo enorme de ellos, uno más numeroso del que podemos contener solos, ha infestado los bosques que hay al sur de la torre de vigilancia. Otro grupo ha infestado las áreas cercanas al Lago del Hito, al este.\n\nEl ejército de Ventormenta elogiará a quienquiera que le ayude a matarlos. Tráeme sus brazaletes gnoll violáceos como prueba de tu hazaña.",
+      "state": "activa"
+    },
     {
       "id": 97894,
       "title": "Asuntos en Auberdine",
@@ -115,16 +161,21 @@
   ],
   "pending": {
     "loose": [
-      "Un pedido de Pico Tormenta"
+      "Reliquias importantes"
     ],
-    "openChains": [],
-    "awaitingBackstory": 5
+    "openChains": [
+      [
+        "El Cuartel Arroyoeste necesita ayuda",
+        "Recompensas por los gnolls Zarparrío"
+      ]
+    ],
+    "awaitingBackstory": 7
   },
   "stats": {
-    "level": 13,
-    "played": 46040,
-    "questsDone": 17,
-    "deaths": 0,
+    "level": 14,
+    "played": 50643,
+    "questsDone": 21,
+    "deaths": 2,
     "zones": [
       "Bosque de Elwynn",
       "Ciudad de Ventormenta",
@@ -132,7 +183,8 @@
       "Tranvía Subterráneo",
       "Forjaz",
       "Dun Morogh",
-      "Loch Modan"
+      "Loch Modan",
+      "El Salón de los Feudales"
     ],
     "levelUps": [
       {
@@ -142,6 +194,10 @@
       {
         "level": 13,
         "played": 43854
+      },
+      {
+        "level": 14,
+        "played": 50426
       }
     ]
   }
