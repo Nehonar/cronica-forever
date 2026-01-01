@@ -16,7 +16,7 @@
     ],
     "motto": "El camino se revela al andarlo."
   },
-  "level": 7,
+  "level": 10,
   "realm": "Classic Beta PvE",
   "stories": [
     {
@@ -306,9 +306,373 @@
       ],
       "levelFrom": 6,
       "levelTo": 7
+    },
+    {
+      "id": "fe4957009303",
+      "kind": "cadena",
+      "zone": "Bosque de Elwynn",
+      "subzones": [
+        "Villadorada",
+        "Lago del Hito"
+      ],
+      "title": "Huellas palmeadas junto al lago",
+      "text": "Remy «Dos Veces» hablaba deprisa y gesticulaba aún más. Los múrlocs remontaban los ríos del este, decía, espantaban a los peces y atacaban a la gente. Nadie le hacía caso. Nehonar lo escuchó sin interrumpir. Le recordó a un arrendajo que chilla ante un peligro que los demás aún no ven.\n\n—Hablaré con el alguacil —dijo.\n\nDughan lo recibió con la cortesía cansada de quien carga con demasiados frentes. Gnolls en los bosques, Defias en los caminos y un reino sin rey cuyos soldados estaban lejos. Respetaba a Remy como mercader, admitió, pero sin un informe militar no movería tropas al este.\n\n—Entonces traeré ese informe.\n\nEl alguacil lo envió al puente oriental, donde el guardia Thomas llevaba una semana apostado. Thomas no dudó: los múrlocs se habían asentado en los ríos, eran agresivos y más listos de lo que parecían. Pero le faltaba algo para cerrar su informe. Días atrás había enviado río arriba a dos hombres, Rolf y Malakai, y ninguno había vuelto.\n\nNehonar siguió la corriente hacia el norte. El agua olía a limo y a algo más agrio. Encontró primero a Malakai, o lo que quedaba de él: un cuerpo medio comido y saqueado. Entre la hierba brillaba un medallón que nadie había querido. «Lacayo Malakai Roca».\n\nSe agachó. En el barro había huellas palmeadas que se alejaban hacia el este, por la orilla del Lago del Hito.\n\n*Los depredadores siempre vuelven a su madriguera.*\n\nA lo lejos se recortaba una aldea múrloc. Nehonar avanzó entre las chozas con el paso cauteloso que había aprendido de los felinos, hasta dar con Rolf. Del cuello del cadáver colgaba otro medallón. «Lacayo Rolf Hartford».\n\nRegresó al puente con los dos colgantes en la mano. Le pesaban más de lo que debían.\n\n—Has confirmado mis temores —murmuró Thomas al tomarlos—. Los múrlocs son una amenaza que no podemos ignorar.\n\nNehonar asintió en silencio. Pensó en Remy, a quien nadie había creído. Pensó en dos hombres que habían muerto mientras otros pedían papeles.\n\n—No debería hacer falta un muerto para que se escuche un aviso —dijo al fin, con voz baja y afilada.\n\nThomas no le respondió, pero lo miró como se mira a un aliado. Al pasar de nuevo por Villadorada, los guardias le hicieron un gesto de saludo que antes no le dedicaban.",
+      "summary": "Nehonar llevó el aviso de Remy sobre los múrlocs al alguacil Dughan, quien lo envió al guardia Thomas, y halló en el río y en una aldea múrloc del Lago del Hito los cadáveres y los medallones de los guardias Malakai y Rolf, con lo que confirmó la amenaza.",
+      "quests": [
+        {
+          "id": 40,
+          "title": "Un peligro con olor a pescado",
+          "giver": "Remy \"Dos Veces\""
+        },
+        {
+          "id": 35,
+          "title": "Más preocupaciones",
+          "giver": "Alguacil Dughan"
+        },
+        {
+          "id": 37,
+          "title": "Encuentra a los guardias perdidos",
+          "giver": "Guardia Thomas"
+        },
+        {
+          "id": 45,
+          "title": "Descubre el destino de Rolf",
+          "giver": "Un cadáver medio comido"
+        },
+        {
+          "id": 71,
+          "title": "Informa a Thomas",
+          "giver": "Cadáver de Rolf"
+        }
+      ],
+      "levelFrom": 8,
+      "levelTo": 9
     }
   ],
   "encargos": [
+    {
+      "id": 59,
+      "title": "Armadura de tela y cuero",
+      "giver": "Alguacil Dughan",
+      "zone": "Bosque de Elwynn",
+      "subzone": "Villadorada",
+      "objectives": "Entrega a Sara Timberlain el marcador de armaduras de Ventormenta.",
+      "original": "Tengo aquí una señal, un premio a tu habilidad y tu valor. Podrás cambiarla por una buena armadura.. Quiero que se la lleves a Sara Timberlain al Aserradero de la Vega del Este. Dale la señal y ella te forjará una armadura. Y cuando la recibas, Nehonar, úsala para defender Elwynn.\n\nEl Aserradero de la Vega del Este está más allá del puesto de vigilancia del guardia Thomas, al este.",
+      "heading": "Una señal para Sara Timberlain",
+      "text": "El alguacil Dughan esperaba en Villadorada con una pequeña señal entre los dedos. Se la tendió a Nehonar sin rodeos.\n\n—Un premio a tu habilidad y a tu valor. Llévasela a Sara Timberlain, al Aserradero de la Vega del Este. Ella te forjará una buena armadura.\n\nNehonar sopesó la pieza. Pesaba poco. En Teldrassil nadie agradecía así la vigilancia del bosque; los humanos, por lo visto, saldaban sus deudas con señales.\n\n—Y cuando la tengas —añadió Dughan—, úsala para defender Elwynn.\n\nEl druida asintió despacio. Proteger un bosque ajeno no le resultaba extraño: los árboles no preguntan a quién pertenecen. Solo quiso saber el camino.\n\n—Al este, más allá del puesto del guardia Thomas.\n\nNehonar guardó la señal y miró hacia los robles. Una piel más gruesa no hacía mejor al ciervo. Pero tampoco le estorbaba.",
+      "state": "activa"
+    },
+    {
+      "id": 39,
+      "title": "Entrega el informe de Thomas",
+      "giver": "Guardia Thomas",
+      "zone": "Bosque de Elwynn",
+      "objectives": "Preséntate ante el alguacil Dughan en Villadorada.",
+      "original": "Habla al alguacil Dughan de la muerte de Malakai y Rolf y después infórmale de que no podrá contener a los murlocs del este de Elwynn con sus tropas.\n\nSé que no tenemos bastantes soldados, quizás Dughan pueda encontrar alguno más.",
+      "state": "entregada"
+    },
+    {
+      "id": 71,
+      "title": "Informa a Thomas",
+      "giver": "Cadáver de Rolf",
+      "zone": "Bosque de Elwynn",
+      "subzone": "Lago del Hito",
+      "objectives": "Entrega los medallones de Rolf y Malakai al guardia Thomas. Lo encontrarás en el puente oriental de Elwynn.",
+      "original": "Ahora que tienes los dos medallones, llévaselos al guardia Thomas al puente. Así sabrá que sus guardias murieron asesinados.",
+      "state": "entregada"
+    },
+    {
+      "id": 91732,
+      "title": "Acero del bueno",
+      "giver": "Hagar Lowe",
+      "zone": "Bosque de Elwynn",
+      "subzone": "Aserradero de la Vega del Este",
+      "objectives": "Obtén 4 herramientas de minería en la Cantera de Jaspe y llévaselas a Hagar Lowe en el Aserradero de la Vega del Este.",
+      "original": "En tiempos de posguerra, el acero de calidad se ha vuelto un bien escaso, y aquí lo notamos en las herramientas. Los mineros de la Cantera de Jaspe tenían picos de inmejorable factura, y yo supongo que en lo más hondo de la mina aún quedarán algunos. ¿Puedes ir en su busca? Trataré de dar buen uso al acero que contienen.",
+      "heading": "El acero que dejó la guerra",
+      "text": "El aserradero olía a resina y a madera recién cortada. Hagar Lowe dejó a un lado una herramienta mellada y miró al elfo con cansancio.\n\n—Desde que acabó la guerra, el acero bueno escasea —dijo—. Los mineros de la Cantera de Jaspe tenían picos de una factura inmejorable. Supongo que en lo más hondo de la mina aún quedan algunos.\n\nNehonar escuchó sin interrumpir. Pensó en los castores, que aprovechan lo que el río arrastra sin desperdiciar nada. No había codicia en aquella petición. Solo necesidad.\n\n—Tráemelos y daré buen uso a ese acero.\n\nEl druida asintió. Bajaría a las entrañas de la Cantera de Jaspe, buscaría aquellas herramientas olvidadas y volvería con ellas al Aserradero de la Vega del Este.",
+      "state": "activa"
+    },
+    {
+      "id": 5545,
+      "title": "El cumplimiento del plazo",
+      "giver": "Supervisor Raelen",
+      "zone": "Bosque de Elwynn",
+      "subzone": "Aserradero de la Vega del Este",
+      "objectives": "Lleva 8 fajos de madera a Raelen al Aserradero de la Vega del Este.",
+      "original": "Tengo un auténtico problema entre manos. Se acerca peligrosamente la fecha en la que tengo que entregar un pedido de madera... Los lobos y los osos que hay al norte de aquí ahuyentaron a mis trabajadores, que tuvieron que dejar atrás los fajos de madera que tenían talada.\n\nYa he hablado con el ayudante del alguacil Rainer sobre la necesidad de deshacernos de esos animales, pero necesito que alguien vaya a recoger la madera. Si pudieras recoger ocho fajos de madera, conseguiría cumplir el plazo.",
+      "state": "entregada"
+    },
+    {
+      "id": 83,
+      "title": "Pañuelos de lino rojo",
+      "giver": "Sara Timberlain",
+      "zone": "Bosque de Elwynn",
+      "subzone": "Aserradero de la Vega del Este",
+      "objectives": "Lleva 6 vendas de lino rojas a Sara Timberlain al Aserradero de la Vega del Este.",
+      "original": "La banda Defias de Villanorte lleva máscaras de tela de saco, pero los Defias de Elwynn las llevan de lino... Esas me vendrían bien para confeccionar prendas.\n\nSi me traes pañuelos de lino rojo, los usaré para hacerte algo bonito.\n\nLa banda Defias tiene campamentos por todo Elwynn.",
+      "heading": "Pañuelos rojos en el aserradero",
+      "text": "El aserradero olía a resina recién cortada. Entre montones de troncos, Sara Timberlain doblaba retales con dedos rápidos. Alzó la vista hacia el elfo alto y callado que la observaba desde la linde.\n\n—Los Defias de Villanorte se tapan la cara con tela de saco —dijo—. Pero los de Elwynn llevan pañuelos de lino rojo. Buen lino, desperdiciado en bandidos.\n\nNehonar no respondió enseguida. Había oído hablar de aquella hermandad: canteros que alzaron Ventormenta y a los que nadie pagó. Una manada expulsada que ahora cazaba en territorio ajeno.\n\n—¿Y qué harás con ellos?\n\n—Tráemelos y te coseré algo bonito. Tienen campamentos por todo Elwynn.\n\nÉl asintió despacio. El bosque guardaba los pañuelos. Tendría que recorrerlo campamento a campamento y volver con ellos al aserradero de la Vega del Este.",
+      "state": "activa"
+    },
+    {
+      "id": 45,
+      "title": "Descubre el destino de Rolf",
+      "giver": "Un cadáver medio comido",
+      "zone": "Bosque de Elwynn",
+      "subzone": "Lago del Hito",
+      "objectives": "Busca a Rolf o alguna prueba de su muerte en el poblado múrloc.",
+      "original": "En tu exploración del área encuentras huellas palmeadas que llevan al este por la costa del Lago del Hito. Hacia el este, en la distancia, adivinas la silueta de una aldea múrloc.\n\nQuizás Rolf encontró allí su destino...",
+      "state": "entregada"
+    },
+    {
+      "id": 52,
+      "title": "Proteger la frontera",
+      "giver": "Guardia Thomas",
+      "zone": "Bosque de Elwynn",
+      "objectives": "Mata a 8 merodeadores y a 5 osos del bosque jóvenes y vuelve con el guardia Thomas al puente oriental de Elwynn.",
+      "original": "Saludos, Nehonar. Los animales salvajes son más agresivos cuanto más nos alejamos de Villadorada. El Aserradero de la Vega del Este sufre constantes ataques de lobos y osos.\n\nNos vendría bien tu ayuda ahí fuera.",
+      "state": "entregada"
+    },
+    {
+      "id": 37,
+      "title": "Encuentra a los guardias perdidos",
+      "giver": "Guardia Thomas",
+      "zone": "Bosque de Elwynn",
+      "objectives": "El guardia Thomas quiere que viajes al norte, río arriba, y busques a sus dos guardias, Rolf y Malakai.",
+      "original": "Hace unos días mandé a dos guardias, Rolf y Malakai, a investigar el río. Aún no han regresado. Para completar mi informe necesito saber qué les ocurrió a esos hombres.\n\nViaja al norte a lo largo del río y encuentra a mis guardias... o lo que quede de ellos.",
+      "state": "entregada"
+    },
+    {
+      "id": 87,
+      "title": "Dientes de oro",
+      "giver": "Billy Maclure",
+      "zone": "Bosque de Elwynn",
+      "subzone": "Los Viñedos de Maclure",
+      "objectives": "Lleva el collar de Bernice a tía Bernice Pedregosa a La Granja Pedregosa.",
+      "original": "Estaba jugando cerca de la Mina Abisal y creo que se me cayó... esto... quiero decir, creo que vi el collar de la señora. No me preguntes cómo llegó allí, ¡porque no lo sé!\n\nPues eso, que vi a un enorme kóbold con dientes de oro que lo recogía y entraba corriendo a la mina. Si encuentras a ese kóbold, encontrarás el collar, ¡lo juro!",
+      "heading": "El collar y los dientes de oro",
+      "text": "El chiquillo de los Maclure se acercó a Nehonar arrastrando los pies, con la mirada clavada en las botas. Se movía como una ardilla pillada junto a la despensa.\n\n—Estaba jugando cerca de la Mina Abisal y creo que se me cayó... quiero decir, que vi el collar de la señora —balbuceó Billy—. Un kóbold enorme, con dientes de oro, lo cogió y se metió corriendo en la mina.\n\nNehonar no dijo nada. Lo miró en silencio hasta que el niño enrojeció.\n\n—¡No sé cómo llegó allí, lo juro! Si encuentras a ese kóbold, encontrarás el collar.\n\nEl druida asintió despacio. La mentira era torpe, pero el collar pertenecía a tía Bernice Pedregosa, y ella no tenía culpa de nada. Buscaría al kóbold de dientes dorados en la mina y devolvería la joya a su dueña, en La Granja Pedregosa.",
+      "state": "activa"
+    },
+    {
+      "id": 1097,
+      "title": "La tarea de Elmore",
+      "giver": "Herrero Argus",
+      "zone": "Bosque de Elwynn",
+      "subzone": "Villadorada",
+      "objectives": "Habla con Grimand Elmore.",
+      "original": "Hay un enano forjador de armas en Ventormenta, Grimand Elmore, que ha enviado un mensaje diciendo que necesita ayuda con una entrega. Creo que quiere enviar un paquete a su hogar, en el norte.\n\n¡Tienes unas piernas muy fuertes! Si te interesa ponerlas en marcha, vete a hablar con Grimand. Podrías sernos muy útil aquí, pero también debemos mantener nuestros tratos con los enanos.\n\nPuedes encontrar a Grimand Elmore en la tienda de armas del Distrito de los Enanos de Ventormenta, en la sección noreste de la ciudad.",
+      "heading": "Un recado para el enano",
+      "text": "El martillo de Argus golpeaba el yunque de Villadorada con la cadencia de un pájaro carpintero. Nehonar esperó, quieto, a que el herrero alzara la vista.\n\n—Hay un enano forjador de armas en Ventormenta, Grimand Elmore —dijo Argus—. Necesita ayuda con una entrega. Creo que quiere enviar un paquete a su hogar, en el norte. —Sonrió—. ¡Tienes unas piernas muy fuertes! Aquí nos vendrías bien, pero debemos mantener nuestros tratos con los enanos.\n\nNehonar asintió despacio. Un favor entre vecinos. Pensó en las hormigas, que cargan lo que no es suyo porque así se sostiene el hormiguero.\n\n—¿Dónde lo encuentro?\n\n—En la tienda de armas del Distrito de los Enanos, al noreste de la ciudad.\n\nEl druida miró hacia el camino de Ventormenta. El camino se revela al andarlo.",
+      "state": "activa"
+    },
+    {
+      "id": 109,
+      "title": "Habla con Gryan Mantorrecio",
+      "giver": "Alguacil Dughan",
+      "zone": "Bosque de Elwynn",
+      "subzone": "Villadorada",
+      "objectives": "Habla con Gryan Mantorrecio. Puedes encontrarlo en la torre de piedra de la Colina del Centinela, saliendo de la carretera que cruza los Páramos de Poniente.",
+      "original": "Parece que has visto bastantes combates en tu vida, druida. Si no has tenido suficiente, busca a Gryan Mantorrecio. Comanda las Milicias del Pueblo que protegen las granjas de los Páramos de Poniente. Seguro que le vendrá bien tu ayuda. Puedes encontrarlo en la torre de piedra de la Colina del Centinela, saliendo de la carretera que cruza los Páramos de Poniente.",
+      "heading": "Rumbo a la Colina del Centinela",
+      "text": "El alguacil Dughan lo midió de arriba abajo en la plaza de Villadorada, como quien tasa a un recluta. Se detuvo en el polvo de su capa y en la calma de su mirada.\n\n—Parece que has visto bastantes combates en tu vida, druida —dijo—. Si no has tenido suficiente, busca a Gryan Mantorrecio. Seguro que le vendrá bien tu ayuda.\n\nLe explicó que Mantorrecio comandaba las Milicias del Pueblo, que protegían las granjas de los Páramos de Poniente. Lo encontraría en la torre de piedra de la Colina del Centinela, saliendo de la carretera que cruzaba la región.\n\nNehonar guardó silencio. Milicias del pueblo. Granjeros que se agrupaban como ciervos cuando ronda el lobo. Si tenían que defenderse solos, algo fallaba. Quería saber qué.\n\nAsintió y miró hacia el oeste.",
+      "state": "activa"
+    },
+    {
+      "id": 114,
+      "title": "La fuga",
+      "giver": "William Mortero",
+      "zone": "Lion's Pride Inn",
+      "objectives": "Lleva el licor de invisibilidad a Maybell Maclure.",
+      "original": "Lleva este licor de invisibilidad a la joven Maybell. Debería durar lo suficiente para que haga una visita a Tommy Joe.",
+      "state": "entregada"
+    },
+    {
+      "id": 112,
+      "title": "La recolección de Kelp",
+      "giver": "William Mortero",
+      "zone": "Lion's Pride Inn",
+      "objectives": "Lleva 4 hojas de kelp cristalino William Mortero a Villadorada.",
+      "original": "Puedo hacer un licor de invisibilidad para Maybell, para que pueda salir de Los Viñedos de Maclure y reunirse con Tommy Joe. Pero para hacer el licor necesito kelp cristalino.\n\nAunque el kelp normalmente crece en el océano, también se puede conseguir de los murlocs. Ve a ver si los murlocs que hay cerca del Lago de Cristal tienen algo. El Lago de Cristal está al este de Villadorada.",
+      "state": "entregada"
+    },
+    {
+      "id": 61,
+      "title": "Un envío para Ventormenta",
+      "giver": "William Mortero",
+      "zone": "Lion's Pride Inn",
+      "objectives": "Lleva el envío de William a Morgan Mortero al Distrito de Mercaderes de Ventormenta.",
+      "original": "Mi hermano Morgan espera mi envío de velas en Ventormenta. No tengo tiempo para hacer el viaje en persona, pero si quisieras llevarle el envío, te pagaría bien.\n\nHe empaquetado las velas. Encontrarás a Morgan en nuestra tienda, Herbolario Mortero, en el Distrito de Mercaderes de Ventormenta.",
+      "heading": "Velas para el Distrito de Mercaderes",
+      "text": "En la posada del Orgullo de León olía a cerveza y a cera. Nehonar observaba desde un rincón, quieto como un búho en su rama, cuando William Mortero se le acercó con un paquete bien atado.\n\n—Mi hermano Morgan espera estas velas en Ventormenta —dijo—. No tengo tiempo para el viaje. Si se las llevas, te pagaré bien.\n\nNehonar sopesó el envío. Era ligero, y en él nada olía a engaño.\n\n—¿Dónde lo encuentro?\n\n—En nuestra tienda, Herbolario Mortero, en el Distrito de Mercaderes.\n\nEra un recado sencillo. Pero el druida pensó en la ciudad de piedra que los humanos habían alzado lejos de cualquier bosque, y sintió curiosidad. Las abejas también llevan lo suyo de flor en flor sin preguntar demasiado. Esta vez, bastaba con eso.\n\n—Lo llevaré.",
+      "state": "activa"
+    },
+    {
+      "id": 76,
+      "title": "La Cantera de Jaspe",
+      "giver": "Alguacil Dughan",
+      "zone": "Bosque de Elwynn",
+      "subzone": "Villadorada",
+      "objectives": "Explora la Cantera de Jaspe y vuelve a informar al alguacil Dughan a Villadorada.",
+      "original": "Gracias a ti, ahora sabemos que la Mina Abisal está infestada de kobolds. Ahora necesitamos un rastreador que investigue la Cantera de Jaspe, que está más lejos.\n\nExplora la Cantera de Jaspe e infórmame si ves algún kóbold. Para llegar a la mina, viaja hacia el este por el camino hasta que llegues a la Torre de Azora. Cuando llegues allí, dirígete hacia el norte. Encontrarás la mina al pie de las colinas.",
+      "heading": "Rumbo a la Cantera de Jaspe",
+      "text": "El alguacil Dughan lo recibió en Villadorada con el gesto de quien acaba de confirmar una sospecha y teme la siguiente.\n\n—Gracias a ti sabemos que la Mina Abisal está infestada de kóbolds —dijo—. Ahora necesito un rastreador que mire más lejos: la Cantera de Jaspe.\n\nNehonar asintió sin hablar. Rastrear era lo que mejor sabía hacer: leer huellas y escuchar lo que callaba la tierra.\n\n—Ve hacia el este por el camino hasta la Torre de Azora. Desde allí, sigue hacia el norte. Encontrarás la mina al pie de las colinas. Explórala y vuelve a decirme si ves kóbolds.\n\nNehonar pensó en las madrigueras que se extienden bajo el bosque sin que nadie las vea, hasta que ya es tarde. Una plaga no avisa. Se ajustó la capa y miró hacia el este.",
+      "state": "activa"
+    },
+    {
+      "id": 107,
+      "title": "Una nota para William",
+      "giver": "Abuela Pedregosa",
+      "zone": "Bosque de Elwynn",
+      "subzone": "La Granja Pedregosa",
+      "objectives": "Lleva la nota de la Abuela Pedregosa a William Mortero.",
+      "original": "¡Seguro que William Mortero tiene una poción que reúna a los dos jóvenes amantes!\n\nTen, llévale esta nota a William. Está en la Posada Orgullo de León, en Villadorada.",
+      "state": "entregada"
+    },
+    {
+      "id": 111,
+      "title": "Habla con la abuelita",
+      "giver": "Tommy Joe Pedregosa",
+      "zone": "Bosque de Elwynn",
+      "subzone": "La Granja Pedregosa",
+      "objectives": "Habla con la Abuela Pedregosa.",
+      "original": "Por favor, Nehonar, habla con mi abuelita. Si alguien puede encontrar la forma de reunirme con Maybell, esa es ella.\n\nEstá en nuestra casa, al este de aquí.",
+      "state": "entregada"
+    },
+    {
+      "id": 84,
+      "title": "Vuelve con Billy",
+      "giver": "\"Tía\" Bernice Pedregosa",
+      "zone": "Bosque de Elwynn",
+      "subzone": "La Granja Pedregosa",
+      "objectives": "Lleva el pastel de tripa de cerdo a Billy Maclure a Los Viñedos de Maclure.",
+      "original": "Aquí tienes. Y cuando le des el pastel a Billy, ¡dile que espero que se atragante con él!",
+      "state": "entregada"
+    },
+    {
+      "id": 106,
+      "title": "Jóvenes enamorados",
+      "giver": "Maybell Maclure",
+      "zone": "Bosque de Elwynn",
+      "subzone": "Los Viñedos de Maclure",
+      "objectives": "Entrega a Tommy Joe Pedregosa la carta de amor de Maybell.",
+      "original": "¡Oh, estoy maldita! He entregado mi corazón a Tommy Joe Stonefield, pero nuestras familias se odian a muerte. Así que no puedo verlo, ¡aunque me duelan los ojos por no poder mirar su hermoso rostro!\n\nTe lo ruego, lleva esta carta a Tommy Joe. Suele estar en el río que está al oeste de La Granja Pedregosa, al oeste de aquí.",
+      "state": "entregada"
+    },
+    {
+      "id": 86,
+      "title": "Un pastel para Billy",
+      "giver": "Billy Maclure",
+      "zone": "Bosque de Elwynn",
+      "subzone": "Los Viñedos de Maclure",
+      "objectives": "Lleva 4 trozos de carne de jabalí a la tía Bernice Pedregosa a La Granja Pedregosa.",
+      "original": "Si me dieras un pastel, puede que te diga quién tiene el collar. Bernice, esa anciana de la otra granja, hace unos pasteles de tripa de cerdo increíbles...\n\nSi le llevas algo de carne de jabalí de los jabalíes que rondan por nuestras granjas, y le dices para qué es, seguro que te hace un pastel.",
+      "state": "entregada"
+    },
+    {
+      "id": 88,
+      "title": "¡Princesa debe morir!",
+      "giver": "La vieja Pedregosa",
+      "zone": "Bosque de Elwynn",
+      "subzone": "La Granja Pedregosa",
+      "objectives": "Mata a Princesa, coge su collar y llévaselo a la vieja Pedregosa a La Granja Pedregosa.",
+      "original": "Los Brackwell tienen una cerda que ganaría cualquier concurso. Se llama Princesa. Está ENORME, ¡y es gracias a mí! ¡Porque se alimenta de mis verduras!\n\n¡Princesa debe morir antes de que llegue a nuestros campos! Tráeme su collar como prueba de que está muerta y te daré algo para recompensarte.\n\nPrincesa suele estar en la Plantación de Calabazas de Brackwell. Está al este, más allá de la granja de los Maclure. ¡Ve! ¡Antes de que le entre hambre y vuelva!",
+      "heading": "La cerda de los Brackwell",
+      "text": "La vieja Pedregosa lo esperaba junto a la cerca, con el ceño arrugado como corteza seca.\n\n—Los Brackwell tienen una cerda que ganaría cualquier concurso. Princesa, la llaman. ¡Y está enorme gracias a mis verduras!\n\nNehonar miró los surcos de la huerta. Un animal no roba; come donde encuentra. Lo dijo en voz baja.\n\n—Me da igual —replicó ella—. Esa bestia debe morir antes de que vuelva a mis campos. Tráeme su collar como prueba y te recompensaré.\n\nPrincesa solía estar en la Plantación de Calabazas de Brackwell, al este, más allá de la granja de los Maclure.\n\n—¡Ve! ¡Antes de que le entre hambre y vuelva!\n\nNehonar calló un instante. El hambre no era un crimen. Pero aquella tierra era el sustento de la mujer, y el camino solo se revelaría al andarlo.",
+      "state": "activa"
+    },
+    {
+      "id": 85,
+      "title": "El collar perdido",
+      "giver": "\"Tía\" Bernice Pedregosa",
+      "zone": "Bosque de Elwynn",
+      "subzone": "La Granja Pedregosa",
+      "objectives": "Habla con Billy Maclure.",
+      "original": "He perdido mi collar... creo que me lo robó ese granuja de Billy Maclure. Normalmente pasa el día escondido como una rata en Los Viñedos de Maclure, al este de aquí.\n\nRecupera mi collar y darás una alegría al corazón de una anciana viuda.",
+      "state": "entregada"
+    },
+    {
+      "id": 332,
+      "title": "Publicidad de la bodega",
+      "giver": "Renato Gallina",
+      "zone": "Ciudad de Ventormenta",
+      "subzone": "Distrito de Mercaderes",
+      "objectives": "Ve a la Bodega Gallina y lleva a Suzetta Gallina el cupón de vino para una botella gratis.",
+      "original": "Si hablas sobre vino con alguien, sabrás que nosotros, en Gallinas, vendemos el mejor vino de Ventormenta. Y no estamos lejos, seguimos en el Distrito de Mercaderes, en los preciosos canales de la ciudad.\n\nToma, coge este panfleto. Llévaselo a mi hermana Suzetta a nuestra tienda, a cambio te dará una botella de regalo de nuestro famoso pinot noir. ¡No lo lamentarás!",
+      "state": "entregada"
+    },
+    {
+      "id": 35,
+      "title": "Más preocupaciones",
+      "giver": "Alguacil Dughan",
+      "zone": "Bosque de Elwynn",
+      "subzone": "Villadorada",
+      "objectives": "El alguacil Dughan quiere que hables con el guardia Thomas.",
+      "original": "Si te preocupa que los rumores sobre los murlocs sean ciertos, viaja al puente del este de Elwynn y habla con el guardia Thomas. Esta última semana se encuentra emplazado en el puente y sabrá cuál es el estado de la situación.\n\nTráeme su informe.",
+      "state": "entregada"
+    },
+    {
+      "id": 47,
+      "title": "Intercambio de polvo de oro",
+      "giver": "Remy \"Dos Veces\"",
+      "zone": "Bosque de Elwynn",
+      "subzone": "Villadorada",
+      "objectives": "Lleva 10 unidades de polvo de oro a Remy Dos Veces a Villadorada. Puedes obtener polvo de oro de los kobolds del Bosque de Elwynn.",
+      "original": "Los kobolds de esa zona a veces llevan polvo de oro. Y me vendría muy bien. Consígueme un montón de polvo de oro y te pagaré el mejor precio de la ciudad, ¡el mejor!\n\nPuedes encontrar kobolds en la Mina Abisal, al sur. Y también alrededor de la Cantera de Jaspe, al noreste.",
+      "state": "entregada"
+    },
+    {
+      "id": 40,
+      "title": "Un peligro con olor a pescado",
+      "giver": "Remy \"Dos Veces\"",
+      "zone": "Bosque de Elwynn",
+      "subzone": "Villadorada",
+      "objectives": "Remy Dos Veces quiere que hables con el alguacil Dughan de Villadorada.",
+      "original": "¡Hay una nueva amenaza en el Bosque de Elwynn, Nehonar! ¡Los múrlocs remontan los ríos del este de Elwynn, ahuyentando a los peces y atacando a las buenas gentes de allí!\n\nAvisé al alguacil Dughan, pero está más preocupado por los gnolls y los bandidos, no cree que los múrlocs constituyan una amenaza.\n\n¡Por favor, Nehonar! ¡Habla con Dughan y convéncelo para que envíe más tropas al este!",
+      "state": "entregada"
+    },
+    {
+      "id": 60,
+      "title": "Las velas de los kobolds",
+      "giver": "William Mortero",
+      "zone": "Lion's Pride Inn",
+      "objectives": "Lleva 8 velas grandes a William Mortero a Villadorada.",
+      "original": "Hola, chico. ¿Tienes un momento?\n\nMi hermano y yo tenemos un herbolario en Ventormenta. Yo estoy aquí para conseguir velas grandes, por la cera, ya me entiendes. ¿Puedes ayudarme?\n\nPuedes conseguir velas grandes de los kobolds. He oído rumores de que están infestando las minas de Elwynn... La Mina Abisal del sur y la Cantera de Jaspe del este. Puedes empezar la búsqueda en esos lugares.",
+      "state": "entregada"
+    },
+    {
+      "id": 62,
+      "title": "La Mina Abisal",
+      "giver": "Alguacil Dughan",
+      "zone": "Bosque de Elwynn",
+      "subzone": "Villadorada",
+      "objectives": "Explora la Mina Abisal y vuelve junto al alguacil Dughan a Villadorada.",
+      "original": "¡La mina de Villanorte no es la única que tiene problemas! Según mis informes, la Mina Abisal de Elwynn también ha sido ocupada por los kobolds.\n\nExplora la mina y comprueba la veracidad de mis informes. Luego vuelve aquí. La mina está hacia el norte de Villadorada, entre La Granja Pedregosa y la granja Maclure.",
+      "state": "entregada"
+    },
+    {
+      "id": 91775,
+      "title": "Devolución de libros",
+      "giver": "Alguacil Dughan",
+      "zone": "Bosque de Elwynn",
+      "subzone": "Villadorada",
+      "objectives": "Encuentra \"Diversión con elementales\", junto con otros 6 libros perdidos, y llévaselos al alguacil Dughan.",
+      "original": "Mientras investigas la Mina Abisal, mantén los ojos abiertos por si encuentras algunos de los libros del hermano Paxton. En particular, Paxton está muy preocupado por encontrar uno titulado \"Diversión con elementales\". Cree que hasta un kóbold podría usarlo para invocar a un sirviente elemental. Ten cuidado: las profundidades de la mina son bastante peligrosas. Si vas, deberías ir con amigos.\r\n\r\n¡Llévate esta bolsa de libros para proteger los ejemplares cuando los encuentres!",
+      "heading": "Los libros perdidos de Paxton",
+      "text": "El alguacil Dughan lo detuvo antes de que dejara Villadorada. Le habló de la Mina Abisal y de unos libros que el hermano Paxton había perdido. Al nombrar uno de ellos, bajó la voz.\n\n—«Diversión con elementales». Paxton cree que hasta un kóbold podría usarlo para invocar a un sirviente elemental.\n\nNehonar guardó silencio un momento. Un saber así, en manos que no lo comprendían, era como una chispa sobre hojarasca seca.\n\n—¿Quién deja algo así sin custodia? —preguntó al fin.\n\nDughan se encogió de hombros y le tendió una bolsa para proteger los libros que encontrara.\n\n—Las profundidades de esa mina son peligrosas. Si vas, ve con amigos.\n\nEl druida asintió. Bajaría a la Mina Abisal, buscaría el libro que tanto inquietaba a Paxton y los demás volúmenes perdidos, y los llevaría de vuelta al alguacil.",
+      "state": "activa"
+    },
+    {
+      "id": 97922,
+      "title": "Acampada para novatos: peletería",
+      "giver": "Sam Zarzaparrilla",
+      "zone": "Bosque de Elwynn",
+      "subzone": "Villadorada",
+      "objectives": "Habla con Adele Fielder en Villadorada para aprender a crear un objeto de acampada para tu profesión cuando hayas demostrado tu destreza en la habilidad.",
+      "original": "Has elegido dedicarte a la peletería. Me alegro por ti, druida. Creo recordar a alguien que puede enseñarte a crear una tienda para mantenerte fresco los días calurosos y seco los días lluviosos.\r\n\r\nUna buena tienda sobre tu cabeza garantizará que descansas todo lo necesario para mantenerte en plena forma durante tus viajes.",
+      "state": "entregada"
+    },
     {
       "id": 91751,
       "title": "Pelambres de lobo toscas",
@@ -331,7 +695,7 @@
       "original": "Todos los aventureros deben descansar cuando les invade el agotamiento, ¡y no hay mejor lugar para descansar que la Posada Orgullo de León!\n\nMi mejor amigo, el posadero Farley, lleva la Posada Orgullo de León. Si le dices que te envío yo, puede que te haga un descuento en la comida y la bebida.\n\nPara encontrar la Posada Orgullo de León, viaja al sur por el camino que sale de aquí, ¡no tiene pérdida!",
       "heading": "Un techo al sur del camino",
       "text": "En el Valle de Villanorte, Falkhaan Isenzancas se fijó en el forastero de paso callado y mirada atenta. Nehonar no había pedido nada, pero el cansancio se le notaba en los hombros.\n\n—Todo aventurero debe descansar cuando le vence el agotamiento —dijo Falkhaan—. Y no hay mejor sitio que la Posada Orgullo de León.\n\nLe contó que la llevaba el posadero Farley, su mejor amigo, y que si le decía de su parte, quizá le rebajara la comida y la bebida.\n\n—Viaja al sur por el camino que sale de aquí. ¡No tiene pérdida!\n\nNehonar asintió. Hasta el lobo más firme vuelve a su madriguera, pensó. Descansar no era debilidad: era parte del equilibrio. Se ajustó el morral y tomó el camino del sur, en busca de Farley y su posada.",
-      "state": "activa"
+      "state": "entregada"
     },
     {
       "id": 3905,
@@ -363,7 +727,7 @@
       "original": "Muy bien. Coge este equipo de rastreo de kóbolds; te ayudará a encontrar al kóbold que tanto preocupa al alguacil McBride.\r\n\r\nSigue su rastro y devuelve lo que encuentres al alguacil Dughan de Villadorada.\r\n\r\nTengo la sensación de que estas alimañas están tramando algo a las afueras de Villanorte. Si es cierto, necesitarás la ayuda de Dughan.",
       "heading": "El rastro de las alimañas",
       "text": "Tordrin Hojadusta le tendió un equipo de rastreo y bajó la voz, como si los kóbolds pudieran oírle desde la espesura.\n\n—Esto te ayudará a encontrar al kóbold que tanto preocupa al alguacil McBride. Sigue su rastro y lleva lo que encuentres al alguacil Dughan, en Villadorada.\n\nNehonar sopesó el objeto en silencio. No le bastaba con un encargo: necesitaba entenderlo.\n\n—¿Qué temes?\n\n—Tengo la sensación de que esas alimañas traman algo a las afueras de Villanorte. Si es así, necesitarás a Dughan.\n\nEl druida asintió. Pensó en las comadrejas que husmean junto a un nido: nunca se acercan sin motivo. Aquellas criaturas tampoco.\n\nGuardó el equipo, buscó las primeras huellas en la tierra húmeda y echó a andar. El rastro empezaba allí. Terminaría ante Dughan, en Villadorada.",
-      "state": "activa"
+      "state": "entregada"
     },
     {
       "id": 54,
@@ -375,7 +739,7 @@
       "original": "Nehonar, eres un druida que ciertamente ha demostrado que le preocupa la seguridad de Villanorte. Tu siguiente misión será proteger el Bosque de Elwynn.\n\nSi aceptas, te daré unos papeles para el alguacil Dughan, que está en Villadorada. Para ir a Villadorada, sigue el camino hacia el sur, pasada la frontera.",
       "heading": "Papeles para el alguacil Dughan",
       "text": "El alguacil McBride lo esperaba con unos pliegos doblados en la mano. Lo miró un instante, como quien observa a un lobo que ha decidido guardar el rebaño en lugar de diezmarlo.\n\n—Has demostrado que te preocupa la seguridad de Villanorte, druida. Ahora necesito que protejas el Bosque de Elwynn.\n\nNehonar no respondió enseguida. Pensó en aquellos humanos, tan lejos de sus árboles y tan empeñados en defender los suyos.\n\n—¿Y los papeles? —preguntó al fin.\n\n—Son para el alguacil Dughan, en Villadorada. Sigue el camino hacia el sur, pasada la frontera.\n\nEl elfo tomó los documentos. Pesaban poco, aunque quizá significaran más. Al otro lado aguardaba un bosque que no conocía. Pensó que eso era justo lo que había venido a buscar.",
-      "state": "activa"
+      "state": "entregada"
     },
     {
       "id": 91758,
@@ -737,30 +1101,48 @@
   ],
   "pending": {
     "loose": [
-      "La recompensa por Garrick Piesuaves"
+      "Dale de beber a Gerard",
+      "Intercambio de polvo de oro",
+      "El cumplimiento del plazo"
     ],
     "openChains": [
       [
-        "Una amenaza del interior",
-        "La limpieza del campamento kóbold",
-        "Investigar la Mina del Eco",
-        "Escarmuza en la Mina del eco",
-        "¡Sigue a ese kóbold!",
-        "¡Shhh! Aquí se cazan kóbolds"
+        "Informa en Villadorada",
+        "Devolución de libros"
+      ],
+      [
+        "La Mina Abisal",
+        "La Cantera de Jaspe"
+      ],
+      [
+        "Las velas de los kobolds",
+        "Un envío para Ventormenta"
+      ],
+      [
+        "El collar perdido",
+        "Un pastel para Billy",
+        "Vuelve con Billy",
+        "Dientes de oro"
+      ],
+      [
+        "Proteger la frontera",
+        "Entrega el informe de Thomas",
+        "Armadura de tela y cuero"
       ]
     ]
   },
   "stats": {
-    "level": 7,
-    "played": 9560,
-    "questsDone": 37,
+    "level": 10,
+    "played": 14513,
+    "questsDone": 62,
     "deaths": 0,
     "zones": [
       "Teldrassil",
       "Darnassus",
       "Costa Oscura",
       "Ciudad de Ventormenta",
-      "Bosque de Elwynn"
+      "Bosque de Elwynn",
+      "Lion's Pride Inn"
     ],
     "levelUps": [
       {
@@ -786,6 +1168,18 @@
       {
         "level": 7,
         "played": 7551
+      },
+      {
+        "level": 8,
+        "played": 9673
+      },
+      {
+        "level": 9,
+        "played": 12252
+      },
+      {
+        "level": 10,
+        "played": 14476
       }
     ]
   }
