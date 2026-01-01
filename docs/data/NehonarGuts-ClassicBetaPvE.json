@@ -11,14 +11,14 @@
     "threads": null,
     "motto": ""
   },
-  "level": 15,
+  "level": 16,
   "realm": "Classic Beta PvE",
   "stories": [],
   "current": {
     "zone": "Páramos de Poniente",
-    "quests": 4,
+    "quests": 7,
     "levelFrom": 14,
-    "levelTo": 15
+    "levelTo": 16
   },
   "encargos": [
     {
@@ -49,7 +49,7 @@
       "subzone": "Colina del Centinela",
       "objectives": "Usa el equipo de muestras de agua de pozo para conseguir muestras de los pozos de la Finca de Jansen y la Granja de Molsen.",
       "original": "Debemos determinar el origen y la naturaleza del veneno que corrompe estas tierras. Comencemos con el agua subterránea de las granjas de la zona.\r\n\r\nVe a la Finca de Jansen y a la Granja de Molsen, al norte y al noroeste de aquí respectivamente, y consigue muestras de los pozos.",
-      "state": "activa"
+      "state": "entregada"
     },
     {
       "id": 96394,
@@ -69,7 +69,7 @@
       "subzone": "Finca de Saldean",
       "objectives": "Ozwin Ferropiñón, en la Granja de Saldean, quiere que le lleves 14 isomuelles de gólem y 5 giroestabilizadores de cosechador.",
       "original": "Ay, no... ¡Estoy en un buen lío!\r\n\r\nMe enteré de que unos cosechadores estaban aterrorizando los campos de los Páramos de Poniente, así que viajé hacia allí desde Forjaz para ver si podía recalibrarlos. Pero eran más agresivos de lo que había anticipado con mis cálculos ¡y me persiguieron hasta este establo!\r\n\r\nSi tuviera unos cuantos isomuelles y giroestabilizadores de los cosechadores, podría construir un dispositivo para huir. ¿Te importaría conseguirme las piezas?",
-      "state": "activa"
+      "state": "entregada"
     },
     {
       "id": 22,
@@ -89,7 +89,7 @@
       "subzone": "Finca de Saldean",
       "objectives": "El granjero Saldean quiere que mates 20 Vigilantes de la cosecha.",
       "original": "¡Mira lo que le ha ocurrido a este lugar! Estas tierras estaban antes en manos de buenos granjeros. Pero los condenados ladrones les han ahuyentado a todos. ¡Pero no a mí! Eso sí, parece que algunos Vigilantes de la cosecha han invadido los campos.\n\nSi estás preparado me gustaría que fueras y mataras a 20 de ellos. Vuelve cuando hayas terminado y te pagaré. Si terminas con los de mi campo, puedes limpiar también los campos vecinos.",
-      "state": "activa"
+      "state": "entregada"
     },
     {
       "id": 38,
@@ -281,10 +281,10 @@
     "awaitingBackstory": 2
   },
   "stats": {
-    "level": 15,
-    "played": 71045,
-    "questsDone": 29,
-    "deaths": 5,
+    "level": 16,
+    "played": 74800,
+    "questsDone": 32,
+    "deaths": 6,
     "zones": [
       "Bosque de Elwynn",
       "Ciudad de Ventormenta",
@@ -313,6 +313,10 @@
       {
         "level": 15,
         "played": 63026
+      },
+      {
+        "level": 16,
+        "played": 72011
       }
     ]
   }
