@@ -16,6 +16,46 @@
   "stories": [],
   "encargos": [
     {
+      "id": 38,
+      "title": "Estofado de los Páramos de Poniente",
+      "giver": "Salma Saldean",
+      "zone": "Páramos de Poniente",
+      "subzone": "Finca de Saldean",
+      "objectives": "Salma Saldean quiere 3 carnes fibrosas de buitre, 3 morros de dentosangre, 3 ojos de múrloc y 3 okras.",
+      "original": "¡Ayúdame a preparar el estofado de los Páramos de Poniente! Vuelve con estos ingredientes:\n\n3 piezas de carne fibrosa de buitre\n3 morros de dentosangre\n3 ojos de múrloc\n3 okras",
+      "state": "activa"
+    },
+    {
+      "id": 151,
+      "title": "La pobre y vieja Blanchy",
+      "giver": "Verna Cejade",
+      "zone": "Páramos de Poniente",
+      "subzone": "La Finca de Jansen",
+      "objectives": "Verna Furlbrow de los Páramos de Poniente quiere que le lleves 8 puñados de avena.",
+      "original": "¡Pobre Vieja Blanchy! La bestia está agotada después de todo el trabajo que le dimos. Le di de comer antes de dejar la granja, pero no esperábamos que se rompiera el carro. Si pudieras traerle algunos puñados de avena te estaría muy agradecida.\n\nSeguro que podrás encontrar algunos por las granjas de los Páramos de Poniente, si puedes librarte de esas horribles máquinas que los han invadido. Hay varias granjas al suroeste de aquí.",
+      "state": "activa"
+    },
+    {
+      "id": 36,
+      "title": "Estofado de los Páramos de Poniente",
+      "giver": "Verna Cejade",
+      "zone": "Páramos de Poniente",
+      "subzone": "La Finca de Jansen",
+      "objectives": "Verna Furlbrow quiere que le entregues su receta del estofado de los Páramos de Poniente a Salma Saldean.",
+      "original": "Nunca pensé que llegaría el día en el que tuviera que dejar la granja. Pero los campos están llenos de ladrones y es demasiado peligroso que sigamos aquí. En cuanto el granjero Furlbrow consiga arreglar el carro nos pondremos en marcha.\n\n¿Podrías hacerme un favor? Deja que te escriba mi receta del estofado de los Páramos de Poniente. Por favor, llévasela a Salma Saldean, estará en su granja, nada más pasar la bifurcación del camino.",
+      "state": "entregada"
+    },
+    {
+      "id": 64,
+      "title": "La reliquia olvidada",
+      "giver": "Granjero Cejade",
+      "zone": "Páramos de Poniente",
+      "subzone": "La Finca de Jansen",
+      "objectives": "El granjero Furlbrow quiere que recuperes el reloj de bolsillo que dejó olvidado en el armario de su granja en la plantación de calabazas del Oeste.",
+      "original": "¡Fue horrible! Verna me despertó cuando oyó jaleo en los campos. Estaban llenos de gamberros. Nos fuimos corriendo y olvidé recoger mi reloj de bolsillo. Me lo dio el padre de Verna el día de nuestra boda y es horrible saber que está en manos de esos ladrones. Dejé el reloj de bolsillo en el armario de la granja. Busca el campo de calabazas que está al Oeste... no tiene pérdida. ¡Si me lo devuelves te estaré muy agradecido!",
+      "state": "activa"
+    },
+    {
       "id": 98423,
       "title": "El tratado de entendimiento",
       "zone": "El Salón de los Feudales",
@@ -49,7 +89,7 @@
       "subzone": "Cuartel Arroyoeste",
       "objectives": "Mata al gnoll Hogger y trae su enorme garra gnoll al alguacil Dughan.",
       "original": "Se busca: Hogger.\n\nUn gnoll enorme, Hogger, está al acecho en el bosque al suroeste de Elwynn. Ha sofocado todos los intentos de capturarlo.\n\nEl ejército de Ventormenta ofrece una generosa recompensa por atrapar al gnoll. Para ganarla, los caza recompensas tendrán que traer una prueba de la derrota de Hogger al alguacil Dughan de Villadorada.",
-      "state": "activa"
+      "state": "entregada"
     },
     {
       "id": 11,
@@ -59,7 +99,7 @@
       "subzone": "Cuartel Arroyoeste",
       "objectives": "Lleva 8 brazaletes gnoll violáceos al ayudante del alguacil Rainer al Cuartel.",
       "original": "En las fronteras del Bosque de Elwynn se han avistado gnolls, unas criaturas salvajes que seguramente no están allí por trabajo. Un grupo enorme de ellos, uno más numeroso del que podemos contener solos, ha infestado los bosques que hay al sur de la torre de vigilancia. Otro grupo ha infestado las áreas cercanas al Lago del Hito, al este.\n\nEl ejército de Ventormenta elogiará a quienquiera que le ayude a matarlos. Tráeme sus brazaletes gnoll violáceos como prueba de tu hazaña.",
-      "state": "activa"
+      "state": "entregada"
     },
     {
       "id": 97894,
@@ -161,21 +201,22 @@
   ],
   "pending": {
     "loose": [
-      "Reliquias importantes"
+      "Recompensas por los gnolls Zarparrío",
+      "SE BUSCA: Hogger"
     ],
     "openChains": [
       [
-        "El Cuartel Arroyoeste necesita ayuda",
-        "Recompensas por los gnolls Zarparrío"
+        "Estofado de los Páramos de Poniente",
+        "Estofado de los Páramos de Poniente"
       ]
     ],
-    "awaitingBackstory": 7
+    "awaitingBackstory": 9
   },
   "stats": {
     "level": 14,
-    "played": 50643,
-    "questsDone": 21,
-    "deaths": 2,
+    "played": 53622,
+    "questsDone": 24,
+    "deaths": 3,
     "zones": [
       "Bosque de Elwynn",
       "Ciudad de Ventormenta",
@@ -184,7 +225,8 @@
       "Forjaz",
       "Dun Morogh",
       "Loch Modan",
-      "El Salón de los Feudales"
+      "El Salón de los Feudales",
+      "Páramos de Poniente"
     ],
     "levelUps": [
       {
