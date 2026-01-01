@@ -204,20 +204,6 @@ button:focus-visible, select:focus-visible, a:focus-visible, .loot li:focus-visi
 .pager a:hover { color: var(--rubric); }
 .pager .next { margin-left: auto; text-align: right; }
 
-/* ---------- Capítulos ---------- */
-.log-item .log-mark { font-family: var(--font-display); font-size: .82rem; letter-spacing: .02em; }
-.log-item.current .log-title { color: var(--frame-text); font-style: italic; }
-.rubric.small { font-size: .78rem; margin: 26px 0 10px; }
-.scenes { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 10px; margin: 0 0 18px; padding: 0; list-style: none; }
-.scene { display: flex; flex-direction: column; gap: 2px; padding: 10px 12px; border: 1px solid var(--line); border-radius: 4px; background: rgba(0,0,0,.04); }
-.scene-k { font-size: .74rem; letter-spacing: .1em; color: var(--gold); font-weight: 700; }
-.scene-t { font-family: var(--font-display); font-size: 1.08rem; line-height: 1.2; }
-.scene-d { font-size: .88rem; color: var(--ink-soft); }
-.fold { margin: 8px 0 4px; border-top: 1px dashed var(--line); padding-top: 12px; }
-.fold summary { cursor: pointer; font-family: var(--font-body); font-style: italic; color: var(--ink-soft); font-size: 1.05rem; padding: 4px 0; }
-.fold summary:hover { color: var(--rubric); }
-.fold[open] summary { margin-bottom: 12px; }
-
 /* ---------- Diario de batalla ---------- */
 .ledger h3 { font-family: var(--font-display); font-weight: 400; color: var(--rubric); letter-spacing: .08em; font-size: 1.1rem; margin: 26px 0 10px; }
 .tiles { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px; }
