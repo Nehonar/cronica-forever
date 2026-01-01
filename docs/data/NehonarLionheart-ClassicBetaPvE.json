@@ -306,6 +306,31 @@
       "levelFrom": 16,
       "levelTo": 16,
       "deaths": 2
+    },
+    {
+      "id": "d0834f66de19",
+      "kind": "equipo",
+      "zone": "Ciudad de Ventormenta",
+      "subzones": [
+        "Distrito de Mercaderes"
+      ],
+      "title": "Más difícil de tumbar",
+      "text": "En el Distrito de Mercaderes, Nehonar se ajustó el torso de mallas y soltó el aire despacio. Pesaba como un fardo bien cargado, de esos que uno aprende a llevar sin quejarse.\n\n—Ahora sí que me va a costar agacharme —bromeó para nadie.\n\nAl cuadrar los hombros notó algo más: firmeza. Era como si cualquier golpe tuviera que pensárselo dos veces antes de tumbarlo. Pensó en la mina y en lo que habría dado entonces por sentirse así.\n\nNo se detuvo a celebrarlo. Ya miraba hacia la puerta.",
+      "summary": "Nehonar se puso por primera vez un torso de mallas en el Distrito de Mercaderes, lo sintió como un fardo que lo volvía más firme, recordó la mina y siguió adelante sin celebrarlo.",
+      "items": [
+        {
+          "name": "Torso de guardia de gólem",
+          "quality": 3,
+          "slot": "CHEST",
+          "subType": "Mallas",
+          "armor": 238,
+          "stats": {
+            "ITEM_MOD_STAMINA_SHORT": 6
+          }
+        }
+      ],
+      "levelFrom": 17,
+      "levelTo": 17
     }
   ],
   "encargos": [
@@ -356,9 +381,9 @@
   },
   "stats": {
     "level": 17,
-    "played": 78932,
+    "played": 87421,
     "questsDone": 4,
-    "deaths": 2,
+    "deaths": 7,
     "zones": [
       "Páramos de Poniente",
       "Ciudad de Ventormenta",
@@ -367,7 +392,8 @@
       "Tranvía Subterráneo",
       "Forjaz",
       "El Salón de los Feudales",
-      "Dun Morogh"
+      "Dun Morogh",
+      "Las Minas de la Muerte"
     ],
     "levelUps": [
       {
