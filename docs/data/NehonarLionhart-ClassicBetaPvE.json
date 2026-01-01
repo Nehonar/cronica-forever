@@ -1,0 +1,55 @@
+{
+  "key": "NehonarLionhart-ClassicBetaPvE",
+  "character": {
+    "key": "NehonarLionhart-ClassicBetaPvE",
+    "name": "Nehonar Lionhart",
+    "epithet": "",
+    "race": "Humano",
+    "class": "Mago",
+    "voice": "",
+    "backstory": "",
+    "threads": null,
+    "motto": ""
+  },
+  "level": 8,
+  "realm": "Classic Beta PvE",
+  "stories": [],
+  "encargos": [
+    {
+      "id": 97925,
+      "title": "Acampada para novatos: sastrería",
+      "giver": "Sam Zarzaparrilla",
+      "zone": "Bosque de Elwynn",
+      "subzone": "Villadorada",
+      "objectives": "Habla con Eldrin en el Aserradero de la Vega del Este del Bosque de Elwynn para aprender a crear un objeto de acampada para tu profesión cuando hayas demostrado tu destreza en la habilidad.",
+      "original": "Sastrería es una habilidad comercial sorprendentemente útil en la que invertir, y no me cabe duda de que te será de gran utilidad.\r\n\r\nCreo recordar a alguien que puede enseñarte a crear un estandarte de facción para tu campamento si dispones de la habilidad necesaria. La inspiración y la moral son fundamentales para el éxito en cualquier campo de batalla, y un estandarte inspirador puede contribuir enormemente a mantener un buen ánimo.",
+      "state": "activa"
+    },
+    {
+      "id": 97917,
+      "title": "Acampada para novatos: encantamiento",
+      "giver": "Sam Zarzaparrilla",
+      "zone": "Bosque de Elwynn",
+      "subzone": "Villadorada",
+      "objectives": "Habla con Betty Quin en Ventormenta para aprender a crear un objeto de acampada para tu profesión cuando hayas demostrado tu destreza en la habilidad.",
+      "original": "Los encantadores son capaces de mejorarlo todo y siempre son bienvenidos en cualquier campamento en plena naturaleza.\r\n\r\nCreo recordar a alguien que podría enseñarte a fabricar un laúd encantado para tu campamento. Es muy importante contar con algo de entretenimiento durante los ratos de descanso, y esta pizca de magia te ayudará a que estés preparado para afrontar todo tipo de desafíos cuando vuelvas a echarte al polvoriento camino.",
+      "state": "activa"
+    }
+  ],
+  "pending": {
+    "loose": [],
+    "openChains": [],
+    "awaitingBackstory": 1
+  },
+  "stats": {
+    "level": 8,
+    "played": 13968,
+    "questsDone": 0,
+    "deaths": 0,
+    "zones": [
+      "Lion's Pride Inn",
+      "Bosque de Elwynn"
+    ],
+    "levelUps": []
+  }
+}

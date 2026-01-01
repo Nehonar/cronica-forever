@@ -1,6 +1,15 @@
 {
   "characters": [
     {
+      "key": "Nehonar-ClassicBetaPvP",
+      "name": "Nehonar",
+      "epithet": "el de la Cantera",
+      "race": "Humano",
+      "class": "Paladín",
+      "level": 2,
+      "stories": 1
+    },
+    {
       "key": "NehonarChopper-ClassicBetaPvE",
       "name": "Nehonar Chopper",
       "epithet": "el Silencioso",
@@ -19,6 +28,15 @@
       "new": true
     },
     {
+      "key": "NehonarLionhart-ClassicBetaPvE",
+      "name": "Nehonar Lionhart",
+      "race": "Humano",
+      "class": "Mago",
+      "level": 8,
+      "stories": 0,
+      "new": true
+    },
+    {
       "key": "NehonarLionheart-ClassicBetaPvE",
       "name": "Nehonar Lionhart",
       "epithet": "el de la Cantera",
@@ -26,15 +44,6 @@
       "class": "Paladín",
       "level": 17,
       "stories": 17
-    },
-    {
-      "key": "Nehonar-ClassicBetaPvP",
-      "name": "Nehonar",
-      "epithet": "el de la Cantera",
-      "race": "Humano",
-      "class": "Paladín",
-      "level": 2,
-      "stories": 1
     },
     {
       "key": "Tobias-Demo",
@@ -46,5 +55,5 @@
       "stories": 3
     }
   ],
-  "updated": "052d5dfbcc84fe13"
+  "updated": "78700bc1b9d9ebcb"
 }
