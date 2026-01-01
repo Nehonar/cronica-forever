@@ -15,13 +15,23 @@
   "realm": "Classic Beta PvE",
   "stories": [],
   "current": {
-    "zone": "Páramos de Poniente",
-    "quests": 4,
+    "zone": "Torre del Centinela",
+    "quests": 5,
     "levelFrom": 17,
     "levelTo": 17,
+    "points": 1,
     "threshold": 8
   },
   "encargos": [
+    {
+      "id": 14,
+      "title": "Las Milicias del Pueblo",
+      "giver": "Gryan Mantorrecio",
+      "zone": "Torre del Centinela",
+      "objectives": "Gryan Mantorrecio quiere que mates 15 bandoleros Defias y 5 acechacaminos Defias. Cuando lo hayas hecho vuelve a verle en la Colina del Centinela.",
+      "original": "Algunos Defias nos han esquivado. Según informa mi mejor rastreador, los Defias han estado saqueando y expoliando el campo, todo el sureste de los Páramos de Poniente. Creemos que se están ocultando en Las Colinas Afiladas, planeando sus siguientes pasos. Acaba con esos miserables en nombre de Las Milicias del Pueblo.",
+      "state": "activa"
+    },
     {
       "id": 13,
       "title": "Las Milicias del Pueblo",
@@ -29,7 +39,7 @@
       "zone": "Torre del Centinela",
       "objectives": "Gryan Mantorrecio quiere que mates 15 saqueadores Defias y 15 despojadores Defias. Cuando lo hayas hecho vuelve a verle en la Colina del Centinela.",
       "original": "Una banda de despiadados saqueadores Defias ha sido vista saqueando la Mina de la Costa de Oro, el Arroyo de la Luna y la Hacienda de Alexston. Las Milicias del Pueblo no tolerarán ese comportamiento. Avisa inmediatamente, Nehonar, y haz conocer la presencia de la Luz en los Páramos de Poniente. La Mina de la Costa de Oro está cerca de la costa, al oeste de la torre. El siguiente paso de tu instrucción consistirá en acabar con 15 de esos saqueadores Defias y con 15 despojadores Defias.",
-      "state": "activa"
+      "state": "entregada"
     },
     {
       "id": 92747,
@@ -378,9 +388,9 @@
   },
   "stats": {
     "level": 17,
-    "played": 84775,
-    "questsDone": 42,
-    "deaths": 6,
+    "played": 87251,
+    "questsDone": 43,
+    "deaths": 8,
     "zones": [
       "Bosque de Elwynn",
       "Ciudad de Ventormenta",
