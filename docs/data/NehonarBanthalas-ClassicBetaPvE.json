@@ -1,0 +1,31 @@
+{
+  "key": "NehonarBanthalas-ClassicBetaPvE",
+  "character": {
+    "key": "NehonarBanthalas-ClassicBetaPvE",
+    "name": "Nehonar Banthalas",
+    "epithet": "",
+    "race": "Cielonato de la Orden Eminente",
+    "class": "Guerrero",
+    "voice": "",
+    "backstory": "",
+    "threads": null,
+    "motto": ""
+  },
+  "level": 1,
+  "realm": "Classic Beta PvE",
+  "stories": [],
+  "pending": {
+    "loose": [],
+    "openChains": []
+  },
+  "stats": {
+    "level": 1,
+    "played": 776,
+    "questsDone": 0,
+    "deaths": 0,
+    "zones": [
+      "Isla de Zephras"
+    ],
+    "levelUps": []
+  }
+}

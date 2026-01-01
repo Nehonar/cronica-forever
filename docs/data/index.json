@@ -10,6 +10,15 @@
       "stories": 1
     },
     {
+      "key": "NehonarBanthalas-ClassicBetaPvE",
+      "name": "Nehonar Banthalas",
+      "race": "Cielonato de la Orden Eminente",
+      "class": "Guerrero",
+      "level": 1,
+      "stories": 0,
+      "new": true
+    },
+    {
       "key": "NehonarBolgar-ClassicBetaPvE",
       "name": "Nehonar Bolgar",
       "race": "Cielonato de la Orden Eminente",
@@ -64,5 +73,5 @@
       "stories": 3
     }
   ],
-  "updated": "7af0be69e984dfc5"
+  "updated": "c692d2b2896a6e34"
 }
