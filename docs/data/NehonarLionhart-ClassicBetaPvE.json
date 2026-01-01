@@ -11,10 +11,19 @@
     "threads": null,
     "motto": ""
   },
-  "level": 8,
+  "level": 9,
   "realm": "Classic Beta PvE",
   "stories": [],
   "encargos": [
+    {
+      "id": 114,
+      "title": "La fuga",
+      "giver": "William Mortero",
+      "zone": "Lion's Pride Inn",
+      "objectives": "Lleva el licor de invisibilidad a Maybell Maclure.",
+      "original": "Lleva este licor de invisibilidad a la joven Maybell. Debería durar lo suficiente para que haga una visita a Tommy Joe.",
+      "state": "entregada"
+    },
     {
       "id": 97925,
       "title": "Acampada para novatos: sastrería",
@@ -37,19 +46,26 @@
     }
   ],
   "pending": {
-    "loose": [],
+    "loose": [
+      "La recolección de Kelp"
+    ],
     "openChains": [],
     "awaitingBackstory": 1
   },
   "stats": {
-    "level": 8,
-    "played": 13968,
-    "questsDone": 0,
+    "level": 9,
+    "played": 14797,
+    "questsDone": 2,
     "deaths": 0,
     "zones": [
       "Lion's Pride Inn",
       "Bosque de Elwynn"
     ],
-    "levelUps": []
+    "levelUps": [
+      {
+        "level": 9,
+        "played": 14782
+      }
+    ]
   }
 }

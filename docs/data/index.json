@@ -32,7 +32,7 @@
       "name": "Nehonar Lionhart",
       "race": "Humano",
       "class": "Mago",
-      "level": 8,
+      "level": 9,
       "stories": 0,
       "new": true
     },
@@ -55,5 +55,5 @@
       "stories": 3
     }
   ],
-  "updated": "78700bc1b9d9ebcb"
+  "updated": "7491c842c57849b7"
 }
