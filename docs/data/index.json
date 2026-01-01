@@ -7,7 +7,7 @@
       "race": "Humano",
       "class": "Paladín",
       "level": 17,
-      "stories": 11
+      "stories": 12
     },
     {
       "key": "Nehonar-ClassicBetaPvP",
@@ -37,5 +37,5 @@
       "stories": 3
     }
   ],
-  "updated": "723f57ee28c856cf"
+  "updated": "edd825b6d7fb2add"
 }

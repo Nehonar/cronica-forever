@@ -288,6 +288,24 @@
       "levelFrom": 16,
       "levelTo": 16,
       "deaths": 1
+    },
+    {
+      "id": "ab49be393517",
+      "kind": "sueltas",
+      "zone": "Forjaz",
+      "title": "Lo que uno dice que hace",
+      "text": "Thom Filch le abordó a la entrada de las cámaras con prisa y sin rodeos. Hablaba de patrullas y de reliquias culturales, pero entre frase y frase se le escapaban otras palabras: «colándome», «botín», «tasar». Cada vez se corregía con una tosecilla.\n\n—Tranquilo, amigo —le dijo Nehonar—. En el muelle también llamábamos «inventario» a lo que se caía de las cajas.\n\nEl gnomo fingió no oírle.\n\nBajo el Salón de los Feudales, los Hierro Negro habían abierto la piedra desde abajo con sus máquinas topo. Nehonar reconoció enseguida el olor a roca recién partida, el mismo de la cantera. Recogió las reliquias una a una entre el polvo y los enanos furiosos. Dos veces acabó de bruces contra el suelo y dos veces se levantó, sacudiéndose la tierra como quien se sacude la vergüenza. «Esto me pasa por meterme en casa ajena sin llamar», pensó.\n\nAl volver, Filch le alabó el valor y la diligencia, y casi le arrancó el saco de las manos. Nehonar se lo dio. No tenía pruebas de nada, solo de que aquel gnomo mentía fatal.\n\nAquel día notó que algunos mercaderes de paso, con acento de Gadgetzan, le miraban de otra manera, con esa simpatía de tasador que se reserva a quien sabe traer cosas de vuelta.\n\nMás tarde, ya solo, se quedó pensando. Durante años le habían reído por decir en voz alta lo que quería ser. Filch, en cambio, se pasaba el día disimulando lo que era. Nehonar no supo cuál de las dos cosas pesaba más. Sí supo que prefería la suya, aunque todavía le pareciera poco.",
+      "summary": "Nehonar recuperó reliquias enanas del Salón de los Feudales para el sospechoso Thom Filch, cayó y se levantó dos veces, y reflexionó sobre la diferencia entre decir lo que uno quiere ser y disimular lo que uno es.",
+      "quests": [
+        {
+          "id": 96403,
+          "title": "Reliquias importantes",
+          "giver": "Thom Filch"
+        }
+      ],
+      "levelFrom": 16,
+      "levelTo": 16,
+      "deaths": 2
     }
   ],
   "encargos": [
@@ -332,7 +350,7 @@
   ],
   "pending": {
     "loose": [
-      "Reliquias importantes"
+      "El tratado de entendimiento"
     ],
     "openChains": []
   },
