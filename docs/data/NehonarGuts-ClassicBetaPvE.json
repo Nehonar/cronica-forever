@@ -16,6 +16,15 @@
   "stories": [],
   "encargos": [
     {
+      "id": 46,
+      "title": "Recompensas por los murlocs",
+      "giver": "Guardia Thomas",
+      "zone": "Bosque de Elwynn",
+      "objectives": "Lleva 8 aletas de múrloc rotas al guardia Thomas al puente oriental de Elwynn.",
+      "original": "El ejército de Ventormenta ha puesto precio a la cabeza de los rondadores y batidores múrloc de Elwynn. Mátalos y tráeme sus ancas. El ejército de Ventormenta te recompensará bien.\n\nLos murlocs han construido una aldea en el Lago del Hito, al norte de aquí, y otra en el sur, donde se divide el río.",
+      "state": "activa"
+    },
+    {
       "id": 59,
       "title": "Armadura de tela y cuero",
       "giver": "Alguacil Dughan",
@@ -23,7 +32,7 @@
       "subzone": "Villadorada",
       "objectives": "Entrega a Sara Timberlain el marcador de armaduras de Ventormenta.",
       "original": "Tengo aquí una señal, un premio a tu habilidad y tu valor. Podrás cambiarla por una buena armadura.. Quiero que se la lleves a Sara Timberlain al Aserradero de la Vega del Este. Dale la señal y ella te forjará una armadura. Y cuando la recibas, Nehonar, úsala para defender Elwynn.\n\nEl Aserradero de la Vega del Este está más allá del puesto de vigilancia del guardia Thomas, al este.",
-      "state": "activa"
+      "state": "entregada"
     },
     {
       "id": 39,
@@ -51,7 +60,7 @@
       "subzone": "Aserradero de la Vega del Este",
       "objectives": "Recupera la insignia de Haggar del campamento de Jack Dentomuerto y regresa con el alguacil Haggard.",
       "original": "¿Te ha enviado Burlguard? Sí, tengo algunas armas de sobra, pero antes tengo una tarea para ti...\n\nHace algún tiempo, un villano Defias, Jack Dentomuerto, me engañó. Estaba oscuro y vestía un tabardo de Ventormenta, así que creí que era el alguacil Dughan. Dijo que necesitaba mi identificación de alguacil de Ventormenta, se la di y en cuanto la tuvo en sus manos salió corriendo antes de poder atraparle.\n\n¡Tráeme de vuelta mi identificación! Seguramente Jack Dentomuerto la tendrá guardado en su campamento del Sur.",
-      "state": "activa"
+      "state": "entregada"
     },
     {
       "id": 71,
@@ -66,25 +75,21 @@
   ],
   "pending": {
     "loose": [
-      "Aguas abajo"
+      "Aguas abajo",
+      "¡Princesa debe morir!",
+      "Jack Dentomuerto"
     ],
-    "openChains": [
-      [
-        "Descubre el destino de Rolf",
-        "Informa a Thomas",
-        "Entrega el informe de Thomas",
-        "Armadura de tela y cuero"
-      ]
-    ],
-    "awaitingBackstory": 1
+    "openChains": [],
+    "awaitingBackstory": 2
   },
   "stats": {
     "level": 12,
-    "played": 33676,
-    "questsDone": 8,
+    "played": 36784,
+    "questsDone": 11,
     "deaths": 0,
     "zones": [
-      "Bosque de Elwynn"
+      "Bosque de Elwynn",
+      "Ciudad de Ventormenta"
     ],
     "levelUps": [
       {
