@@ -14,7 +14,7 @@
       "name": "Nehonar Bolgar",
       "race": "Cielonato de la Orden Eminente",
       "class": "Mago",
-      "level": 5,
+      "level": 6,
       "stories": 0,
       "new": true
     },
@@ -64,5 +64,5 @@
       "stories": 3
     }
   ],
-  "updated": "cc40b74fe320e723"
+  "updated": "7af0be69e984dfc5"
 }
