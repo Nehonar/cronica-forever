@@ -276,14 +276,16 @@
   },
   "stats": {
     "level": 16,
-    "played": 74102,
+    "played": 74594,
     "questsDone": 1,
     "deaths": 0,
     "zones": [
       "Páramos de Poniente",
       "Ciudad de Ventormenta",
       "Bosque de Elwynn",
-      "Tren subterráneo"
+      "Tren subterráneo",
+      "Tranvía Subterráneo",
+      "Forjaz"
     ],
     "levelUps": []
   }
