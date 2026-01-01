@@ -382,6 +382,12 @@
       "levelTo": 17
     }
   ],
+  "current": {
+    "zone": "Ciudad de Ventormenta",
+    "quests": 4,
+    "levelFrom": 16,
+    "levelTo": 17
+  },
   "encargos": [
     {
       "id": 98423,
@@ -423,9 +429,7 @@
     }
   ],
   "pending": {
-    "loose": [
-      "El tratado de entendimiento"
-    ],
+    "loose": [],
     "openChains": []
   },
   "stats": {

@@ -14,6 +14,12 @@
   "level": 15,
   "realm": "Classic Beta PvE",
   "stories": [],
+  "current": {
+    "zone": "Páramos de Poniente",
+    "quests": 4,
+    "levelFrom": 14,
+    "levelTo": 15
+  },
   "encargos": [
     {
       "id": 96394,
@@ -240,11 +246,9 @@
     }
   ],
   "pending": {
-    "loose": [
-      "Los muertos sin descanso"
-    ],
+    "loose": [],
     "openChains": [],
-    "awaitingBackstory": 20
+    "awaitingBackstory": 2
   },
   "stats": {
     "level": 15,

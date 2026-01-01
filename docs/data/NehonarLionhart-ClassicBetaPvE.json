@@ -14,6 +14,12 @@
   "level": 9,
   "realm": "Classic Beta PvE",
   "stories": [],
+  "current": {
+    "zone": "Lion's Pride Inn",
+    "quests": 2,
+    "levelFrom": 8,
+    "levelTo": 9
+  },
   "encargos": [
     {
       "id": 114,
@@ -46,12 +52,8 @@
     }
   ],
   "pending": {
-    "loose": [
-      "La recolección de Kelp",
-      "La fuga"
-    ],
-    "openChains": [],
-    "awaitingBackstory": 1
+    "loose": [],
+    "openChains": []
   },
   "stats": {
     "level": 9,

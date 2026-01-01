@@ -18,19 +18,26 @@
   },
   "level": 10,
   "realm": "Classic Beta PvE",
-  "stories": [
+  "stories": [],
+  "chapters": [
     {
-      "id": "b9072ef8ff7e",
-      "kind": "sueltas",
+      "id": "capitulo-teldrassil-456",
       "zone": "Teldrassil",
       "subzones": [
-        "Aldrassil",
-        "Cañada Umbría"
+        "Cañada Umbría",
+        "Aldrassil"
       ],
-      "title": "Lo que el bosque dice en voz baja",
-      "text": "Nehonar aprendió pronto que Teldrassil hablaba de muchas maneras. A veces, con la voz de los suyos. El conservador Ilthalaine le tendió un sigilo verde enviado por Mardant Cebaforte, y el instructor, en Aldrassil, le prometió enseñarle a leer los designios de los espíritus y los secretos del Sueño Esmeralda. Nehonar asintió. Escuchar era lo único que siempre había sabido hacer.\n\nOtras veces hablaba la luna. Shanda le recordó que era hijo de las estrellas, que la larga vigilia tras Hyjal había terminado y que ahora los kaldorei tenían aliados al otro lado del mar. Le pidió que demostrara los dones de Elune. Nehonar dejó caer sobre la hierba la luz de la Madre Luna y después se fundió con las sombras, quieto como un búho en su rama. «La diosa provee», dijo ella. Él pensó que también exigía saber usarlo.\n\nY a veces el bosque susurraba advertencias. Melithar Corzocelada le habló de Tarindrella, una dríade que llevaba años sin pisar Kalimdor. La encontró al suroeste de Aldrassil. Ella le regaló un libro y le dijo, con cierta ternura, que aún le quedaba mucho por aprender.\n\nLuego le pidió algo menos amable: subir a las colinas que los pacíficos furbolgs habían abandonado. Allí los grells y los grellkin acechaban, y Nehonar arrancó de ellos muestras del musgovil que los envenenaba. Sostuvo aquella podredumbre entre los dedos. Un árbol joven, y ya enfermo.\n\nTarindrella palideció. Sus peores temores eran ciertos, y los furbolgs se reunían ahora bajo el nombre de Tuercepinos. Le habló de Athridas Manturso, en Dolanaar.\n\nNehonar no preguntó qué vendría después. Ya caminaba hacia allí.",
-      "summary": "Nehonar recibió instrucción de Mardant y los dones de Elune de Shanda, y por encargo de la dríade Tarindrella descubrió que el musgovil corrompía a los grells y había empujado a los furbolgs a convertirse en Tuercepinos, lo que lo llevó a partir hacia Dolanaar.",
+      "part": 1,
+      "firstVisit": true,
+      "title": "La cañada donde empezó el camino",
+      "text": "Nehonar había oído decir que Cañada Umbría era el primer claro donde Teldrassil enseñaba a los suyos a caminar. Llegó al pie de Aldrassil con la luz filtrándose violeta entre las hojas. El árbol se alzaba como un guardián dormido, y a su sombra los centinelas de Tyrande vigilaban con la lanza quieta y los ojos inquietos. Algo no iba bien. Lo notó en el aire, igual que un ciervo nota al lobo antes de verlo.\n\nEl conservador Ilthalaine le pidió que diezmara a los sables y a los jabalíes, porque la primavera lluviosa había dejado demasiados y el bosque no daría para todos. Nehonar obedeció, pero no en silencio. «¿Y quién decide cuántos sobran?», preguntó. Ilthalaine habló de un mal necesario, y Nehonar volvió a la espesura con aquella respuesta atravesada. Más le pesó lo que encontró después. La dríade Tarindrella había vuelto a Kalimdor tras muchos años de ausencia y lo envió a las colinas de los furbolgs. Los pacíficos habitantes se habían vuelto Tuercepinos, y el musgovil crecía allí como una enfermedad. Nehonar recogió sus muestras y rebuscó tótems en los hogares abandonados. «No se vuelve uno contra sus aliados porque sí», pensó. «Algo los ha envenenado».\n\nEl veneno, de hecho, se repetía por toda la cañada. Dirania Brillargente echaba de menos a su amigo Iverron, y Nehonar lo encontró junto a la cueva del norte, mareado por la picadura de una araña. Mientras Dirania buscaba el remedio, entró en la Gruta Narácnida por encargo de Gilshalan Caminaviento, que estudiaba cómo el Árbol del Mundo había agigantado a las tejemadera. Le llevó glándulas, un huevo y, para Dirania, el icor que faltaba junto a champiñones jacinto y lirios alunados. Corrió con el antídoto hasta la cueva y llegó a tiempo. Iverron respiró hondo, y Nehonar también.\n\nTenaron Tormentagarre lo esperaba en lo alto de Aldrassil. Le habló de Nordrassil, del Monte Hyjal y de cómo el viejo árbol era ya una sombra de lo que fue. Le confió una ampolla, y Nehonar la llenó del agua bendita de la poza de la luna. Shanda, antes, le había recordado la gracia de Elune que corría por su sangre, y aquella agua le pareció hecha de lo mismo. Con la vasija entre las manos tomó el camino de adoquines hacia Dolanaar.\n\nPor el camino encontró un diario perdido. Su dueña, Lyreena Hoja Umbría, lo invitó a sentarse junto a su hoguera, y allí aprendió que descansar también es un arte. Zarrin le enseñó a cocinar al fuego, y le quedó pendiente una visita a Radnaal, junto al camino de Darnassus. En Dolanaar los kaldorei lo saludaban ya por su nombre, y hasta algún viajero de tierras lejanas le dedicó un gesto. Nehonar miró el humo subir entre las ramas. Había llegado a la cañada con preguntas. Se marchaba con más, pero ahora sabía dónde buscarlas.",
+      "summary": "En Cañada Umbría, Nehonar cuestionó la caza para equilibrar el bosque, investigó la corrupción de los furbolgs Tuercepinos con Tarindrella, salvó a Iverron con el antídoto de Dirania, llevó agua de la poza de la luna para Tenaron y aprendió de Lyreena y Zarrin el arte de acampar camino de Dolanaar.",
       "quests": [
+        {
+          "id": 456,
+          "title": "El equilibrio de la naturaleza",
+          "giver": "Conservador Ilthalaine"
+        },
         {
           "id": 458,
           "title": "La protectora de los bosques",
@@ -50,22 +57,12 @@
           "id": 459,
           "title": "La protectora de los bosques",
           "giver": "Tarindrella"
-        }
-      ],
-      "levelFrom": 1,
-      "levelTo": 3
-    },
-    {
-      "id": "f1a7b8153122",
-      "kind": "cadena",
-      "zone": "Teldrassil",
-      "subzones": [
-        "Cañada Umbría"
-      ],
-      "title": "El veneno, la prisa y la amistad",
-      "text": "Dirania Brillargente esperaba a Iverron a la misma hora de siempre, y ese día no llegó. Se lo contó a Nehonar con la inquietud apretada en la voz. Su amigo pasaba demasiado tiempo junto a la cueva del norte, donde anidaban las arañas.\n\nNehonar no preguntó más. Cuando un animal rompe su costumbre, suele haber un motivo, y casi nunca es bueno.\n\nEncontró a Iverron sentado cerca de la entrada, pálido, con una sonrisa torcida.\n\n—¿Cómo sabías que estaba aquí?\n\n—Alguien te echaba de menos.\n\nIverron confesó que Gythyiss la Vil le había picado mientras exploraba. Le temblaban las manos. Le pidió que avisara a Dirania antes de que el mareo pudiera con él.\n\nElla recibió la noticia con un suspiro de miedo y reproche, porque siempre le había advertido. Pero no perdió tiempo en lamentos. Conocía un antídoto, y le dijo a Nehonar qué necesitaba.\n\nPrimero, champiñones jacinto, que nacen al pie de los árboles y que los grells del sur se habían aficionado a guardar. Nehonar recordó lo que el musgovil había hecho con esas criaturas y las miró con más tristeza que rabia. Después, lirios alunados, que solo crecen junto al agua. Los cortó despacio, como quien no quiere despertar a la charca. Por último, icor de las mismas arañas tejemadera que habían envenenado a Iverron. Entró en su territorio con el paso del felino que sabe que no es bienvenido, y notó el cuerpo más firme, el instinto más claro que días atrás.\n\n—¡Gracias a Elune! —exclamó Dirania al verlo volver tan pronto.\n\nEl remedio estuvo listo enseguida, pero tenía un límite: su fuerza se agotaría en muy poco tiempo. Nehonar corrió hacia el norte y sintió que el tiempo también era una bestia que le pisaba los talones.\n\nLlegó a tiempo. Iverron bebió, recuperó el color y habló de Dirania con una gratitud que no sabía disimular. Él siempre se metía en líos y ella siempre lo sacaba de ellos.\n\n—Raíz y rama —murmuró Nehonar.\n\nEn la cañada, los centinelas empezaban a saludarlo con otra deferencia, y hasta los forasteros de reinos lejanos le dedicaban un gesto de respeto. Él apenas lo notó.\n\nIverron, aún débil, le pidió algo más: que despejara el camino de nocturácnidas sanguinarias. Nehonar miró la boca oscura de la cueva. Tardó en contestar. Luego asintió.",
-      "summary": "A petición de Dirania Brillargente, Nehonar encontró a Iverron envenenado por Gythyiss la Vil, reunió champiñones jacinto, lirios alunados e icor de tejemadera para el antídoto y se lo llevó a tiempo, tras lo cual Iverron le pidió que despejara el camino de nocturácnidas sanguinarias.",
-      "quests": [
+        },
+        {
+          "id": 97977,
+          "title": "La llamada de la naturaleza",
+          "giver": "Tarindrella"
+        },
         {
           "id": 4495,
           "title": "Un buen amigo",
@@ -77,30 +74,10 @@
           "giver": "Iverron"
         },
         {
-          "id": 3521,
-          "title": "En antídoto de Iverron",
-          "giver": "Dirania Brillargente"
+          "id": 457,
+          "title": "El equilibrio de la naturaleza",
+          "giver": "Conservador Ilthalaine"
         },
-        {
-          "id": 3522,
-          "title": "En antídoto de Iverron",
-          "giver": "Dirania Brillargente"
-        }
-      ],
-      "levelFrom": 2,
-      "levelTo": 5
-    },
-    {
-      "id": "be38db27d16d",
-      "kind": "cadena",
-      "zone": "Teldrassil",
-      "subzones": [
-        "Aldrassil"
-      ],
-      "title": "El agua que recuerda Hyjal",
-      "text": "De vuelta en Aldrassil, Nehonar encontró a Gilshalan Caminaviento absorto en las arañas de la Gruta Narácnida. Las tejemadera, le explicó, eran parientes de criaturas mucho más pequeñas, y sospechaba que el Árbol del Mundo las había cambiado. Quería su veneno para compararlo.\n\n—¿Para qué? —preguntó Nehonar.\n\n—Para entender qué hace Teldrassil con lo que vive en él.\n\nLe bastó esa respuesta. Entró en la gruta al norte, donde la seda colgaba como niebla detenida, y regresó con las glándulas. Gilshalan las examinó con un brillo en los ojos: las estudiaría en Darnassus, porque creía que guardaban relación con el crecimiento del gran árbol.\n\nDespués le pidió algo más difícil. No podía exigirle una araña gigante viva, pero sí un huevo del nido, en lo más hondo de la gruta. Nehonar bajó despacio, como baja el búho hacia una presa que aún no le ha visto. Al sostener el huevo pensó que el bosque también cría en la oscuridad lo que luego crece a la luz. Gilshalan lo enviaría a Darnassus y le dio las gracias de corazón.\n\nFue él quien le avisó de que Tenaron Tormentagarre lo buscaba en la sala más alta de Aldrassil. «Tómatelo con calma, pero no le hagas esperar», le dijo.\n\nTenaron lo recibió con seriedad. Había llegado la hora de buscar su destino, pero antes debía conocer la historia reciente de su pueblo. Le habló de Nordrassil, que en el Monte Hyjal tuvo poder para derrotar a Archimonde y expulsar a la Legión Ardiente, y que ahora era una sombra de lo que fue. Lo envió a la poza de la luna, al norte, a llenar una ampolla.\n\nNehonar se arrodilló junto al agua quieta. Pensó en un árbol que lo había dado todo. En otro que aún crecía bajo sus pies.\n\nCuando volvió, Tenaron le contó lo ocurrido justo después de la batalla, aunque le advirtió de que quedaba mucho más por saber. Vertió el agua en una vasija y le pidió que se la llevara a Corithras Furia Lunar, en Dolanaar, siguiendo los adoquines hacia el oeste.\n\n—Ten cuidado. El bosque está inquieto.\n\nEn Dolanaar, Corithras lo miró como se mira a alguien en quien empieza a confiarse.\n\n—Tenemos mucho que hacer y poco tiempo. Empecemos.\n\nNehonar asintió. Callado, como siempre.",
-      "summary": "Nehonar ayudó a Gilshalan Caminaviento a estudiar a las tejemadera con su veneno y un huevo, y después Tenaron Tormentagarre le habló de Nordrassil y lo envió con agua de la poza de la luna hasta Corithras Furia Lunar, en Dolanaar.",
-      "quests": [
         {
           "id": 916,
           "title": "El veneno de la Tejemadera",
@@ -110,6 +87,16 @@
           "id": 917,
           "title": "Huevo de Tejemadera",
           "giver": "Gilshalan Caminaviento"
+        },
+        {
+          "id": 3521,
+          "title": "En antídoto de Iverron",
+          "giver": "Dirania Brillargente"
+        },
+        {
+          "id": 3522,
+          "title": "En antídoto de Iverron",
+          "giver": "Dirania Brillargente"
         },
         {
           "id": 920,
@@ -122,26 +109,6 @@
           "giver": "Tenaron Tormentagarre"
         },
         {
-          "id": 928,
-          "title": "La corona de la Tierra",
-          "giver": "Tenaron Tormentagarre"
-        }
-      ],
-      "levelFrom": 3,
-      "levelTo": 6
-    },
-    {
-      "id": "202668caad24",
-      "kind": "cadena",
-      "zone": "Teldrassil",
-      "subzones": [
-        "Aldrassil"
-      ],
-      "title": "Un diario, una hoguera y un fuego",
-      "text": "El diario apareció entre la hojarasca, cerca de Aldrassil, con las tapas húmedas de rocío. Nehonar lo abrió con cuidado, como quien levanta una piedra sin saber qué vive debajo. No guardaba secretos. Solo contaba la vida de alguien desconocido: caminos, noches al raso, hogueras encendidas bajo las ramas de Teldrassil. Había algo alegre en aquellas líneas, casi travieso. Lo cerró y siguió el rastro hasta las afueras de Dolanaar.\n\nSu dueña se llamaba Lyreena Hoja Umbría. Al verlo llegar abrió mucho los ojos.\n\n—¿Eso es mi diario? Lo perdí hace tiempo. Gracias, druida. —Lo miró de arriba abajo, divertida—. Tú también pareces un aventurero. ¿Te gustaría aprender a acampar?\n\nHabló de espíritus inquietos y de la fortuna y la gloria que esperaban fuera. Nehonar no respondió. Sus maestros nunca le habían prometido gloria. *El lobo no caza por fama*, pensó. *Caza para vivir.* Pero la invitación era sincera y el fuego estaba encendido, así que se sentó junto a él.\n\nLyreena le explicó cómo escoger el suelo, cómo resguardarse del viento y cómo dejar que el calor aflojara el cansancio. Nehonar escuchó el crepitar de la leña y sintió que el cuerpo le pesaba menos. Pocas veces había descansado así. Ni siquiera en el bosque de su infancia, donde dormía hecho un ovillo como un cachorro de felino.\n\n—Ahora ve a la aldea —le dijo ella al fin—. Visita a los instructores y aprende un oficio. Lo primero, cocinar. Es la piedra angular de cualquier campamento.\n\nEn Dolanaar lo esperaba Zarrin, entre ollas y aromas de hierbas. Le enseñó a preparar una hoguera propia y a guisar lo que el bosque ofrecía. Lo justo para acampar en plena naturaleza.\n\n—Esto es solo lo básico —le advirtió—. Si mejoras en la cocina, podrás alzar fuegos más grandes. Y los demás instructores te enseñarán sus oficios cuando los domines.\n\nNehonar asintió. Un fuego pequeño bastaba para empezar. Los centinelas que cruzaban la aldea lo saludaron con un gesto breve, más cálido que días atrás.\n\nEsa noche encendió su primera hoguera. Pensó que hasta las raíces más hondas empiezan siendo un hilo fino bajo la tierra.",
-      "summary": "Nehonar devolvió su diario perdido a Lyreena Hoja Umbría, que le enseñó a descansar junto al fuego y lo envió a Dolanaar, donde Zarrin le enseñó a cocinar y a encender su propia hoguera de campamento.",
-      "quests": [
-        {
           "id": 96630,
           "title": "El aventurero",
           "giver": "Diario perdido"
@@ -152,39 +119,14 @@
           "giver": "Lyreena Hoja Umbría"
         },
         {
+          "id": 928,
+          "title": "La corona de la Tierra",
+          "giver": "Tenaron Tormentagarre"
+        },
+        {
           "id": 96634,
           "title": "Acampada para novatos: cocinar",
           "giver": "Lyreena Hoja Umbría"
-        }
-      ],
-      "levelFrom": 6,
-      "levelTo": 6
-    },
-    {
-      "id": "5cb4450561a4",
-      "kind": "sueltas",
-      "zone": "Teldrassil",
-      "subzones": [
-        "Cañada Umbría"
-      ],
-      "title": "El peso de lo necesario",
-      "text": "Aquella primavera había llovido demasiado sobre Cañada Umbría. El conservador Ilthalaine se lo explicó sin rodeos: los sables de la noche y los jabalíes cardo se habían multiplicado, y el bosque no podía alimentarlos a todos.\n\nNehonar escuchó en silencio. Luego preguntó lo único que le importaba.\n\n—¿Y si no lo hago?\n\n—Se agotará el bosque. Y morirán más.\n\nLe pareció una razón honesta. Fue primero a por los ejemplares jóvenes y después a por los sarnosos. No lo hizo con rabia, sino como el lobo que aparta al débil de la manada: sin gusto, pero sin dudar. Cuando volvió, Ilthalaine le dijo que prometía mucho. Nehonar no supo qué responder.\n\nEntre una cacería y otra, Tarindrella lo envió a los campamentos abandonados de los Tuercepinos, en el extremo occidental de la cañada. Entre restos dispersos por los grells recuperó cuatro tótems. La dríade leyó las inscripciones y palideció. Los fúrbolgs habían soñado con una gran sombra que los aniquilaba. El miedo se volvió rabia, y la sombra tomó el rostro de sus amigos elfos.\n\n—Sabían que estaban perdiendo la cabeza —murmuró ella.\n\nNehonar pensó en las bestias de Ilthalaine. Allí, el desequilibrio tenía causa y remedio. Esto otro no se curaba con garras.\n\nDespués, en el camino que sube de Dolanaar a Darnassus, Radnaal Tejecrín le enseñó a coser una silla de campamento con los cueros de lo cazado. Lejos de la ciudad, junto a su hoguera, podría sentarse por fin.\n\nNada se desperdiciaba. Ni siquiera el cansancio.",
-      "summary": "Nehonar redujo las poblaciones de sables y jabalíes para Ilthalaine, halló tótems Tuercepinos que revelaron a Tarindrella las pesadillas de una gran sombra que enloquecieron a los fúrbolgs, y aprendió de Radnaal Tejecrín a fabricar una silla de campamento.",
-      "quests": [
-        {
-          "id": 456,
-          "title": "El equilibrio de la naturaleza",
-          "giver": "Conservador Ilthalaine"
-        },
-        {
-          "id": 97977,
-          "title": "La llamada de la naturaleza",
-          "giver": "Tarindrella"
-        },
-        {
-          "id": 457,
-          "title": "El equilibrio de la naturaleza",
-          "giver": "Conservador Ilthalaine"
         },
         {
           "id": 97949,
@@ -192,67 +134,48 @@
           "giver": "Lyreena Hoja Umbría"
         }
       ],
+      "scenes": [
+        {
+          "kind": "cadena",
+          "title": "En antídoto de Iverron",
+          "detail": "4 misiones encadenadas"
+        },
+        {
+          "kind": "cadena",
+          "title": "La corona de la Tierra",
+          "detail": "5 misiones encadenadas"
+        },
+        {
+          "kind": "cadena",
+          "title": "Acampada para novatos: cocinar",
+          "detail": "3 misiones encadenadas"
+        }
+      ],
       "levelFrom": 1,
       "levelTo": 6
     },
     {
-      "id": "b1963c7dc6d0",
-      "kind": "llegada",
-      "zone": "Darnassus",
-      "title": "En la copa del gran árbol",
-      "text": "Nehonar había crecido bajo las ramas de Teldrassil, pero conocía Darnassus sobre todo de oídas. En el barco de regreso, una centinela le habló de ella mientras miraba el mar. Le contó que en el Templo de la Luna Tyrande Susurravientos guiaba a las Hermanas de Elune y que en el Enclave Cenarion se reunían los druidas, huérfanos de Malfurion, que dormía en el Sueño Esmeralda. Le contó también que los kaldorei, sin la inmortalidad que perdieron en Hyjal, habían plantado aquel árbol para empezar de nuevo. Y bajó la voz para añadir que el árbol había crecido sin la bendición de los dragones, y que en sus bosques algo empezaba a torcerse.\n\nAl llegar, el aire le pareció más limpio que en ningún sitio. La luz de la luna caía entre hojas enormes sobre piedra blanca, agua quieta y raíces que formaban puentes. Las centinelas vigilaban sin prisa. Los pasos apenas sonaban.\n\nNehonar se detuvo junto al lago y escuchó.\n\n«Un nido alto», pensó. «Seguro. Quizá demasiado lejos del suelo».\n\nRespiró hondo. Aquella calma era hermosa, pero él ya había visto que la calma también puede esconder raíces enfermas.",
-      "summary": "Nehonar llegó por primera vez a Darnassus, la capital kaldorei en la copa de Teldrassil, y halló en su quietud lunar una belleza serena, aunque traía consigo los rumores de que el árbol creció sin bendición y de que algo se tuerce en sus bosques.",
-      "levelFrom": 6,
-      "levelTo": 6
-    },
-    {
-      "id": "49545cdf6871",
-      "kind": "llegada",
-      "zone": "Costa Oscura",
-      "subzones": [
-        "Mar de la Bruma"
-      ],
-      "title": "Niebla sobre la Costa Oscura",
-      "text": "Lo había oído contar a un marinero kaldorei en la Posada del Orgullo de León, entre el humo de las pipas humanas. La Costa Oscura, dijo, era la orilla de su propio pueblo frente a Teldrassil: playas grises, árboles viejos y ruinas que ya eran antiguas antes de que el Gran Árbol echara raíces. Allí vivían los suyos, centinelas y druidas, en torno al puerto de Auberdine. Pero algo se pudría en el bosque. Los furbolgs, criaturas pacíficas a las que los kaldorei siempre habían respetado, se volvían contra cualquiera que se acercara, con la mirada turbia y la furia de un animal herido. Nadie sabía explicar de dónde venía esa corrupción.\n\nNehonar había callado. Pensó en un oso que muerde la mano que lo cura. Eso no es maldad, se dijo. Es veneno.\n\nEl barco entró en Auberdine al caer la tarde. La niebla del Mar de la Bruma se pegaba a los muelles y a los tejados curvos, y el aire olía a sal y a musgo mojado. Los centinelas vigilaban en silencio y los viajeros hablaban en voz baja, como quien no quiere despertar algo.\n\nMás allá del puerto, el bosque esperaba, oscuro y quieto. Demasiado quieto.\n\nNehonar pisó la arena y escuchó. El bosque no le respondió.",
-      "summary": "Nehonar llegó por mar a Auberdine, en la brumosa Costa Oscura, sabiendo por un marinero que una corrupción extraña había enloquecido a los furbolgs, y sintió un bosque inquietantemente callado.",
-      "levelFrom": 6,
-      "levelTo": 6
-    },
-    {
-      "id": "15e96c00cf33",
-      "kind": "llegada",
-      "zone": "Ciudad de Ventormenta",
-      "subzones": [
-        "Puerto de Ventormenta"
-      ],
-      "title": "Piedra blanca sobre cimientos impagados",
-      "text": "En Villadorada se hablaba de la capital con orgullo y con rencor. Un carretero le contó a Nehonar que los orcos la arrasaron en la Primera Guerra y que los humanos la alzaron de nuevo, piedra a piedra, tras la Segunda. Otro, más amargo, añadió que esas piedras las labraron canteros a los que nunca se pagó. El rey seguía desaparecido. Gobernaba una regencia en nombre de su hijo, todavía un muchacho, con el alto alguacil Bolvar Fordragón al frente. Y por sus calles, decían, se mezclaban soldados, mercaderes y refugiados que no tenían otro sitio adonde ir.\n\nAl llegar, la ciudad se le echó encima. Murallas blancas, canales de agua quieta y torres que buscaban el cielo con la misma ansia que un árbol joven busca la luz. El aire olía a sal, a brea y a pan recién hecho. Gaviotas, campanas, martillos.\n\nNehonar se detuvo y escuchó. Tanta gente junta, pensó, como un hormiguero removido con un palo.\n\nVio armaduras relucientes y, a pocos pasos, manos tendidas que pedían limosna. La piedra era hermosa. Se preguntó cuánto había costado y quién lo había pagado.\n\n—Ya veremos —murmuró.\n\nY siguió andando.",
-      "summary": "Nehonar llegó a Ventormenta tras oír hablar de su reconstrucción, de los canteros a los que no se pagó y de la regencia de Bolvar Fordragón, y la ciudad le pareció tan hermosa como inquieta.",
-      "levelFrom": 6,
-      "levelTo": 6
-    },
-    {
-      "id": "564c95f3b3e1",
-      "kind": "llegada",
-      "zone": "Bosque de Elwynn",
-      "title": "Trigales bajo un cielo sin rey",
-      "text": "En la travesía hacia los reinos del este, un soldado humano le habló de Elwynn entre sorbo y sorbo de cerveza amarga. Le contó que era el corazón de Ventormenta, una tierra de granjas y bosques mansos a la sombra de una capital alzada de nuevo sobre las cenizas de la guerra contra los orcos. Pero el rey Varian había desaparecido, y ahora gobernaba una regencia en nombre de un niño, Anduin. El ejército estaba lejos. La Guardia no daba abasto.\n\n—Kóbolds en las minas, gnolls en la espesura —dijo el soldado—. Y los Defias en los caminos.\n\nLe explicó quiénes eran: los canteros que levantaron aquellas murallas blancas y a los que los nobles se negaron a pagar. Hubo disturbios, y acabaron proscritos.\n\nNehonar no respondió. Pensó en el lobo al que se le niega la presa que ha cazado. *No muerde por maldad*, se dijo. *Muerde porque tiene hambre.*\n\nAl llegar, Elwynn lo recibió con un aire tibio, cargado de heno y de humo de chimenea. Los robles eran jóvenes comparados con los de Teldrassil, pero respiraban sin miedo. Entre los trigales dorados, los granjeros trabajaban mirando de reojo hacia el linde del bosque, como ciervos que beben sin dejar de escuchar.",
-      "summary": "Nehonar llegó al Bosque de Elwynn tras oír a un soldado hablar del rey desaparecido, de los Defias traicionados por los nobles y de los peligros que acechan a sus granjeros inquietos.",
-      "levelFrom": 6,
-      "levelTo": 6
-    },
-    {
-      "id": "b848082a909e",
-      "kind": "sueltas",
+      "id": "capitulo-bosque-de-elwynn-783",
       "zone": "Bosque de Elwynn",
       "subzones": [
         "Valle de Villanorte",
-        "Ala de la Biblioteca"
+        "Ala de la Biblioteca",
+        "Mina del Eco",
+        "Villadorada",
+        "Los Viñedos de Maclure",
+        "La Granja Pedregosa"
       ],
-      "title": "Hambres que cruzan la frontera",
-      "text": "El ayudante del alguacil Willem se lo dijo de pasada: había más lobos que nunca en Villanorte, y Eagan Desollapieles buscaba quien los cazara. Nehonar lo encontró a la izquierda de la abadía.\n\n—Me gustan los filetes de lobo —confesó el hombre, sin pudor—. Tráeme carne dura y te daré algo útil.\n\nNehonar recorrió la campiña tras los Fauces de Madera. Los vio bajar de las lindes hacia los sembrados, flacos e insistentes. Un lobo no cruza al territorio de otros por capricho. Algo los empujaba. Cumplió el encargo sin rabia, como la lechuza cumple el suyo, y Eagan recibió la carne frotándose las manos.\n\n—Nadie caza por gusto —dijo Nehonar—. Ni siquiera ellos.\n\nEl hombre no lo entendió, o fingió no entenderlo, y le dejó escoger su pago.\n\nEn la hierba encontró un libro con las tapas roídas, caído de las garras de un kóbold. Lo llevó a la abadía. El hermano Paxton se lamentó: otra vez le robaban los libros, seguro que querían comérselos. Lo envió a la biblioteca a ver a Daniel, su ayudante, y le advirtió que no se dejara entretener.\n\nDaniel lo esperaba entre estanterías vacías.\n\n—Tres veces le avisé de que cavaban túneles bajo la abadía.\n\nNehonar miró los huecos en la madera. Tres avisos. Ninguno escuchado. En el bosque, el ciervo que ignora el chasquido de una rama no llega a viejo.\n\n—Quien no escucha —murmuró— acaba contando lo que le falta.\n\nAl salir, un guardia lo saludó con un gesto breve, casi respetuoso. En Villanorte todos tenían hambre de algo. Él aún no sabía cuál era la suya.",
-      "summary": "Nehonar cazó lobos Fauces de Madera para Eagan Desollapieles, devolvió al hermano Paxton un libro roído por los kóbolds y supo por Daniel que nadie atendió sus avisos sobre los túneles bajo la abadía.",
+      "part": 1,
+      "firstVisit": true,
+      "title": "Lo que esconden las minas de Villanorte",
+      "text": "Había oído que los humanos levantaron su capital dos veces, piedra a piedra, y que ahora su rey no estaba. Nehonar llegó al Valle de Villanorte esperando muros y encontró campos: un bosque más claro que el suyo, una abadía de piedra gris y gente que caminaba deprisa, como ciervos que han olido algo en el viento. El ayudante Willem lo recibió sin rodeos. La Guardia no daba abasto y los hombres del reino estaban lejos. Hacían falta manos. Nehonar escuchó y no prometió nada todavía.\n\nPrimero fueron los lobos. Había demasiados, decían, más de lo normal. Nehonar cazó lo justo y se preguntó en silencio qué los empujaba hacia los campos. Luego llegaron los kóbolds de la Mina del Eco. Al principio le parecieron alimañas en un granero ajeno. Hasta que encontró un libro mordisqueado y lo llevó a la biblioteca del hermano Paxton, que se lamentó como quien ha perdido una cosecha. Kelsey Abisal, la joven minera de la entrada, le habló de un grito que resonaba en los túneles: «¡Imágenes para Narf!». Nehonar bajó a la oscuridad, encontró al buscabrillantes Narf y le arrebató un saco lleno de libros con dibujos. Se lo entregó al alguacil McBride. «Los roban para mirarlos», murmuró. Un cuervo también guarda lo que brilla sin saber por qué.\n\nPero uno de ellos había escapado con otro saco. Tordrin le dio un equipo de rastreo y Nehonar siguió la pista como de niño seguía las huellas en la maleza de Teldrassil: despacio, sin apartar la vista del suelo. El rastro bajaba hacia el sur, lejos de la mina. Lo que encontró allí lo llevó al alguacil Dughan, en Villadorada, junto a los papeles de McBride. Algo tramaban esas criaturas, y ahora lo sabía alguien con autoridad para actuar.\n\nEntre medias estaban los Defias. Willem quería sus pañuelos rojos, y la cabeza de un tal Garrick Piesuaves. Nehonar cumplió, pero preguntó quiénes eran. Le contaron que habían sido canteros. Que reconstruyeron la ciudad y nadie les pagó. Guardó silencio un buen rato. «Un lobo hambriento no deja de ser lobo», dijo al fin, «pero alguien le quitó la presa». Después ayudó a Milly Osworth a salvar las uvas que los bandidos habían rodeado. Subió al campanario con el informe de la vendimia y el hermano Neals lo recibió con una copa en la mano y una sonrisa de alivio.\n\nEn Villadorada ya lo saludaban por su nombre. Un pescador le habló de múrlocs en los ríos del este. Una anciana viuda le pidió que recuperara su collar. Nehonar miró el camino que se perdía entre viñedos. Había venido a observar. Ahora sabía que la injusticia también echa raíces, y que a veces crece donde nadie la riega a propósito.",
+      "summary": "En Elwynn, Nehonar persiguió a los kóbolds que robaban los libros de la abadía hasta llevar sus pistas al alguacil Dughan, salvó la vendimia de Milly frente a los Defias y supo, con inquietud, que esos bandidos fueron canteros a los que nunca pagaron.",
       "quests": [
+        {
+          "id": 783,
+          "title": "Una amenaza del interior",
+          "giver": "Ayudante del alguacil Willem"
+        },
         {
           "id": 5261,
           "title": "Eagan Desollapieles",
@@ -264,6 +187,11 @@
           "giver": "Eagan Desollapelambres"
         },
         {
+          "id": 7,
+          "title": "La limpieza del campamento kóbold",
+          "giver": "Alguacil McBride"
+        },
+        {
           "id": 91741,
           "title": "El libro mordisqueado",
           "giver": "Libro mordisqueado"
@@ -272,23 +200,12 @@
           "id": 92124,
           "title": "Inventario de libros",
           "giver": "Hermano Paxton"
-        }
-      ],
-      "levelFrom": 6,
-      "levelTo": 6
-    },
-    {
-      "id": "e939b269d1ab",
-      "kind": "cadena",
-      "zone": "Bosque de Elwynn",
-      "subzones": [
-        "Ala de la Biblioteca",
-        "Mina del Eco"
-      ],
-      "title": "Imágenes para Narf",
-      "text": "El hermano Paxton tenía las manos manchadas de tinta y una mirada desesperada. Los kóbolds seguían saqueando su biblioteca, y aquel libro roído que Nehonar le había devuelto no era más que el principio.\n\n—Se los están comiendo —se lamentó el monje.\n\nNehonar no respondió. Recorrió el Valle de Villanorte entre helechos y pinos, siguiendo el rastro de aquellas criaturas de hocico inquieto que olían a cera de vela y a tierra removida. Les fue arrebatando los volúmenes uno a uno. Ninguno estaba mordido.\n\nPaxton los recibió con alivio y le regaló un libro de instrucciones que ya no necesitaba. Después frunció el ceño.\n\n—No parece que se los coman. Pero ¿para qué los quieren?\n\n«Una ardilla no guarda piñas que no puede abrir», pensó Nehonar. «Si los guardan, hay un motivo.»\n\nEl monje lo envió a la entrada de la Mina del Eco, donde trabajaba Kelsey Abisal, una aprendiz de minera. La joven se secó el sudor de la frente y asintió enseguida.\n\n—¿Kóbolds con libros? Sí. Van y vienen con ellos bajo el brazo, gritándose. A veces uno chilla «¡Imágenes para Narf!». No sé quién es ese Narf. Algún jefe de ahí abajo, supongo. —Señaló la boca negra de la mina—. Busca ayuda. Los de dentro son más retorcidos.\n\nNehonar se adentró en la oscuridad. Los túneles devolvían cada paso convertido en un murmullo, y allí dentro no había raíces ni viento, solo piedra y codicia. Encontró al buscabrillantes Narf en las profundidades, aferrado a su saco como un tejón a su madriguera. Lo derrotó y recuperó los libros. Al hojear uno vio dibujos, solo dibujos. Aquella criatura no sabía leer, solo quería mirar.\n\nEsa idea lo acompañó hasta la salida.\n\nEl alguacil McBride lo esperaba a las puertas de la abadía. Tomó el saco con una sonrisa franca.\n\n—Gracias, Nehonar. Se los llevaré al hermano Paxton ahora mismo. Te estás convirtiendo en toda una celebridad por aquí.\n\nNehonar inclinó la cabeza. Los guardias lo saludaban ya al pasar, y los campesinos habían dejado de mirarlo como a un extraño de orejas largas. No buscaba fama. Pero en aquel reino sin rey, donde tantos avisos se quedaban sin respuesta, alguien había escuchado al fin.\n\n—El camino se revela al andarlo —murmuró, y siguió andando.",
-      "summary": "Nehonar recuperó los libros robados al hermano Paxton, supo por Kelsey Abisal que los kóbolds los llevaban a un tal Narf, lo derrotó en la Mina del Eco y entregó el saco al alguacil McBride, ganándose el aprecio de Villanorte.",
-      "quests": [
+        },
+        {
+          "id": 15,
+          "title": "Investigar la Mina del Eco",
+          "giver": "Alguacil McBride"
+        },
         {
           "id": 91743,
           "title": "Roedores traviesos",
@@ -300,33 +217,33 @@
           "giver": "Hermano Paxton"
         },
         {
-          "id": 91752,
-          "title": "La situación en su conjunto",
-          "giver": "Kelsey Abisal"
-        }
-      ],
-      "levelFrom": 6,
-      "levelTo": 7
-    },
-    {
-      "id": "9e719d154991",
-      "kind": "cadena",
-      "zone": "Bosque de Elwynn",
-      "subzones": [
-        "Valle de Villanorte"
-      ],
-      "title": "Pañuelos rojos y uvas de la abadía",
-      "text": "Los Defias habían cruzado el río hacia el este. Eso fue lo único que el ayudante del alguacil Willem supo decirle, plantado junto a la abadía con la mano en el pomo de la espada y el ceño fruncido de quien vigila más de lo que puede abarcar.\n\n—No sé qué traman. Pero nada bueno. Tráeme sus pañuelos.\n\nNehonar asintió sin palabras. Recordaba lo que había oído al llegar a Elwynn: canteros que alzaron una ciudad y a los que nadie pagó. Mientras vadeaba el agua fría, pensó que el hambre convierte a muchos animales en ladrones. Eso no hacía menos dañino el robo, ni más justa la deuda que lo había provocado.\n\nVolvió con los pañuelos de tela de saco rojo, ásperos y manchados de polvo del camino. Willem los recibió en nombre del ejército de Ventormenta y, por primera vez, lo miró como se mira a alguien en quien se puede confiar.\n\n—Mi amiga Milly Osworth está en apuros. Su carreta está junto al establo. Ayúdala.\n\nMilly era pura inquietud. Los Defias se habían instalado en sus viñedos en plena vendimia. Los guardias le habían prometido ocuparse, y ella temía tanto a los bandidos como a las botas de quienes vendrían a echarlos.\n\n—Si unos no se comen la uva, los otros la aplastarán.\n\nLas cajas seguían entre las cepas, al sureste. Nehonar se movió entre las hileras como de niño se movía entre la maleza de Teldrassil, despacio y atento a cada sombra. Las cargó una a una hasta la carreta.\n\n—Por suerte tenemos valientes como tú —dijo Milly, y le tendió un pergamino doblado—. El informe de la vendimia. Llévaselo al hermano Neals.\n\nLo encontró en el campanario, con una copa en la mano y el valle extendido a sus pies. El monje leyó despacio y sonrió con alivio.\n\n—Nunca perdí la fe en la Luz. Que ella te acompañe y te proteja, Nehonar.\n\nNehonar no compartía esa fe. Aun así, aceptó la bendición en silencio, como se acepta la sombra de un árbol ajeno. Desde allí arriba vio la abadía, los viñedos y el río. Pensó que el equilibrio, en aquella tierra, también se medía en uvas salvadas.",
-      "summary": "Nehonar recogió pañuelos Defias para el ayudante Willem, rescató la uva de Milly Osworth de los viñedos ocupados por los bandidos y llevó su informe de la vendimia al hermano Neals, que lo bendijo en nombre de la Luz.",
-      "quests": [
-        {
           "id": 18,
           "title": "Hermandad de ladrones",
           "giver": "Ayudante del alguacil Willem"
         },
         {
+          "id": 21,
+          "title": "Escarmuza en la Mina del eco",
+          "giver": "Alguacil McBride"
+        },
+        {
+          "id": 91752,
+          "title": "La situación en su conjunto",
+          "giver": "Kelsey Abisal"
+        },
+        {
+          "id": 91758,
+          "title": "¡Sigue a ese kóbold!",
+          "giver": "Alguacil McBride"
+        },
+        {
           "id": 3903,
           "title": "Milly Osworth",
+          "giver": "Ayudante del alguacil Willem"
+        },
+        {
+          "id": 6,
+          "title": "La recompensa por Garrick Piesuaves",
           "giver": "Ayudante del alguacil Willem"
         },
         {
@@ -338,82 +255,6 @@
           "id": 3905,
           "title": "Informe de la vendimia",
           "giver": "Milly Osworth"
-        }
-      ],
-      "levelFrom": 6,
-      "levelTo": 7
-    },
-    {
-      "id": "7f63a64ae77c",
-      "kind": "cadena",
-      "zone": "Bosque de Elwynn",
-      "subzones": [
-        "Valle de Villanorte"
-      ],
-      "title": "Rastros que llevan más allá del valle",
-      "text": "La abadía de Villanorte olía a cera y a hierba recién cortada cuando el ayudante Willem lo detuvo en el camino. Le habló de guardias que no daban abasto y de tropas lejanas, y lo mandó con su superior. El alguacil McBride lo recibió con una mezcla de alivio y cansancio.\n\n—Esta batalla tiene muchos frentes, Nehonar. Prepárate para una campaña larga.\n\nNehonar asintió sin responder. Un reino sin rey, pensó, es como una manada sin guía: los lobos se acercan cuando huelen el desorden.\n\nEl primer encargo lo llevó a los bosques del norte, donde un clan de kóbolds había plantado sus velas sucias entre los árboles. Los combatió con garra y raíz hasta que el claro quedó en silencio. McBride los llamó ladrones y cobardes. Nehonar no lo contradijo, aunque pensó que hasta las ratas se vuelven osadas cuando nadie vigila el granero.\n\nDespués vino la Mina del Eco. Primero los obreros acampados a la entrada; luego, de vuelta, los peones que excavaban en la penumbra. La piedra devolvía cada golpe como un trueno lejano. Cuando regresó por segunda vez, el alguacil lo miró de otra manera, ya no como a un voluntario más, sino como a alguien con quien se podía contar.\n\n—Te has ganado mi respeto y la gratitud del ejército de Ventormenta.\n\nNo hubo descanso. Kelsey había visto salir de la mina a un kóbold cargado con un saco enorme de libros, los del hermano Paxton. McBride lo envió al establo, tras la abadía, donde esperaba Tordrin, un enano recién llegado de Forjaz para instruir a los cazadores. Le entregó un equipo de rastreo y una advertencia:\n\n—Estas alimañas traman algo a las afueras de Villanorte.\n\nNehonar siguió las huellas. Patas pequeñas, apresuradas, el arrastre de algo pesado sobre la tierra. Leyó el rastro como de niño leía el paso de los ciervos en Teldrassil, y este lo sacó del valle hasta Villadorada.\n\nEl alguacil Dughan escuchó el informe con el ceño fruncido.\n\n—¡Pues claro que van a la Mina Abisal! Está plagada de kóbolds. Buen trabajo, supongo. Pero necesitaré a alguien que se encargue.\n\nNehonar guardó silencio. Sabía que la madriguera nunca termina en la primera galería.",
-      "summary": "Nehonar se alistó con el alguacil McBride, limpió de kóbolds los bosques del norte y la Mina del Eco y, con el equipo de rastreo del enano Tordrin, siguió la pista de un kóbold ladrón de libros hasta Villadorada, donde Dughan le reveló que se dirigían a la Mina Abisal.",
-      "quests": [
-        {
-          "id": 783,
-          "title": "Una amenaza del interior",
-          "giver": "Ayudante del alguacil Willem"
-        },
-        {
-          "id": 7,
-          "title": "La limpieza del campamento kóbold",
-          "giver": "Alguacil McBride"
-        },
-        {
-          "id": 15,
-          "title": "Investigar la Mina del Eco",
-          "giver": "Alguacil McBride"
-        },
-        {
-          "id": 21,
-          "title": "Escarmuza en la Mina del eco",
-          "giver": "Alguacil McBride"
-        },
-        {
-          "id": 91758,
-          "title": "¡Sigue a ese kóbold!",
-          "giver": "Alguacil McBride"
-        },
-        {
-          "id": 91772,
-          "title": "¡Shhh! Aquí se cazan kóbolds",
-          "giver": "Tordrin Hojadusta"
-        }
-      ],
-      "levelFrom": 6,
-      "levelTo": 8
-    },
-    {
-      "id": "99d7398ded24",
-      "kind": "llegada",
-      "zone": "Lion's Pride Inn",
-      "title": "Bajo el emblema del león",
-      "text": "Ya había pasado por Villadorada siguiendo huellas ajenas, sin detenerse. En la abadía, un soldado le había hablado de la posada del cruce: allí paraban granjeros, mercaderes de camino a Ventormenta y gente armada que buscaba trabajo o noticias. «Si algo ocurre en Elwynn», le dijo, «allí lo saben antes que el alguacil». También le contó que buena parte del ejército del reino servía lejos, y que los caminos quedaban en manos de pocos guardias. Por eso los bandidos de pañuelo rojo, los kóbolds y los gnolls se crecían en los bosques.\n\nLa Posada del Orgullo de León se alzaba junto al camino, con su piedra clara y su tejado firme. Sobre la puerta colgaba el león de Ventormenta. Nehonar lo miró un rato. *Los humanos ponen fieras en sus estandartes. Pocos han visto cazar a una.*\n\nDentro olía a humo, a cerveza y a pan recién hecho. Las voces se pisaban unas a otras. Había risas, cansancio y miradas que se fijaron un instante en sus orejas largas antes de volver a las jarras.\n\nBuscó un rincón cerca del fuego y se quedó quieto, como un búho en la rama. *Un abrevadero. Todos acuden a beber, y nadie se fía del de al lado.*",
-      "summary": "Nehonar entró por primera vez en la Posada del Orgullo de León, el refugio de viajeros de Villadorada, y observó en silencio a sus gentes inquietas en una Elwynn con pocos guardias y muchas amenazas.",
-      "levelFrom": 8,
-      "levelTo": 8
-    },
-    {
-      "id": "83c6c40a5dd9",
-      "kind": "sueltas",
-      "zone": "Bosque de Elwynn",
-      "subzones": [
-        "Valle de Villanorte",
-        "Villadorada"
-      ],
-      "title": "Lo que cuesta un lugar donde descansar",
-      "text": "En Villanorte, el ayudante Willem le habló de Garrick Piesuaves: un maleante que llevaba semanas acosando a granjeros y mercaderes desde una choza junto a los viñedos, al otro lado del puente. Lo protegía una pandilla de matones. Nehonar escuchó sin interrumpir. Luego hizo una sola pregunta.\n\n—¿A quién roba?\n\n—A quien trabaja la tierra.\n\nLe bastó.\n\nCruzó el puente con el paso del lince que ronda una madriguera. No fue fácil llegar hasta él entre tanto matón, pero regresó a la abadía con la cabeza de Garrick. Willem celebró la hazaña y le prometió una hermosa recompensa. Nehonar no sintió orgullo. Era un depredador menos, nada más. Los guardias, en cambio, empezaron a saludarlo al pasar, como se saluda a alguien de la casa.\n\nFalkhaan Isenzancas lo vio cansado y le habló de su mejor amigo, el tabernero Farley. Si decía que lo enviaba él, quizá le hiciera un descuento. En la Posada Orgullo de León, Farley lo recibió proclamando su lema a voces y le ofreció un sitio junto al fuego.\n\nEn Villadorada, Sam Zarzaparrilla supo que había elegido la peletería y lo mandó a ver a Adele Fielder. Ella le dio una tienda de campamento y un consejo: en la ciudad no se ven con buenos ojos, mejor montarla en la espesura. Y antes de nada, una hoguera; casi cualquier cocinero podría enseñarle a encenderla.\n\nNehonar pasó la mano por la lona. Pensó en los granjeros que vivían con miedo bajo su propio techo.\n\n«El oso no duerme en la ciudad. Busca su cueva. Pero antes se asegura de que nada acecha fuera.»",
-      "summary": "Nehonar abatió al maleante Garrick Piesuaves por encargo de Willem, conoció al tabernero Farley por recomendación de Falkhaan y recibió de Adele Fielder una tienda de campamento, y así entendió que el descanso de unos depende de la vigilancia de otros.",
-      "quests": [
-        {
-          "id": 6,
-          "title": "La recompensa por Garrick Piesuaves",
-          "giver": "Ayudante del alguacil Willem"
         },
         {
           "id": 97922,
@@ -421,209 +262,67 @@
           "giver": "Sam Zarzaparrilla"
         },
         {
+          "id": 54,
+          "title": "Informa en Villadorada",
+          "giver": "Alguacil McBride"
+        },
+        {
+          "id": 91772,
+          "title": "¡Shhh! Aquí se cazan kóbolds",
+          "giver": "Tordrin Hojadusta"
+        },
+        {
           "id": 2158,
           "title": "Descanso y relajación",
           "giver": "Falkhaan Isenzancas"
-        }
-      ],
-      "levelFrom": 7,
-      "levelTo": 8
-    },
-    {
-      "id": "0467eee70ebe",
-      "kind": "sueltas",
-      "zone": "Ciudad de Ventormenta",
-      "subzones": [
-        "Distrito de Mercaderes"
-      ],
-      "title": "Un panfleto entre los canales",
-      "text": "Ventormenta no callaba nunca. Nehonar llegó al Distrito de Mercaderes y el ruido le cayó encima como lluvia sobre hojas secas: pregones, ruedas de carro, martillos, el chapoteo de los canales contra la piedra blanca. Era una ciudad reconstruida tras la guerra, y se notaba. Todo parecía nuevo y, al mismo tiempo, cansado. Entre los soldados y los mercaderes pasaban refugiados con la mirada baja. El rey no estaba. Otros gobernaban en nombre de un niño.\n\nUn hombre le cortó el paso con una sonrisa ancha. Se presentó como Renato Gallina y le puso un panfleto en la mano antes de que pudiera negarse.\n\n—El mejor vino de Ventormenta —dijo—. Llévaselo a mi hermana Suzetta, a nuestra tienda. Te dará una botella de regalo.\n\nNehonar miró el papel. Luego miró al hombre. *Como el pájaro que canta para marcar su rama*, pensó. No había engaño en ello. Solo un hombre que defendía su sitio a su manera.\n\nSiguió los canales hasta la Bodega Gallina. Suzetta lo recibió con la misma sonrisa que su hermano.\n\n—¿Entonces has visto a Renato? Aquí estamos, caballero. Una botella de nuestro pinot noir especial. ¡No encontrarás nada mejor en todo Azeroth!\n\nNehonar sostuvo la botella. Pesaba poco. Era un regalo pequeño, pero se lo habían dado sin pedirle nada difícil a cambio.\n\nAl salir, notó que algunas miradas ya no se apartaban de él. Un enano le saludó con la cabeza. Un gnomo le sonrió. En aquella colmena de piedra, también se podía ser alguien.\n\nQuizá el equilibrio no solo crecía entre raíces.",
-      "summary": "En el bullicioso Distrito de Mercaderes de Ventormenta, Nehonar llevó el panfleto de Renato Gallina a su hermana Suzetta, recibió una botella de pinot noir y empezó a sentirse acogido en la ciudad de piedra.",
-      "quests": [
-        {
-          "id": 332,
-          "title": "Publicidad de la bodega",
-          "giver": "Renato Gallina"
-        }
-      ],
-      "levelFrom": 8,
-      "levelTo": 8
-    },
-    {
-      "id": "441b8eb0b11e",
-      "kind": "cadena",
-      "zone": "Bosque de Elwynn",
-      "subzones": [
-        "Los Viñedos de Maclure",
-        "La Granja Pedregosa"
-      ],
-      "title": "Un licor para cruzar el odio",
-      "text": "Entre las hileras de los Viñedos de Maclure, Maybell Maclure apretaba una carta contra el pecho como quien protege a un polluelo caído del nido. Amaba a Tommy Joe Pedregosa, pero las dos familias se odiaban a muerte y ella no podía ni mirarlo. Nehonar escuchó sin interrumpir y aceptó la carta.\n\nEncontró al muchacho junto al río, al oeste de la Granja Pedregosa. Tommy Joe leyó con avidez y alzó la vista, desesperado.\n\n—¡Tengo que verla!\n\n—¿Por qué se odian vuestras familias? —preguntó Nehonar.\n\nEl chico no supo responder. Nehonar pensó en los ciervos, que se disputan el territorio pero no heredan rencores que nadie recuerda. Le pareció un odio sin raíz, y por eso más difícil de arrancar.\n\nTommy Joe lo mandó con su abuela. La anciana Pedregosa lo recibió en la casa con mirada cansada y sabia: mientras las familias siguieran enfrentadas, aquellos dos no tendrían futuro, pero quizá pudieran reunirse, aunque fuera por poco tiempo. Le confió una nota para William Mortero.\n\nEn la Posada Orgullo de León, en Villadorada, el viejo William leyó la nota y suspiró.\n\n—También yo fui joven y conocí el amor... una vez.\n\nSu remedio fue un licor de invisibilidad, para que Maybell saliera de los viñedos sin ser vista. Le faltaba kelp cristalino, y los múrlocs del Lago de Cristal, al este del pueblo, solían llevarlo encima. Nehonar conocía ya sus huellas palmeadas. Volvió de la orilla con el kelp, húmedo y brillante como escamas al sol.\n\nWilliam preparó la poción sin prisa. Al salir, un guardia de Ventormenta saludó a Nehonar con una inclinación de cabeza. Ya no lo miraban como a un forastero.\n\nMaybell tomó el frasco con manos temblorosas.\n\n—Me siento culpable por engañar a mi familia, pero no puedo ignorar lo que siento. Gracias, Nehonar. Por favor, acepta esto.\n\nÉl aceptó el regalo y miró las viñas. El engaño no le complacía. Tampoco un odio que nadie sabía explicar. Entre dos males, aquella muchacha había elegido el que dejaba crecer algo.\n\nEl camino se revela al andarlo, pensó. También para ellos.",
-      "summary": "Nehonar ayudó a Maybell Maclure y Tommy Joe Pedregosa, separados por el odio de sus familias, al llevar sus mensajes, conseguir kelp cristalino de los múrlocs del Lago de Cristal y entregar a Maybell el licor de invisibilidad de William Mortero para que pudiera escaparse a ver a su amado.",
-      "quests": [
-        {
-          "id": 106,
-          "title": "Jóvenes enamorados",
-          "giver": "Maybell Maclure"
         },
-        {
-          "id": 111,
-          "title": "Habla con la abuelita",
-          "giver": "Tommy Joe Pedregosa"
-        },
-        {
-          "id": 107,
-          "title": "Una nota para William",
-          "giver": "Abuela Pedregosa"
-        },
-        {
-          "id": 112,
-          "title": "La recolección de Kelp",
-          "giver": "William Mortero"
-        },
-        {
-          "id": 114,
-          "title": "La fuga",
-          "giver": "William Mortero"
-        }
-      ],
-      "levelFrom": 8,
-      "levelTo": 9
-    },
-    {
-      "id": "fe4957009303",
-      "kind": "cadena",
-      "zone": "Bosque de Elwynn",
-      "subzones": [
-        "Villadorada",
-        "Lago del Hito"
-      ],
-      "title": "Huellas palmeadas junto al lago",
-      "text": "Remy «Dos Veces» hablaba deprisa y gesticulaba aún más. Los múrlocs remontaban los ríos del este, decía, espantaban a los peces y atacaban a la gente. Nadie le hacía caso. Nehonar lo escuchó sin interrumpir. Le recordó a un arrendajo que chilla ante un peligro que los demás aún no ven.\n\n—Hablaré con el alguacil —dijo.\n\nDughan lo recibió con la cortesía cansada de quien carga con demasiados frentes. Gnolls en los bosques, Defias en los caminos y un reino sin rey cuyos soldados estaban lejos. Respetaba a Remy como mercader, admitió, pero sin un informe militar no movería tropas al este.\n\n—Entonces traeré ese informe.\n\nEl alguacil lo envió al puente oriental, donde el guardia Thomas llevaba una semana apostado. Thomas no dudó: los múrlocs se habían asentado en los ríos, eran agresivos y más listos de lo que parecían. Pero le faltaba algo para cerrar su informe. Días atrás había enviado río arriba a dos hombres, Rolf y Malakai, y ninguno había vuelto.\n\nNehonar siguió la corriente hacia el norte. El agua olía a limo y a algo más agrio. Encontró primero a Malakai, o lo que quedaba de él: un cuerpo medio comido y saqueado. Entre la hierba brillaba un medallón que nadie había querido. «Lacayo Malakai Roca».\n\nSe agachó. En el barro había huellas palmeadas que se alejaban hacia el este, por la orilla del Lago del Hito.\n\n*Los depredadores siempre vuelven a su madriguera.*\n\nA lo lejos se recortaba una aldea múrloc. Nehonar avanzó entre las chozas con el paso cauteloso que había aprendido de los felinos, hasta dar con Rolf. Del cuello del cadáver colgaba otro medallón. «Lacayo Rolf Hartford».\n\nRegresó al puente con los dos colgantes en la mano. Le pesaban más de lo que debían.\n\n—Has confirmado mis temores —murmuró Thomas al tomarlos—. Los múrlocs son una amenaza que no podemos ignorar.\n\nNehonar asintió en silencio. Pensó en Remy, a quien nadie había creído. Pensó en dos hombres que habían muerto mientras otros pedían papeles.\n\n—No debería hacer falta un muerto para que se escuche un aviso —dijo al fin, con voz baja y afilada.\n\nThomas no le respondió, pero lo miró como se mira a un aliado. Al pasar de nuevo por Villadorada, los guardias le hicieron un gesto de saludo que antes no le dedicaban.",
-      "summary": "Nehonar llevó el aviso de Remy sobre los múrlocs al alguacil Dughan, quien lo envió al guardia Thomas, y halló en el río y en una aldea múrloc del Lago del Hito los cadáveres y los medallones de los guardias Malakai y Rolf, con lo que confirmó la amenaza.",
-      "quests": [
         {
           "id": 40,
           "title": "Un peligro con olor a pescado",
           "giver": "Remy \"Dos Veces\""
         },
         {
-          "id": 35,
-          "title": "Más preocupaciones",
-          "giver": "Alguacil Dughan"
+          "id": 332,
+          "title": "Publicidad de la bodega",
+          "giver": "Renato Gallina"
         },
-        {
-          "id": 37,
-          "title": "Encuentra a los guardias perdidos",
-          "giver": "Guardia Thomas"
-        },
-        {
-          "id": 45,
-          "title": "Descubre el destino de Rolf",
-          "giver": "Un cadáver medio comido"
-        },
-        {
-          "id": 71,
-          "title": "Informa a Thomas",
-          "giver": "Cadáver de Rolf"
-        }
-      ],
-      "levelFrom": 8,
-      "levelTo": 9
-    },
-    {
-      "id": "b63b13ef5839",
-      "kind": "sueltas",
-      "zone": "Bosque de Elwynn",
-      "subzones": [
-        "Los Viñedos de Maclure",
-        "Villadorada",
-        "Aserradero de la Vega del Este"
-      ],
-      "title": "Lo que el bosque da y lo que se cobra",
-      "text": "Remy «Dos Veces» le habló de polvo de oro como quien habla de un manjar. Lo llevaban encima los kóbolds de la Mina Abisal y de la Cantera de Jaspe. Nehonar volvió con él a Villadorada. Remy le pagó con prisa y le añadió un regalo de sus socios, repitiendo las palabras como un eco.\n\nAl este, en el aserradero, el supervisor Raelen se mordía las uñas. Los lobos y los osos del norte habían espantado a sus leñadores, y los fajos de madera seguían tirados entre los helechos.\n\n—Si no cumplo el plazo, estoy perdido —dijo.\n\nNehonar recogió los fajos uno a uno. Pensó en aquellos árboles talados y en los animales que defendían su territorio sin entender de pedidos ni de fechas. *El lobo no conoce los contratos*, pensó. *Solo conoce su bosque.* Raelen le dio unas monedas y no hizo más preguntas.\n\nHelene Desollapelambres le pidió pieles de lobo. Él dudó un instante antes de aceptar. Luego se agachó junto a cada lobo abatido y trabajó despacio, con respeto, como le habían enseñado a tratar lo que la tierra entrega.\n\n—Tienes madera de cazador, druida —le dijo ella.\n\nÉl no respondió. El cazador también forma parte del equilibrio. Lo que no lo es, se dijo, es tomar sin medida.\n\nEn los Viñedos de Maclure le dio de beber a Gerard Tiller, que le despidió con una sonrisa y la promesa de nuevos tratos.\n\nVolvió a Villadorada al atardecer. Ya no le miraban como a un extranjero. Le saludaban por su nombre. Elwynn lo contaba todo en monedas y plazos, pero empezaba a contarlo también a él.",
-      "summary": "Nehonar consiguió polvo de oro de los kóbolds para Remy, recuperó la madera de Raelen, desolló lobos para Helene y le dio de beber a Gerard, y reflexionó sobre el precio que Elwynn pone a lo que toma del bosque.",
-      "quests": [
         {
           "id": 16,
           "title": "Dale de beber a Gerard"
         },
         {
-          "id": 47,
-          "title": "Intercambio de polvo de oro",
-          "giver": "Remy \"Dos Veces\""
-        },
-        {
-          "id": 5545,
-          "title": "El cumplimiento del plazo",
-          "giver": "Supervisor Raelen"
-        },
-        {
-          "id": 91751,
-          "title": "Pelambres de lobo toscas",
-          "giver": "Helene Desollapelambres"
+          "id": 85,
+          "title": "El collar perdido",
+          "giver": "\"Tía\" Bernice Pedregosa"
         }
       ],
-      "levelFrom": 7,
-      "levelTo": 10
-    },
-    {
-      "id": "1565f35ddb6d",
-      "kind": "llegada",
-      "zone": "Claro de la Luna",
-      "subzones": [
-        "Amparo de la Noche"
-      ],
-      "title": "Donde el bosque guarda silencio",
-      "text": "En la Cañada de Villadorada, un soldado que había servido en Kalimdor le habló de un valle oculto entre montañas, al norte, más allá de Frondavil. Lo llamaba el Claro de la Luna, y lo nombraba en voz baja. Contó que allí se reunía el Círculo Cenarion, que kaldorei y tauren, enemigos en todas partes, compartían el mismo suelo sin alzar un arma. Que era tierra sagrada para los druidas desde tiempos antiguos. Que, alrededor, el bosque enfermaba por la corrupción demoníaca de Frondavil, pero que el valle resistía, intacto.\n\nNehonar no le creyó del todo. Un lugar donde los enemigos se toleran le parecía tan raro como un lobo que comparte presa.\n\nCuando llegó a Amparo de la Noche, el aire lo desmintió. Olía a musgo húmedo y a agua quieta. El lago Elune'ara reflejaba un cielo que siempre parecía de anochecer. Las casas de madera se curvaban como raíces viejas, y entre ellas caminaban figuras con astas y con pezuñas, sin prisa y sin miedo.\n\nSe detuvo junto a la orilla. Escuchó.\n\n*Aquí el bosque no se defiende. Descansa.*\n\nPor primera vez desde Teldrassil, algo dentro de él dejó de estar alerta.",
-      "summary": "Nehonar llegó al Claro de la Luna, el valle sagrado del Círculo Cenarion donde kaldorei y tauren conviven en paz, y sintió en Amparo de la Noche una calma que no había encontrado desde Teldrassil.",
-      "levelFrom": 10,
-      "levelTo": 10
-    },
-    {
-      "id": "f1f8eccacd2c",
-      "kind": "cadena",
-      "zone": "Ciudad de Ventormenta",
-      "subzones": [
-        "El Parque",
-        "Enclave Cenarion",
-        "Amparo de la Noche"
-      ],
-      "title": "La zarpa que aprendió a esperar",
-      "text": "Theridran lo encontró entre los árboles de El Parque, donde Ventormenta respira un poco menos a piedra. Le dijo que Mathrengyl Garroso, ayudante del archidruida, quería instruirlo en persona. Nehonar asintió sin preguntar. Esta vez no hacía falta: la llamada venía de los suyos.\n\nEn el Enclave Cenarion de Darnassus, Mathrengyl lo recibió con gravedad. Habló de los hijos de Cenario y de servir al equilibrio, por el bien de los animales y las plantas tanto como por el propio. Le anunció su primer paso: el camino del oso, la fuerza del cuerpo y del corazón. Luego le enseñó a abrir el camino hasta el Claro de la Luna. No le ocultó que el archidruida Corzocelada y el guardián Rémulos tenían sus diferencias. Nehonar guardó aquello en silencio, como quien anota el rastro de una tormenta lejana.\n\nEn Amparo de la Noche, Dendrite Rafagaestelar trazó un gesto invisible sobre su cabeza. «Aquí empieza, Padre Cenarius». Después lo envió al noroeste, al hogar del espíritu del gran oso.\n\nLo que allí sintió no se dejaba poner en palabras. Era antiguo, paciente, pesado como la tierra en invierno. «El oso no ataca por atacar», pensó. «Protege lo suyo y descansa». Al volver, Dendrite le sonrió: veía en él fuerza y decisión, aunque aún sin dominar.\n\nMathrengyl lo esperaba de nuevo en Darnassus. Le confesó que su propio encuentro con el espíritu también había sido inquietante, y le confió polvo de luna Cenarion para la cueva de lechúcicos al este de Auberdine. Allí, sobre la piedra, el polvo despertó a Garraluna, su guardián.\n\nNo fue sencillo. Hubo un momento en que Nehonar cayó y la tierra lo recibió. Se levantó, como se levanta el oso tras el golpe: sin rabia y sin prisa. Y la fuerza de Garraluna pasó a ser suya.\n\nCuando regresó al Enclave, los druidas lo miraron con un respeto nuevo, discreto, como se mira a quien ya no está de paso. «Ya no hay obstáculos en tu camino», dijo Mathrengyl.\n\nNehonar no respondió. Pensaba que el camino no se despeja: se revela al andarlo.",
-      "summary": "Guiado por Mathrengyl Garroso y Dendrite Rafagaestelar, Nehonar recibió la sabiduría del espíritu del gran oso en el Claro de la Luna, cayó y se levantó ante Garraluna cerca de Auberdine, y se convirtió en druida de la zarpa ganándose el respeto del Círculo Cenarion.",
-      "quests": [
+      "scenes": [
         {
-          "id": 5924,
-          "title": "Escucha la llamada",
-          "giver": "Theridran"
+          "kind": "cadena",
+          "title": "¡Shhh! Aquí se cazan kóbolds",
+          "detail": "6 misiones encadenadas"
         },
         {
-          "id": 5921,
-          "title": "Claro de la Luna",
-          "giver": "Mathrengyl Garroso"
+          "kind": "cadena",
+          "title": "La situación en su conjunto",
+          "detail": "3 misiones encadenadas"
         },
         {
-          "id": 5929,
-          "title": "Espíritu del gran oso",
-          "giver": "Dendrite Rafagaestelar"
-        },
-        {
-          "id": 5931,
-          "title": "El regreso a Darnassus",
-          "giver": "Dendrite Rafagaestelar"
-        },
-        {
-          "id": 6001,
-          "title": "Cuerpo y corazón",
-          "giver": "Mathrengyl Garroso"
+          "kind": "cadena",
+          "title": "Informe de la vendimia",
+          "detail": "4 misiones encadenadas"
         }
       ],
-      "levelFrom": 10,
-      "levelTo": 10,
-      "deaths": 1
+      "levelFrom": 6,
+      "levelTo": 8
     }
   ],
+  "current": {
+    "zone": "Bosque de Elwynn",
+    "quests": 23,
+    "levelFrom": 8,
+    "levelTo": 10
+  },
   "encargos": [
     {
       "id": 6001,
@@ -1426,31 +1125,7 @@
   ],
   "pending": {
     "loose": [],
-    "openChains": [
-      [
-        "Informa en Villadorada",
-        "Devolución de libros"
-      ],
-      [
-        "La Mina Abisal",
-        "La Cantera de Jaspe"
-      ],
-      [
-        "Las velas de los kobolds",
-        "Un envío para Ventormenta"
-      ],
-      [
-        "El collar perdido",
-        "Un pastel para Billy",
-        "Vuelve con Billy",
-        "Dientes de oro"
-      ],
-      [
-        "Proteger la frontera",
-        "Entrega el informe de Thomas",
-        "Armadura de tela y cuero"
-      ]
-    ]
+    "openChains": []
   },
   "stats": {
     "level": 10,

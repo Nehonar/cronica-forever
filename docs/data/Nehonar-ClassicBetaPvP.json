@@ -45,6 +45,12 @@
       "levelTo": 2
     }
   ],
+  "current": {
+    "zone": "Bosque de Elwynn",
+    "quests": 3,
+    "levelFrom": 1,
+    "levelTo": 2
+  },
   "encargos": [
     {
       "id": 18,
@@ -105,12 +111,7 @@
   ],
   "pending": {
     "loose": [],
-    "openChains": [
-      [
-        "Una amenaza del interior",
-        "La limpieza del campamento kóbold"
-      ]
-    ]
+    "openChains": []
   },
   "stats": {
     "level": 2,
