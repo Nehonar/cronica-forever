@@ -254,6 +254,19 @@
       "deaths": 2
     },
     {
+      "id": "15e96c00cf33",
+      "kind": "llegada",
+      "zone": "Ciudad de Ventormenta",
+      "subzones": [
+        "Distrito de Mercaderes"
+      ],
+      "title": "La ciudad que ayudó a levantar",
+      "text": "Nehonar conocía Ventormenta desde abajo. La conocía desde los muelles, con un fardo al hombro, y desde la cantera de donde salía la piedra de sus murallas. Pero en la Posada del Orgullo de León la había oído contar de otra manera. Un soldado de paso habló del rey Varian, desaparecido sin dejar rastro, y de la regencia que el alto alguacil Fordragón sostenía en nombre del joven Anduin. Un carretero, en voz más baja, recordó a los canteros que reconstruyeron la ciudad tras la Segunda Guerra y a los que la nobleza nunca pagó. Algunos, decía, se habían echado al monte con pañuelos rojos. Nehonar no abrió la boca. Él también había picado esa piedra.\n\nAl cruzar el Distrito de Mercaderes, el aire olía a pan, a cuero y a agua de canal. Había toldos de colores, pregones y guardias con tabardos azules. En los rincones esperaban los refugiados, con la mirada de quien todavía confía en volver a casa. Las torres blancas relucían como si nadie hubiera sudado por ellas.\n\n—Mira tú —murmuró—. Y yo que pensaba que de cerca serían más pequeñas.\n\nSe rió solo. Luego reparó en las manos de los que pedían limosna, tan encallecidas como las suyas, y dejó de reírse.",
+      "summary": "Nehonar llegó al Distrito de Mercaderes de Ventormenta con lo que había oído sobre la regencia y los canteros sin pagar, y vio la ciudad que él mismo ayudó a levantar con ojos nuevos, entre el bullicio y los refugiados.",
+      "levelFrom": 16,
+      "levelTo": 16
+    },
+    {
       "id": "37539224d7d0",
       "kind": "sueltas",
       "zone": "Ciudad de Ventormenta",
@@ -269,6 +282,29 @@
           "title": "Un pedido de Pico Tormenta"
         }
       ],
+      "levelFrom": 16,
+      "levelTo": 16
+    },
+    {
+      "id": "b7738422d22b",
+      "kind": "llegada",
+      "zone": "Forjaz",
+      "subzones": [
+        "Ciudad Manitas"
+      ],
+      "title": "Piedra que alguien supo picar",
+      "text": "En el Distrito de los Enanos le habían contado lo bastante para llegar con ganas. Que Forjaz no se construyó: se excavó, golpe a golpe, en las entrañas de Dun Morogh. Que allí reinaba Magni Barbabronce, que la Liga de Expedicionarios andaba revolviendo la tierra en busca del origen de su pueblo y que, bajo los pies de todos, dormían los antiguos reyes enanos. Un soldado, entre trago y trago, añadió lo menos alegre. Más allá de las puertas, las nieves estaban plagadas de troggs. Gnomeregan, la ciudad de los gnomos, había caído, y sus supervivientes vivían ahora de prestado en un rincón de la montaña.\n\nEse rincón fue lo primero que vio Nehonar al bajar del tranvía. Ciudad Manitas olía a aceite y a chispa. Allí todo zumbaba, silbaba o echaba humo, y los gnomos iban de un lado a otro con prisa de quien ha perdido su casa y no piensa quedarse quieto.\n\nLuego alzó la vista hacia la piedra. Pasó la mano por un muro y silbó bajito.\n\n—Esto no lo hace cualquiera. Aquí se ha sudado de verdad.\n\nAl fondo retumbaba la Gran Forja como un corazón enorme. Nehonar sonrió y no supo bien por qué. Se sintió pequeño, y por una vez no le importó.",
+      "summary": "Nehonar llegó a Forjaz por el tranvía hasta Ciudad Manitas, entre gnomos refugiados de Gnomeregan, y admiró como antiguo cantero la piedra tallada de la ciudad enana, sintiéndose pequeño sin que le pesara.",
+      "levelFrom": 16,
+      "levelTo": 16
+    },
+    {
+      "id": "8c6d7c880f79",
+      "kind": "llegada",
+      "zone": "El Salón de los Feudales",
+      "title": "Donde duermen los reyes de piedra",
+      "text": "En una taberna de Forjaz, entre jarras que pesaban más que un fardo de muelle, Nehonar había oído hablar del Salón de los Feudales. Los enanos lo nombraban en voz baja, y eso, en un enano, ya decía mucho. Bajo la ciudad reposaban los antiguos reyes y señores de los Barbabronce, y aquella tierra era sagrada para su pueblo. Pero algo se había torcido allí abajo. Los muertos ya no descansaban, y se hablaba de espíritus que vagaban por los pasillos sin encontrar la paz. Nadie supo, o nadie quiso, decirle por qué.\n\n—Vamos, un sitio tranquilo para echar la siesta —había bromeado él.\n\nNadie se rio.\n\nAl bajar entendió aquel silencio. El aire era frío y quieto, y olía a polvo viejo y a piedra que llevaba siglos sin ver el sol. Las bóvedas se perdían en la penumbra, talladas con tanto esmero que el antiguo cantero pasó la mano por la pared casi sin darse cuenta. Cada losa la había puesto alguien que sabía bien lo que hacía.\n\nY aun así, el lugar no estaba en calma. Se notaba como se nota un derrumbe antes de que llegue: un crujido que todavía no suena.\n\nNehonar se ajustó el escudo y siguió adelante. Al fin y al cabo, una tumba no dejaba de ser otra cueva con alguien dentro.",
+      "summary": "Nehonar llegó al Salón de los Feudales, las tumbas sagradas de los reyes Barbabronce bajo Forjaz, tras oír que sus espíritus no encontraban descanso, y sintió en la piedra antigua la misma inquietud que precede a un derrumbe.",
       "levelFrom": 16,
       "levelTo": 16
     },
@@ -329,6 +365,19 @@
           }
         }
       ],
+      "levelFrom": 17,
+      "levelTo": 17
+    },
+    {
+      "id": "e02c6ce2dd3d",
+      "kind": "llegada",
+      "zone": "Las Minas de la Muerte",
+      "subzones": [
+        "Ladronera de los Defias"
+      ],
+      "title": "Canteros a los que nadie pagó",
+      "text": "Lo había oído en los muelles de Ventormenta mucho antes de pisar los Páramos de Poniente. Contaban que los canteros que levantaron de nuevo la ciudad tras la guerra nunca cobraron, que la nobleza se lavó las manos y que aquellos hombres se taparon la cara con un pañuelo rojo y se echaron al monte. Ahora se hacían llamar la Hermandad Defias. Un granjero, en la Posada del Orgullo de León, le contó el resto en voz baja: quemaban granjas, robaban cosechas y tenían su madriguera en una mina vieja bajo las ruinas de Arroyo de la Luna, con goblins trabajando a su lado.\n\nNehonar no se rió aquella noche. Se miró los callos de las manos y pensó que podría haber sido uno de ellos.\n\nArroyo de la Luna olía a ceniza vieja. La boca de la mina era un hueco negro entre tablones podridos, y de dentro subía un aire frío con sabor a polvo de piedra. Se oían picos a lo lejos y algunas vigas crujían.\n\nNehonar se quedó quieto un momento, con el pecho más apretado de lo que habría admitido.\n\n—Bueno —murmuró—. Al menos esta vez entro por mi propio pie.\n\nLuego se acordó de la otra mina, la de los hombres atrapados, y bajó.",
+      "summary": "Nehonar llegó a las Minas de la Muerte, la guarida de los Defias bajo Arroyo de la Luna, sabiendo que eran canteros a los que nadie pagó, y entró con el recuerdo de su propio derrumbe.",
       "levelFrom": 17,
       "levelTo": 17
     }

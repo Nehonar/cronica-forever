@@ -1,6 +1,24 @@
 {
   "characters": [
     {
+      "key": "NehonarLionheart-ClassicBetaPvE",
+      "name": "Nehonar Lionhart",
+      "epithet": "el de la Cantera",
+      "race": "Humano",
+      "class": "Paladín",
+      "level": 17,
+      "stories": 17
+    },
+    {
+      "key": "Nehonar-ClassicBetaPvP",
+      "name": "Nehonar",
+      "epithet": "el de la Cantera",
+      "race": "Humano",
+      "class": "Paladín",
+      "level": 2,
+      "stories": 1
+    },
+    {
       "key": "NehonarChopper-ClassicBetaPvE",
       "name": "Nehonar Chopper",
       "epithet": "el Silencioso",
@@ -19,24 +37,6 @@
       "new": true
     },
     {
-      "key": "NehonarLionheart-ClassicBetaPvE",
-      "name": "Nehonar Lionhart",
-      "epithet": "el de la Cantera",
-      "race": "Humano",
-      "class": "Paladín",
-      "level": 17,
-      "stories": 13
-    },
-    {
-      "key": "Nehonar-ClassicBetaPvP",
-      "name": "Nehonar",
-      "epithet": "el de la Cantera",
-      "race": "Humano",
-      "class": "Paladín",
-      "level": 2,
-      "stories": 1
-    },
-    {
       "key": "Tobias-Demo",
       "name": "Tobias Brenn",
       "epithet": "El hijo del molinero",
@@ -46,5 +46,5 @@
       "stories": 3
     }
   ],
-  "updated": "a034a11fa426c1f3"
+  "updated": "d61b897697c6f738"
 }
