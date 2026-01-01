@@ -16,13 +16,23 @@
   "stories": [],
   "encargos": [
     {
+      "id": 353,
+      "title": "Una entrega a Pico Tormenta",
+      "giver": "Grimand Elmore",
+      "zone": "Ciudad de Ventormenta",
+      "subzone": "Distrito de los Enanos",
+      "objectives": "Entrega el paquete Pico Tormenta al montaraz Pico Tormenta en Loch Modan.",
+      "original": "Los Pico Tormenta son unos enanos muy respetados y famosos por su exigente gusto. Así que no es sorprendente que Gringer Pico Tormenta, un montaraz de Forjaz, me encargase que forjase un arma para él.\n\nHe terminado el arma, pero... el montaraz Pico Tormenta está muy lejos, en Loch Modan. Si tienes planeado viajar al norte, ¿podrías entregarle este paquete?\n\nEl último mensaje que recibí del montaraz Pico Tormenta, decía que estaba estacionado en la torre de vigilancia del norte, en Loch Modan.",
+      "state": "activa"
+    },
+    {
       "id": 46,
       "title": "Recompensas por los murlocs",
       "giver": "Guardia Thomas",
       "zone": "Bosque de Elwynn",
       "objectives": "Lleva 8 aletas de múrloc rotas al guardia Thomas al puente oriental de Elwynn.",
       "original": "El ejército de Ventormenta ha puesto precio a la cabeza de los rondadores y batidores múrloc de Elwynn. Mátalos y tráeme sus ancas. El ejército de Ventormenta te recompensará bien.\n\nLos murlocs han construido una aldea en el Lago del Hito, al norte de aquí, y otra en el sur, donde se divide el río.",
-      "state": "activa"
+      "state": "entregada"
     },
     {
       "id": 59,
@@ -75,22 +85,28 @@
   ],
   "pending": {
     "loose": [
-      "Aguas abajo",
-      "¡Princesa debe morir!",
-      "Jack Dentomuerto"
+      "Acampada para novatos: minería"
     ],
-    "openChains": [],
-    "awaitingBackstory": 2
+    "openChains": [
+      [
+        "La tarea de Elmore",
+        "Una entrega a Pico Tormenta"
+      ]
+    ],
+    "awaitingBackstory": 3
   },
   "stats": {
     "level": 12,
-    "played": 38672,
-    "questsDone": 11,
+    "played": 43121,
+    "questsDone": 14,
     "deaths": 0,
     "zones": [
       "Bosque de Elwynn",
       "Ciudad de Ventormenta",
-      "Lion's Pride Inn"
+      "Lion's Pride Inn",
+      "Tranvía Subterráneo",
+      "Forjaz",
+      "Dun Morogh"
     ],
     "levelUps": [
       {
