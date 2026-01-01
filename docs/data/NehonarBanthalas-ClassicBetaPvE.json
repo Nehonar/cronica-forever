@@ -11,15 +11,15 @@
     "threads": null,
     "motto": ""
   },
-  "level": 6,
+  "level": 7,
   "realm": "Classic Beta PvE",
   "stories": [],
   "current": {
-    "zone": "Darnassus",
-    "quests": 0,
+    "zone": "Teldrassil",
+    "quests": 2,
     "levelFrom": 6,
-    "levelTo": 6,
-    "points": 4,
+    "levelTo": 7,
+    "points": 5,
     "threshold": 8,
     "scenes": [
       {
@@ -37,10 +37,102 @@
       {
         "kind": "zona",
         "title": "Darnassus"
+      },
+      {
+        "kind": "nivel",
+        "title": "Nivel 7"
       }
     ]
   },
   "encargos": [
+    {
+      "id": 487,
+      "title": "El camino a Darnassus",
+      "giver": "Sacerdotisa Lunar Amara",
+      "zone": "Teldrassil",
+      "objectives": "Acaba con 6 emboscadores Tuercepinos y después ve a ver de nuevo a Amara Andanoche a las afueras de Dolanaar.",
+      "original": "Hay que reforzar la seguridad en el camino que conduce a Darnassus. Algunos que han viajado de Dolanaar a Darnassus nos han informado de que en ese camino los corruptos furbolgs de la tribu de los Tuercepinos llevan a cabo despiadados ataques.\n\nEse camino se utiliza a diario para transporte de mercancías y es la vía de comunicación más importante de Darnassus. No podemos permitir que esa pandilla de delincuentes paganos aterrorice a la gente.\n\nLevántante en armas en nombre del bosque sagrado, guerrero. Su guarida se encuentra en algún lugar cerca de aquí. Acaba con 6 furbolgs Tuercepinos y después vuelve aquí.",
+      "state": "activa"
+    },
+    {
+      "id": 4161,
+      "title": "La receta de los Kaldorei",
+      "giver": "Zarrin",
+      "zone": "Teldrassil",
+      "subzone": "Dolanaar",
+      "objectives": "Recoge 7 patas de araña pequeña para Zarrin, que está en Dolanaar.",
+      "original": "Hace mucho tiempo, los elfos de la noche se conocían como los Kaldorei, un nombre que significa \"hijos de las estrellas\". Aprender del pasado es un paso muy importante en tu camino como guerrero, Nehonar. Por ello, debes escuchar atentamente lo que tengo que decirte.\n\nLos Kaldorei siempre se han sentido muy orgullosos de su armoniosa relación con la naturaleza. Esto significa que solamente cogemos de la naturaleza lo que necesitamos y lo que podemos devolverle. Este equilibrio nos ha beneficiado mucho, Nehonar.\n\nVe y recoge 7 patas de araña pequeña, ni una más ni una menos, y regresa aquí con ellas.",
+      "state": "activa"
+    },
+    {
+      "id": 87288,
+      "title": "Los pelambres de sable de la noche suaves",
+      "giver": "Aldia",
+      "zone": "Teldrassil",
+      "subzone": "Dolanaar",
+      "objectives": "Lleva 6 pelambres de sable de la noche suaves a Aldria.",
+      "original": "¡Hola, viajero! Espero que estés disfrutando de la visita a nuestra aldea. Me gusta Dolanaar porque es pequeña y rústica, y todo el mundo es amable.\r\n\r\nSoy un comerciante local, traigo todo tipo de herramientas y abalorios que podrían serte útiles en los viajes. De hecho, si te interesa hacer un trueque, ahora mismo necesito pelambres de sable de la noche suaves. Aunque son unas criaturas bellas y majestuosas, los sables de la zona son bastante agresivos. No te sientas mal si tienes que defenderte.",
+      "state": "entregada"
+    },
+    {
+      "id": 98391,
+      "title": "La Hermandad de Elune",
+      "giver": "Laurna Luzdelalba",
+      "zone": "Teldrassil",
+      "subzone": "Dolanaar",
+      "objectives": "Habla con la hermana Aquinne en Darnassus.",
+      "original": "Que las bendiciones sean contigo, guerrero. La Hermandad de Elune se ha erigido como un pilar de la sociedad kaldorei durante miles de años.\r\n\r\nAntes del Gran Cataclismo y de la Guerra de los Ancestros, y también durante la larga vigilia, hemos guiado y sanado a nuestro pueblo a través de la oscuridad. Ese es nuestro cometido y también la voluntad de la incomparable Madre Luna.\r\n\r\nAhora necesitamos tu ayuda en un asunto de gran importancia. La hermana Aquinne espera tu llegada en Darnassus.",
+      "state": "activa"
+    },
+    {
+      "id": 475,
+      "title": "Una brisa problemática",
+      "giver": "Athridas Manto de Oso",
+      "zone": "Teldrassil",
+      "subzone": "Dolanaar",
+      "objectives": "Busca a Gaerolas Talvethren en la Aldea Brisa Estelar.",
+      "original": "Se avecinan problemas en el bosque.\n\nGaerolas Talvethren es el Gran Alcaide de los druidas de la Garra hibernantes en Túmulo de Ban'ethil. Su función como protector de los Adormecidos es preservar su seguridad de modo que no se rompa el pacto que tienen con Ysera. Viaja al este hasta la Aldea Brisa Estelar para hablar con Gaerolas y regresa para informarme de todo. Cuando sepa que mis hermanos duermen apaciblemente, me quedaré más tranquilo.",
+      "state": "activa"
+    },
+    {
+      "id": 997,
+      "title": "Las tierras de Denalan",
+      "giver": "Syral Filohoja",
+      "zone": "Teldrassil",
+      "subzone": "Dolanaar",
+      "objectives": "Llévale el paquete con tierras especiales a Denalan, que está en el Lago Al'Ameth.",
+      "original": "¿Te diriges hacia el sur? ¿Al Lago Al'Ameth? De ser así hay algo que quiero pedirte...\n\nMi compañero Denalan tiene un campamento en el extremo oriental del lago, donde está estudiando y haciendo experimentos con la flora de Teldrassil. Encargó un paquete con tierras especiales de Darnassus que llegó con retraso pues no hace mucho que lo recibimos aquí en Dolanaar.\n\n¿Podrías llevarle tú el paquete?",
+      "state": "activa"
+    },
+    {
+      "id": 99046,
+      "title": "La mensajera perdida",
+      "giver": "Centinela Kyra Cantoestelar",
+      "zone": "Teldrassil",
+      "subzone": "Dolanaar",
+      "objectives": "Busca a la centinela Eralya Sombra de Hoja en el camino que lleva al Claro del Oráculo.",
+      "original": "El Consejo del Bosque envió un pequeño destacamento de centinelas al Árbol del Oráculo hace un tiempo. El árbol les envía mensajes a nuestros ancianos, y de nosotros depende llevarlos a Darnassus sanos y salvos.\r\n\r\nMe he enterado de que nuestra última mensajera aún no ha llegado. La frecuencia de los mensajes del Oráculo es diversa, pero tanta tardanza no es normal.\r\n\r\nDirígete al Claro del Oráculo por el camino que va al oeste y comprueba si está bien. Le tocaba a Eralya Sombra de Hoja, que aún está en prácticas. Que Elune te guíe.",
+      "state": "activa"
+    },
+    {
+      "id": 488,
+      "title": "Las apuestas de Zenn",
+      "giver": "Zenn Nauseapezuña",
+      "zone": "Teldrassil",
+      "objectives": "Llévale a Zenn Nauseapezuña a las afueras de Dolanaar 3 colmillos de sable de la noche, 3 plumas de lechuza estrígida y 3 muestras de seda de araña Tejemadera.",
+      "original": "Veo que tienes ganas de trabajar... Por suerte para ti, no hay un día que pase que no desee tener cerca a un inocente guerrero a quien proponerle mi oferta.\n\n¿Sabes, Nehonar? Puedo hacerte muy feliz y ofrecerte cosas que jamás hubieras soñado tener, pero para ello deberás traerme una serie de objetos.\n\nPara desempeñar mi trabajo en el bosque a veces necesito ciertos... componentes. Tráeme 3 colmillos de sable de la noche, 3 plumas de lechuza estrígida y 3 muestras de seda de araña Tejemadera.\n\nY que esto quede entre nosotros, cielonato.",
+      "state": "activa"
+    },
+    {
+      "id": 2159,
+      "title": "Envío desde Dolanaar",
+      "giver": "Porthannius",
+      "zone": "Teldrassil",
+      "subzone": "Cañada Umbría",
+      "objectives": "Llévale el paquete de Dolanaar al posadero Keldamyr.",
+      "original": "Saludos, joven guerrero. ¿Me podrías prestar tu ayuda? Tengo un paquete de hierbas que debo entregar en la ciudad de Dolanaar pero todavía tengo asuntos pendientes con los druidas de Cañada Umbría y no puedo irme.\n\n¿Puedes entregar este paquete por mí? Su destinatario es el tabernero Keldamyr de la posada de Dolanaar, que se encuentra un poco más adelante en dirección sur.",
+      "state": "entregada"
+    },
     {
       "id": 92544,
       "title": "Maleantes Al'Aketh",
@@ -228,9 +320,9 @@
     "awaitingBackstory": 2
   },
   "stats": {
-    "level": 6,
-    "played": 8029,
-    "questsDone": 17,
+    "level": 7,
+    "played": 11398,
+    "questsDone": 19,
     "deaths": 0,
     "zones": [
       "Isla de Zephras",
@@ -262,6 +354,10 @@
       {
         "level": 6,
         "played": 4411
+      },
+      {
+        "level": 7,
+        "played": 11169
       }
     ]
   }
