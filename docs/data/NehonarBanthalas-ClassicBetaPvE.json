@@ -11,14 +11,14 @@
     "threads": null,
     "motto": ""
   },
-  "level": 5,
+  "level": 6,
   "realm": "Classic Beta PvE",
   "stories": [],
   "current": {
     "zone": "Isla de Zephras",
-    "quests": 15,
+    "quests": 17,
     "levelFrom": 1,
-    "levelTo": 5
+    "levelTo": 6
   },
   "encargos": [
     {
@@ -39,7 +39,7 @@
       "subzone": "Thendal",
       "objectives": "Habla con Raan Vientosalvaje cerca de la Aldea Shen'dar.",
       "original": "Cada vez hay más aventureros como tú que buscan la gloria y la fortuna fuera de la Arboleda Thendal. Uno de ellos ha montado su campamento a las afueras de la Aldea Shen'dar, junto al camino que sale de la arboleda hacia el suroeste.\r\n\r\nBúscalo y averigua qué puedes aprender de él que te pueda servir en tus viajes.",
-      "state": "activa"
+      "state": "entregada"
     },
     {
       "id": 92472,
@@ -49,7 +49,7 @@
       "subzone": "Thendal",
       "objectives": "Preséntate ante la condestable Aonda en la Aldea Shen'dar.",
       "original": "El culto Al'Aketh supone una de las amenazas más extendidas por toda la Isla de Zephras. Son fanáticos religiosos que rinden culto a Al'Akir, el Señor del Viento, supuesto gobernante elemental del Muro Celeste. Son brutales y obstinados, y sus ambiciones, así como su poder, suponen cada día un peligro mayor.\r\n\r\nEl siguiente paso en tu aventura te llevará a la Aldea Shen'dar, al sur. Preséntate ante la condestable Aonda en cuanto llegues. El culto amenaza la aldea, y necesitarán toda la ayuda posible. Dile a Aonda que te envío yo.",
-      "state": "activa"
+      "state": "entregada"
     },
     {
       "id": 92473,
@@ -207,12 +207,16 @@
     "openChains": []
   },
   "stats": {
-    "level": 5,
-    "played": 4165,
-    "questsDone": 15,
+    "level": 6,
+    "played": 5263,
+    "questsDone": 17,
     "deaths": 0,
     "zones": [
-      "Isla de Zephras"
+      "Isla de Zephras",
+      "Laderas de Trabalomas",
+      "Montañas de Alterac",
+      "Dalaran",
+      "Ciudad de Ventormenta"
     ],
     "levelUps": [
       {
@@ -230,6 +234,10 @@
       {
         "level": 5,
         "played": 3536
+      },
+      {
+        "level": 6,
+        "played": 4411
       }
     ]
   }
