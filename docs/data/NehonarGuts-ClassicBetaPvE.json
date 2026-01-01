@@ -1,0 +1,96 @@
+{
+  "key": "NehonarGuts-ClassicBetaPvE",
+  "character": {
+    "key": "NehonarGuts-ClassicBetaPvE",
+    "name": "Nehonar Guts",
+    "epithet": "",
+    "race": "Humano",
+    "class": "Guerrero",
+    "voice": "",
+    "backstory": "",
+    "threads": null,
+    "motto": ""
+  },
+  "level": 12,
+  "realm": "Classic Beta PvE",
+  "stories": [],
+  "encargos": [
+    {
+      "id": 59,
+      "title": "Armadura de tela y cuero",
+      "giver": "Alguacil Dughan",
+      "zone": "Bosque de Elwynn",
+      "subzone": "Villadorada",
+      "objectives": "Entrega a Sara Timberlain el marcador de armaduras de Ventormenta.",
+      "original": "Tengo aquí una señal, un premio a tu habilidad y tu valor. Podrás cambiarla por una buena armadura.. Quiero que se la lleves a Sara Timberlain al Aserradero de la Vega del Este. Dale la señal y ella te forjará una armadura. Y cuando la recibas, Nehonar, úsala para defender Elwynn.\n\nEl Aserradero de la Vega del Este está más allá del puesto de vigilancia del guardia Thomas, al este.",
+      "state": "activa"
+    },
+    {
+      "id": 39,
+      "title": "Entrega el informe de Thomas",
+      "giver": "Guardia Thomas",
+      "zone": "Bosque de Elwynn",
+      "objectives": "Preséntate ante el alguacil Dughan en Villadorada.",
+      "original": "Habla al alguacil Dughan de la muerte de Malakai y Rolf y después infórmale de que no podrá contener a los murlocs del este de Elwynn con sus tropas.\n\nSé que no tenemos bastantes soldados, quizás Dughan pueda encontrar alguno más.",
+      "state": "entregada"
+    },
+    {
+      "id": 91733,
+      "title": "Aguas abajo",
+      "giver": "Ormin Pelford",
+      "zone": "Bosque de Elwynn",
+      "objectives": "Obtén el hacha empapada, la sierra empapada y la caja de herramientas empapada que han flotado río abajo desde el Aserradero de la Vega del Este y, cuando lo tengas todo, llévaselo a Ormin Pelford.",
+      "original": "Venía con cargamento de suministros del puesto comercial, pero mi carro volcó, ¡y todos los suministros acabaron en el río! Antes de poder siquiera agacharme a recoger, la corriente ya lo había arrastrado todo.\r\nCon tanto múrloc y tanto lobo que hay por ahí, me las voy a ver negras para recuperar los suministros yo solo. Tú que tienes pinta de saberte defender, ¿podrías ir a buscarlos?",
+      "state": "entregada"
+    },
+    {
+      "id": 1667,
+      "title": "Jack Dentomuerto",
+      "giver": "Alguacil Haggard",
+      "zone": "Bosque de Elwynn",
+      "subzone": "Aserradero de la Vega del Este",
+      "objectives": "Recupera la insignia de Haggar del campamento de Jack Dentomuerto y regresa con el alguacil Haggard.",
+      "original": "¿Te ha enviado Burlguard? Sí, tengo algunas armas de sobra, pero antes tengo una tarea para ti...\n\nHace algún tiempo, un villano Defias, Jack Dentomuerto, me engañó. Estaba oscuro y vestía un tabardo de Ventormenta, así que creí que era el alguacil Dughan. Dijo que necesitaba mi identificación de alguacil de Ventormenta, se la di y en cuanto la tuvo en sus manos salió corriendo antes de poder atraparle.\n\n¡Tráeme de vuelta mi identificación! Seguramente Jack Dentomuerto la tendrá guardado en su campamento del Sur.",
+      "state": "activa"
+    },
+    {
+      "id": 71,
+      "title": "Informa a Thomas",
+      "giver": "Cadáver de Rolf",
+      "zone": "Bosque de Elwynn",
+      "subzone": "Lago del Hito",
+      "objectives": "Entrega los medallones de Rolf y Malakai al guardia Thomas. Lo encontrarás en el puente oriental de Elwynn.",
+      "original": "Ahora que tienes los dos medallones, llévaselos al guardia Thomas al puente. Así sabrá que sus guardias murieron asesinados.",
+      "state": "entregada"
+    }
+  ],
+  "pending": {
+    "loose": [
+      "Aguas abajo"
+    ],
+    "openChains": [
+      [
+        "Descubre el destino de Rolf",
+        "Informa a Thomas",
+        "Entrega el informe de Thomas",
+        "Armadura de tela y cuero"
+      ]
+    ],
+    "awaitingBackstory": 1
+  },
+  "stats": {
+    "level": 12,
+    "played": 33676,
+    "questsDone": 8,
+    "deaths": 0,
+    "zones": [
+      "Bosque de Elwynn"
+    ],
+    "levelUps": [
+      {
+        "level": 12,
+        "played": 33051
+      }
+    ]
+  }
+}

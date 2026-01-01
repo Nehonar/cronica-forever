@@ -10,6 +10,15 @@
       "stories": 1
     },
     {
+      "key": "NehonarGuts-ClassicBetaPvE",
+      "name": "Nehonar Guts",
+      "race": "Humano",
+      "class": "Guerrero",
+      "level": 12,
+      "stories": 0,
+      "new": true
+    },
+    {
       "key": "NehonarLionheart-ClassicBetaPvE",
       "name": "Nehonar Lionhart",
       "epithet": "el de la Cantera",
@@ -28,5 +37,5 @@
       "stories": 3
     }
   ],
-  "updated": "6344d45d3bd077a5"
+  "updated": "4388c642b5811907"
 }
