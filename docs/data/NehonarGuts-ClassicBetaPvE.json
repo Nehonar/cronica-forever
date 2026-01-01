@@ -24,6 +24,75 @@
   },
   "encargos": [
     {
+      "id": 255,
+      "title": "Mercenarios",
+      "giver": "Magistrado Romonariz",
+      "zone": "Loch Modan",
+      "subzone": "Thelsamar",
+      "objectives": "El magistrado Romonariz de Thelsamar te ha contratado para matar a 4 ogros, 4 brutos y 4 gorilas Mo'grosh.",
+      "original": "¡Hemos esperado dos meses a que Forjaz nos conceda unos cuantos soldados para la defensa, y tardarán otros dos meses en llegar! Ya es bastante malo que la ciudad esté desprotegida, pero la excavación y la presa son muy vulnerables.\n\nParece que no tengo elección. Necesito mercenarios.\n\n¿Qué tal tú? Creo que lo harás bien, guerrero. Un grupo de ogros se ha instalado al noreste del lago. ¿Qué tal si reclutas a unos cuantos tipos y os ocupáis de esos ogros?",
+      "state": "activa"
+    },
+    {
+      "id": 86667,
+      "title": "Recogida de nieve",
+      "giver": "Grenhild Garfaoscura",
+      "zone": "Loch Modan",
+      "subzone": "Thelsamar",
+      "objectives": "Entrega un tarro de nieve a Norric Lochthane en su casa de la costa noroeste del lago.",
+      "original": "Mi viejo mentor, Norric, envió a un elemental menor con una extraña petición. ¡Necesita un tarro de nieve para sus asuntos chamánicos! Desconozco para qué lo va a usar, pero aprendí hace tiempo a no cuestionar sus métodos con respecto a la magia.\r\n\r\nEstoy demasiado ocupada estudiando los elementales de la zona, así que no puedo ayudarlo. Ve a la entrada del túnel en el Paso de la Puerta Sur, donde hay nieve todo el año. Recoge un poco en este tarro de cerámica y llévasela antes de que se derrita. El tarro debería conservar el frío.",
+      "state": "activa"
+    },
+    {
+      "id": 436,
+      "title": "La excavación de Vetaferro",
+      "giver": "Jern Cornamenta",
+      "zone": "Loch Modan",
+      "subzone": "Thelsamar",
+      "objectives": "Habla con el explorador Tallavil.",
+      "original": "El prospector Vetaferro dirige la excavación de unas antiguas ruinas al este del lago. Últimamente está haciendo pocos progresos, a pesar de todos los suministros que le hemos enviado.\n\nVetaferro es un enano honrado y tenaz que valora los resultados. Por eso sospecho que hay otros factores en su contra.\n\nVe a la Excavación de Vetaferro y habla con Magmar Tallavil. Él se encarga de los detalles de la excavación y sabrá a qué se debe el retraso en los trabajos.\n\nPara llegar a la excavación, rodea el extremo sur del lago y luego dirígete al este.",
+      "state": "activa"
+    },
+    {
+      "id": 256,
+      "title": "SE BUSCAN: Chok'sul",
+      "giver": "SE BUSCA",
+      "zone": "Loch Modan",
+      "subzone": "Thelsamar",
+      "objectives": "Mata a Chok'sul y lleva su cabeza al magistrado Romonariz a Thelsamar.",
+      "original": "Por orden del magistrado de Thelsamar:\n\nse busca muerto a Chok'sul, ogro culpable de dirigir los ataques contra la ciudad de Thelsamar, la Presa de las Tres Cabezas y la excavación.\n\nSe ofrece recompensa a quien presente al magistrado una prueba de la muerte de Chok'sul.\n\nFue visto por última vez en el campamento ogro situado al noreste de Loch Modan.",
+      "state": "activa"
+    },
+    {
+      "id": 86776,
+      "title": "Ingredientes para la forja",
+      "giver": "Morhan Cobrilengua",
+      "zone": "Loch Modan",
+      "subzone": "Thelsamar",
+      "objectives": "Llévale 10 lingotes de bronce a Morhan Cobrilengua.",
+      "original": "En Thelsamar se vive de maravilla, pero no tenemos todos los servicios de Forjaz. ¡Siempre me quedo sin bronce! ¡Necesito más si pretendo seguir fabricando herramientas, teteras y ollas!\r\n\r\nSe nota que tienes algo de experiencia en la forja. ¿Te importaría fundir unos lingotes de bronce para mí? ¡Te pagaré bien por ellos!",
+      "state": "activa"
+    },
+    {
+      "id": 418,
+      "title": "Morcillas de Thelsamar",
+      "giver": "Vidra Hogartufa",
+      "zone": "Loch Modan",
+      "subzone": "Pensión La Cebada",
+      "objectives": "Lleva 3 trozos de carne de oso, 3 tripas de jabalí y 3 porciones de icor de araña a Vidra Hogartufa, en Thelsamar.",
+      "original": "Aquí en Thelsamar siempre hay alguien que quiere comer, críos por todos lados, los obreros de la excavación y eso. Lo más conocido es la morcilla, ¿la has probado?\n\n¿No? Bueno, pues aquí hay que trabajar para comer, no creas que te libras porque seas guerrero.\n\nNecesito carne de oso, tripa de jabalí y un poco de icor de araña para darle sabor. ¡Tú trae eso y de cocinar me ocupo yo, Vidra!",
+      "state": "activa"
+    },
+    {
+      "id": 416,
+      "title": "Mata ratas",
+      "giver": "Montaraz Kadrell",
+      "zone": "Loch Modan",
+      "objectives": "Lleva 12 orejas de kobold al montaraz Kadrell a Thelsamar.",
+      "original": "Tenemos una infestación grave al oeste. Esos kobolds asquerosos se han instalado en las laderas. ¡Están cavando madrigueras y ensuciándolo todo!\n\nQueremos erradicarlos. Si los cazas y me traes sus orejas, puedes quedarte con su botín.\n\nLos encontrarás por toda la ladera al oeste de Thelsamar.",
+      "state": "activa"
+    },
+    {
       "id": 14,
       "title": "Las Milicias del Pueblo",
       "giver": "Gryan Mantorrecio",
@@ -388,7 +457,7 @@
   },
   "stats": {
     "level": 17,
-    "played": 87297,
+    "played": 89139,
     "questsDone": 43,
     "deaths": 8,
     "zones": [
