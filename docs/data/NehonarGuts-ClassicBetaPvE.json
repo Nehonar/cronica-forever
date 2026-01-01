@@ -53,7 +53,7 @@
       "subzone": "La Finca de Jansen",
       "objectives": "El granjero Furlbrow quiere que recuperes el reloj de bolsillo que dejó olvidado en el armario de su granja en la plantación de calabazas del Oeste.",
       "original": "¡Fue horrible! Verna me despertó cuando oyó jaleo en los campos. Estaban llenos de gamberros. Nos fuimos corriendo y olvidé recoger mi reloj de bolsillo. Me lo dio el padre de Verna el día de nuestra boda y es horrible saber que está en manos de esos ladrones. Dejé el reloj de bolsillo en el armario de la granja. Busca el campo de calabazas que está al Oeste... no tiene pérdida. ¡Si me lo devuelves te estaré muy agradecido!",
-      "state": "activa"
+      "state": "entregada"
     },
     {
       "id": 98423,
@@ -201,8 +201,7 @@
   ],
   "pending": {
     "loose": [
-      "Recompensas por los gnolls Zarparrío",
-      "SE BUSCA: Hogger"
+      "La reliquia olvidada"
     ],
     "openChains": [
       [
@@ -210,12 +209,12 @@
         "Estofado de los Páramos de Poniente"
       ]
     ],
-    "awaitingBackstory": 9
+    "awaitingBackstory": 11
   },
   "stats": {
     "level": 14,
-    "played": 54637,
-    "questsDone": 25,
+    "played": 56295,
+    "questsDone": 26,
     "deaths": 3,
     "zones": [
       "Bosque de Elwynn",
