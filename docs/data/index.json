@@ -10,6 +10,15 @@
       "stories": 1
     },
     {
+      "key": "NehonarChopper-ClassicBetaPvE",
+      "name": "Nehonar Chopper",
+      "race": "Elfo de la noche",
+      "class": "Druida",
+      "level": 1,
+      "stories": 0,
+      "new": true
+    },
+    {
       "key": "NehonarGuts-ClassicBetaPvE",
       "name": "Nehonar Guts",
       "race": "Humano",
@@ -37,5 +46,5 @@
       "stories": 3
     }
   ],
-  "updated": "d7a4acd0a5d72b26"
+  "updated": "94ab878b86393f8e"
 }

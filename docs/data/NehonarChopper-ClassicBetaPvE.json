@@ -1,0 +1,53 @@
+{
+  "key": "NehonarChopper-ClassicBetaPvE",
+  "character": {
+    "key": "NehonarChopper-ClassicBetaPvE",
+    "name": "Nehonar Chopper",
+    "epithet": "",
+    "race": "Elfo de la noche",
+    "class": "Druida",
+    "voice": "",
+    "backstory": "",
+    "threads": null,
+    "motto": ""
+  },
+  "level": 1,
+  "realm": "Classic Beta PvE",
+  "stories": [],
+  "encargos": [
+    {
+      "id": 458,
+      "title": "La protectora de los bosques",
+      "giver": "Melithar Corzocelada",
+      "zone": "Teldrassil",
+      "subzone": "Aldrassil",
+      "objectives": "Busca a la dríade Tarindrella.",
+      "original": "Me alegro de que hayas llegado, druida. El susurro de los espíritus del bosque me ha traído extrañas nuevas. \n\nLa misteriosa protectora de los bosques, Tarindrella, ha regresado a Cañada Umbría. Hacía años que la dríade no venía a los bosques de Kalimdor; su presencia aquí no presagia nada bueno. \n\nBusca a Tarindrella y averigua qué asuntos la han traído aquí. Uno de los centinelas la ha avistado al suroeste de Aldrassil.",
+      "state": "activa"
+    },
+    {
+      "id": 456,
+      "title": "El equilibrio de la naturaleza",
+      "giver": "Conservador Ilthalaine",
+      "zone": "Teldrassil",
+      "subzone": "Cañada Umbría",
+      "objectives": "Mata 7 sables de la noche y 4 jabalíes cardo jóvenes y ve a ver al conservador Ilthalaine.",
+      "original": "Saludos, Nehonar. Soy el conservador Ilthalaine. He venido a Cañada Umbría para asegurarme de que se mantiene el equilibrio de la naturaleza. \n\nEsta primavera ha llovido más de lo normal, lo que ha beneficiado mucho a algunas criaturas del bosque, pero ha perjudicado a otras. \n\nAhora hay demasiados sables de la noche y jabalíes cardo; la zona no puede alimentar a tantas bestias. Joven druida, reduce las poblaciones de jabalí cardo y sable de la noche para mantener la armonía de la naturaleza.",
+      "state": "activa"
+    }
+  ],
+  "pending": {
+    "loose": [],
+    "openChains": []
+  },
+  "stats": {
+    "level": 1,
+    "played": 141,
+    "questsDone": 0,
+    "deaths": 0,
+    "zones": [
+      "Teldrassil"
+    ],
+    "levelUps": []
+  }
+}
