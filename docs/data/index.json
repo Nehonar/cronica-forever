@@ -14,7 +14,7 @@
       "name": "Nehonar Banthalas",
       "race": "Cielonato de la Orden Eminente",
       "class": "Guerrero",
-      "level": 1,
+      "level": 5,
       "stories": 0,
       "new": true
     },
@@ -73,5 +73,5 @@
       "stories": 3
     }
   ],
-  "updated": "c692d2b2896a6e34"
+  "updated": "f10d22c5da670319"
 }

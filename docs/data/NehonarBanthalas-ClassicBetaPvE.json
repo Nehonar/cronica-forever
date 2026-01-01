@@ -11,21 +11,226 @@
     "threads": null,
     "motto": ""
   },
-  "level": 1,
+  "level": 5,
   "realm": "Classic Beta PvE",
   "stories": [],
+  "current": {
+    "zone": "Isla de Zephras",
+    "quests": 15,
+    "levelFrom": 1,
+    "levelTo": 5
+  },
+  "encargos": [
+    {
+      "id": 92544,
+      "title": "Maleantes Al'Aketh",
+      "giver": "Hanaa Brisanoche",
+      "zone": "Isla de Zephras",
+      "subzone": "Arboleda Thendal",
+      "objectives": "Mata a 6 brutos Al'Aketh, 4 neófitos Al'Aketh y a Malduko Crujenubes en la Arboleda Thendal.",
+      "original": "Una banda de rufianes del culto Al'Aketh se ha instalado cerca de las ruinas del templo que hay al suroeste, bajo las órdenes de un monstruo llamado Malduko Crujenubes. Seguro que los ha enviado aquí la suma sacerdotisa Lorthuna desde el Santuario de Akir para atacar a los viajeros y obligar a nuestra gente a unirse a su culto.\r\n\r\nTengo que quedarme aquí y alertar del peligro a quienes abandonen la arboleda, pero sería muy de agradecer que pudieras encargarte de esos cultores y su líder.",
+      "state": "activa"
+    },
+    {
+      "id": 96638,
+      "title": "El aventurero",
+      "giver": "Aetheen de los Vendavales",
+      "zone": "Isla de Zephras",
+      "subzone": "Thendal",
+      "objectives": "Habla con Raan Vientosalvaje cerca de la Aldea Shen'dar.",
+      "original": "Cada vez hay más aventureros como tú que buscan la gloria y la fortuna fuera de la Arboleda Thendal. Uno de ellos ha montado su campamento a las afueras de la Aldea Shen'dar, junto al camino que sale de la arboleda hacia el suroeste.\r\n\r\nBúscalo y averigua qué puedes aprender de él que te pueda servir en tus viajes.",
+      "state": "activa"
+    },
+    {
+      "id": 92472,
+      "title": "El paso siguiente",
+      "giver": "Aetheen de los Vendavales",
+      "zone": "Isla de Zephras",
+      "subzone": "Thendal",
+      "objectives": "Preséntate ante la condestable Aonda en la Aldea Shen'dar.",
+      "original": "El culto Al'Aketh supone una de las amenazas más extendidas por toda la Isla de Zephras. Son fanáticos religiosos que rinden culto a Al'Akir, el Señor del Viento, supuesto gobernante elemental del Muro Celeste. Son brutales y obstinados, y sus ambiciones, así como su poder, suponen cada día un peligro mayor.\r\n\r\nEl siguiente paso en tu aventura te llevará a la Aldea Shen'dar, al sur. Preséntate ante la condestable Aonda en cuanto llegues. El culto amenaza la aldea, y necesitarán toda la ayuda posible. Dile a Aonda que te envío yo.",
+      "state": "activa"
+    },
+    {
+      "id": 92473,
+      "title": "Invasión agresiva",
+      "giver": "Valreaa Valleviento",
+      "zone": "Isla de Zephras",
+      "subzone": "Thendal",
+      "objectives": "Reúne 6 zarpas de ursera escuálido en la Arboleda Thendal.",
+      "original": "El cubil de urseras que hay al suroeste se está convirtiendo en un verdadero problema. La semana pasada, los forestales tuvieron que matar a un ursera adolescente que se había acercado demasiado al pueblo y había intentado atacar a un niño que jugaba cerca del árbol anciano que hay en el centro de la aldea.\r\n\r\nTuvimos suerte, y el niño logró sobrevivir. Por culpa del hambre y la desesperación, esas bestias son demasiado peligrosas como para dejarlas libres. Ve al sur y acaba con los urseras más escuálidos. Tráeme sus garras como prueba cuando hayas terminado.",
+      "state": "entregada"
+    },
+    {
+      "id": 92470,
+      "title": "Matriarca funesta",
+      "giver": "Aetheen de los Vendavales",
+      "zone": "Isla de Zephras",
+      "subzone": "Thendal",
+      "objectives": "Mata a 8 urseras carroñeros y recoge la cabeza de la madre del cubil, Urs'anah, en la Arboleda Thendal.",
+      "original": "Rorian te ha informado de que te he estado observando. Ahora te ofrezco una prueba de determinación. Pero te advierto que te llevará a un gran peligro.\r\n\r\nVe a las cuevas del oeste. Reduce el número de ursera que hay allí y encuentra a su matriarca, a la que los forestales llaman \"Urs'anah\". Acaba con ella y tráeme pruebas de su muerte. Cuando lo hayas hecho, habrás dado un paso importante en tu camino.",
+      "state": "entregada"
+    },
+    {
+      "id": 92471,
+      "title": "Aetheen de los Vendavales",
+      "giver": "Rorian el Buscadía",
+      "zone": "Isla de Zephras",
+      "subzone": "Thendal",
+      "objectives": "Habla con Aetheen de los Vendavales en la Arboleda Thendal.",
+      "original": "Puede que no te hayas dado cuenta, pero todo lo que has hecho hasta ahora ha sido una especie de prueba de lo que te espera. La isla es enorme, y Zephras necesita jóvenes con espíritu aventurero como tú queremos sobrevivir a las pruebas que afronta nuestro pueblo.\r\n\r\nAetheen de los Vendavales es una de las líderes de nuestro pueblo en la Isla de Zephras. Te ha estado observando y tiene una misión para ti. Habla con ella si quieres más información.",
+      "state": "entregada"
+    },
+    {
+      "id": 92469,
+      "title": "Vuelve con Rorian",
+      "giver": "Yala Cazavientos",
+      "zone": "Isla de Zephras",
+      "subzone": "Arboleda Thendal",
+      "objectives": "Informa de la presencia de los Al'Aketh a Rorian el Buscadía en la Arboleda Thendal.",
+      "original": "Ya has ayudado suficiente aquí, guerrero, yo me encargaré del resto.\r\n\r\nVuelve a la aldea e informa a Rorian sobre los cultores. No le va a hacer ninguna gracia.",
+      "state": "entregada"
+    },
+    {
+      "id": 92465,
+      "title": "Agitadores",
+      "giver": "Yala Cazavientos",
+      "zone": "Isla de Zephras",
+      "subzone": "Arboleda Thendal",
+      "objectives": "Mata a 6 vientos arremolinados y 7 convertidos Al'Aketh en la Arboleda Thendal.",
+      "original": "El culto Al'Aketh es una lacra para esta isla. Seguro que esos fanáticos son los responsables de enfurecer a las ánimas de viento.\r\n\r\nEs una pena, pero tendremos que disipar estos vientos arremolinados antes de que hagan daño a alguien. También debemos dejar claro al culto que no son bienvenidos en la arboleda.\r\n\r\n¿Me prestarás tu ayuda, guerrero?",
+      "state": "entregada"
+    },
+    {
+      "id": 94414,
+      "title": "Los anclajes de Zephras",
+      "giver": "Halaan Ojo de Halcón",
+      "zone": "Isla de Zephras",
+      "subzone": "Thendal",
+      "objectives": "Habla con Halaan Ojo de Halcón y toma prestado su don para ver el pilón de anclaje en la distancia.",
+      "original": "Saludos, joven Nehonar. A menudo vengo aquí a contemplar el antiguo pilón de anclaje. Estos regalos de los espíritus de los vientos sostienen y mantienen a flote nuestra isla, aunque últimamente su magia se ha vuelto inestable.\r\n\r\nSin embargo, no veo ningún daño. Su esplendor sigue impecable.\r\n\r\nSi quieres, puedo prestarte mi don para que los contemples tú mismo.",
+      "state": "entregada"
+    },
+    {
+      "id": 92474,
+      "title": "Caer con elegancia",
+      "giver": "Myriaal Brumapaso",
+      "zone": "Isla de Zephras",
+      "subzone": "Thendal",
+      "objectives": "Salta desde lo alto de la torre de la Arboleda Thendal y utiliza tu facultad Caminar sobre el aire para frenar tu caída.",
+      "original": "¡Hola, Nehonar! ¿Te apetece jugar a un juego?\r\n\r\nSolo tienes que subirte a esa cornisa... ¡y saltar! Usa tu capacidad innata de caminar por el aire para frenar tu caída y ver lo lejos que puedes llegar.\r\n\r\nMe he inventado las reglas, y, en realidad, los puntos no importan, pero ganarás más si consigues aterrizar justo delante de Rorian el Buscadía. ¡Menuda sorpresa se va a llevar! Seguro que no le hará gracia, ¡pero yo me echaré unas buenas risas si consigues ponerlo de los nervios! ¡Ja!",
+      "state": "entregada"
+    },
+    {
+      "id": 92597,
+      "title": "Lectura de líneas Ley",
+      "giver": "Falorne Trombaviento",
+      "zone": "Isla de Zephras",
+      "subzone": "Thendal",
+      "objectives": "Utiliza tu facultad racial Leer línea Ley en la Arboleda Thendal.",
+      "original": "Aquí, en el plano elemental, obtenemos gran parte de nuestro poder Arcano de las líneas Ley que aún fluyen bajo el suelo, aunque últimamente han comenzado a aflorar a la superficie, lo que nos proporciona un acceso más directo y poderoso a esas energías Arcanas latentes.\r\n\r\nVe a las piedras verticales que hay al noreste; justo debajo pasa una línea Ley. Utiliza tu don natural y absorbe su energía.",
+      "state": "entregada"
+    },
+    {
+      "id": 93552,
+      "title": "Cosecha de piedras de viento",
+      "giver": "Dalia la Coleccionista",
+      "zone": "Isla de Zephras",
+      "subzone": "Thendal",
+      "objectives": "Reúne 15 cúmulos de piedras de viento de las piedras de viento en bruto en la Arboleda Thendal.",
+      "original": "Las piedras de viento son un recurso de vital importancia en la Isla de Zephras, ya que contienen la energía pura y concentrada del propio viento. Los elementales de viento que vivían con nosotros en la isla desaparecieron hace unos años, y, desde entonces, la magia que sustenta Zephras se ha ido desvaneciendo poco a poco. Aunque tienen sus limitaciones, las piedras de viento siguen siendo una fuente de energía fiable e increíblemente valiosa.\r\n\r\n¿Podrías traerme algunas? Hay piedras en bruto esparcidas por toda la arboleda.",
+      "state": "entregada"
+    },
+    {
+      "id": 92464,
+      "title": "Agitación elemental",
+      "giver": "Rorian el Buscadía",
+      "zone": "Isla de Zephras",
+      "subzone": "Thendal",
+      "objectives": "Habla con Yala Cazavientos en la Arboleda Thendal.",
+      "original": "Desde que nos abandonaron nuestros guardianes elementales, parece que no salimos de un lío para meternos en otro. Ahora nos toca lidiar con los elementales de viento cerca de las piedras verticales al noreste.\r\n\r\nA diferencia de los espíritus de viento que antaño vivían aquí, estas manifestaciones son criaturas más simples que no tienen consciencia propia, pero responden a las fuerzas, emociones e intenciones de las criaturas que las rodean.\r\n\r\nHe enviado a mi aprendiz, Yala Cazavientos, a observarlos. Búscala y descubre qué ha averiguado.",
+      "state": "entregada"
+    },
+    {
+      "id": 92532,
+      "title": "La senda del guerrero",
+      "giver": "Rorian el Buscadía",
+      "zone": "Isla de Zephras",
+      "subzone": "Thendal",
+      "objectives": "Lee la nota arrugada que te han entregado y luego busca a la maestra del acero Ren en el interior de la torre de vigilancia de Thendal.",
+      "original": "Mientras estabas fuera, la maestra del acero Ren, nuestra instructora de guerreros, nos pidió que fueras a verla en cuanto volvieras. También te dejó esta nota.\r\n\r\nÉchale un vistazo y ve a buscar a la maestra del acero Ren al interior de la torre de vigilancia de la aldea.",
+      "state": "entregada"
+    },
+    {
+      "id": 92463,
+      "title": "La reina mosca de cirro",
+      "giver": "Elatrell Plumaligera",
+      "zone": "Isla de Zephras",
+      "subzone": "Thendal",
+      "objectives": "Destruye a la reina mosca de cirro en la Arboleda Thendal.",
+      "original": "Si el bosque está tan plagado de insectos como parece, no bastará con matar a los zánganos.\r\n\r\nAdéntrate todo cuanto puedas y encuentra a su reina. Estará cerca de la colmena, rodeada de soldados más grandes y peligrosos, así que ten cuidado.\r\n\r\nAcaba con ella y vuelve aquí cuando termines. Eso nos quitará un problema del que preocuparnos.",
+      "state": "entregada"
+    },
+    {
+      "id": 92462,
+      "title": "Investigación de plagas",
+      "giver": "Elatrell Plumaligera",
+      "zone": "Isla de Zephras",
+      "subzone": "Thendal",
+      "objectives": "Mata a 8 moscas de cirro molestas en la Arboleda Thendal.",
+      "original": "Uno de nuestros forestales nos ha informado sobre una plaga de moscas de cirro aquí, en la Arboleda Thendal. \r\n\r\nEsos bichos pueden ser peligrosos si su enjambre crece demasiado, así que necesito que vayas al extremo este de la arboleda y acabas con tantos como puedas.",
+      "state": "entregada"
+    },
+    {
+      "id": 92461,
+      "title": "Armonía en el equilibrio",
+      "giver": "Rorian el Buscadía",
+      "zone": "Isla de Zephras",
+      "subzone": "Thendal",
+      "objectives": "Mata a 8 vuldren juveniles en la Arboleda Thendal.",
+      "original": "Nuestro pueblo vive tiempos de gran incertidumbre. Nos enfrentamos a retos sin precedentes que requieren soluciones audaces, pero también debemos lidiar con problemas cotidianos en la Arboleda Thendal. Problemas como el aumento insostenible de la población de vuldren, por ejemplo.\r\n\r\nLos vuldren son una parte fundamental de nuestro ecosistema. Sin embargo, debemos corregir los desequilibrios para mantener la delicada armonía que comparten todas las criaturas de la Arboleda Thendal.\r\n\r\nVe al este y caza algunos vuldren de la zona.",
+      "state": "entregada"
+    },
+    {
+      "id": 92460,
+      "title": "Edad adulta",
+      "giver": "Ailee Corazón Lejano",
+      "zone": "Isla de Zephras",
+      "subzone": "Thendal",
+      "objectives": "Habla con Rorian el Buscadía en la Arboleda Thendal.",
+      "original": "¡Ojalá pudieras ver cómo te hacen chiribitas los ojos, listos para la aventura! Toda ayuda es bien recibida en Thendal, y tu llegada es más que bienvenida. Me imagino que estarás nervioso por lo que se avecina. Al fin y al cabo, solo se alcanza la edad adulta una vez en la vida.\r\n\r\nVe a buscar a nuestro líder, Rorian el Buscadía. Está junto al árbol del Gran Padre, justo al oeste de aquí. Él te ayudará a comenzar tu viaje.",
+      "state": "entregada"
+    }
+  ],
   "pending": {
     "loose": [],
     "openChains": []
   },
   "stats": {
-    "level": 1,
-    "played": 776,
-    "questsDone": 0,
+    "level": 5,
+    "played": 4165,
+    "questsDone": 15,
     "deaths": 0,
     "zones": [
       "Isla de Zephras"
     ],
-    "levelUps": []
+    "levelUps": [
+      {
+        "level": 2,
+        "played": 1822
+      },
+      {
+        "level": 3,
+        "played": 2202
+      },
+      {
+        "level": 4,
+        "played": 2896
+      },
+      {
+        "level": 5,
+        "played": 3536
+      }
+    ]
   }
 }
