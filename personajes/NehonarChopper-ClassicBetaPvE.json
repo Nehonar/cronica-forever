@@ -1,11 +1,16 @@
 {
   "key": "NehonarChopper-ClassicBetaPvE",
   "name": "Nehonar Chopper",
-  "epithet": "",
+  "epithet": "el Silencioso",
   "race": "Elfo de la noche",
   "class": "Druida",
-  "voice": "",
-  "backstory": "",
-  "threads": null,
-  "motto": ""
+  "voice": "En primera persona, con frases cortas y pausadas; habla poco, observa mucho y compara lo que ve con los animales y el bosque. Su tono es sereno, pero se vuelve afilado cuando algo le parece injusto o carente de sentido.",
+  "backstory": "Nehonar creció bajo las ramas de Teldrassil, el gran árbol que los kaldorei alzaron como nuevo hogar. De niño pasaba más tiempo entre la maleza que junto a los suyos: imitaba el paso cauteloso de los felinos, el silencio de los búhos y la paciencia de las raíces. Allí, lejos del ruido, encontraba una calma que no hallaba en ningún otro sitio.\n\nNo pasó desapercibido. Los druidas, que saben reconocer a quien escucha el pulso del bosque, lo observaron durante años antes de acercarse a él. Cuando por fin lo hicieron, no le ofrecieron un camino de gloria, sino de disciplina: aprender a canalizar lo que en él brotaba de forma natural, a convertir el instinto en voluntad y la voluntad en protección. Lo formaron para ser un guardián digno del equilibrio, capaz de defenderlo con garra y con raíz cuando las palabras no bastaran.\n\nNehonar habla poco. Los animales no necesitan palabras, y él aprendió de ellos antes que de nadie. Pero su silencio no es indiferencia: le hierve la sangre ante la injusticia y le incomoda obedecer sin entender. No da un paso porque sí; necesita estar convencido de que lo que hace es correcto, y hará las preguntas que haga falta hasta estarlo.\n\nTerminada su instrucción, sus maestros le dijeron lo único que quedaba por decir: que la conexión de cada druida con la naturaleza es propia, y que su camino solo se revela mientras se recorre. Nadie podía enseñarle el resto. Por eso Nehonar ha dejado atrás la seguridad de lo conocido para buscar fuera lo que ninguna lección podía darle: su lugar en el gran equilibrio del mundo.\n\nAhora mira el horizonte más allá de Teldrassil con la misma atención con que de niño observaba a un ciervo beber: sin prisa, sin juicio, esperando entender.",
+  "threads": [
+    "Descubrir qué vínculo con la naturaleza le habla con más fuerza.",
+    "Encontrar una causa en la que crea de verdad antes de entregarle su poder.",
+    "Comprobar si el equilibrio que busca existe más allá de Teldrassil.",
+    "Plantar cara a una injusticia que otros prefieren ignorar."
+  ],
+  "motto": "El camino se revela al andarlo."
 }

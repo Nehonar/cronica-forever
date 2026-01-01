@@ -1,22 +1,13 @@
 {
   "characters": [
     {
-      "key": "Nehonar-ClassicBetaPvP",
-      "name": "Nehonar",
-      "epithet": "el de la Cantera",
-      "race": "Humano",
-      "class": "Paladín",
-      "level": 2,
-      "stories": 1
-    },
-    {
       "key": "NehonarChopper-ClassicBetaPvE",
       "name": "Nehonar Chopper",
+      "epithet": "el Silencioso",
       "race": "Elfo de la noche",
       "class": "Druida",
       "level": 1,
-      "stories": 0,
-      "new": true
+      "stories": 0
     },
     {
       "key": "NehonarGuts-ClassicBetaPvE",
@@ -37,6 +28,15 @@
       "stories": 13
     },
     {
+      "key": "Nehonar-ClassicBetaPvP",
+      "name": "Nehonar",
+      "epithet": "el de la Cantera",
+      "race": "Humano",
+      "class": "Paladín",
+      "level": 2,
+      "stories": 1
+    },
+    {
       "key": "Tobias-Demo",
       "name": "Tobias Brenn",
       "epithet": "El hijo del molinero",
@@ -46,5 +46,5 @@
       "stories": 3
     }
   ],
-  "updated": "94ab878b86393f8e"
+  "updated": "a034a11fa426c1f3"
 }

@@ -3,13 +3,18 @@
   "character": {
     "key": "NehonarChopper-ClassicBetaPvE",
     "name": "Nehonar Chopper",
-    "epithet": "",
+    "epithet": "el Silencioso",
     "race": "Elfo de la noche",
     "class": "Druida",
-    "voice": "",
-    "backstory": "",
-    "threads": null,
-    "motto": ""
+    "voice": "En primera persona, con frases cortas y pausadas; habla poco, observa mucho y compara lo que ve con los animales y el bosque. Su tono es sereno, pero se vuelve afilado cuando algo le parece injusto o carente de sentido.",
+    "backstory": "Nehonar creció bajo las ramas de Teldrassil, el gran árbol que los kaldorei alzaron como nuevo hogar. De niño pasaba más tiempo entre la maleza que junto a los suyos: imitaba el paso cauteloso de los felinos, el silencio de los búhos y la paciencia de las raíces. Allí, lejos del ruido, encontraba una calma que no hallaba en ningún otro sitio.\n\nNo pasó desapercibido. Los druidas, que saben reconocer a quien escucha el pulso del bosque, lo observaron durante años antes de acercarse a él. Cuando por fin lo hicieron, no le ofrecieron un camino de gloria, sino de disciplina: aprender a canalizar lo que en él brotaba de forma natural, a convertir el instinto en voluntad y la voluntad en protección. Lo formaron para ser un guardián digno del equilibrio, capaz de defenderlo con garra y con raíz cuando las palabras no bastaran.\n\nNehonar habla poco. Los animales no necesitan palabras, y él aprendió de ellos antes que de nadie. Pero su silencio no es indiferencia: le hierve la sangre ante la injusticia y le incomoda obedecer sin entender. No da un paso porque sí; necesita estar convencido de que lo que hace es correcto, y hará las preguntas que haga falta hasta estarlo.\n\nTerminada su instrucción, sus maestros le dijeron lo único que quedaba por decir: que la conexión de cada druida con la naturaleza es propia, y que su camino solo se revela mientras se recorre. Nadie podía enseñarle el resto. Por eso Nehonar ha dejado atrás la seguridad de lo conocido para buscar fuera lo que ninguna lección podía darle: su lugar en el gran equilibrio del mundo.\n\nAhora mira el horizonte más allá de Teldrassil con la misma atención con que de niño observaba a un ciervo beber: sin prisa, sin juicio, esperando entender.",
+    "threads": [
+      "Descubrir qué vínculo con la naturaleza le habla con más fuerza.",
+      "Encontrar una causa en la que crea de verdad antes de entregarle su poder.",
+      "Comprobar si el equilibrio que busca existe más allá de Teldrassil.",
+      "Plantar cara a una injusticia que otros prefieren ignorar."
+    ],
+    "motto": "El camino se revela al andarlo."
   },
   "level": 1,
   "realm": "Classic Beta PvE",
@@ -23,6 +28,8 @@
       "subzone": "Aldrassil",
       "objectives": "Busca a la dríade Tarindrella.",
       "original": "Me alegro de que hayas llegado, druida. El susurro de los espíritus del bosque me ha traído extrañas nuevas. \n\nLa misteriosa protectora de los bosques, Tarindrella, ha regresado a Cañada Umbría. Hacía años que la dríade no venía a los bosques de Kalimdor; su presencia aquí no presagia nada bueno. \n\nBusca a Tarindrella y averigua qué asuntos la han traído aquí. Uno de los centinelas la ha avistado al suroeste de Aldrassil.",
+      "heading": "Un susurro bajo Aldrassil",
+      "text": "Melithar Corzocelada lo recibió en Aldrassil con un gesto breve, como quien llevaba tiempo esperando.\n\n—Me alegro de que hayas llegado, druida. Los espíritus del bosque me han susurrado extrañas nuevas.\n\nNehonar guardó silencio y escuchó. La misteriosa protectora de los bosques, la dríade Tarindrella, había regresado a Cañada Umbría. Hacía años que no pisaba los bosques de Kalimdor, y Melithar no lo tomaba por buena señal.\n\n—Búscala y averigua qué asuntos la han traído. Uno de los centinelas la vio al suroeste de Aldrassil.\n\nNehonar pensó en los ciervos que vuelven a un claro abandonado: nunca lo hacen sin motivo. Algo había cambiado en el bosque, y no bastaba con temerlo. Había que entenderlo.\n\n—¿Qué busca? —preguntó.\n\n—Eso es lo que debes descubrir.\n\nAsintió y miró hacia el suroeste.",
       "state": "activa"
     },
     {
@@ -33,6 +40,8 @@
       "subzone": "Cañada Umbría",
       "objectives": "Mata 7 sables de la noche y 4 jabalíes cardo jóvenes y ve a ver al conservador Ilthalaine.",
       "original": "Saludos, Nehonar. Soy el conservador Ilthalaine. He venido a Cañada Umbría para asegurarme de que se mantiene el equilibrio de la naturaleza. \n\nEsta primavera ha llovido más de lo normal, lo que ha beneficiado mucho a algunas criaturas del bosque, pero ha perjudicado a otras. \n\nAhora hay demasiados sables de la noche y jabalíes cardo; la zona no puede alimentar a tantas bestias. Joven druida, reduce las poblaciones de jabalí cardo y sable de la noche para mantener la armonía de la naturaleza.",
+      "heading": "Lo que trajo la lluvia",
+      "text": "En Cañada Umbría, el conservador Ilthalaine esperaba a Nehonar con la calma de quien vigila un estanque. Le habló de la primavera: había llovido más de lo normal, y el bosque no había repartido esa abundancia por igual.\n\n—Ahora hay demasiados sables de la noche y jabalíes cardo. La zona no puede alimentar a tantas bestias.\n\nNehonar guardó silencio. Había crecido imitando el paso de esos felinos. Darles caza no le parecía un acto pequeño.\n\n—¿Y si el bosque se corrige solo? —preguntó al fin.\n\n—Joven druida, reduce sus poblaciones. Así se mantiene la armonía de la naturaleza.\n\nNehonar miró hacia la maleza. Una manada que crece sin freno acaba devorando su propio refugio.\n\nTendría que adentrarse en la cañada, cazar sables de la noche y jabalíes cardo jóvenes, y volver después junto a Ilthalaine.",
       "state": "activa"
     }
   ],
