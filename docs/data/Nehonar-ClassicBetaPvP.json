@@ -18,10 +18,9 @@
   },
   "level": 2,
   "realm": "Classic Beta PvP",
-  "updated": "2026-10-08T03:17:13Z",
   "stories": [
     {
-      "id": "cadena-5261-33",
+      "id": "639f42fb9bef",
       "kind": "cadena",
       "zone": "Bosque de Elwynn",
       "subzones": [
@@ -43,10 +42,7 @@
         }
       ],
       "levelFrom": 1,
-      "levelTo": 2,
-      "start": 1791233283,
-      "end": 1791234422,
-      "created": "2026-10-05T21:17:45Z"
+      "levelTo": 2
     }
   ],
   "encargos": [
@@ -60,9 +56,7 @@
       "original": "Hace poco llegó una banda de maleantes a Villanorte. Se hacen llamar la Hermandad Defias; se les ha visto cruzando el río hacia el este.\n\nNo sé qué están haciendo, ¡pero seguro que no es nada bueno! Tráeme sus pañuelos y te daré un arma como recompensa.",
       "heading": "Pañuelos rojos al otro lado",
       "text": "Cerca de la Abadía de Villanorte, el ayudante del alguacil Willem le hizo un gesto para que se acercara.\n\n—Hace poco llegó una banda de maleantes a Villanorte —dijo en voz baja—. Se hacen llamar la Hermandad Defias. Los han visto cruzar el río hacia el este. No sé qué traman, ¡pero seguro que no es nada bueno!\n\nNehonar asintió. Él tampoco lo sabía, pero quien llega a escondidas rara vez viene a echar una mano con la cosecha.\n\n—Tráeme sus pañuelos y te daré un arma como recompensa.\n\n«Un arma por unos trapos», pensó Nehonar. «En los muelles me pagaban menos por cargar más». Aun así, no fue la paga lo que le hizo ajustarse el cinturón. Alguien había pedido ayuda, y con eso le bastaba. Se volvió hacia el este, buscando el río.",
-      "acceptT": 1791235429,
-      "state": "activa",
-      "narrated": "2026-10-05T21:24:43Z"
+      "state": "activa"
     },
     {
       "id": 33,
@@ -74,9 +68,7 @@
       "original": "¡Condenados lobos Fauces de Madera! Pero me gustan los filetes de lobo, la verdad. Tráeme carne dura de lobo y te la cambiaré por algo que te será útil.\n\nConseguirás la carne de los lobos y lobeznos Fauces de Madera que andan por la campiña de Villanorte.",
       "heading": "Filetes de lobo para Eagan",
       "text": "Eagan Desollapelambres refunfuñaba junto a la Abadía de Villanorte cuando Nehonar pasó por su lado.\n\n—¡Condenados lobos Fauces de Madera! —soltó, y enseguida torció el gesto en algo parecido a una sonrisa—. Aunque, la verdad, los filetes de lobo me gustan.\n\nEl trato era sencillo: carne dura de lobo a cambio de algo que le sería útil. La encontraría en los lobos y lobeznos Fauces de Madera que rondaban la campiña de Villanorte.\n\nNehonar asintió. Nadie le pedía salvar el reino, solo llenar una despensa, y aun así no supo decir que no. Pensó que entre cargar fardos en los muelles y cargar carne de lobo no había tanta diferencia. Los fardos, eso sí, no mordían.\n\n—Tráemela aquí cuando la tengas —añadió Eagan.\n\nPero Nehonar ya miraba hacia la campiña.",
-      "acceptT": 1791233543,
-      "state": "entregada",
-      "narrated": "2026-10-05T20:57:18Z"
+      "state": "entregada"
     },
     {
       "id": 5261,
@@ -86,7 +78,6 @@
       "subzone": "Valle de Villanorte",
       "objectives": "Habla con Eagan Desollapieles.",
       "original": "Eagan Desollapieles anda buscando a alquien para cazar lobos. Me alegro, porque últimamente hay muchos más lobos de lo normal en Valle de Villanorte.\n\nSi te interesa, ve a hablar con Eagan; está a la izquierda de la abadía.",
-      "acceptT": 1791233283,
       "state": "entregada"
     },
     {
@@ -99,9 +90,7 @@
       "original": "Nehonar, lo primero que tienes que hacer es limpiar; un clan de kobolds ha invadido los bosques del norte. Ve y liquida a todos los kobolds que encuentres; si reducimos sus filas podremos echarlos de Villanorte.",
       "heading": "Lo primero, limpiar",
       "text": "El alguacil McBride no se anduvo con rodeos. Miró a Nehonar de arriba abajo, como quien calcula cuánto peso aguanta una mula, y fue al grano.\n\n—Lo primero que tienes que hacer es limpiar. Un clan de kóbolds ha invadido los bosques del norte.\n\nLe explicó que debía acabar con cuantos encontrara. Si conseguían reducir sus filas, podrían echarlos de Villanorte.\n\nNehonar asintió. «Limpiar», pensó, y casi se le escapó una sonrisa. Había pasado media vida quitando escombro de la cantera y fardos de los muelles, así que aquello sonaba a oficio conocido. La diferencia era que este escombro mordía.\n\nNo le dijo a McBride que le alegraba que alguien le encargara algo de verdad. Se ajustó el escudo al brazo y echó a andar hacia los bosques del norte.",
-      "acceptT": 1791233120,
-      "state": "activa",
-      "narrated": "2026-10-05T20:57:29Z"
+      "state": "activa"
     },
     {
       "id": 783,
@@ -111,7 +100,6 @@
       "subzone": "Valle de Villanorte",
       "objectives": "Habla con el alguacil McBride.",
       "original": "Espero que vengas con ganas, paladín, porque aquí en Villanorte hay mucho que hacer.\n\nY no me refiero a trabajar la tierra.\n\nLos guardias de Ventormenta no dan abasto, ahora que muchos de nosotros están lejos y hay tantas amenazas. Por eso estamos reclutando a quien esté dispuesto a defender su tierra. Y a su alianza.\n\nSi vienes a luchar, habla con mi superior, el mariscal McBride. Está ahí atrás, en la abadía.",
-      "acceptT": 1791233097,
       "state": "entregada"
     }
   ],
@@ -134,11 +122,8 @@
     ],
     "levelUps": [
       {
-        "level": 2,
-        "t": 1791234061
+        "level": 2
       }
-    ],
-    "firstSeen": 1791232070,
-    "lastSeen": 1791235429
+    ]
   }
 }

@@ -18,10 +18,9 @@
   },
   "level": 16,
   "realm": "Classic Beta PvE",
-  "updated": "2026-10-08T03:17:13Z",
   "stories": [
     {
-      "id": "sueltas-91777-91724-33-91741",
+      "id": "a237acfa200a",
       "kind": "sueltas",
       "zone": "Bosque de Elwynn",
       "subzones": [
@@ -54,13 +53,10 @@
       ],
       "levelFrom": 10,
       "levelTo": 3,
-      "deaths": 1,
-      "start": 1791258598,
-      "end": 1791263307,
-      "created": "2026-10-06T05:46:06Z"
+      "deaths": 1
     },
     {
-      "id": "sueltas-92124",
+      "id": "ce5e3856628c",
       "kind": "sueltas",
       "zone": "Bosque de Elwynn",
       "subzones": [
@@ -77,13 +73,10 @@
         }
       ],
       "levelFrom": 3,
-      "levelTo": 3,
-      "start": 1791263309,
-      "end": 1791263313,
-      "created": "2026-10-06T07:56:43Z"
+      "levelTo": 3
     },
     {
-      "id": "cadena-91743-91745-91752",
+      "id": "e939b269d1ab",
       "kind": "cadena",
       "zone": "Bosque de Elwynn",
       "subzones": [
@@ -111,13 +104,10 @@
         }
       ],
       "levelFrom": 3,
-      "levelTo": 5,
-      "start": 1791263317,
-      "end": 1791265371,
-      "created": "2026-10-06T05:46:21Z"
+      "levelTo": 5
     },
     {
-      "id": "cadena-6181-6281-6261-6285",
+      "id": "4fc7be987eb9",
       "kind": "cadena",
       "zone": "Torre del Centinela",
       "subzones": [
@@ -151,13 +141,10 @@
         }
       ],
       "levelFrom": 13,
-      "levelTo": 14,
-      "start": 1791278128,
-      "end": 1791283223,
-      "created": "2026-10-06T11:48:12Z"
+      "levelTo": 14
     },
     {
-      "id": "sueltas-64-36-151-38",
+      "id": "7eafa8ef3874",
       "kind": "sueltas",
       "zone": "Páramos de Poniente",
       "subzones": [
@@ -191,13 +178,10 @@
       ],
       "levelFrom": 13,
       "levelTo": 14,
-      "deaths": 2,
-      "start": 1791272662,
-      "end": 1791285098,
-      "created": "2026-10-06T11:48:27Z"
+      "deaths": 2
     },
     {
-      "id": "sueltas-22",
+      "id": "ec7453b016ce",
       "kind": "sueltas",
       "zone": "Páramos de Poniente",
       "subzones": [
@@ -214,13 +198,10 @@
         }
       ],
       "levelFrom": 13,
-      "levelTo": 14,
-      "start": 1791273278,
-      "end": 1791286341,
-      "created": "2026-10-06T11:48:43Z"
+      "levelTo": 14
     },
     {
-      "id": "sueltas-399",
+      "id": "0a132d4309b1",
       "kind": "sueltas",
       "zone": "Ciudad de Ventormenta",
       "subzones": [
@@ -236,13 +217,10 @@
         }
       ],
       "levelFrom": 14,
-      "levelTo": 14,
-      "start": 1791286653,
-      "end": 1791286653,
-      "created": "2026-10-06T13:34:11Z"
+      "levelTo": 14
     },
     {
-      "id": "sueltas-92742",
+      "id": "277d9c805a91",
       "kind": "sueltas",
       "zone": "Páramos de Poniente",
       "subzones": [
@@ -260,13 +238,10 @@
       ],
       "levelFrom": 13,
       "levelTo": 15,
-      "deaths": 1,
-      "start": 1791278201,
-      "end": 1791292726,
-      "created": "2026-10-06T14:05:19Z"
+      "deaths": 1
     },
     {
-      "id": "sueltas-102",
+      "id": "a5b6af0abf80",
       "kind": "sueltas",
       "zone": "Torre del Centinela",
       "title": "Los que decidieron quedarse",
@@ -280,13 +255,10 @@
         }
       ],
       "levelFrom": 13,
-      "levelTo": 15,
-      "start": 1791278121,
-      "end": 1791293578,
-      "created": "2026-10-06T14:05:32Z"
+      "levelTo": 15
     },
     {
-      "id": "sueltas-9-92909-153",
+      "id": "ae8e3a8d60f5",
       "kind": "sueltas",
       "zone": "Páramos de Poniente",
       "subzones": [
@@ -315,10 +287,7 @@
       ],
       "levelFrom": 13,
       "levelTo": 15,
-      "deaths": 2,
-      "start": 1791273262,
-      "end": 1791297873,
-      "created": "2026-10-07T05:49:17Z"
+      "deaths": 2
     }
   ],
   "encargos": [
@@ -332,9 +301,7 @@
       "original": "¡Las muestras de los pozos que has recolectado contienen metales tóxicos! Si no ponemos fin a esta corrupción pronto, pasarán décadas hasta que se pueda volver a cultivar en estas tierras.\r\nLos Defias han tomado las minas de los Páramos de Poniente y están usando criaturas como mano de obra para adueñarse de sus recursos. Para frustrar sus planes, acaba con sus mineros en la Mina de Jango, al norte, y en la Mina de la Costa del Oro, al oeste.",
       "heading": "Otra vez bajo tierra",
       "text": "Alba Lunajusta dejó las muestras de los pozos sobre la mesa como quien deja una mala noticia.\n\n—Metales tóxicos —dijo—. Si no frenamos esta corrupción pronto, pasarán décadas antes de que esta tierra vuelva a dar cosecha.\n\nLe explicó que los Defias se habían hecho con las minas de los Páramos de Poniente y usaban criaturas como mano de obra para quedarse con sus recursos. Para frustrar sus planes había que acabar con sus mineros: los cavadores kóbolds de la Mina de Jango, al norte, y los mineros Zarparrío de la Mina de la Costa del Oro, al oeste.\n\nNehonar soltó una risa corta.\n\n—Minas. Justo lo que echaba de menos.\n\nPero ya no sonreía cuando miró hacia los campos yermos de la Colina del Centinela. Se ajustó el escudo y se dispuso a partir.",
-      "acceptT": 1791350732,
-      "state": "activa",
-      "narrated": "2026-10-07T05:47:28Z"
+      "state": "activa"
     },
     {
       "id": 1338,
@@ -346,9 +313,7 @@
       "original": "Hay un forjador de armaduras enano cuyo trabajo me gusta mucho. Se llama Furen Barbalarga y es el mejor de su gremio. Necesito un escudo nuevo, y quiero que me lo haga él.\n\nSolo hay un problema... Furen vive muy al sur, en el Distrito de los Enanos de Ventormenta. ¡En tierra humana! No entiendo por qué vive ahí, tan lejos de Forjaz. ¡Será que los humanos le pagan una fortuna!\n\nSi te apetece viajar y ganar algo de dinero, ve a ver a Furen para hacer mi pedido de un escudo.",
       "heading": "Un escudo hecho en Ventormenta",
       "text": "En la Estación de Algaz, el montaraz Pico Tormenta le hizo un gesto para que se acercara. Necesitaba un escudo nuevo, y no le valía cualquiera: lo quería de manos de Furen Barbalarga, el mejor forjador de armaduras de su gremio.\n\n—El problema es que vive muy al sur, en el Distrito de los Enanos de Ventormenta. ¡En tierra humana! —gruñó—. Seguro que allí le pagan una fortuna.\n\nNehonar se rio por lo bajo. Ventormenta: los muelles, los fardos, el polvo de la cantera. Tenía gracia que un enano hubiera echado raíces en la ciudad de la que él tanto había soñado salir.\n\n—Si te apetece viajar y ganar algo, llévale mi pedido.\n\nAceptó sin pensarlo dos veces. Era un recado sencillo, se dijo. Pero alguien lo necesitaba, y con eso le bastaba para echar a andar hacia el sur.",
-      "acceptT": 1791347602,
-      "state": "activa",
-      "narrated": "2026-10-07T05:47:42Z"
+      "state": "activa"
     },
     {
       "id": 307,
@@ -358,7 +323,6 @@
       "subzone": "Estación de Algaz",
       "objectives": "Ve a la Mina de Fuenteplata y recoge 4 cargas de equipamiento de minero. \n\nLuego ve a ver al montaraz Pico Tormenta.",
       "original": "La Mina de Fuenteplata, que cae al este, se agotó hace tiempo. La Liga de Mineros la usaba como almacén, pero ahora se han instalado unos kobolds allí, ¡con esas magníficas herramientas enanas a su alcance!\n\nLos expulsaremos, pero la Liga quiere que vaya alguien a recoger el material antes de que lleguemos los soldados a romperlo todo. Es muy arriesgado; será mejor que lleves compañía.\n\nEl material está en unas cajas con la marca de la Liga de Mineros. Suerte.",
-      "acceptT": 1791347598,
       "state": "entregada"
     },
     {
@@ -370,9 +334,7 @@
       "original": "Algo ha perturbado las tumbas del Salón de los Feudales, y hay quien dice haber oído ruidos extraños procedentes de lo más hondo del mausoleo. Los espíritus de los difuntos tienen el sueño muy ligero, y se conoce que los habrá alterado lo que quiera que se esté removiendo allí abajo.\r\n\r\nPonte en camino, a ver qué remedio le ves al asunto. Y, si algún muerto anda deambulando..., ¡se le manda a dormir otra vez!",
       "heading": "Un sueño muy ligero",
       "text": "Afadra Murocre lo detuvo entre el estruendo de las fraguas de Forjaz, con el ceño fruncido y la voz baja.\n\n—Algo ha perturbado las tumbas del Salón de los Feudales —le dijo—. Hay quien jura haber oído ruidos extraños en lo más hondo del mausoleo.\n\nLe explicó que los espíritus de los difuntos tenían el sueño muy ligero y que lo que se estuviera removiendo allí abajo los había alterado.\n\nNehonar se rascó la nuca y sonrió.\n\n—¿Y quiere que baje a preguntarles si han dormido bien?\n\n—Quiero que bajes a ver qué remedio le encuentras. Y si algún muerto anda deambulando, ¡se le manda a dormir otra vez!\n\nLa broma se le quedó a medias. Una cripta honda, ruidos en la oscuridad... Conocía bien ese silencio de piedra. Asintió y se puso en camino.",
-      "acceptT": 1791346641,
-      "state": "activa",
-      "narrated": "2026-10-07T05:47:54Z"
+      "state": "activa"
     },
     {
       "id": 1618,
@@ -384,9 +346,7 @@
       "original": "Los enanos no somos los únicos que luchamos. ¡Nuestros aliados humanos también están muy ocupados!\n\nCrestagrana sufre ataques constantes de los orcos Roca Negra y siempre anda mal de equipamiento. Si decides ayudarles, seguro que su herrero, Verner Osgood, te enseñará lo que sepa.",
       "heading": "Cobre para los Crestagrana",
       "text": "El calor de la Gran Fundición le pegaba la camisa a la espalda, y Nehonar casi lo agradecía: olía a trabajo honrado, como la cantera. Tormus Forjahonda apartó la vista del yunque y lo miró de arriba abajo.\n\n—Los enanos no somos los únicos que luchamos, muchacho. Tu gente en Crestagrana sufre ataques constantes de los orcos Roca Negra, y siempre anda mal de equipamiento.\n\nLe encargó cinturones de cobre con runas y almádenas pesadas de cobre para Verner Osgood, el herrero de Crestagrana.\n\n—Si les echas una mano, seguro que Osgood te enseña lo que sepa.\n\nNehonar soltó que, por fin, le tocaba cargar fardos que merecían la pena. Luego se quedó callado. Había gente resistiendo sin con qué defenderse, y eso no pensaba dejarlo a medias.",
-      "acceptT": 1791346159,
-      "state": "activa",
-      "narrated": "2026-10-07T05:48:07Z"
+      "state": "activa"
     },
     {
       "id": 1578,
@@ -398,9 +358,7 @@
       "original": "Los montaraces de Loch Modan están luchando denodadamente contra los trogg. Necesitan un suministro constante de armaduras y armas.\n\nPor eso está allí mi colega Thorvald, encargándose del equipamiento de los montaraces. Seguro que te agradecerá que le fabriques unas hachas y unos cinturones de cobre. Puede incluso que comparta su sabiduría contigo.\n\nThorvald está en la torre sur de Loch Modan.",
       "heading": "Hachas y cobre para el frente",
       "text": "El calor de la Gran Fundición le recordó a Nehonar los veranos en la cantera, aunque allí los martillos sonaban más fuerte. Tormus Forjahonda se limpió las manos en el mandil y lo miró de arriba abajo.\n\n—Los montaraces de Loch Modan luchan sin descanso contra los trogg —le dijo—. Necesitan armas y armaduras sin parar, y mi colega Thorvald se encarga de equiparlos.\n\nLe pidió que forjara hachas y cinturones de malla de cobre y se los llevara a Thorvald, a la torre de vigilancia sur de Loch Modan.\n\n—Seguro que te lo agradecerá. Puede que hasta comparta su sabiduría contigo.\n\nNehonar soltó una broma sobre cambiar los fardos por el yunque. Luego pensó en aquellos montaraces aguantando la línea, y el encargo dejó de parecerle pequeño.",
-      "acceptT": 1791346146,
-      "state": "activa",
-      "narrated": "2026-10-07T05:48:19Z"
+      "state": "activa"
     },
     {
       "id": 167,
@@ -412,9 +370,7 @@
       "original": "Estábamos en las profundidades de una gran mina en Páramos de Poniente, oculta tras un granero en el Arroyo de la Luna. No tenemos ni idea de dónde salieron esos ladrones. En fin, el túnel se derrumbó sobre nosotros. Conseguí salir, pero los otros... bueno... de los otros no sé nada.\n\nCreo que tú podrías tener más suerte ahí abajo. Si pudieras buscar a mi hermano, te lo agradecería mucho. Siempre llevaba su insignia de la Liga de Exploradores. Si no puedes encontrarle, al menos la insignia me daría algo de paz mental.",
       "heading": "Otro túnel que se derrumba",
       "text": "Wilder Cardortiga hablaba con la mirada perdida, como quien repite algo que aún no se cree. Nehonar lo escuchó en silencio en el Distrito de los Enanos.\n\n—Estábamos en lo más hondo de una mina en los Páramos de Poniente, escondida tras un granero en el Arroyo de la Luna. Aparecieron unos ladrones y el túnel se nos vino encima. Yo salí. Los otros... no sé.\n\nNehonar buscó una broma para aliviar el momento y no la encontró. Conocía ese silencio. Lo había oído antes, con polvo en la garganta.\n\n—Busca a mi hermano. Siempre llevaba su insignia de la Liga de Exploradores. Si no lo encuentras, tráemela. Al menos tendré algo de paz.\n\n—Bajaré —dijo Nehonar—. Mientras quede alguien dentro...\n\nNo terminó la frase. No hacía falta.",
-      "acceptT": 1791344616,
-      "state": "activa",
-      "narrated": "2026-10-07T05:48:31Z"
+      "state": "activa"
     },
     {
       "id": 168,
@@ -426,9 +382,7 @@
       "original": "Muchos de mis amigos murieron ese horrible día cuando se derrumbó el túnel de la mina. Si tus aventuras te llevan de casualidad a esa parte de la mina en el Arroyo de la Luna, por favor, busca alguna señal que pueda identificarles. Si te encuentras con alguna de sus Tarjetas del Sindicato Minero, tráemelas y me aseguraré de que sus familias reciban la resolución de este horrible accidente.",
       "heading": "Los que no salieron",
       "text": "En el Distrito de los Enanos, entre el humo de las fraguas, Wilder Cardortiga habló a Nehonar sin apartar la vista de sus propias manos.\n\n—Muchos de mis amigos murieron el día que se derrumbó el túnel de la mina —dijo—. Si alguna vez pasas por esa parte, en el Arroyo de la Luna, busca algo que sirva para identificarlos.\n\nLe explicó que buscaba sus Tarjetas del Sindicato Minero. Si encontraba alguna, debía traérsela a Ventormenta, y él se encargaría de que las familias recibieran por fin una resolución.\n\nNehonar se rascó la nuca y soltó una broma floja sobre el polvo de las minas. Nadie se rio, ni siquiera él. Conocía demasiado bien el silencio de un túnel caído. Asintió despacio. Si quedaba alguien dentro, aunque solo fuera un nombre, todavía no había terminado.",
-      "acceptT": 1791344600,
-      "state": "activa",
-      "narrated": "2026-10-07T05:48:42Z"
+      "state": "activa"
     },
     {
       "id": 2040,
@@ -440,9 +394,7 @@
       "original": "¡Esos malditos troggs han tomado Gnomeregan! La situación es grave, pero quizás puedas ayudar, Nehonar.\n\nEn las profundidades de Las Minas de la Muerte hay una trituradora goblin operativa. Encuentra la trituradora y trae su batería intacta. Con la batería de la trituradora, podemos dar a nuestras excavadoras gyroagujereamáticas la energía necesaria para atravesar los rocosos límites subterráneos de Gnomeregan, ¡y nos abrirán el camino para el asalto gnomo!",
       "heading": "Una batería bajo la roca",
       "text": "En el Distrito de los Enanos, entre el humo de las fraguas, Shoni el Shilenshioso salió al paso de Nehonar con las manos manchadas de grasa y la voz atropellada.\n\n—¡Esos malditos troggs han tomado Gnomeregan! La situación es grave, pero quizás puedas ayudar.\n\nLe habló de una trituradora goblin que aún funcionaba en las profundidades de Las Minas de la Muerte. Necesitaba su batería intacta para dar energía a unas excavadoras gyroagujereamáticas capaces de atravesar la roca que rodeaba Gnomeregan y abrir camino al asalto gnomo.\n\n—Excavadoras gyro… ¿qué? —bromeó Nehonar—. Tú dime dónde está, que yo te la traigo.\n\nPero en cuanto el gnomo se dio la vuelta, la sonrisa se le borró. Todo un pueblo se había quedado sin casa bajo tierra. Él sabía bien lo que era mirar una pared de piedra y pensar en quienes estaban al otro lado.",
-      "acceptT": 1791343699,
-      "state": "activa",
-      "narrated": "2026-10-07T05:48:56Z"
+      "state": "activa"
     },
     {
       "id": 13,
@@ -453,9 +405,7 @@
       "original": "Una banda de despiadados saqueadores Defias ha sido vista saqueando la Mina de la Costa de Oro, el Arroyo de la Luna y la Hacienda de Alexston. Las Milicias del Pueblo no tolerarán ese comportamiento. Avisa inmediatamente, Nehonar, y haz conocer la presencia de la Luz en los Páramos de Poniente. La Mina de la Costa de Oro está cerca de la costa, al oeste de la torre. El siguiente paso de tu instrucción consistirá en acabar con 15 de esos saqueadores Defias y con 15 despojadores Defias.",
       "heading": "Saqueadores en la mina",
       "text": "Gryan Mantorrecio no levantó la voz, pero no le hizo falta. En la Torre del Centinela, señaló hacia el oeste, hacia la costa.\n\n—Una banda de saqueadores Defias anda desvalijando la Mina de la Costa de Oro, el Arroyo de la Luna y la Hacienda de Alexston. Las Milicias del Pueblo no lo van a tolerar. Haz que se conozca la presencia de la Luz en los Páramos de Poniente, Nehonar.\n\n—Ladrones en una mina —respondió él, rascándose la nuca—. Por fin algo de mi oficio.\n\nGryan le explicó que aquel sería el siguiente paso de su instrucción. Tenía que acabar con los saqueadores y los despojadores Defias y después volver a la Colina del Centinela. La mina quedaba cerca de la costa, al oeste de la torre.\n\nNehonar sonrió, pero al darse la vuelta la sonrisa se le quedó atrás. Otra vez una mina.",
-      "acceptT": 1791297838,
-      "state": "activa",
-      "narrated": "2026-10-06T14:54:13Z"
+      "state": "activa"
     },
     {
       "id": 92909,
@@ -467,9 +417,7 @@
       "original": "Ay, no... ¡Estoy en un buen lío!\r\n\r\nMe enteré de que unos cosechadores estaban aterrorizando los campos de los Páramos de Poniente, así que viajé hacia allí desde Forjaz para ver si podía recalibrarlos. Pero eran más agresivos de lo que había anticipado con mis cálculos ¡y me persiguieron hasta este establo!\r\n\r\nSi tuviera unos cuantos isomuelles y giroestabilizadores de los cosechadores, podría construir un dispositivo para huir. ¿Te importaría conseguirme las piezas?",
       "heading": "Un gnomo atrincherado en el establo",
       "text": "Nehonar oyó el lamento antes de ver a nadie. Venía del establo de la Granja de Saldean. Dentro, entre la paja, un gnomo se retorcía las manos.\n\n—Ay, no... ¡Estoy en un buen lío!\n\nSe llamaba Ozwin Ferropiñón. Había venido desde Forjaz para recalibrar a los cosechadores que aterrorizaban los campos de los Páramos de Poniente, pero sus cálculos no contaban con tanta furia. Las máquinas lo habían perseguido hasta allí.\n\n—Con unos isomuelles de los gólems y unos giroestabilizadores de los cosechadores podría construir un dispositivo para huir. ¿Te importaría conseguirme las piezas?\n\nNehonar se rascó la nuca y sonrió.\n\n—Desmontar chatarra que muerde. Como la cantera, pero con menos polvo.\n\nLuego miró hacia los campos y la broma se le apagó en la boca. Quedaba alguien atrapado dentro, y eso le bastaba.",
-      "acceptT": 1791283587,
-      "state": "entregada",
-      "narrated": "2026-10-06T11:47:42Z"
+      "state": "entregada"
     },
     {
       "id": 65,
@@ -480,9 +428,7 @@
       "original": "La banda de desgraciados responsable de que las gentes de los Páramos de Poniente abandonaran sus tierras se llama a sí misma la Hermandad Defias. Necesito que te infiltres en este clan de matones. Debemos averiguar quién lidera el grupo y dónde se esconden. En Villa del Lago, en la posada, encontrarás a un pícaro que responde al nombre de Wiley; me debe un favor.\n\nViaja a Villa del Lago, en las Montañas Crestagrana, al este de Elwynn, y averigua todo lo que puedas.",
       "heading": "Un favor pendiente en Villa del Lago",
       "text": "En lo alto de la Torre del Centinela, Gryan Mantorrecio no perdió el tiempo en saludos. Le habló de los Páramos de Poniente, de las gentes que habían tenido que abandonar sus tierras y de la banda responsable: la Hermandad Defias.\n\n—Necesito que te infiltres entre esos matones. Hay que averiguar quién los lidera y dónde se esconden.\n\nNehonar se rascó la nuca.\n\n—¿Infiltrarme yo? Con estas manos de cargar fardos no engaño ni a una oveja.\n\nGryan no sonrió. Le dio un nombre: Wiley, un pícaro que le debía un favor y al que encontraría en la posada de Villa del Lago, en las Montañas Crestagrana, al este de Elwynn.\n\nNehonar asintió. Pensó en aquellas familias con la casa a la espalda y la broma se le quedó en la garganta. Tocaba ponerse en camino.",
-      "acceptT": 1791283214,
-      "state": "activa",
-      "narrated": "2026-10-06T11:47:54Z"
+      "state": "activa"
     },
     {
       "id": 6285,
@@ -494,9 +440,7 @@
       "original": "El maestro de grifos de los Páramos de Poniente es Thor. Si ya has hablado con él puedes coger uno de los grifos para ir hasta allí.\n\nTe conviene saber algo: los grifos siempre están entrenados para volar a su capital pero solo te llevarán a otro maestro de grifos si ya has estado con él.\n\nYa has hablado con Thor, así que vuelve a hablar conmigo cuando estés listo para volar hasta los Páramos de Poniente. Cuando estés allí podrás entregar el Cajón de Osric al intendente Lewis.",
       "heading": "Un cajón y un par de alas",
       "text": "Nehonar llevaba el Cajón de Osric bajo el brazo cuando se plantó ante Dungar Tragolargo, en el Distrito de Mercaderes. El enano lo miró de arriba abajo, como quien calcula cuánto peso aguanta un grifo.\n\n—Los grifos siempre saben volver a su capital —le explicó—, pero solo te llevan a otro maestro si ya has estado con él. Tú ya hablaste con Thor, en los Páramos de Poniente. Cuando estés listo, te subo a uno.\n\nNehonar soltó una risa corta.\n\n—Toda la vida cargando fardos a pie, y ahora resulta que los míos vuelan.\n\nLuego miró el cajón y la broma se le quedó a medias. No era gran cosa, un encargo de recadero. Pero al otro lado lo esperaba el intendente Lewis, en la Colina del Centinela. Y a él, con eso, le bastaba.",
-      "acceptT": 1791279884,
-      "state": "entregada",
-      "narrated": "2026-10-06T09:47:55Z"
+      "state": "entregada"
     },
     {
       "id": 6261,
@@ -506,7 +450,6 @@
       "subzone": "Casco Antiguo",
       "objectives": "Lleva el Cajón de Osric a Dungar Tragolargo, el maestro de grifos.",
       "original": "Nehonar, he reunido en este cajón todo lo que me pidió Lewis. ¿Puedes llevárselo?\n\nSi ya has hablado con Thor, en los Páramos de Poniente, podrás coger un grifo de vuelta. Dungar Tragolargo es nuestro maestro de grifos, lo encontrarás en el Distrito de Mercaderes.\n\nHabla con Dungar y lleva este cajón a Lewis tan rápido como puedas. ¡No queremos que nuestros combatientes de los Páramos de Poniente vayan mal equipados!",
-      "acceptT": 1791278586,
       "state": "entregada"
     },
     {
@@ -517,7 +460,6 @@
       "subzone": "Colina del Centinela",
       "objectives": "Cómprale al maestro de grifos Thor un vuelo en grifo y lleva la Nota de Lewis a Osric Strang, en la tienda Inmunidad Limitada, en el Casco Antiguo de Ventormenta.",
       "original": "A cambio de una pequeña tarifa puedes coger un grifo hasta Ventormenta, y llevarle a Osric la nota de Lewis. No encontrarás un modo más rápido para ir hasta allí.\n\nSi te parece aceptable, vuelve a hablar conmigo cuando estés listo para el viaje. Te cobraré algo pero, créeme, ¡merece la pena!",
-      "acceptT": 1791278240,
       "state": "entregada"
     },
     {
@@ -530,9 +472,7 @@
       "original": "La corrupción que afecta a los cultivos de los Páramos de Poniente puede haberse filtrado al océano. Si los peces locales terminan afectados también, condenarían a Ventormenta a la hambruna.\r\nConsigue branquias de los múrlocs de la costa y tráemelas. Estas criaturas son bastante resistentes, pero su fisiología es especialmente sensible a los contaminantes. Sus branquias estarán infectadas de cualquier toxina que haya en el agua del mar.",
       "heading": "Branquias para un mar enfermo",
       "text": "En la Colina del Centinela, Alba Lunajusta lo esperaba con el ceño de quien lleva días sin dormir bien. Le habló de la corrupción que pudría los cultivos de los Páramos de Poniente y de su temor a que se hubiera filtrado al océano.\n\n—Si los peces enferman, Ventormenta pasará hambre —dijo—. Necesito branquias de los múrlocs de Playa Larga. Son duros, pero sus cuerpos absorben cualquier toxina que haya en el agua.\n\nNehonar se rascó la nuca y sonrió de medio lado.\n\n—O sea, que me toca hacer de pescadero. Para eso no hacía falta la Luz.\n\nElla no rio, y él no insistió. Había cargado suficientes cajas de pescado en los muelles como para saber cuántas bocas dependían de aquellas redes. Se ajustó el escudo y miró hacia la costa.",
-      "acceptT": 1791278204,
-      "state": "entregada",
-      "narrated": "2026-10-06T09:48:09Z"
+      "state": "entregada"
     },
     {
       "id": 92742,
@@ -544,9 +484,7 @@
       "original": "Debemos determinar el origen y la naturaleza del veneno que corrompe estas tierras. Comencemos con el agua subterránea de las granjas de la zona.\r\nVe a la Finca de Jansen y la Granja de Molsen y consigue muestras de los pozos.",
       "heading": "Lo que esconde el agua",
       "text": "En la Colina del Centinela, Alba Lunajusta le tendió el equipo de muestras sin perder tiempo en saludos.\n\n—Debemos averiguar el origen y la naturaleza del veneno que corrompe estas tierras. Empezaremos por el agua subterránea de las granjas.\n\nNehonar sopesó el equipo como quien calcula un fardo en el muelle.\n\n—Frascos y cuerdas. Y yo que esperaba algo con más gloria.\n\nElla no le rio la gracia, y él tampoco insistió. Bajo la broma lo había entendido. Si el veneno estaba en los pozos, estaba en lo que bebía la gente de aquellas tierras, y eso no era poca cosa. Alguien tenía que bajar a mirar.\n\n—Ve a la Finca de Jansen y a la Granja de Molsen —añadió Alba—. Tráeme muestras de sus pozos.\n\nÉl asintió, guardó el equipo y echó a andar.",
-      "acceptT": 1791278201,
-      "state": "entregada",
-      "narrated": "2026-10-06T09:48:25Z"
+      "state": "entregada"
     },
     {
       "id": 153,
@@ -558,9 +496,7 @@
       "original": "La tapadera de los Defias cambia constantemente. He estado siguiendo sus movimientos desde hace algún tiempo. Aunque, recuerda, he averiguado que muchos miembros de la banda se identifican por sus pañuelos de cuero rojo.\n\nTráeme 15 de esos pañuelos y procuraré que seas recompensado.",
       "heading": "Pañuelos rojos para el explorador",
       "text": "En la Colina del Centinela, el explorador Galiaan hablaba sin apartar la vista de los campos de los Páramos de Poniente, como si temiera perder algo de vista.\n\n—La tapadera de los Defias cambia constantemente —le dijo a Nehonar—. Llevo tiempo siguiendo sus movimientos. Pero he averiguado algo: muchos de ellos se identifican por sus pañuelos de cuero rojo.\n\nLe pidió que le trajera esos pañuelos y le prometió que procuraría que fuera recompensado.\n\nNehonar soltó una media sonrisa y comentó que, para variar, al menos esta vez no tendría que cargar fardos. Galiaan no se rio. Entonces Nehonar miró también hacia los campos y se quedó callado. Detrás de cada pañuelo había un hombre que alguien conocía. Se ajustó el escudo y bajó de la colina a buscarlos.",
-      "acceptT": 1791278177,
-      "state": "entregada",
-      "narrated": "2026-10-06T09:48:33Z"
+      "state": "entregada"
     },
     {
       "id": 6181,
@@ -569,7 +505,6 @@
       "zone": "Torre del Centinela",
       "objectives": "Lleva la Nota de Lewis a Thor, el maestro de grifos.",
       "original": "Aunque no tenemos mucha ayuda directa desde Ventormenta, tengo un contacto en la ciudad que nos ayuda con los suministros de armaduras. Su nombre es Osric Strang. Su tienda, Inmunidad Limitada, está en el Casco Antiguo de Ventormenta.\n\nNuestro suministro se está agotando y debemos contactar con Osric para pedirle más. ¿Puedes llevarle esta nota?\n\nEl camino más rápido hasta Ventormenta es con Thor, nuestro maestro de grifos. Está justo bajo la colina, llévale mi nota y coge un grifo hasta Ventormenta.",
-      "acceptT": 1791278128,
       "state": "entregada"
     },
     {
@@ -581,9 +516,7 @@
       "original": "Ventormenta nos ha abandonado. Nauseabundos aires de depravación soplan por las llanuras de los Páramos de Poniente. Este era mi hogar y no daré la espalda a los ciudadanos que decidieron permanecer aquí. Nosotros, los antiguos granjeros, ofreceremos resistencia.\n\nTu tarea, si decidieras aceptar, consistirá en patrullar las praderas de los Páramos de Poniente. Localiza y aniquila a los infames gnolls que parecen colaborar con los ladrones de Las Minas de la Muerte. Tráeme 8 zarpas de gnoll y sabré recompensar tu valentía.",
       "heading": "Los que decidieron quedarse",
       "text": "En la Torre del Centinela, el capitán Danuvin fue directo al grano.\n\n—Ventormenta nos ha abandonado. Este era mi hogar, y no daré la espalda a quienes se quedaron.\n\nNehonar miró las praderas de los Páramos de Poniente. El viento traía algo rancio, y no era solo polvo.\n\n—Los antiguos granjeros resistiremos —siguió Danuvin—. Patrulla las praderas. Hay gnolls que colaboran con los ladrones de Las Minas de la Muerte. Acaba con ellos y tráeme sus zarpas.\n\n—Y yo que pensaba que lo de cargar fardos se había acabado —bromeó Nehonar.\n\nEl capitán no sonrió, y él no insistió. Gente que aguanta dentro de algo que se derrumba; eso lo conocía bien. Se ajustó el escudo y echó a andar hacia las praderas. Volvería a la Colina del Centinela con las zarpas.",
-      "acceptT": 1791278121,
-      "state": "entregada",
-      "narrated": "2026-10-06T09:48:47Z"
+      "state": "entregada"
     },
     {
       "id": 12,
@@ -594,9 +527,7 @@
       "original": "Las Milicias del Pueblo solo tienen un objetivo: defender las tierras de los Páramos de Poniente y traer la paz a nuestro entorno. Por desgracia, el precio de la paz suele pagarse en sangre.\n\nSegún el informe de uno de mis rastreadores, una banda de tramperos Defias ha sido vista cerca de la Mina de Jango al noreste de aquí, en La Granja de Molsen y en la Plantación de Calabazas de Cejade. Si quieres unirte a nuestras filas, acaba con 15 tramperos Defias y con 15 contrabandistas Defias y vuelve a verme.",
       "heading": "El precio de la paz",
       "text": "En lo alto de la Torre del Centinela, el viento de los Páramos de Poniente olía a tierra reseca. Gryan Mantorrecio no perdió tiempo en saludos.\n\n—Las Milicias del Pueblo solo tienen un objetivo: defender estas tierras y traer la paz. Por desgracia, la paz suele pagarse en sangre.\n\nLe habló del informe de uno de sus rastreadores. Habían visto tramperos y contrabandistas Defias cerca de la Mina de Jango, al noreste, en la Granja de Molsen y en la Plantación de Calabazas de Cejade.\n\n—Si quieres unirte a nuestras filas, acaba con ellos y vuelve a verme aquí, en la Colina del Centinela.\n\nNehonar bromeó con que en los muelles, al menos, te daban faena sin hacerte un examen. Gryan no sonrió. Nehonar tampoco sonrió cuando oyó la palabra «mina». Asintió y miró hacia el noreste.",
-      "acceptT": 1791278117,
-      "state": "entregada",
-      "narrated": "2026-10-06T09:48:59Z"
+      "state": "entregada"
     },
     {
       "id": 22,
@@ -608,9 +539,7 @@
       "original": "Las cebollas están peladas. El ajo machacado. La corteza está tostada. Las hierbas de eneldo picadas. ¡Lo único que me falta para mi famosa empanada de carne son 8 hígados de dentosangre!",
       "heading": "Hígados para la empanada de Salma",
       "text": "En la cocina de la Finca de Saldean olía a cebolla y a corteza tostada. Salma Saldean no levantó la vista de la tabla cuando Nehonar asomó por la puerta. Siguió repasando su lista en voz alta, como quien cuenta fardos en el muelle.\n\n—Las cebollas, peladas. El ajo, machacado. La corteza, tostada. El eneldo, picado —enumeró, y por fin lo miró—. Lo único que me falta para mi famosa empanada de carne son hígados de dentosangre.\n\nNehonar se rascó la nuca y sonrió.\n\n—Y yo que temía que me pidiera algo difícil.\n\nEn aquella casa todo estaba listo salvo lo que dependía de alguien de fuera. Ser útil, aunque fuera para una empanada, ya era algo. Salió a buscar dentosangres con el estómago rugiendo.",
-      "acceptT": 1791273278,
-      "state": "entregada",
-      "narrated": "2026-10-06T07:55:48Z"
+      "state": "entregada"
     },
     {
       "id": 38,
@@ -622,9 +551,7 @@
       "original": "¡Ayúdame a preparar el estofado de los Páramos de Poniente! Vuelve con estos ingredientes:\n\n3 piezas de carne fibrosa de buitre\n3 morros de dentosangre\n3 ojos de múrloc\n3 okras",
       "heading": "Un estofado para la Finca Saldean",
       "text": "Salma Saldean salió al porche secándose las manos en el delantal y miró a Nehonar como quien calcula el peso de un fardo antes de cargarlo.\n\n—¡Ayúdame a preparar el estofado de los Páramos de Poniente! Tráeme carne fibrosa de buitre, morros de dentosangre, ojos de múrloc y unas okras.\n\nNehonar parpadeó.\n\n—¿Ojos de múrloc? Y yo que creía que lo peor del muelle era el pescado de tres días.\n\nElla no se rio, y él no insistió. En una tierra tan seca, un caldero lleno sobre el fuego era cosa seria. Asintió, se ajustó el escudo y recorrió con la mirada los campos resecos que rodeaban la finca. No era una gesta digna de cantares, pero alguien comería caliente gracias a él, y con eso le bastaba.",
-      "acceptT": 1791273275,
-      "state": "entregada",
-      "narrated": "2026-10-06T07:56:01Z"
+      "state": "entregada"
     },
     {
       "id": 9,
@@ -636,9 +563,7 @@
       "original": "¡Mira lo que le ha ocurrido a este lugar! Estas tierras estaban antes en manos de buenos granjeros. Pero los condenados ladrones les han ahuyentado a todos. ¡Pero no a mí! Eso sí, parece que algunos Vigilantes de la cosecha han invadido los campos.\n\nSi estás preparado me gustaría que fueras y mataras a 20 de ellos. Vuelve cuando hayas terminado y te pagaré. Si terminas con los de mi campo, puedes limpiar también los campos vecinos.",
       "heading": "La terquedad de Saldean",
       "text": "El granjero Saldean recibió a Nehonar con el ceño fruncido y un brazo extendido hacia sus tierras.\n\n—¡Mira lo que le ha pasado a este lugar! Aquí había buenos granjeros, y esos condenados ladrones los han echado a todos. ¡Pero a mí no!\n\nNehonar recorrió con la vista los surcos descuidados y reconoció en aquel hombre una terquedad parecida a la suya. Le cayó bien enseguida, y eso le incomodó un poco.\n\nSaldean le explicó que unos Vigilantes de la cosecha habían invadido sus campos. Quería que acabara con ellos y volviera después a cobrar la paga. Si terminaba con los de la finca, también podía limpiar los campos vecinos.\n\n—Y yo que creía que lo mío era cargar fardos —bromeó Nehonar, mientras se ajustaba el escudo.\n\nYa caminaba hacia los sembrados. Quedaba trabajo por hacer.",
-      "acceptT": 1791273262,
-      "state": "entregada",
-      "narrated": "2026-10-06T07:56:13Z"
+      "state": "entregada"
     },
     {
       "id": 151,
@@ -650,9 +575,7 @@
       "original": "¡Pobre Vieja Blanchy! La bestia está agotada después de todo el trabajo que le dimos. Le di de comer antes de dejar la granja, pero no esperábamos que se rompiera el carro. Si pudieras traerle algunos puñados de avena te estaría muy agradecida.\n\nSeguro que podrás encontrar algunos por las granjas de los Páramos de Poniente, si puedes librarte de esas horribles máquinas que los han invadido. Hay varias granjas al suroeste de aquí.",
       "heading": "Avena para la vieja Blanchy",
       "text": "Junto al carro roto, en la Finca de Jansen, Verna Cejade acariciaba el cuello de un animal que apenas se tenía en pie.\n\n—¡Pobre vieja Blanchy! —suspiró—. Está agotada después de todo el trabajo que le dimos. Comió antes de dejar la granja, pero no esperábamos que se rompiera el carro.\n\nNehonar reconoció aquel cansancio. Era el de las bestias de carga del muelle al final de la jornada.\n\n—Si pudieras traerle unos puñados de avena… Hay varias granjas al suroeste de aquí, si consigues librarte de esas horribles máquinas que las han invadido.\n\n—Máquinas, ¿eh? —Nehonar sonrió—. Bueno, peores capataces he tenido.\n\nAl darse la vuelta, sin embargo, ya no bromeaba. No era ninguna gesta, solo una bestia hambrienta. Y aun así, pensó, ella también estaba esperando a que alguien volviera.",
-      "acceptT": 1791272668,
-      "state": "entregada",
-      "narrated": "2026-10-06T07:56:28Z"
+      "state": "entregada"
     },
     {
       "id": 36,
@@ -662,7 +585,6 @@
       "subzone": "La Finca de Jansen",
       "objectives": "Verna Furlbrow quiere que le entregues su receta del estofado de los Páramos de Poniente a Salma Saldean.",
       "original": "Nunca pensé que llegaría el día en el que tuviera que dejar la granja. Pero los campos están llenos de ladrones y es demasiado peligroso que sigamos aquí. En cuanto el granjero Furlbrow consiga arreglar el carro nos pondremos en marcha.\n\n¿Podrías hacerme un favor? Deja que te escriba mi receta del estofado de los Páramos de Poniente. Por favor, llévasela a Salma Saldean, estará en su granja, nada más pasar la bifurcación del camino.",
-      "acceptT": 1791272666,
       "state": "entregada"
     },
     {
@@ -673,7 +595,6 @@
       "subzone": "La Finca de Jansen",
       "objectives": "El granjero Furlbrow quiere que recuperes el reloj de bolsillo que dejó olvidado en el armario de su granja en la plantación de calabazas del Oeste.",
       "original": "¡Fue horrible! Verna me despertó cuando oyó jaleo en los campos. Estaban llenos de gamberros. Nos fuimos corriendo y olvidé recoger mi reloj de bolsillo. Me lo dio el padre de Verna el día de nuestra boda y es horrible saber que está en manos de esos ladrones. Dejé el reloj de bolsillo en el armario de la granja. Busca el campo de calabazas que está al Oeste... no tiene pérdida. ¡Si me lo devuelves te estaré muy agradecido!",
-      "acceptT": 1791272662,
       "state": "entregada"
     },
     {
@@ -686,9 +607,7 @@
       "original": "Muy bien. Coge este equipo de rastreo de kóbolds; te ayudará a encontrar al kóbold que tanto preocupa al alguacil McBride.\r\n\r\nSigue su rastro y devuelve lo que encuentres al alguacil Dughan de Villadorada.\r\n\r\nTengo la sensación de que estas alimañas están tramando algo a las afueras de Villanorte. Si es cierto, necesitarás la ayuda de Dughan.",
       "heading": "Un rastro hacia Villadorada",
       "text": "Tordrin Hojadusta me esperaba con un fardo en las manos y la frente arrugada, como quien lleva rato discutiendo con el bosque.\n\n—Coge este equipo de rastreo de kóbolds —me dijo, poniéndomelo contra el pecho—. Te ayudará a encontrar al kóbold que tanto preocupa al alguacil McBride.\n\nLo sopesé. Había cargado fardos peores en los muelles, aunque ninguno me había pedido que lo siguiera.\n\n—Sigue su rastro y lleva lo que encuentres al alguacil Dughan, en Villadorada. Esas alimañas traman algo a las afueras de Villanorte, y si es así, necesitarás su ayuda.\n\nLe solté que un kóbold tramando algo sería toda una novedad. No se rio. En el silencio pensé que, si tenía razón, alguien estaba en peligro sin saberlo. Me eché el equipo al hombro y fui a buscar el primer rastro.",
-      "acceptT": 1791265427,
-      "state": "activa",
-      "narrated": "2026-10-06T05:44:54Z"
+      "state": "activa"
     },
     {
       "id": 96627,
@@ -700,9 +619,7 @@
       "original": "Nehonar, hasta ahora has demostrado tu habilidad como protector. Por ese motivo, quiero encomendarte una misión un tanto inusual.\r\n\r\nHe oído que hay un nuevo aventurero en el camino, cerca de Villadorada. Ve a ver qué está haciendo.",
       "heading": "Un encargo un tanto inusual",
       "text": "El alguacil McBride le hizo un gesto, y Nehonar acudió como acudía siempre: sin preguntar para qué.\n\n—Hasta ahora has demostrado tu habilidad como protector —dijo el alguacil—. Por eso quiero encomendarte una misión un tanto inusual.\n\nNehonar se rascó la nuca. «Protector». La palabra le seguía quedando grande, como una armadura prestada por alguien más ancho de hombros.\n\n—He oído que hay un nuevo aventurero en el camino, cerca de Villadorada. Ve a ver qué está haciendo.\n\nSe le escapó media sonrisa. Hacía no tanto, el aventurero nuevo del que todos hablaban era él, y casi siempre para reírse. Ahora le tocaba ir a echarle un ojo a otro.\n\nNo pidió más detalles. Se ajustó el escudo y tomó el camino que salía del valle, rumbo a Villadorada, en busca de un tal Sam Zarzaparrilla.",
-      "acceptT": 1791265379,
-      "state": "activa",
-      "narrated": "2026-10-06T05:45:08Z"
+      "state": "activa"
     },
     {
       "id": 54,
@@ -714,9 +631,7 @@
       "original": "Nehonar, eres un mago que ciertamente ha demostrado que le preocupa la seguridad de Villanorte. Tu siguiente misión será proteger el Bosque de Elwynn.\n\nSi aceptas, te daré unos papeles para el alguacil Dughan, que está en Villadorada. Para ir a Villadorada, sigue el camino hacia el sur, pasada la frontera.",
       "heading": "Papeles para Villadorada",
       "text": "El alguacil McBride lo esperaba con un legajo de papeles bajo el brazo y el gesto serio de quien ha tomado una decisión.\n\n—Nehonar, has demostrado que te preocupa la seguridad de Villanorte. Tu siguiente tarea será proteger el Bosque de Elwynn.\n\nNehonar se rascó la nuca y sonrió, como si le hubieran pedido mover un par de fardos.\n\n—Mientras no haya que cargarlo a hombros, alguacil...\n\nMcBride no rió, pero le tendió los documentos.\n\n—Llévaselos al alguacil Dughan, en Villadorada. Sigue el camino hacia el sur, más allá de la frontera.\n\nNehonar guardó los papeles con cuidado. Pesaban poco, pero eran la primera vez que alguien lo enviaba más allá del valle. Miró el camino del sur y, antes de pensarlo demasiado, echó a andar.",
-      "acceptT": 1791265376,
-      "state": "activa",
-      "narrated": "2026-10-06T05:45:17Z"
+      "state": "activa"
     },
     {
       "id": 91758,
@@ -726,7 +641,6 @@
       "subzone": "Valle de Villanorte",
       "objectives": "Habla con Tordrin Hojatallo junto al establo que hay detrás de la Abadía de Villanorte.",
       "original": "Aún no has acabado con esos kóbolds. Kelsey nos acaba de informar de que uno de ellos ha salido de la mina cargando con un saco de libros enorme. Necesito que encuentres a ese kóbold para que podamos recuperar los libros del hermano Paxton.\r\n\r\nVe a hablar con Tordrin Hojatallo. Es el nuevo instructor de cazadores que acaba de llegar de Forjaz. Lo encontrarás detrás de la abadía, junto al establo. Él te ayudará a localizar a ese kóbold ladrón.",
-      "acceptT": 1791265373,
       "state": "entregada"
     },
     {
@@ -737,7 +651,6 @@
       "subzone": "Mina del Eco",
       "objectives": "Acaba con el buscabrillantes Narf y recupera el saco de libros con \"imágenes\". Después, entrégaselo al alguacil McBride, justo a las afueras de la Abadía de Villanorte.",
       "original": "De vez en cuando, aparece un kóbold gritando \"¡Imágenes para Narf!\". No sé quién es Narf. ¿Uno de sus jefes de las profundidades de la mina, quizás? Seguro que a estas alturas ya tiene un saco entero de libros.\r\n\r\nVe a por esos libros y llévaselos a la autoridad local, el alguacil McBride. Ah, y te recomiendo que busques ayuda. Los kóbolds que hay dentro de la mina son más retorcidos que los de fuera.",
-      "acceptT": 1791264931,
       "state": "entregada"
     },
     {
@@ -750,9 +663,7 @@
       "original": "¡Los Defias se instalaron en Viñedos de Villanorte mientras estaba vendimiando! Los denuncié a los guardias, que me dijeron que ya se encargarían, pero... ¡Temo por mis viñas! Si los ladrones no se comen la uva, los guardias la aplastarán cuando vengan a echarlos.\n\n¡Tienes que ayudarme! Ya tengo casi toda la uva recogida, pero dejé las cajas en los viñedos que hay al sureste.\n\n¡Tráemelas y salva mis uvas!",
       "heading": "Uvas entre ladrones",
       "text": "Milly Osworth salió al paso de Nehonar en la Abadía de Villanorte, sin aliento y con el ceño fruncido.\n\n—¡Los Defias se han instalado en los viñedos mientras vendimiaba! —soltó de corrido—. Los guardias dicen que ya se encargarán, pero si los ladrones no se comen la uva, ellos la aplastarán al echarlos.\n\nNehonar contuvo una sonrisa. Había soñado con cruzadas y le tocaba cargar fruta. Aunque, bien pensado, cargar fardos era lo suyo.\n\n—Ya tengo casi todo recogido —siguió ella—, pero dejé las cajas en los viñedos, al sureste. ¡Tráemelas y salva mis uvas!\n\nÉl asintió sin hacer bromas. Aquella cosecha era el trabajo de un año entero, y eso lo entendía mejor que cualquier sermón. Se ajustó el escudo y echó a andar hacia el sureste, rumbo a los Viñedos de Villanorte.",
-      "acceptT": 1791264716,
-      "state": "activa",
-      "narrated": "2026-10-06T05:45:30Z"
+      "state": "activa"
     },
     {
       "id": 6,
@@ -764,9 +675,7 @@
       "original": "Garrick Piesuaves es un maleante que lleva semanas acosando a granjeros y mercaderes. Ha sido visto en una choza cerca de los viñedos, cruzando el puente al este de la abadía. Tráeme la cabeza de ese villano y podrás quedarte con su botín.\n\nPero ve con cuidado, Nehonar. Garrick anda con una pandilla de matones. Puede que no te sea fácil llegar hasta él.",
       "heading": "Una cabeza al otro lado del puente",
       "text": "El ayudante Willem lo esperaba junto a la abadía, con el ceño de quien lleva semanas tragándose quejas.\n\n—Garrick Piesuaves —dijo—. Un maleante que acosa a granjeros y mercaderes. Lo han visto en una choza cerca de los viñedos, cruzando el puente al este de la abadía. Tráeme su cabeza y podrás quedarte con su botín.\n\nNehonar se rascó la nuca.\n\n—Con ese apellido, seguro que pisa blandito.\n\nWillem no sonrió.\n\n—Ve con cuidado, Nehonar. Garrick anda con una pandilla de matones. Puede que no te sea fácil llegar hasta él.\n\nEl paladín asintió, con la mirada puesta ya en el este. Pensó en los granjeros que llevaban semanas sin dormir tranquilos, y la siguiente broma se le quedó en la garganta. Alguien tenía que ir. Como de costumbre, fue él.",
-      "acceptT": 1791264649,
-      "state": "activa",
-      "narrated": "2026-10-06T05:45:44Z"
+      "state": "activa"
     },
     {
       "id": 3903,
@@ -776,7 +685,6 @@
       "subzone": "Valle de Villanorte",
       "objectives": "Habla con Milly Osworth.",
       "original": "Nehonar, has demostrado que se puede confiar en ti y que no temes al trabajo duro.\n\nMi amiga Milly Osworth está en apuros. Tiene la carreta al otro lado de la abadía, cerca del establo. Seguro que le va bien que le eches una mano.",
-      "acceptT": 1791264648,
       "state": "entregada"
     },
     {
@@ -787,7 +695,6 @@
       "subzone": "Ala de la Biblioteca",
       "objectives": "Habla con Kelsey Abisal a las afueras de la Mina del Eco del Valle de Villanorte.",
       "original": "Ve a hablar con la nueva aprendiz de minera, Kelsey Abisal. Trabaja justo a la salida de la mina y seguramente haya visto lo que están tramando los kóbolds. Tal vez pueda enseñarte un par de cosas sobre la minería, ya de paso.",
-      "acceptT": 1791264034,
       "state": "entregada"
     },
     {
@@ -798,7 +705,6 @@
       "subzone": "Valle de Villanorte",
       "objectives": "Mata 12 peones kobold y ve a hablar con el alguacil McBride a la Abadía de Villanorte.",
       "original": "Ha quedado demostrado que tenemos que purgar la Mina del Eco. Vuelve allí y ayuda a eliminar a los kobolds.\n\nDate prisa, Nehonar. Cuanto más tiempo dejemos a los kobolds en la mina, más nos costará expulsarlos de Villanorte.",
-      "acceptT": 1791264013,
       "state": "entregada"
     },
     {
@@ -809,7 +715,6 @@
       "subzone": "Valle de Villanorte",
       "objectives": "Mata 10 obreros kobold y ve a hablar con el alguacil McBride.",
       "original": "Nehonar, los rastreadores dicen que hay más kobolds de lo que creíamos. Un grupo de obreros ha acampado cerca de la Mina del Eco, al norte de aquí.\n\nVe a la mina y liquídalos; sabemos que hay al menos diez. Comprueba que no quede ninguno más y vuelve.",
-      "acceptT": 1791263769,
       "state": "entregada"
     },
     {
@@ -820,7 +725,6 @@
       "subzone": "Ala de la Biblioteca",
       "objectives": "Recupera 8 libros robados de los kóbolds en el Valle de Villanorte y devuélveselos al hermano Paxton.",
       "original": "¡Esos malditos kóbolds se están comiendo mis libros! Tienes que recuperarlos antes de que devoren toda mi biblioteca.",
-      "acceptT": 1791263317,
       "state": "entregada"
     },
     {
@@ -831,7 +735,6 @@
       "subzone": "Ala de la Biblioteca",
       "objectives": "Habla con Daniel, el ayudante del hermano Paxton, en la biblioteca.",
       "original": "¡Hay que hacer un recuento de cuántos libros faltan!\r\n\r\nVe a hablar con el inútil de mi ayudante, Daniel. Puede hacer un inventario rápido y decirnos cómo de grave es el problema.\r\n\r\nEstá obsesionado con las diferentes profesiones artesanales del Bosque de Elwynn. El chico no deja de distraerse con eso en lugar de centrarse en su trabajo, que es ayudarme.\r\n\r\n¡No dejes que te dé la cháchara y averigua qué ha pasado con mis libros!",
-      "acceptT": 1791263309,
       "state": "entregada"
     },
     {
@@ -842,7 +745,6 @@
       "subzone": "Valle de Villanorte",
       "objectives": "Devuelve el libro al hermano Paxton.",
       "original": "\u003cUno de los kóbolds ha dejado caer este libro. Parece que intentó comérselo.\r\n\r\nEl hermano Paxton está al cargo de una pequeña biblioteca en la abadía. Puede que el libro proceda de allí\u003e.",
-      "acceptT": 1791263276,
       "state": "entregada"
     },
     {
@@ -853,7 +755,6 @@
       "subzone": "Valle de Villanorte",
       "objectives": "Lleva 12 pañuelos de tela de saco rojo al ayudante Willem cerca de la Abadía de Villanorte.",
       "original": "Hace poco llegó una banda de maleantes a Villanorte. Se hacen llamar la Hermandad Defias; se les ha visto cruzando el río hacia el este.\n\nNo sé qué están haciendo, ¡pero seguro que no es nada bueno! Tráeme sus pañuelos y te daré un arma como recompensa.",
-      "acceptT": 1791263132,
       "state": "entregada"
     },
     {
@@ -864,7 +765,6 @@
       "subzone": "Valle de Villanorte",
       "objectives": "Mata 10 alimañas kobold y ve a hablar con el alguacil McBride.",
       "original": "Nehonar, lo primero que tienes que hacer es limpiar; un clan de kobolds ha invadido los bosques del norte. Ve y liquida a todos los kobolds que encuentres; si reducimos sus filas podremos echarlos de Villanorte.",
-      "acceptT": 1791263123,
       "state": "entregada"
     },
     {
@@ -875,7 +775,6 @@
       "subzone": "Valle de Villanorte",
       "objectives": "Lleva 8 piezas de carne dura de lobo a Eagan Desollapieles junto a la Abadía de Villanorte.",
       "original": "¡Condenados lobos Fauces de Madera! Pero me gustan los filetes de lobo, la verdad. Tráeme carne dura de lobo y te la cambiaré por algo que te será útil.\n\nConseguirás la carne de los lobos y lobeznos Fauces de Madera que andan por la campiña de Villanorte.",
-      "acceptT": 1791262840,
       "state": "entregada"
     },
     {
@@ -886,7 +785,6 @@
       "subzone": "Valle de Villanorte",
       "objectives": "Habla con el alguacil McBride.",
       "original": "Espero que vengas con ganas, mago, porque aquí en Villanorte hay mucho que hacer.\n\nY no me refiero a trabajar la tierra.\n\nLos guardias de Ventormenta no dan abasto, ahora que muchos de nosotros están lejos y hay tantas amenazas. Por eso estamos reclutando a quien esté dispuesto a defender su tierra. Y a su alianza.\n\nSi vienes a luchar, habla con mi superior, el mariscal McBride. Está ahí atrás, en la abadía.",
-      "acceptT": 1791262825,
       "state": "entregada"
     }
   ],
@@ -944,39 +842,29 @@
     ],
     "levelUps": [
       {
-        "level": 4,
-        "t": 1791257525
+        "level": 4
       },
       {
-        "level": 11,
-        "t": 1791259132
+        "level": 11
       },
       {
-        "level": 3,
-        "t": 1791263156
+        "level": 3
       },
       {
-        "level": 4,
-        "t": 1791263853
+        "level": 4
       },
       {
-        "level": 5,
-        "t": 1791264929
+        "level": 5
       },
       {
-        "level": 14,
-        "t": 1791278283
+        "level": 14
       },
       {
-        "level": 15,
-        "t": 1791291663
+        "level": 15
       },
       {
-        "level": 16,
-        "t": 1791347895
+        "level": 16
       }
-    ],
-    "firstSeen": 1791235713,
-    "lastSeen": 1791350732
+    ]
   }
 }
