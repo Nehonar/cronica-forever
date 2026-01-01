@@ -84,12 +84,13 @@
   },
   "stats": {
     "level": 12,
-    "played": 36784,
+    "played": 38672,
     "questsDone": 11,
     "deaths": 0,
     "zones": [
       "Bosque de Elwynn",
-      "Ciudad de Ventormenta"
+      "Ciudad de Ventormenta",
+      "Lion's Pride Inn"
     ],
     "levelUps": [
       {
