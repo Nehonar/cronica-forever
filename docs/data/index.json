@@ -1,13 +1,13 @@
 {
   "characters": [
     {
-      "key": "Nehonar-ClassicBetaPvE",
+      "key": "NehonarLionheart-ClassicBetaPvE",
       "name": "Nehonar Lionhart",
       "epithet": "el de la Cantera",
       "race": "Humano",
       "class": "Paladín",
       "level": 16,
-      "stories": 10
+      "stories": 9
     },
     {
       "key": "Nehonar-ClassicBetaPvP",
@@ -28,5 +28,5 @@
       "stories": 3
     }
   ],
-  "updated": "536e306e3fb7ac95"
+  "updated": "a6b0bd6cc1494d54"
 }
