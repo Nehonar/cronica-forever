@@ -10,6 +10,15 @@
       "stories": 1
     },
     {
+      "key": "NehonarBolgar-ClassicBetaPvE",
+      "name": "Nehonar Bolgar",
+      "race": "Cielonato de la Orden Eminente",
+      "class": "Mago",
+      "level": 5,
+      "stories": 0,
+      "new": true
+    },
+    {
       "key": "NehonarChopper-ClassicBetaPvE",
       "name": "Nehonar Chopper",
       "epithet": "el Silencioso",
@@ -55,5 +64,5 @@
       "stories": 3
     }
   ],
-  "updated": "d9a2f146efbc4ff1"
+  "updated": "a390be04fbcfca20"
 }
