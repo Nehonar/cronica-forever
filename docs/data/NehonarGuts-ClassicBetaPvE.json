@@ -11,10 +11,40 @@
     "threads": null,
     "motto": ""
   },
-  "level": 12,
+  "level": 13,
   "realm": "Classic Beta PvE",
   "stories": [],
   "encargos": [
+    {
+      "id": 97894,
+      "title": "Asuntos en Auberdine",
+      "giver": "Borgus Mano de Acero",
+      "zone": "Ciudad de Ventormenta",
+      "subzone": "Distrito de los Enanos",
+      "objectives": "Comprueba cómo está Gorbold Mano de Acero en Auberdine, en Costa Oscura.\r\n\r\nBorgus ha mencionado que puedes coger un barco en el muelle más al sur del Puerto de Ventormenta.",
+      "original": "¡Un placer conocerte! Me llamo Borgus, del mismísimo linaje de los Mano de Acero. ¡Un Mano de Acero siempre actúa con honradez!\r\n\r\nHace unas semanas, mi hermano Gorbold se unió a un puesto de mercaderes en Auberdine. ¡Créeme si te digo que se puede hacer un gran dinero abasteciendo a los barcos de allí! Mi hermano es un tipo con suerte.\r\n\r\nLlevo sin saber nada de él desde entonces. ¿Te importaría comprobar que está bien si pasas por allí?\r\n\r\nHay un nuevo barco en el puerto que te lleva directamente a Auberdine. En el muelle que está más al sur, ¡no tiene pérdida!",
+      "state": "activa"
+    },
+    {
+      "id": 1338,
+      "title": "Un pedido de Pico Tormenta",
+      "giver": "Montaraz Pico Tormenta",
+      "zone": "Loch Modan",
+      "subzone": "Estación de Algaz",
+      "objectives": "Lleva el pedido de Pico Tormenta a Furen Barbalarga a Ventormenta.",
+      "original": "Hay un forjador de armaduras enano cuyo trabajo me gusta mucho. Se llama Furen Barbalarga y es el mejor de su gremio. Necesito un escudo nuevo, y quiero que me lo haga él.\n\nSolo hay un problema... Furen vive muy al sur, en el Distrito de los Enanos de Ventormenta. ¡En tierra humana! No entiendo por qué vive ahí, tan lejos de Forjaz. ¡Será que los humanos le pagan una fortuna!\n\nSi te apetece viajar y ganar algo de dinero, ve a ver a Furen para hacer mi pedido de un escudo.",
+      "state": "entregada"
+    },
+    {
+      "id": 307,
+      "title": "Zarpas asquerosas",
+      "giver": "Montaraz Pico Tormenta",
+      "zone": "Loch Modan",
+      "subzone": "Estación de Algaz",
+      "objectives": "Ve a la Mina de Fuenteplata y recoge 4 cargas de equipamiento de minero. \n\nLuego ve a ver al montaraz Pico Tormenta.",
+      "original": "La Mina de Fuenteplata, que cae al este, se agotó hace tiempo. La Liga de Mineros la usaba como almacén, pero ahora se han instalado unos kobolds allí, ¡con esas magníficas herramientas enanas a su alcance!\n\nLos expulsaremos, pero la Liga quiere que vaya alguien a recoger el material antes de que lleguemos los soldados a romperlo todo. Es muy arriesgado; será mejor que lleves compañía.\n\nEl material está en unas cajas con la marca de la Liga de Mineros. Suerte.",
+      "state": "entregada"
+    },
     {
       "id": 353,
       "title": "Una entrega a Pico Tormenta",
@@ -23,7 +53,7 @@
       "subzone": "Distrito de los Enanos",
       "objectives": "Entrega el paquete Pico Tormenta al montaraz Pico Tormenta en Loch Modan.",
       "original": "Los Pico Tormenta son unos enanos muy respetados y famosos por su exigente gusto. Así que no es sorprendente que Gringer Pico Tormenta, un montaraz de Forjaz, me encargase que forjase un arma para él.\n\nHe terminado el arma, pero... el montaraz Pico Tormenta está muy lejos, en Loch Modan. Si tienes planeado viajar al norte, ¿podrías entregarle este paquete?\n\nEl último mensaje que recibí del montaraz Pico Tormenta, decía que estaba estacionado en la torre de vigilancia del norte, en Loch Modan.",
-      "state": "activa"
+      "state": "entregada"
     },
     {
       "id": 46,
@@ -85,20 +115,15 @@
   ],
   "pending": {
     "loose": [
-      "Acampada para novatos: minería"
+      "Un pedido de Pico Tormenta"
     ],
-    "openChains": [
-      [
-        "La tarea de Elmore",
-        "Una entrega a Pico Tormenta"
-      ]
-    ],
-    "awaitingBackstory": 3
+    "openChains": [],
+    "awaitingBackstory": 5
   },
   "stats": {
-    "level": 12,
-    "played": 43121,
-    "questsDone": 14,
+    "level": 13,
+    "played": 46040,
+    "questsDone": 17,
     "deaths": 0,
     "zones": [
       "Bosque de Elwynn",
@@ -106,12 +131,17 @@
       "Lion's Pride Inn",
       "Tranvía Subterráneo",
       "Forjaz",
-      "Dun Morogh"
+      "Dun Morogh",
+      "Loch Modan"
     ],
     "levelUps": [
       {
         "level": 12,
         "played": 33051
+      },
+      {
+        "level": 13,
+        "played": 43854
       }
     ]
   }

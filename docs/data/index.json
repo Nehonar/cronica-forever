@@ -14,7 +14,7 @@
       "name": "Nehonar Guts",
       "race": "Humano",
       "class": "Guerrero",
-      "level": 12,
+      "level": 13,
       "stories": 0,
       "new": true
     },
@@ -37,5 +37,5 @@
       "stories": 3
     }
   ],
-  "updated": "9d2d1a922c37d5c8"
+  "updated": "3b835d264393f400"
 }
