@@ -196,6 +196,29 @@
       "levelTo": 6
     },
     {
+      "id": "b1963c7dc6d0",
+      "kind": "llegada",
+      "zone": "Darnassus",
+      "title": "En la copa del gran árbol",
+      "text": "Nehonar había crecido bajo las ramas de Teldrassil, pero conocía Darnassus sobre todo de oídas. En el barco de regreso, una centinela le habló de ella mientras miraba el mar. Le contó que en el Templo de la Luna Tyrande Susurravientos guiaba a las Hermanas de Elune y que en el Enclave Cenarion se reunían los druidas, huérfanos de Malfurion, que dormía en el Sueño Esmeralda. Le contó también que los kaldorei, sin la inmortalidad que perdieron en Hyjal, habían plantado aquel árbol para empezar de nuevo. Y bajó la voz para añadir que el árbol había crecido sin la bendición de los dragones, y que en sus bosques algo empezaba a torcerse.\n\nAl llegar, el aire le pareció más limpio que en ningún sitio. La luz de la luna caía entre hojas enormes sobre piedra blanca, agua quieta y raíces que formaban puentes. Las centinelas vigilaban sin prisa. Los pasos apenas sonaban.\n\nNehonar se detuvo junto al lago y escuchó.\n\n«Un nido alto», pensó. «Seguro. Quizá demasiado lejos del suelo».\n\nRespiró hondo. Aquella calma era hermosa, pero él ya había visto que la calma también puede esconder raíces enfermas.",
+      "summary": "Nehonar llegó por primera vez a Darnassus, la capital kaldorei en la copa de Teldrassil, y halló en su quietud lunar una belleza serena, aunque traía consigo los rumores de que el árbol creció sin bendición y de que algo se tuerce en sus bosques.",
+      "levelFrom": 6,
+      "levelTo": 6
+    },
+    {
+      "id": "49545cdf6871",
+      "kind": "llegada",
+      "zone": "Costa Oscura",
+      "subzones": [
+        "Mar de la Bruma"
+      ],
+      "title": "Niebla sobre la Costa Oscura",
+      "text": "Lo había oído contar a un marinero kaldorei en la Posada del Orgullo de León, entre el humo de las pipas humanas. La Costa Oscura, dijo, era la orilla de su propio pueblo frente a Teldrassil: playas grises, árboles viejos y ruinas que ya eran antiguas antes de que el Gran Árbol echara raíces. Allí vivían los suyos, centinelas y druidas, en torno al puerto de Auberdine. Pero algo se pudría en el bosque. Los furbolgs, criaturas pacíficas a las que los kaldorei siempre habían respetado, se volvían contra cualquiera que se acercara, con la mirada turbia y la furia de un animal herido. Nadie sabía explicar de dónde venía esa corrupción.\n\nNehonar había callado. Pensó en un oso que muerde la mano que lo cura. Eso no es maldad, se dijo. Es veneno.\n\nEl barco entró en Auberdine al caer la tarde. La niebla del Mar de la Bruma se pegaba a los muelles y a los tejados curvos, y el aire olía a sal y a musgo mojado. Los centinelas vigilaban en silencio y los viajeros hablaban en voz baja, como quien no quiere despertar algo.\n\nMás allá del puerto, el bosque esperaba, oscuro y quieto. Demasiado quieto.\n\nNehonar pisó la arena y escuchó. El bosque no le respondió.",
+      "summary": "Nehonar llegó por mar a Auberdine, en la brumosa Costa Oscura, sabiendo por un marinero que una corrupción extraña había enloquecido a los furbolgs, y sintió un bosque inquietantemente callado.",
+      "levelFrom": 6,
+      "levelTo": 6
+    },
+    {
       "id": "15e96c00cf33",
       "kind": "llegada",
       "zone": "Ciudad de Ventormenta",
@@ -507,9 +530,151 @@
       ],
       "levelFrom": 8,
       "levelTo": 9
+    },
+    {
+      "id": "b63b13ef5839",
+      "kind": "sueltas",
+      "zone": "Bosque de Elwynn",
+      "subzones": [
+        "Los Viñedos de Maclure",
+        "Villadorada",
+        "Aserradero de la Vega del Este"
+      ],
+      "title": "Lo que el bosque da y lo que se cobra",
+      "text": "Remy «Dos Veces» le habló de polvo de oro como quien habla de un manjar. Lo llevaban encima los kóbolds de la Mina Abisal y de la Cantera de Jaspe. Nehonar volvió con él a Villadorada. Remy le pagó con prisa y le añadió un regalo de sus socios, repitiendo las palabras como un eco.\n\nAl este, en el aserradero, el supervisor Raelen se mordía las uñas. Los lobos y los osos del norte habían espantado a sus leñadores, y los fajos de madera seguían tirados entre los helechos.\n\n—Si no cumplo el plazo, estoy perdido —dijo.\n\nNehonar recogió los fajos uno a uno. Pensó en aquellos árboles talados y en los animales que defendían su territorio sin entender de pedidos ni de fechas. *El lobo no conoce los contratos*, pensó. *Solo conoce su bosque.* Raelen le dio unas monedas y no hizo más preguntas.\n\nHelene Desollapelambres le pidió pieles de lobo. Él dudó un instante antes de aceptar. Luego se agachó junto a cada lobo abatido y trabajó despacio, con respeto, como le habían enseñado a tratar lo que la tierra entrega.\n\n—Tienes madera de cazador, druida —le dijo ella.\n\nÉl no respondió. El cazador también forma parte del equilibrio. Lo que no lo es, se dijo, es tomar sin medida.\n\nEn los Viñedos de Maclure le dio de beber a Gerard Tiller, que le despidió con una sonrisa y la promesa de nuevos tratos.\n\nVolvió a Villadorada al atardecer. Ya no le miraban como a un extranjero. Le saludaban por su nombre. Elwynn lo contaba todo en monedas y plazos, pero empezaba a contarlo también a él.",
+      "summary": "Nehonar consiguió polvo de oro de los kóbolds para Remy, recuperó la madera de Raelen, desolló lobos para Helene y le dio de beber a Gerard, y reflexionó sobre el precio que Elwynn pone a lo que toma del bosque.",
+      "quests": [
+        {
+          "id": 16,
+          "title": "Dale de beber a Gerard"
+        },
+        {
+          "id": 47,
+          "title": "Intercambio de polvo de oro",
+          "giver": "Remy \"Dos Veces\""
+        },
+        {
+          "id": 5545,
+          "title": "El cumplimiento del plazo",
+          "giver": "Supervisor Raelen"
+        },
+        {
+          "id": 91751,
+          "title": "Pelambres de lobo toscas",
+          "giver": "Helene Desollapelambres"
+        }
+      ],
+      "levelFrom": 7,
+      "levelTo": 10
+    },
+    {
+      "id": "1565f35ddb6d",
+      "kind": "llegada",
+      "zone": "Claro de la Luna",
+      "subzones": [
+        "Amparo de la Noche"
+      ],
+      "title": "Donde el bosque guarda silencio",
+      "text": "En la Cañada de Villadorada, un soldado que había servido en Kalimdor le habló de un valle oculto entre montañas, al norte, más allá de Frondavil. Lo llamaba el Claro de la Luna, y lo nombraba en voz baja. Contó que allí se reunía el Círculo Cenarion, que kaldorei y tauren, enemigos en todas partes, compartían el mismo suelo sin alzar un arma. Que era tierra sagrada para los druidas desde tiempos antiguos. Que, alrededor, el bosque enfermaba por la corrupción demoníaca de Frondavil, pero que el valle resistía, intacto.\n\nNehonar no le creyó del todo. Un lugar donde los enemigos se toleran le parecía tan raro como un lobo que comparte presa.\n\nCuando llegó a Amparo de la Noche, el aire lo desmintió. Olía a musgo húmedo y a agua quieta. El lago Elune'ara reflejaba un cielo que siempre parecía de anochecer. Las casas de madera se curvaban como raíces viejas, y entre ellas caminaban figuras con astas y con pezuñas, sin prisa y sin miedo.\n\nSe detuvo junto a la orilla. Escuchó.\n\n*Aquí el bosque no se defiende. Descansa.*\n\nPor primera vez desde Teldrassil, algo dentro de él dejó de estar alerta.",
+      "summary": "Nehonar llegó al Claro de la Luna, el valle sagrado del Círculo Cenarion donde kaldorei y tauren conviven en paz, y sintió en Amparo de la Noche una calma que no había encontrado desde Teldrassil.",
+      "levelFrom": 10,
+      "levelTo": 10
+    },
+    {
+      "id": "f1f8eccacd2c",
+      "kind": "cadena",
+      "zone": "Ciudad de Ventormenta",
+      "subzones": [
+        "El Parque",
+        "Enclave Cenarion",
+        "Amparo de la Noche"
+      ],
+      "title": "La zarpa que aprendió a esperar",
+      "text": "Theridran lo encontró entre los árboles de El Parque, donde Ventormenta respira un poco menos a piedra. Le dijo que Mathrengyl Garroso, ayudante del archidruida, quería instruirlo en persona. Nehonar asintió sin preguntar. Esta vez no hacía falta: la llamada venía de los suyos.\n\nEn el Enclave Cenarion de Darnassus, Mathrengyl lo recibió con gravedad. Habló de los hijos de Cenario y de servir al equilibrio, por el bien de los animales y las plantas tanto como por el propio. Le anunció su primer paso: el camino del oso, la fuerza del cuerpo y del corazón. Luego le enseñó a abrir el camino hasta el Claro de la Luna. No le ocultó que el archidruida Corzocelada y el guardián Rémulos tenían sus diferencias. Nehonar guardó aquello en silencio, como quien anota el rastro de una tormenta lejana.\n\nEn Amparo de la Noche, Dendrite Rafagaestelar trazó un gesto invisible sobre su cabeza. «Aquí empieza, Padre Cenarius». Después lo envió al noroeste, al hogar del espíritu del gran oso.\n\nLo que allí sintió no se dejaba poner en palabras. Era antiguo, paciente, pesado como la tierra en invierno. «El oso no ataca por atacar», pensó. «Protege lo suyo y descansa». Al volver, Dendrite le sonrió: veía en él fuerza y decisión, aunque aún sin dominar.\n\nMathrengyl lo esperaba de nuevo en Darnassus. Le confesó que su propio encuentro con el espíritu también había sido inquietante, y le confió polvo de luna Cenarion para la cueva de lechúcicos al este de Auberdine. Allí, sobre la piedra, el polvo despertó a Garraluna, su guardián.\n\nNo fue sencillo. Hubo un momento en que Nehonar cayó y la tierra lo recibió. Se levantó, como se levanta el oso tras el golpe: sin rabia y sin prisa. Y la fuerza de Garraluna pasó a ser suya.\n\nCuando regresó al Enclave, los druidas lo miraron con un respeto nuevo, discreto, como se mira a quien ya no está de paso. «Ya no hay obstáculos en tu camino», dijo Mathrengyl.\n\nNehonar no respondió. Pensaba que el camino no se despeja: se revela al andarlo.",
+      "summary": "Guiado por Mathrengyl Garroso y Dendrite Rafagaestelar, Nehonar recibió la sabiduría del espíritu del gran oso en el Claro de la Luna, cayó y se levantó ante Garraluna cerca de Auberdine, y se convirtió en druida de la zarpa ganándose el respeto del Círculo Cenarion.",
+      "quests": [
+        {
+          "id": 5924,
+          "title": "Escucha la llamada",
+          "giver": "Theridran"
+        },
+        {
+          "id": 5921,
+          "title": "Claro de la Luna",
+          "giver": "Mathrengyl Garroso"
+        },
+        {
+          "id": 5929,
+          "title": "Espíritu del gran oso",
+          "giver": "Dendrite Rafagaestelar"
+        },
+        {
+          "id": 5931,
+          "title": "El regreso a Darnassus",
+          "giver": "Dendrite Rafagaestelar"
+        },
+        {
+          "id": 6001,
+          "title": "Cuerpo y corazón",
+          "giver": "Mathrengyl Garroso"
+        }
+      ],
+      "levelFrom": 10,
+      "levelTo": 10,
+      "deaths": 1
     }
   ],
   "encargos": [
+    {
+      "id": 6001,
+      "title": "Cuerpo y corazón",
+      "giver": "Mathrengyl Garroso",
+      "zone": "Darnassus",
+      "subzone": "Enclave Cenarion",
+      "objectives": "Utiliza el polvo de luna Cenarion en la piedra de lechúcico lunar de Auberdine para invocar a Garraluna.  Luego tendrás que enfrentarte a Garraluna y ganar la fuerza física y de corazón que posee. \n\nCuando hayas acabado, vuelve a Darnassus y habla con Mathrengyl Garroso.",
+      "original": "Al este de Auberdine hay muchas cuevas de lechúcicos lunares. La que está más cerca de Auberdine alberga una piedra de lechúcico lunar en su interior. Garraluna, el guardián de la piedra, solo se enfrentará a ti cuando le apliques polvo de luna Cenarion. Garraluna posee una fuerza que debes usar como miembro de la zarpa.\n\nTe has ganado el derecho a usar este polvo de luna Cenarion, Nehonar... ¡Ahora demuéstrame que también te has ganado el derecho a poseer la fuerza física y de corazón que necesitas como druida!",
+      "state": "entregada"
+    },
+    {
+      "id": 5931,
+      "title": "El regreso a Darnassus",
+      "giver": "Dendrite Rafagaestelar",
+      "zone": "Claro de la Luna",
+      "subzone": "Amparo de la Noche",
+      "objectives": "Vuelve a Darnassus para hablar con Mathrengyl Garroso en el Enclave Cenarion.",
+      "original": "Ha llegado el momento de separarnos, puesto que para poner en práctica lo que has aprendido debes volver a quien te envió a mí. Mathrengyl Garroso vive en armonía con la naturaleza, aunque vive peligrosamente cerca de donde el equilibrio natural se ha roto. Escúchalo bien y pronto habrá terminado tu preparación como protector del equilibrio.\n\nVete, joven. Volveremos a vernos.",
+      "state": "entregada"
+    },
+    {
+      "id": 5929,
+      "title": "Espíritu del gran oso",
+      "giver": "Dendrite Rafagaestelar",
+      "zone": "Claro de la Luna",
+      "subzone": "Amparo de la Noche",
+      "objectives": "Busca al espíritu del gran oso al noroeste de Claro de la Luna y aprende lo que tenga que enseñarte sobre la naturaleza del oso.  Después ve a hablar con Dendrite Rafagaestelar a Amparo de la Noche.",
+      "original": "Al noroeste de Claro de la Luna está el hogar del un ser noble y sabio llamado el espíritu del gran oso. Gracias a él todos los druidas han podido captar la esencia natural del oso. Todo druida debe buscar la sabiduría del espíritu. Tú no vas a ser una excepción.\n\nPreséntante ante el espíritu del gran oso y aprende lo que tenga que enseñarte. Cuando hayas terminado, vuelve a verme aquí, a Amparo de la Noche. Entonces sabremos si realmente has aprendido la lección.",
+      "state": "entregada"
+    },
+    {
+      "id": 5921,
+      "title": "Claro de la Luna",
+      "giver": "Mathrengyl Garroso",
+      "zone": "Darnassus",
+      "subzone": "Enclave Cenarion",
+      "objectives": "Utiliza el hechizo \"teletransportarse: Claro de la Luna\" para viajar a Claro de la Luna.  Cuando llegues, ve al poblado Amparo de la Noche y habla con Dendrite Rafagaestelar.",
+      "original": "En las sagradas tierras de Claro de la Luna todos los druidas son bienvenidos, a pesar de las tensiones que hay dentro del Círculo Cenarion entre el archidruida Corzocelada y el guardián Rémulos. Ahora que estás aprendiendo el camino de la zarpa, te enseñaré el hechizo que te permite transportarte allí. Utilízalo cuando busques el conocimiento o el consuelo del Claro de la Luna.\n\nComo primera lección, ve a Claro de la Luna. Busca a Dendrite Rafagaestelar en el Amparo de la Noche y háblale del camino que recorres. Buena suerte, joven druida.",
+      "state": "entregada"
+    },
+    {
+      "id": 5924,
+      "title": "Escucha la llamada",
+      "giver": "Theridran",
+      "zone": "Ciudad de Ventormenta",
+      "subzone": "El Parque",
+      "objectives": "Habla con Mathrengyl Garroso en el Enclave Cenarion, en Darnassus.",
+      "original": "Oye, perdona...\n\nHe sabido que Mathrengyl Garroso quiere hablar contigo. Por lo visto, tu instrucción de druida va a dar un giro, porque te va a entrenar él personalmente. Mathrengyl es el ayudante personal del mismísimo archidruida y uno de los druidas más sabios y augustos que encontrarás en Teldrassil.\n\nLe encontrarás en el Enclave Cenarion de Darnassus, en el segundo piso del árbol de Fandral Corzocelada.",
+      "state": "entregada"
+    },
     {
       "id": 59,
       "title": "Armadura de tela y cuero",
@@ -843,7 +1008,7 @@
       "original": "¿Te interesa una oportunidad para aprender el hermoso arte del desuello? Mi marido no se pierde una cacería de lobos, pero hoy tiene tarea en la abadía, y a mí no me vendría mal que alguien me trajera unas cuantas pieles para los pedidos que tengo entre manos.",
       "heading": "Pieles para Helene",
       "text": "A las afueras de Villadorada, Helene Desollapelambres raspaba un cuero tendido al sol cuando reparó en el elfo. Lo llamó con un gesto del cuchillo.\n\n—¿Te interesa aprender el hermoso arte del desuello? Mi marido no se pierde una cacería de lobos, pero hoy tiene tarea en la abadía. Y a mí no me vendría mal que alguien me trajera unas cuantas pieles.\n\nNehonar miró las pelambres colgadas. Pensó en los lobos de Elwynn, en la manada que caza para vivir. Tomar una piel no era lo mismo que tomar una vida por capricho.\n\n—¿Para qué las quieres?\n\n—Tengo pedidos entre manos —respondió ella, sin dejar de raspar.\n\nÉl asintió despacio. Saldría a los bosques de Elwynn, cazaría lobos, les quitaría la piel con respeto y volvería con ella junto a Helene, cerca de Villadorada.",
-      "state": "activa"
+      "state": "entregada"
     },
     {
       "id": 2158,
@@ -1260,11 +1425,7 @@
     }
   ],
   "pending": {
-    "loose": [
-      "Dale de beber a Gerard",
-      "Intercambio de polvo de oro",
-      "El cumplimiento del plazo"
-    ],
+    "loose": [],
     "openChains": [
       [
         "Informa en Villadorada",
@@ -1293,16 +1454,17 @@
   },
   "stats": {
     "level": 10,
-    "played": 14523,
-    "questsDone": 62,
-    "deaths": 0,
+    "played": 18629,
+    "questsDone": 68,
+    "deaths": 1,
     "zones": [
       "Teldrassil",
       "Darnassus",
       "Costa Oscura",
       "Ciudad de Ventormenta",
       "Bosque de Elwynn",
-      "Lion's Pride Inn"
+      "Lion's Pride Inn",
+      "Claro de la Luna"
     ],
     "levelUps": [
       {
