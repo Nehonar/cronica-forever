@@ -1,6 +1,33 @@
 {
   "characters": [
     {
+      "key": "Nehonar-ClassicBetaPvP",
+      "name": "Nehonar",
+      "epithet": "el de la Cantera",
+      "race": "Humano",
+      "class": "Paladín",
+      "level": 2,
+      "stories": 1
+    },
+    {
+      "key": "NehonarBanthalas-ClassicBetaPvE",
+      "name": "Nehonar Banthalas",
+      "race": "Cielonato de la Orden Eminente",
+      "class": "Guerrero",
+      "level": 6,
+      "stories": 0,
+      "new": true
+    },
+    {
+      "key": "NehonarBolgar-ClassicBetaPvE",
+      "name": "Nehonar Bolgar",
+      "race": "Cielonato de la Orden Eminente",
+      "class": "Mago",
+      "level": 6,
+      "stories": 0,
+      "new": true
+    },
+    {
       "key": "NehonarChopper-ClassicBetaPvE",
       "name": "Nehonar Chopper",
       "epithet": "el Silencioso",
@@ -37,33 +64,6 @@
       "stories": 17
     },
     {
-      "key": "Nehonar-ClassicBetaPvP",
-      "name": "Nehonar",
-      "epithet": "el de la Cantera",
-      "race": "Humano",
-      "class": "Paladín",
-      "level": 2,
-      "stories": 1
-    },
-    {
-      "key": "NehonarBanthalas-ClassicBetaPvE",
-      "name": "Nehonar Banthalas",
-      "race": "Cielonato de la Orden Eminente",
-      "class": "Guerrero",
-      "level": 6,
-      "stories": 0,
-      "new": true
-    },
-    {
-      "key": "NehonarBolgar-ClassicBetaPvE",
-      "name": "Nehonar Bolgar",
-      "race": "Cielonato de la Orden Eminente",
-      "class": "Mago",
-      "level": 6,
-      "stories": 0,
-      "new": true
-    },
-    {
       "key": "Tobias-Demo",
       "name": "Tobias Brenn",
       "epithet": "El hijo del molinero",
@@ -73,5 +73,5 @@
       "stories": 3
     }
   ],
-  "updated": "117f92939943f2e5"
+  "updated": "4417657b059d11a9"
 }
