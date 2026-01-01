@@ -196,6 +196,19 @@
       "levelTo": 6
     },
     {
+      "id": "15e96c00cf33",
+      "kind": "llegada",
+      "zone": "Ciudad de Ventormenta",
+      "subzones": [
+        "Puerto de Ventormenta"
+      ],
+      "title": "Piedra blanca sobre cimientos impagados",
+      "text": "En Villadorada se hablaba de la capital con orgullo y con rencor. Un carretero le contó a Nehonar que los orcos la arrasaron en la Primera Guerra y que los humanos la alzaron de nuevo, piedra a piedra, tras la Segunda. Otro, más amargo, añadió que esas piedras las labraron canteros a los que nunca se pagó. El rey seguía desaparecido. Gobernaba una regencia en nombre de su hijo, todavía un muchacho, con el alto alguacil Bolvar Fordragón al frente. Y por sus calles, decían, se mezclaban soldados, mercaderes y refugiados que no tenían otro sitio adonde ir.\n\nAl llegar, la ciudad se le echó encima. Murallas blancas, canales de agua quieta y torres que buscaban el cielo con la misma ansia que un árbol joven busca la luz. El aire olía a sal, a brea y a pan recién hecho. Gaviotas, campanas, martillos.\n\nNehonar se detuvo y escuchó. Tanta gente junta, pensó, como un hormiguero removido con un palo.\n\nVio armaduras relucientes y, a pocos pasos, manos tendidas que pedían limosna. La piedra era hermosa. Se preguntó cuánto había costado y quién lo había pagado.\n\n—Ya veremos —murmuró.\n\nY siguió andando.",
+      "summary": "Nehonar llegó a Ventormenta tras oír hablar de su reconstrucción, de los canteros a los que no se pagó y de la regencia de Bolvar Fordragón, y la ciudad le pareció tan hermosa como inquieta.",
+      "levelFrom": 6,
+      "levelTo": 6
+    },
+    {
       "id": "564c95f3b3e1",
       "kind": "llegada",
       "zone": "Bosque de Elwynn",
@@ -306,6 +319,153 @@
       ],
       "levelFrom": 6,
       "levelTo": 7
+    },
+    {
+      "id": "7f63a64ae77c",
+      "kind": "cadena",
+      "zone": "Bosque de Elwynn",
+      "subzones": [
+        "Valle de Villanorte"
+      ],
+      "title": "Rastros que llevan más allá del valle",
+      "text": "La abadía de Villanorte olía a cera y a hierba recién cortada cuando el ayudante Willem lo detuvo en el camino. Le habló de guardias que no daban abasto y de tropas lejanas, y lo mandó con su superior. El alguacil McBride lo recibió con una mezcla de alivio y cansancio.\n\n—Esta batalla tiene muchos frentes, Nehonar. Prepárate para una campaña larga.\n\nNehonar asintió sin responder. Un reino sin rey, pensó, es como una manada sin guía: los lobos se acercan cuando huelen el desorden.\n\nEl primer encargo lo llevó a los bosques del norte, donde un clan de kóbolds había plantado sus velas sucias entre los árboles. Los combatió con garra y raíz hasta que el claro quedó en silencio. McBride los llamó ladrones y cobardes. Nehonar no lo contradijo, aunque pensó que hasta las ratas se vuelven osadas cuando nadie vigila el granero.\n\nDespués vino la Mina del Eco. Primero los obreros acampados a la entrada; luego, de vuelta, los peones que excavaban en la penumbra. La piedra devolvía cada golpe como un trueno lejano. Cuando regresó por segunda vez, el alguacil lo miró de otra manera, ya no como a un voluntario más, sino como a alguien con quien se podía contar.\n\n—Te has ganado mi respeto y la gratitud del ejército de Ventormenta.\n\nNo hubo descanso. Kelsey había visto salir de la mina a un kóbold cargado con un saco enorme de libros, los del hermano Paxton. McBride lo envió al establo, tras la abadía, donde esperaba Tordrin, un enano recién llegado de Forjaz para instruir a los cazadores. Le entregó un equipo de rastreo y una advertencia:\n\n—Estas alimañas traman algo a las afueras de Villanorte.\n\nNehonar siguió las huellas. Patas pequeñas, apresuradas, el arrastre de algo pesado sobre la tierra. Leyó el rastro como de niño leía el paso de los ciervos en Teldrassil, y este lo sacó del valle hasta Villadorada.\n\nEl alguacil Dughan escuchó el informe con el ceño fruncido.\n\n—¡Pues claro que van a la Mina Abisal! Está plagada de kóbolds. Buen trabajo, supongo. Pero necesitaré a alguien que se encargue.\n\nNehonar guardó silencio. Sabía que la madriguera nunca termina en la primera galería.",
+      "summary": "Nehonar se alistó con el alguacil McBride, limpió de kóbolds los bosques del norte y la Mina del Eco y, con el equipo de rastreo del enano Tordrin, siguió la pista de un kóbold ladrón de libros hasta Villadorada, donde Dughan le reveló que se dirigían a la Mina Abisal.",
+      "quests": [
+        {
+          "id": 783,
+          "title": "Una amenaza del interior",
+          "giver": "Ayudante del alguacil Willem"
+        },
+        {
+          "id": 7,
+          "title": "La limpieza del campamento kóbold",
+          "giver": "Alguacil McBride"
+        },
+        {
+          "id": 15,
+          "title": "Investigar la Mina del Eco",
+          "giver": "Alguacil McBride"
+        },
+        {
+          "id": 21,
+          "title": "Escarmuza en la Mina del eco",
+          "giver": "Alguacil McBride"
+        },
+        {
+          "id": 91758,
+          "title": "¡Sigue a ese kóbold!",
+          "giver": "Alguacil McBride"
+        },
+        {
+          "id": 91772,
+          "title": "¡Shhh! Aquí se cazan kóbolds",
+          "giver": "Tordrin Hojadusta"
+        }
+      ],
+      "levelFrom": 6,
+      "levelTo": 8
+    },
+    {
+      "id": "99d7398ded24",
+      "kind": "llegada",
+      "zone": "Lion's Pride Inn",
+      "title": "Bajo el emblema del león",
+      "text": "Ya había pasado por Villadorada siguiendo huellas ajenas, sin detenerse. En la abadía, un soldado le había hablado de la posada del cruce: allí paraban granjeros, mercaderes de camino a Ventormenta y gente armada que buscaba trabajo o noticias. «Si algo ocurre en Elwynn», le dijo, «allí lo saben antes que el alguacil». También le contó que buena parte del ejército del reino servía lejos, y que los caminos quedaban en manos de pocos guardias. Por eso los bandidos de pañuelo rojo, los kóbolds y los gnolls se crecían en los bosques.\n\nLa Posada del Orgullo de León se alzaba junto al camino, con su piedra clara y su tejado firme. Sobre la puerta colgaba el león de Ventormenta. Nehonar lo miró un rato. *Los humanos ponen fieras en sus estandartes. Pocos han visto cazar a una.*\n\nDentro olía a humo, a cerveza y a pan recién hecho. Las voces se pisaban unas a otras. Había risas, cansancio y miradas que se fijaron un instante en sus orejas largas antes de volver a las jarras.\n\nBuscó un rincón cerca del fuego y se quedó quieto, como un búho en la rama. *Un abrevadero. Todos acuden a beber, y nadie se fía del de al lado.*",
+      "summary": "Nehonar entró por primera vez en la Posada del Orgullo de León, el refugio de viajeros de Villadorada, y observó en silencio a sus gentes inquietas en una Elwynn con pocos guardias y muchas amenazas.",
+      "levelFrom": 8,
+      "levelTo": 8
+    },
+    {
+      "id": "83c6c40a5dd9",
+      "kind": "sueltas",
+      "zone": "Bosque de Elwynn",
+      "subzones": [
+        "Valle de Villanorte",
+        "Villadorada"
+      ],
+      "title": "Lo que cuesta un lugar donde descansar",
+      "text": "En Villanorte, el ayudante Willem le habló de Garrick Piesuaves: un maleante que llevaba semanas acosando a granjeros y mercaderes desde una choza junto a los viñedos, al otro lado del puente. Lo protegía una pandilla de matones. Nehonar escuchó sin interrumpir. Luego hizo una sola pregunta.\n\n—¿A quién roba?\n\n—A quien trabaja la tierra.\n\nLe bastó.\n\nCruzó el puente con el paso del lince que ronda una madriguera. No fue fácil llegar hasta él entre tanto matón, pero regresó a la abadía con la cabeza de Garrick. Willem celebró la hazaña y le prometió una hermosa recompensa. Nehonar no sintió orgullo. Era un depredador menos, nada más. Los guardias, en cambio, empezaron a saludarlo al pasar, como se saluda a alguien de la casa.\n\nFalkhaan Isenzancas lo vio cansado y le habló de su mejor amigo, el tabernero Farley. Si decía que lo enviaba él, quizá le hiciera un descuento. En la Posada Orgullo de León, Farley lo recibió proclamando su lema a voces y le ofreció un sitio junto al fuego.\n\nEn Villadorada, Sam Zarzaparrilla supo que había elegido la peletería y lo mandó a ver a Adele Fielder. Ella le dio una tienda de campamento y un consejo: en la ciudad no se ven con buenos ojos, mejor montarla en la espesura. Y antes de nada, una hoguera; casi cualquier cocinero podría enseñarle a encenderla.\n\nNehonar pasó la mano por la lona. Pensó en los granjeros que vivían con miedo bajo su propio techo.\n\n«El oso no duerme en la ciudad. Busca su cueva. Pero antes se asegura de que nada acecha fuera.»",
+      "summary": "Nehonar abatió al maleante Garrick Piesuaves por encargo de Willem, conoció al tabernero Farley por recomendación de Falkhaan y recibió de Adele Fielder una tienda de campamento, y así entendió que el descanso de unos depende de la vigilancia de otros.",
+      "quests": [
+        {
+          "id": 6,
+          "title": "La recompensa por Garrick Piesuaves",
+          "giver": "Ayudante del alguacil Willem"
+        },
+        {
+          "id": 97922,
+          "title": "Acampada para novatos: peletería",
+          "giver": "Sam Zarzaparrilla"
+        },
+        {
+          "id": 2158,
+          "title": "Descanso y relajación",
+          "giver": "Falkhaan Isenzancas"
+        }
+      ],
+      "levelFrom": 7,
+      "levelTo": 8
+    },
+    {
+      "id": "0467eee70ebe",
+      "kind": "sueltas",
+      "zone": "Ciudad de Ventormenta",
+      "subzones": [
+        "Distrito de Mercaderes"
+      ],
+      "title": "Un panfleto entre los canales",
+      "text": "Ventormenta no callaba nunca. Nehonar llegó al Distrito de Mercaderes y el ruido le cayó encima como lluvia sobre hojas secas: pregones, ruedas de carro, martillos, el chapoteo de los canales contra la piedra blanca. Era una ciudad reconstruida tras la guerra, y se notaba. Todo parecía nuevo y, al mismo tiempo, cansado. Entre los soldados y los mercaderes pasaban refugiados con la mirada baja. El rey no estaba. Otros gobernaban en nombre de un niño.\n\nUn hombre le cortó el paso con una sonrisa ancha. Se presentó como Renato Gallina y le puso un panfleto en la mano antes de que pudiera negarse.\n\n—El mejor vino de Ventormenta —dijo—. Llévaselo a mi hermana Suzetta, a nuestra tienda. Te dará una botella de regalo.\n\nNehonar miró el papel. Luego miró al hombre. *Como el pájaro que canta para marcar su rama*, pensó. No había engaño en ello. Solo un hombre que defendía su sitio a su manera.\n\nSiguió los canales hasta la Bodega Gallina. Suzetta lo recibió con la misma sonrisa que su hermano.\n\n—¿Entonces has visto a Renato? Aquí estamos, caballero. Una botella de nuestro pinot noir especial. ¡No encontrarás nada mejor en todo Azeroth!\n\nNehonar sostuvo la botella. Pesaba poco. Era un regalo pequeño, pero se lo habían dado sin pedirle nada difícil a cambio.\n\nAl salir, notó que algunas miradas ya no se apartaban de él. Un enano le saludó con la cabeza. Un gnomo le sonrió. En aquella colmena de piedra, también se podía ser alguien.\n\nQuizá el equilibrio no solo crecía entre raíces.",
+      "summary": "En el bullicioso Distrito de Mercaderes de Ventormenta, Nehonar llevó el panfleto de Renato Gallina a su hermana Suzetta, recibió una botella de pinot noir y empezó a sentirse acogido en la ciudad de piedra.",
+      "quests": [
+        {
+          "id": 332,
+          "title": "Publicidad de la bodega",
+          "giver": "Renato Gallina"
+        }
+      ],
+      "levelFrom": 8,
+      "levelTo": 8
+    },
+    {
+      "id": "441b8eb0b11e",
+      "kind": "cadena",
+      "zone": "Bosque de Elwynn",
+      "subzones": [
+        "Los Viñedos de Maclure",
+        "La Granja Pedregosa"
+      ],
+      "title": "Un licor para cruzar el odio",
+      "text": "Entre las hileras de los Viñedos de Maclure, Maybell Maclure apretaba una carta contra el pecho como quien protege a un polluelo caído del nido. Amaba a Tommy Joe Pedregosa, pero las dos familias se odiaban a muerte y ella no podía ni mirarlo. Nehonar escuchó sin interrumpir y aceptó la carta.\n\nEncontró al muchacho junto al río, al oeste de la Granja Pedregosa. Tommy Joe leyó con avidez y alzó la vista, desesperado.\n\n—¡Tengo que verla!\n\n—¿Por qué se odian vuestras familias? —preguntó Nehonar.\n\nEl chico no supo responder. Nehonar pensó en los ciervos, que se disputan el territorio pero no heredan rencores que nadie recuerda. Le pareció un odio sin raíz, y por eso más difícil de arrancar.\n\nTommy Joe lo mandó con su abuela. La anciana Pedregosa lo recibió en la casa con mirada cansada y sabia: mientras las familias siguieran enfrentadas, aquellos dos no tendrían futuro, pero quizá pudieran reunirse, aunque fuera por poco tiempo. Le confió una nota para William Mortero.\n\nEn la Posada Orgullo de León, en Villadorada, el viejo William leyó la nota y suspiró.\n\n—También yo fui joven y conocí el amor... una vez.\n\nSu remedio fue un licor de invisibilidad, para que Maybell saliera de los viñedos sin ser vista. Le faltaba kelp cristalino, y los múrlocs del Lago de Cristal, al este del pueblo, solían llevarlo encima. Nehonar conocía ya sus huellas palmeadas. Volvió de la orilla con el kelp, húmedo y brillante como escamas al sol.\n\nWilliam preparó la poción sin prisa. Al salir, un guardia de Ventormenta saludó a Nehonar con una inclinación de cabeza. Ya no lo miraban como a un forastero.\n\nMaybell tomó el frasco con manos temblorosas.\n\n—Me siento culpable por engañar a mi familia, pero no puedo ignorar lo que siento. Gracias, Nehonar. Por favor, acepta esto.\n\nÉl aceptó el regalo y miró las viñas. El engaño no le complacía. Tampoco un odio que nadie sabía explicar. Entre dos males, aquella muchacha había elegido el que dejaba crecer algo.\n\nEl camino se revela al andarlo, pensó. También para ellos.",
+      "summary": "Nehonar ayudó a Maybell Maclure y Tommy Joe Pedregosa, separados por el odio de sus familias, al llevar sus mensajes, conseguir kelp cristalino de los múrlocs del Lago de Cristal y entregar a Maybell el licor de invisibilidad de William Mortero para que pudiera escaparse a ver a su amado.",
+      "quests": [
+        {
+          "id": 106,
+          "title": "Jóvenes enamorados",
+          "giver": "Maybell Maclure"
+        },
+        {
+          "id": 111,
+          "title": "Habla con la abuelita",
+          "giver": "Tommy Joe Pedregosa"
+        },
+        {
+          "id": 107,
+          "title": "Una nota para William",
+          "giver": "Abuela Pedregosa"
+        },
+        {
+          "id": 112,
+          "title": "La recolección de Kelp",
+          "giver": "William Mortero"
+        },
+        {
+          "id": 114,
+          "title": "La fuga",
+          "giver": "William Mortero"
+        }
+      ],
+      "levelFrom": 8,
+      "levelTo": 9
     },
     {
       "id": "fe4957009303",
@@ -1133,7 +1293,7 @@
   },
   "stats": {
     "level": 10,
-    "played": 14513,
+    "played": 14523,
     "questsDone": 62,
     "deaths": 0,
     "zones": [
