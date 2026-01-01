@@ -6,8 +6,8 @@
       "epithet": "el Silencioso",
       "race": "Elfo de la noche",
       "class": "Druida",
-      "level": 4,
-      "stories": 1
+      "level": 7,
+      "stories": 9
     },
     {
       "key": "NehonarGuts-ClassicBetaPvE",
@@ -46,5 +46,5 @@
       "stories": 3
     }
   ],
-  "updated": "2ecd9291572c8498"
+  "updated": "cec1260d42908b83"
 }

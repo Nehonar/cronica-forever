@@ -16,7 +16,7 @@
     ],
     "motto": "El camino se revela al andarlo."
   },
-  "level": 4,
+  "level": 7,
   "realm": "Classic Beta PvE",
   "stories": [
     {
@@ -54,9 +54,576 @@
       ],
       "levelFrom": 1,
       "levelTo": 3
+    },
+    {
+      "id": "f1a7b8153122",
+      "kind": "cadena",
+      "zone": "Teldrassil",
+      "subzones": [
+        "Cañada Umbría"
+      ],
+      "title": "El veneno, la prisa y la amistad",
+      "text": "Dirania Brillargente esperaba a Iverron a la misma hora de siempre, y ese día no llegó. Se lo contó a Nehonar con la inquietud apretada en la voz. Su amigo pasaba demasiado tiempo junto a la cueva del norte, donde anidaban las arañas.\n\nNehonar no preguntó más. Cuando un animal rompe su costumbre, suele haber un motivo, y casi nunca es bueno.\n\nEncontró a Iverron sentado cerca de la entrada, pálido, con una sonrisa torcida.\n\n—¿Cómo sabías que estaba aquí?\n\n—Alguien te echaba de menos.\n\nIverron confesó que Gythyiss la Vil le había picado mientras exploraba. Le temblaban las manos. Le pidió que avisara a Dirania antes de que el mareo pudiera con él.\n\nElla recibió la noticia con un suspiro de miedo y reproche, porque siempre le había advertido. Pero no perdió tiempo en lamentos. Conocía un antídoto, y le dijo a Nehonar qué necesitaba.\n\nPrimero, champiñones jacinto, que nacen al pie de los árboles y que los grells del sur se habían aficionado a guardar. Nehonar recordó lo que el musgovil había hecho con esas criaturas y las miró con más tristeza que rabia. Después, lirios alunados, que solo crecen junto al agua. Los cortó despacio, como quien no quiere despertar a la charca. Por último, icor de las mismas arañas tejemadera que habían envenenado a Iverron. Entró en su territorio con el paso del felino que sabe que no es bienvenido, y notó el cuerpo más firme, el instinto más claro que días atrás.\n\n—¡Gracias a Elune! —exclamó Dirania al verlo volver tan pronto.\n\nEl remedio estuvo listo enseguida, pero tenía un límite: su fuerza se agotaría en muy poco tiempo. Nehonar corrió hacia el norte y sintió que el tiempo también era una bestia que le pisaba los talones.\n\nLlegó a tiempo. Iverron bebió, recuperó el color y habló de Dirania con una gratitud que no sabía disimular. Él siempre se metía en líos y ella siempre lo sacaba de ellos.\n\n—Raíz y rama —murmuró Nehonar.\n\nEn la cañada, los centinelas empezaban a saludarlo con otra deferencia, y hasta los forasteros de reinos lejanos le dedicaban un gesto de respeto. Él apenas lo notó.\n\nIverron, aún débil, le pidió algo más: que despejara el camino de nocturácnidas sanguinarias. Nehonar miró la boca oscura de la cueva. Tardó en contestar. Luego asintió.",
+      "summary": "A petición de Dirania Brillargente, Nehonar encontró a Iverron envenenado por Gythyiss la Vil, reunió champiñones jacinto, lirios alunados e icor de tejemadera para el antídoto y se lo llevó a tiempo, tras lo cual Iverron le pidió que despejara el camino de nocturácnidas sanguinarias.",
+      "quests": [
+        {
+          "id": 4495,
+          "title": "Un buen amigo",
+          "giver": "Dirania Brillargente"
+        },
+        {
+          "id": 3519,
+          "title": "Un amigo en apuros",
+          "giver": "Iverron"
+        },
+        {
+          "id": 3521,
+          "title": "En antídoto de Iverron",
+          "giver": "Dirania Brillargente"
+        },
+        {
+          "id": 3522,
+          "title": "En antídoto de Iverron",
+          "giver": "Dirania Brillargente"
+        }
+      ],
+      "levelFrom": 2,
+      "levelTo": 5
+    },
+    {
+      "id": "be38db27d16d",
+      "kind": "cadena",
+      "zone": "Teldrassil",
+      "subzones": [
+        "Aldrassil"
+      ],
+      "title": "El agua que recuerda Hyjal",
+      "text": "De vuelta en Aldrassil, Nehonar encontró a Gilshalan Caminaviento absorto en las arañas de la Gruta Narácnida. Las tejemadera, le explicó, eran parientes de criaturas mucho más pequeñas, y sospechaba que el Árbol del Mundo las había cambiado. Quería su veneno para compararlo.\n\n—¿Para qué? —preguntó Nehonar.\n\n—Para entender qué hace Teldrassil con lo que vive en él.\n\nLe bastó esa respuesta. Entró en la gruta al norte, donde la seda colgaba como niebla detenida, y regresó con las glándulas. Gilshalan las examinó con un brillo en los ojos: las estudiaría en Darnassus, porque creía que guardaban relación con el crecimiento del gran árbol.\n\nDespués le pidió algo más difícil. No podía exigirle una araña gigante viva, pero sí un huevo del nido, en lo más hondo de la gruta. Nehonar bajó despacio, como baja el búho hacia una presa que aún no le ha visto. Al sostener el huevo pensó que el bosque también cría en la oscuridad lo que luego crece a la luz. Gilshalan lo enviaría a Darnassus y le dio las gracias de corazón.\n\nFue él quien le avisó de que Tenaron Tormentagarre lo buscaba en la sala más alta de Aldrassil. «Tómatelo con calma, pero no le hagas esperar», le dijo.\n\nTenaron lo recibió con seriedad. Había llegado la hora de buscar su destino, pero antes debía conocer la historia reciente de su pueblo. Le habló de Nordrassil, que en el Monte Hyjal tuvo poder para derrotar a Archimonde y expulsar a la Legión Ardiente, y que ahora era una sombra de lo que fue. Lo envió a la poza de la luna, al norte, a llenar una ampolla.\n\nNehonar se arrodilló junto al agua quieta. Pensó en un árbol que lo había dado todo. En otro que aún crecía bajo sus pies.\n\nCuando volvió, Tenaron le contó lo ocurrido justo después de la batalla, aunque le advirtió de que quedaba mucho más por saber. Vertió el agua en una vasija y le pidió que se la llevara a Corithras Furia Lunar, en Dolanaar, siguiendo los adoquines hacia el oeste.\n\n—Ten cuidado. El bosque está inquieto.\n\nEn Dolanaar, Corithras lo miró como se mira a alguien en quien empieza a confiarse.\n\n—Tenemos mucho que hacer y poco tiempo. Empecemos.\n\nNehonar asintió. Callado, como siempre.",
+      "summary": "Nehonar ayudó a Gilshalan Caminaviento a estudiar a las tejemadera con su veneno y un huevo, y después Tenaron Tormentagarre le habló de Nordrassil y lo envió con agua de la poza de la luna hasta Corithras Furia Lunar, en Dolanaar.",
+      "quests": [
+        {
+          "id": 916,
+          "title": "El veneno de la Tejemadera",
+          "giver": "Gilshalan Caminaviento"
+        },
+        {
+          "id": 917,
+          "title": "Huevo de Tejemadera",
+          "giver": "Gilshalan Caminaviento"
+        },
+        {
+          "id": 920,
+          "title": "Las invocaciones de Tenaron",
+          "giver": "Gilshalan Caminaviento"
+        },
+        {
+          "id": 921,
+          "title": "La corona de la Tierra",
+          "giver": "Tenaron Tormentagarre"
+        },
+        {
+          "id": 928,
+          "title": "La corona de la Tierra",
+          "giver": "Tenaron Tormentagarre"
+        }
+      ],
+      "levelFrom": 3,
+      "levelTo": 6
+    },
+    {
+      "id": "202668caad24",
+      "kind": "cadena",
+      "zone": "Teldrassil",
+      "subzones": [
+        "Aldrassil"
+      ],
+      "title": "Un diario, una hoguera y un fuego",
+      "text": "El diario apareció entre la hojarasca, cerca de Aldrassil, con las tapas húmedas de rocío. Nehonar lo abrió con cuidado, como quien levanta una piedra sin saber qué vive debajo. No guardaba secretos. Solo contaba la vida de alguien desconocido: caminos, noches al raso, hogueras encendidas bajo las ramas de Teldrassil. Había algo alegre en aquellas líneas, casi travieso. Lo cerró y siguió el rastro hasta las afueras de Dolanaar.\n\nSu dueña se llamaba Lyreena Hoja Umbría. Al verlo llegar abrió mucho los ojos.\n\n—¿Eso es mi diario? Lo perdí hace tiempo. Gracias, druida. —Lo miró de arriba abajo, divertida—. Tú también pareces un aventurero. ¿Te gustaría aprender a acampar?\n\nHabló de espíritus inquietos y de la fortuna y la gloria que esperaban fuera. Nehonar no respondió. Sus maestros nunca le habían prometido gloria. *El lobo no caza por fama*, pensó. *Caza para vivir.* Pero la invitación era sincera y el fuego estaba encendido, así que se sentó junto a él.\n\nLyreena le explicó cómo escoger el suelo, cómo resguardarse del viento y cómo dejar que el calor aflojara el cansancio. Nehonar escuchó el crepitar de la leña y sintió que el cuerpo le pesaba menos. Pocas veces había descansado así. Ni siquiera en el bosque de su infancia, donde dormía hecho un ovillo como un cachorro de felino.\n\n—Ahora ve a la aldea —le dijo ella al fin—. Visita a los instructores y aprende un oficio. Lo primero, cocinar. Es la piedra angular de cualquier campamento.\n\nEn Dolanaar lo esperaba Zarrin, entre ollas y aromas de hierbas. Le enseñó a preparar una hoguera propia y a guisar lo que el bosque ofrecía. Lo justo para acampar en plena naturaleza.\n\n—Esto es solo lo básico —le advirtió—. Si mejoras en la cocina, podrás alzar fuegos más grandes. Y los demás instructores te enseñarán sus oficios cuando los domines.\n\nNehonar asintió. Un fuego pequeño bastaba para empezar. Los centinelas que cruzaban la aldea lo saludaron con un gesto breve, más cálido que días atrás.\n\nEsa noche encendió su primera hoguera. Pensó que hasta las raíces más hondas empiezan siendo un hilo fino bajo la tierra.",
+      "summary": "Nehonar devolvió su diario perdido a Lyreena Hoja Umbría, que le enseñó a descansar junto al fuego y lo envió a Dolanaar, donde Zarrin le enseñó a cocinar y a encender su propia hoguera de campamento.",
+      "quests": [
+        {
+          "id": 96630,
+          "title": "El aventurero",
+          "giver": "Diario perdido"
+        },
+        {
+          "id": 96606,
+          "title": "El gran mundo exterior",
+          "giver": "Lyreena Hoja Umbría"
+        },
+        {
+          "id": 96634,
+          "title": "Acampada para novatos: cocinar",
+          "giver": "Lyreena Hoja Umbría"
+        }
+      ],
+      "levelFrom": 6,
+      "levelTo": 6
+    },
+    {
+      "id": "5cb4450561a4",
+      "kind": "sueltas",
+      "zone": "Teldrassil",
+      "subzones": [
+        "Cañada Umbría"
+      ],
+      "title": "El peso de lo necesario",
+      "text": "Aquella primavera había llovido demasiado sobre Cañada Umbría. El conservador Ilthalaine se lo explicó sin rodeos: los sables de la noche y los jabalíes cardo se habían multiplicado, y el bosque no podía alimentarlos a todos.\n\nNehonar escuchó en silencio. Luego preguntó lo único que le importaba.\n\n—¿Y si no lo hago?\n\n—Se agotará el bosque. Y morirán más.\n\nLe pareció una razón honesta. Fue primero a por los ejemplares jóvenes y después a por los sarnosos. No lo hizo con rabia, sino como el lobo que aparta al débil de la manada: sin gusto, pero sin dudar. Cuando volvió, Ilthalaine le dijo que prometía mucho. Nehonar no supo qué responder.\n\nEntre una cacería y otra, Tarindrella lo envió a los campamentos abandonados de los Tuercepinos, en el extremo occidental de la cañada. Entre restos dispersos por los grells recuperó cuatro tótems. La dríade leyó las inscripciones y palideció. Los fúrbolgs habían soñado con una gran sombra que los aniquilaba. El miedo se volvió rabia, y la sombra tomó el rostro de sus amigos elfos.\n\n—Sabían que estaban perdiendo la cabeza —murmuró ella.\n\nNehonar pensó en las bestias de Ilthalaine. Allí, el desequilibrio tenía causa y remedio. Esto otro no se curaba con garras.\n\nDespués, en el camino que sube de Dolanaar a Darnassus, Radnaal Tejecrín le enseñó a coser una silla de campamento con los cueros de lo cazado. Lejos de la ciudad, junto a su hoguera, podría sentarse por fin.\n\nNada se desperdiciaba. Ni siquiera el cansancio.",
+      "summary": "Nehonar redujo las poblaciones de sables y jabalíes para Ilthalaine, halló tótems Tuercepinos que revelaron a Tarindrella las pesadillas de una gran sombra que enloquecieron a los fúrbolgs, y aprendió de Radnaal Tejecrín a fabricar una silla de campamento.",
+      "quests": [
+        {
+          "id": 456,
+          "title": "El equilibrio de la naturaleza",
+          "giver": "Conservador Ilthalaine"
+        },
+        {
+          "id": 97977,
+          "title": "La llamada de la naturaleza",
+          "giver": "Tarindrella"
+        },
+        {
+          "id": 457,
+          "title": "El equilibrio de la naturaleza",
+          "giver": "Conservador Ilthalaine"
+        },
+        {
+          "id": 97949,
+          "title": "Acampada para novatos: desuello",
+          "giver": "Lyreena Hoja Umbría"
+        }
+      ],
+      "levelFrom": 1,
+      "levelTo": 6
+    },
+    {
+      "id": "564c95f3b3e1",
+      "kind": "llegada",
+      "zone": "Bosque de Elwynn",
+      "title": "Trigales bajo un cielo sin rey",
+      "text": "En la travesía hacia los reinos del este, un soldado humano le habló de Elwynn entre sorbo y sorbo de cerveza amarga. Le contó que era el corazón de Ventormenta, una tierra de granjas y bosques mansos a la sombra de una capital alzada de nuevo sobre las cenizas de la guerra contra los orcos. Pero el rey Varian había desaparecido, y ahora gobernaba una regencia en nombre de un niño, Anduin. El ejército estaba lejos. La Guardia no daba abasto.\n\n—Kóbolds en las minas, gnolls en la espesura —dijo el soldado—. Y los Defias en los caminos.\n\nLe explicó quiénes eran: los canteros que levantaron aquellas murallas blancas y a los que los nobles se negaron a pagar. Hubo disturbios, y acabaron proscritos.\n\nNehonar no respondió. Pensó en el lobo al que se le niega la presa que ha cazado. *No muerde por maldad*, se dijo. *Muerde porque tiene hambre.*\n\nAl llegar, Elwynn lo recibió con un aire tibio, cargado de heno y de humo de chimenea. Los robles eran jóvenes comparados con los de Teldrassil, pero respiraban sin miedo. Entre los trigales dorados, los granjeros trabajaban mirando de reojo hacia el linde del bosque, como ciervos que beben sin dejar de escuchar.",
+      "summary": "Nehonar llegó al Bosque de Elwynn tras oír a un soldado hablar del rey desaparecido, de los Defias traicionados por los nobles y de los peligros que acechan a sus granjeros inquietos.",
+      "levelFrom": 6,
+      "levelTo": 6
+    },
+    {
+      "id": "b848082a909e",
+      "kind": "sueltas",
+      "zone": "Bosque de Elwynn",
+      "subzones": [
+        "Valle de Villanorte",
+        "Ala de la Biblioteca"
+      ],
+      "title": "Hambres que cruzan la frontera",
+      "text": "El ayudante del alguacil Willem se lo dijo de pasada: había más lobos que nunca en Villanorte, y Eagan Desollapieles buscaba quien los cazara. Nehonar lo encontró a la izquierda de la abadía.\n\n—Me gustan los filetes de lobo —confesó el hombre, sin pudor—. Tráeme carne dura y te daré algo útil.\n\nNehonar recorrió la campiña tras los Fauces de Madera. Los vio bajar de las lindes hacia los sembrados, flacos e insistentes. Un lobo no cruza al territorio de otros por capricho. Algo los empujaba. Cumplió el encargo sin rabia, como la lechuza cumple el suyo, y Eagan recibió la carne frotándose las manos.\n\n—Nadie caza por gusto —dijo Nehonar—. Ni siquiera ellos.\n\nEl hombre no lo entendió, o fingió no entenderlo, y le dejó escoger su pago.\n\nEn la hierba encontró un libro con las tapas roídas, caído de las garras de un kóbold. Lo llevó a la abadía. El hermano Paxton se lamentó: otra vez le robaban los libros, seguro que querían comérselos. Lo envió a la biblioteca a ver a Daniel, su ayudante, y le advirtió que no se dejara entretener.\n\nDaniel lo esperaba entre estanterías vacías.\n\n—Tres veces le avisé de que cavaban túneles bajo la abadía.\n\nNehonar miró los huecos en la madera. Tres avisos. Ninguno escuchado. En el bosque, el ciervo que ignora el chasquido de una rama no llega a viejo.\n\n—Quien no escucha —murmuró— acaba contando lo que le falta.\n\nAl salir, un guardia lo saludó con un gesto breve, casi respetuoso. En Villanorte todos tenían hambre de algo. Él aún no sabía cuál era la suya.",
+      "summary": "Nehonar cazó lobos Fauces de Madera para Eagan Desollapieles, devolvió al hermano Paxton un libro roído por los kóbolds y supo por Daniel que nadie atendió sus avisos sobre los túneles bajo la abadía.",
+      "quests": [
+        {
+          "id": 5261,
+          "title": "Eagan Desollapieles",
+          "giver": "Ayudante del alguacil Willem"
+        },
+        {
+          "id": 33,
+          "title": "Los lobos cruzan la frontera",
+          "giver": "Eagan Desollapelambres"
+        },
+        {
+          "id": 91741,
+          "title": "El libro mordisqueado",
+          "giver": "Libro mordisqueado"
+        },
+        {
+          "id": 92124,
+          "title": "Inventario de libros",
+          "giver": "Hermano Paxton"
+        }
+      ],
+      "levelFrom": 6,
+      "levelTo": 6
+    },
+    {
+      "id": "e939b269d1ab",
+      "kind": "cadena",
+      "zone": "Bosque de Elwynn",
+      "subzones": [
+        "Ala de la Biblioteca",
+        "Mina del Eco"
+      ],
+      "title": "Imágenes para Narf",
+      "text": "El hermano Paxton tenía las manos manchadas de tinta y una mirada desesperada. Los kóbolds seguían saqueando su biblioteca, y aquel libro roído que Nehonar le había devuelto no era más que el principio.\n\n—Se los están comiendo —se lamentó el monje.\n\nNehonar no respondió. Recorrió el Valle de Villanorte entre helechos y pinos, siguiendo el rastro de aquellas criaturas de hocico inquieto que olían a cera de vela y a tierra removida. Les fue arrebatando los volúmenes uno a uno. Ninguno estaba mordido.\n\nPaxton los recibió con alivio y le regaló un libro de instrucciones que ya no necesitaba. Después frunció el ceño.\n\n—No parece que se los coman. Pero ¿para qué los quieren?\n\n«Una ardilla no guarda piñas que no puede abrir», pensó Nehonar. «Si los guardan, hay un motivo.»\n\nEl monje lo envió a la entrada de la Mina del Eco, donde trabajaba Kelsey Abisal, una aprendiz de minera. La joven se secó el sudor de la frente y asintió enseguida.\n\n—¿Kóbolds con libros? Sí. Van y vienen con ellos bajo el brazo, gritándose. A veces uno chilla «¡Imágenes para Narf!». No sé quién es ese Narf. Algún jefe de ahí abajo, supongo. —Señaló la boca negra de la mina—. Busca ayuda. Los de dentro son más retorcidos.\n\nNehonar se adentró en la oscuridad. Los túneles devolvían cada paso convertido en un murmullo, y allí dentro no había raíces ni viento, solo piedra y codicia. Encontró al buscabrillantes Narf en las profundidades, aferrado a su saco como un tejón a su madriguera. Lo derrotó y recuperó los libros. Al hojear uno vio dibujos, solo dibujos. Aquella criatura no sabía leer, solo quería mirar.\n\nEsa idea lo acompañó hasta la salida.\n\nEl alguacil McBride lo esperaba a las puertas de la abadía. Tomó el saco con una sonrisa franca.\n\n—Gracias, Nehonar. Se los llevaré al hermano Paxton ahora mismo. Te estás convirtiendo en toda una celebridad por aquí.\n\nNehonar inclinó la cabeza. Los guardias lo saludaban ya al pasar, y los campesinos habían dejado de mirarlo como a un extraño de orejas largas. No buscaba fama. Pero en aquel reino sin rey, donde tantos avisos se quedaban sin respuesta, alguien había escuchado al fin.\n\n—El camino se revela al andarlo —murmuró, y siguió andando.",
+      "summary": "Nehonar recuperó los libros robados al hermano Paxton, supo por Kelsey Abisal que los kóbolds los llevaban a un tal Narf, lo derrotó en la Mina del Eco y entregó el saco al alguacil McBride, ganándose el aprecio de Villanorte.",
+      "quests": [
+        {
+          "id": 91743,
+          "title": "Roedores traviesos",
+          "giver": "Hermano Paxton"
+        },
+        {
+          "id": 91745,
+          "title": "Asesores de minería",
+          "giver": "Hermano Paxton"
+        },
+        {
+          "id": 91752,
+          "title": "La situación en su conjunto",
+          "giver": "Kelsey Abisal"
+        }
+      ],
+      "levelFrom": 6,
+      "levelTo": 7
+    },
+    {
+      "id": "9e719d154991",
+      "kind": "cadena",
+      "zone": "Bosque de Elwynn",
+      "subzones": [
+        "Valle de Villanorte"
+      ],
+      "title": "Pañuelos rojos y uvas de la abadía",
+      "text": "Los Defias habían cruzado el río hacia el este. Eso fue lo único que el ayudante del alguacil Willem supo decirle, plantado junto a la abadía con la mano en el pomo de la espada y el ceño fruncido de quien vigila más de lo que puede abarcar.\n\n—No sé qué traman. Pero nada bueno. Tráeme sus pañuelos.\n\nNehonar asintió sin palabras. Recordaba lo que había oído al llegar a Elwynn: canteros que alzaron una ciudad y a los que nadie pagó. Mientras vadeaba el agua fría, pensó que el hambre convierte a muchos animales en ladrones. Eso no hacía menos dañino el robo, ni más justa la deuda que lo había provocado.\n\nVolvió con los pañuelos de tela de saco rojo, ásperos y manchados de polvo del camino. Willem los recibió en nombre del ejército de Ventormenta y, por primera vez, lo miró como se mira a alguien en quien se puede confiar.\n\n—Mi amiga Milly Osworth está en apuros. Su carreta está junto al establo. Ayúdala.\n\nMilly era pura inquietud. Los Defias se habían instalado en sus viñedos en plena vendimia. Los guardias le habían prometido ocuparse, y ella temía tanto a los bandidos como a las botas de quienes vendrían a echarlos.\n\n—Si unos no se comen la uva, los otros la aplastarán.\n\nLas cajas seguían entre las cepas, al sureste. Nehonar se movió entre las hileras como de niño se movía entre la maleza de Teldrassil, despacio y atento a cada sombra. Las cargó una a una hasta la carreta.\n\n—Por suerte tenemos valientes como tú —dijo Milly, y le tendió un pergamino doblado—. El informe de la vendimia. Llévaselo al hermano Neals.\n\nLo encontró en el campanario, con una copa en la mano y el valle extendido a sus pies. El monje leyó despacio y sonrió con alivio.\n\n—Nunca perdí la fe en la Luz. Que ella te acompañe y te proteja, Nehonar.\n\nNehonar no compartía esa fe. Aun así, aceptó la bendición en silencio, como se acepta la sombra de un árbol ajeno. Desde allí arriba vio la abadía, los viñedos y el río. Pensó que el equilibrio, en aquella tierra, también se medía en uvas salvadas.",
+      "summary": "Nehonar recogió pañuelos Defias para el ayudante Willem, rescató la uva de Milly Osworth de los viñedos ocupados por los bandidos y llevó su informe de la vendimia al hermano Neals, que lo bendijo en nombre de la Luz.",
+      "quests": [
+        {
+          "id": 18,
+          "title": "Hermandad de ladrones",
+          "giver": "Ayudante del alguacil Willem"
+        },
+        {
+          "id": 3903,
+          "title": "Milly Osworth",
+          "giver": "Ayudante del alguacil Willem"
+        },
+        {
+          "id": 3904,
+          "title": "La cosecha de Milly",
+          "giver": "Milly Osworth"
+        },
+        {
+          "id": 3905,
+          "title": "Informe de la vendimia",
+          "giver": "Milly Osworth"
+        }
+      ],
+      "levelFrom": 6,
+      "levelTo": 7
     }
   ],
   "encargos": [
+    {
+      "id": 91751,
+      "title": "Pelambres de lobo toscas",
+      "giver": "Helene Desollapelambres",
+      "zone": "Bosque de Elwynn",
+      "subzone": "Villadorada",
+      "objectives": "Desuella lobos en los alrededores del Bosque de Elwynn para conseguir 7 pelambres de lobo toscas y llévaselas a Helene Desollapelambres, cerca de Villadorada.",
+      "original": "¿Te interesa una oportunidad para aprender el hermoso arte del desuello? Mi marido no se pierde una cacería de lobos, pero hoy tiene tarea en la abadía, y a mí no me vendría mal que alguien me trajera unas cuantas pieles para los pedidos que tengo entre manos.",
+      "heading": "Pieles para Helene",
+      "text": "A las afueras de Villadorada, Helene Desollapelambres raspaba un cuero tendido al sol cuando reparó en el elfo. Lo llamó con un gesto del cuchillo.\n\n—¿Te interesa aprender el hermoso arte del desuello? Mi marido no se pierde una cacería de lobos, pero hoy tiene tarea en la abadía. Y a mí no me vendría mal que alguien me trajera unas cuantas pieles.\n\nNehonar miró las pelambres colgadas. Pensó en los lobos de Elwynn, en la manada que caza para vivir. Tomar una piel no era lo mismo que tomar una vida por capricho.\n\n—¿Para qué las quieres?\n\n—Tengo pedidos entre manos —respondió ella, sin dejar de raspar.\n\nÉl asintió despacio. Saldría a los bosques de Elwynn, cazaría lobos, les quitaría la piel con respeto y volvería con ella junto a Helene, cerca de Villadorada.",
+      "state": "activa"
+    },
+    {
+      "id": 2158,
+      "title": "Descanso y relajación",
+      "giver": "Falkhaan Isenzancas",
+      "zone": "Bosque de Elwynn",
+      "subzone": "Valle de Villanorte",
+      "objectives": "Habla con el tabernero Farley de la Posada Orgullo de León.",
+      "original": "Todos los aventureros deben descansar cuando les invade el agotamiento, ¡y no hay mejor lugar para descansar que la Posada Orgullo de León!\n\nMi mejor amigo, el posadero Farley, lleva la Posada Orgullo de León. Si le dices que te envío yo, puede que te haga un descuento en la comida y la bebida.\n\nPara encontrar la Posada Orgullo de León, viaja al sur por el camino que sale de aquí, ¡no tiene pérdida!",
+      "heading": "Un techo al sur del camino",
+      "text": "En el Valle de Villanorte, Falkhaan Isenzancas se fijó en el forastero de paso callado y mirada atenta. Nehonar no había pedido nada, pero el cansancio se le notaba en los hombros.\n\n—Todo aventurero debe descansar cuando le vence el agotamiento —dijo Falkhaan—. Y no hay mejor sitio que la Posada Orgullo de León.\n\nLe contó que la llevaba el posadero Farley, su mejor amigo, y que si le decía de su parte, quizá le rebajara la comida y la bebida.\n\n—Viaja al sur por el camino que sale de aquí. ¡No tiene pérdida!\n\nNehonar asintió. Hasta el lobo más firme vuelve a su madriguera, pensó. Descansar no era debilidad: era parte del equilibrio. Se ajustó el morral y tomó el camino del sur, en busca de Farley y su posada.",
+      "state": "activa"
+    },
+    {
+      "id": 3905,
+      "title": "Informe de la vendimia",
+      "giver": "Milly Osworth",
+      "zone": "Bosque de Elwynn",
+      "subzone": "Valle de Villanorte",
+      "objectives": "Lleva el Informe de la vendimia al hermano Neals a la Abadía de Villanorte.",
+      "original": "Ahora que has salvado mis uvas, llévale el Informe de la vendimia al hermano Neals. Se encarga del almacén de abastos de Villanorte; se alegrará de saber que la vendimia ha sido buena.\n\nEstá en el campanario de la abadía; le gusta sentarse allí a probar el vino.",
+      "state": "entregada"
+    },
+    {
+      "id": 3904,
+      "title": "La cosecha de Milly",
+      "giver": "Milly Osworth",
+      "zone": "Bosque de Elwynn",
+      "subzone": "Valle de Villanorte",
+      "objectives": "Lleva 8 cajas de uva recogida a Milly Osworth a la Abadía de Villanorte.",
+      "original": "¡Los Defias se instalaron en Viñedos de Villanorte mientras estaba vendimiando! Los denuncié a los guardias, que me dijeron que ya se encargarían, pero... ¡Temo por mis viñas! Si los ladrones no se comen la uva, los guardias la aplastarán cuando vengan a echarlos.\n\n¡Tienes que ayudarme! Ya tengo casi toda la uva recogida, pero dejé las cajas en los viñedos que hay al sureste.\n\n¡Tráemelas y salva mis uvas!",
+      "state": "entregada"
+    },
+    {
+      "id": 91772,
+      "title": "¡Shhh! Aquí se cazan kóbolds",
+      "giver": "Tordrin Hojadusta",
+      "zone": "Bosque de Elwynn",
+      "subzone": "Valle de Villanorte",
+      "objectives": "Sigue los rastros kóbold e informa al alguacil Dughan en Villadorada de lo que descubras, además de llevarle el equipo de rastreo de kóbolds.",
+      "original": "Muy bien. Coge este equipo de rastreo de kóbolds; te ayudará a encontrar al kóbold que tanto preocupa al alguacil McBride.\r\n\r\nSigue su rastro y devuelve lo que encuentres al alguacil Dughan de Villadorada.\r\n\r\nTengo la sensación de que estas alimañas están tramando algo a las afueras de Villanorte. Si es cierto, necesitarás la ayuda de Dughan.",
+      "heading": "El rastro de las alimañas",
+      "text": "Tordrin Hojadusta le tendió un equipo de rastreo y bajó la voz, como si los kóbolds pudieran oírle desde la espesura.\n\n—Esto te ayudará a encontrar al kóbold que tanto preocupa al alguacil McBride. Sigue su rastro y lleva lo que encuentres al alguacil Dughan, en Villadorada.\n\nNehonar sopesó el objeto en silencio. No le bastaba con un encargo: necesitaba entenderlo.\n\n—¿Qué temes?\n\n—Tengo la sensación de que esas alimañas traman algo a las afueras de Villanorte. Si es así, necesitarás a Dughan.\n\nEl druida asintió. Pensó en las comadrejas que husmean junto a un nido: nunca se acercan sin motivo. Aquellas criaturas tampoco.\n\nGuardó el equipo, buscó las primeras huellas en la tierra húmeda y echó a andar. El rastro empezaba allí. Terminaría ante Dughan, en Villadorada.",
+      "state": "activa"
+    },
+    {
+      "id": 54,
+      "title": "Informa en Villadorada",
+      "giver": "Alguacil McBride",
+      "zone": "Bosque de Elwynn",
+      "subzone": "Valle de Villanorte",
+      "objectives": "Lleva los documentos del alguacil McBride al alguacil Dughan a Villadorada.",
+      "original": "Nehonar, eres un druida que ciertamente ha demostrado que le preocupa la seguridad de Villanorte. Tu siguiente misión será proteger el Bosque de Elwynn.\n\nSi aceptas, te daré unos papeles para el alguacil Dughan, que está en Villadorada. Para ir a Villadorada, sigue el camino hacia el sur, pasada la frontera.",
+      "heading": "Papeles para el alguacil Dughan",
+      "text": "El alguacil McBride lo esperaba con unos pliegos doblados en la mano. Lo miró un instante, como quien observa a un lobo que ha decidido guardar el rebaño en lugar de diezmarlo.\n\n—Has demostrado que te preocupa la seguridad de Villanorte, druida. Ahora necesito que protejas el Bosque de Elwynn.\n\nNehonar no respondió enseguida. Pensó en aquellos humanos, tan lejos de sus árboles y tan empeñados en defender los suyos.\n\n—¿Y los papeles? —preguntó al fin.\n\n—Son para el alguacil Dughan, en Villadorada. Sigue el camino hacia el sur, pasada la frontera.\n\nEl elfo tomó los documentos. Pesaban poco, aunque quizá significaran más. Al otro lado aguardaba un bosque que no conocía. Pensó que eso era justo lo que había venido a buscar.",
+      "state": "activa"
+    },
+    {
+      "id": 91758,
+      "title": "¡Sigue a ese kóbold!",
+      "giver": "Alguacil McBride",
+      "zone": "Bosque de Elwynn",
+      "subzone": "Valle de Villanorte",
+      "objectives": "Habla con Tordrin Hojatallo junto al establo que hay detrás de la Abadía de Villanorte.",
+      "original": "Aún no has acabado con esos kóbolds. Kelsey nos acaba de informar de que uno de ellos ha salido de la mina cargando con un saco de libros enorme. Necesito que encuentres a ese kóbold para que podamos recuperar los libros del hermano Paxton.\r\n\r\nVe a hablar con Tordrin Hojatallo. Es el nuevo instructor de cazadores que acaba de llegar de Forjaz. Lo encontrarás detrás de la abadía, junto al establo. Él te ayudará a localizar a ese kóbold ladrón.",
+      "state": "entregada"
+    },
+    {
+      "id": 6,
+      "title": "La recompensa por Garrick Piesuaves",
+      "giver": "Ayudante del alguacil Willem",
+      "zone": "Bosque de Elwynn",
+      "subzone": "Valle de Villanorte",
+      "objectives": "Mata a Garrick Piesuaves y lleva su cabeza al ayudante Willem a la Abadía de Villanorte.",
+      "original": "Garrick Piesuaves es un maleante que lleva semanas acosando a granjeros y mercaderes. Ha sido visto en una choza cerca de los viñedos, cruzando el puente al este de la abadía. Tráeme la cabeza de ese villano y podrás quedarte con su botín.\n\nPero ve con cuidado, Nehonar. Garrick anda con una pandilla de matones. Puede que no te sea fácil llegar hasta él.",
+      "state": "entregada"
+    },
+    {
+      "id": 3903,
+      "title": "Milly Osworth",
+      "giver": "Ayudante del alguacil Willem",
+      "zone": "Bosque de Elwynn",
+      "subzone": "Valle de Villanorte",
+      "objectives": "Habla con Milly Osworth.",
+      "original": "Nehonar, has demostrado que se puede confiar en ti y que no temes al trabajo duro.\n\nMi amiga Milly Osworth está en apuros. Tiene la carreta al otro lado de la abadía, cerca del establo. Seguro que le va bien que le eches una mano.",
+      "state": "entregada"
+    },
+    {
+      "id": 91752,
+      "title": "La situación en su conjunto",
+      "giver": "Kelsey Abisal",
+      "zone": "Bosque de Elwynn",
+      "subzone": "Mina del Eco",
+      "objectives": "Acaba con el buscabrillantes Narf y recupera el saco de libros con \"imágenes\". Después, entrégaselo al alguacil McBride, justo a las afueras de la Abadía de Villanorte.",
+      "original": "De vez en cuando, aparece un kóbold gritando \"¡Imágenes para Narf!\". No sé quién es Narf. ¿Uno de sus jefes de las profundidades de la mina, quizás? Seguro que a estas alturas ya tiene un saco entero de libros.\r\n\r\nVe a por esos libros y llévaselos a la autoridad local, el alguacil McBride. Ah, y te recomiendo que busques ayuda. Los kóbolds que hay dentro de la mina son más retorcidos que los de fuera.",
+      "state": "entregada"
+    },
+    {
+      "id": 91745,
+      "title": "Asesores de minería",
+      "giver": "Hermano Paxton",
+      "zone": "Bosque de Elwynn",
+      "subzone": "Ala de la Biblioteca",
+      "objectives": "Habla con Kelsey Abisal a las afueras de la Mina del Eco del Valle de Villanorte.",
+      "original": "Ve a hablar con la nueva aprendiz de minera, Kelsey Abisal. Trabaja justo a la salida de la mina y seguramente haya visto lo que están tramando los kóbolds. Tal vez pueda enseñarte un par de cosas sobre la minería, ya de paso.",
+      "state": "entregada"
+    },
+    {
+      "id": 21,
+      "title": "Escarmuza en la Mina del eco",
+      "giver": "Alguacil McBride",
+      "zone": "Bosque de Elwynn",
+      "subzone": "Valle de Villanorte",
+      "objectives": "Mata 12 peones kobold y ve a hablar con el alguacil McBride a la Abadía de Villanorte.",
+      "original": "Ha quedado demostrado que tenemos que purgar la Mina del Eco. Vuelve allí y ayuda a eliminar a los kobolds.\n\nDate prisa, Nehonar. Cuanto más tiempo dejemos a los kobolds en la mina, más nos costará expulsarlos de Villanorte.",
+      "state": "entregada"
+    },
+    {
+      "id": 91743,
+      "title": "Roedores traviesos",
+      "giver": "Hermano Paxton",
+      "zone": "Bosque de Elwynn",
+      "subzone": "Ala de la Biblioteca",
+      "objectives": "Recupera 8 libros robados de los kóbolds en el Valle de Villanorte y devuélveselos al hermano Paxton.",
+      "original": "¡Esos malditos kóbolds se están comiendo mis libros! Tienes que recuperarlos antes de que devoren toda mi biblioteca.",
+      "state": "entregada"
+    },
+    {
+      "id": 92124,
+      "title": "Inventario de libros",
+      "giver": "Hermano Paxton",
+      "zone": "Bosque de Elwynn",
+      "subzone": "Ala de la Biblioteca",
+      "objectives": "Habla con Daniel, el ayudante del hermano Paxton, en la biblioteca.",
+      "original": "¡Hay que hacer un recuento de cuántos libros faltan!\r\n\r\nVe a hablar con el inútil de mi ayudante, Daniel. Puede hacer un inventario rápido y decirnos cómo de grave es el problema.\r\n\r\nEstá obsesionado con las diferentes profesiones artesanales del Bosque de Elwynn. El chico no deja de distraerse con eso en lugar de centrarse en su trabajo, que es ayudarme.\r\n\r\n¡No dejes que te dé la cháchara y averigua qué ha pasado con mis libros!",
+      "state": "entregada"
+    },
+    {
+      "id": 15,
+      "title": "Investigar la Mina del Eco",
+      "giver": "Alguacil McBride",
+      "zone": "Bosque de Elwynn",
+      "subzone": "Valle de Villanorte",
+      "objectives": "Mata 10 obreros kobold y ve a hablar con el alguacil McBride.",
+      "original": "Nehonar, los rastreadores dicen que hay más kobolds de lo que creíamos. Un grupo de obreros ha acampado cerca de la Mina del Eco, al norte de aquí.\n\nVe a la mina y liquídalos; sabemos que hay al menos diez. Comprueba que no quede ninguno más y vuelve.",
+      "state": "entregada"
+    },
+    {
+      "id": 91741,
+      "title": "El libro mordisqueado",
+      "giver": "Libro mordisqueado",
+      "zone": "Bosque de Elwynn",
+      "subzone": "Valle de Villanorte",
+      "objectives": "Devuelve el libro al hermano Paxton.",
+      "original": "\u003cUno de los kóbolds ha dejado caer este libro. Parece que intentó comérselo.\r\n\r\nEl hermano Paxton está al cargo de una pequeña biblioteca en la abadía. Puede que el libro proceda de allí\u003e.",
+      "state": "entregada"
+    },
+    {
+      "id": 33,
+      "title": "Los lobos cruzan la frontera",
+      "giver": "Eagan Desollapelambres",
+      "zone": "Bosque de Elwynn",
+      "subzone": "Valle de Villanorte",
+      "objectives": "Lleva 8 piezas de carne dura de lobo a Eagan Desollapieles junto a la Abadía de Villanorte.",
+      "original": "¡Condenados lobos Fauces de Madera! Pero me gustan los filetes de lobo, la verdad. Tráeme carne dura de lobo y te la cambiaré por algo que te será útil.\n\nConseguirás la carne de los lobos y lobeznos Fauces de Madera que andan por la campiña de Villanorte.",
+      "state": "entregada"
+    },
+    {
+      "id": 18,
+      "title": "Hermandad de ladrones",
+      "giver": "Ayudante del alguacil Willem",
+      "zone": "Bosque de Elwynn",
+      "subzone": "Valle de Villanorte",
+      "objectives": "Lleva 12 pañuelos de tela de saco rojo al ayudante Willem cerca de la Abadía de Villanorte.",
+      "original": "Hace poco llegó una banda de maleantes a Villanorte. Se hacen llamar la Hermandad Defias; se les ha visto cruzando el río hacia el este.\n\nNo sé qué están haciendo, ¡pero seguro que no es nada bueno! Tráeme sus pañuelos y te daré un arma como recompensa.",
+      "state": "entregada"
+    },
+    {
+      "id": 5261,
+      "title": "Eagan Desollapieles",
+      "giver": "Ayudante del alguacil Willem",
+      "zone": "Bosque de Elwynn",
+      "subzone": "Valle de Villanorte",
+      "objectives": "Habla con Eagan Desollapieles.",
+      "original": "Eagan Desollapieles anda buscando a alquien para cazar lobos. Me alegro, porque últimamente hay muchos más lobos de lo normal en Valle de Villanorte.\n\nSi te interesa, ve a hablar con Eagan; está a la izquierda de la abadía.",
+      "state": "entregada"
+    },
+    {
+      "id": 7,
+      "title": "La limpieza del campamento kóbold",
+      "giver": "Alguacil McBride",
+      "zone": "Bosque de Elwynn",
+      "subzone": "Valle de Villanorte",
+      "objectives": "Mata 10 alimañas kobold y ve a hablar con el alguacil McBride.",
+      "original": "Nehonar, lo primero que tienes que hacer es limpiar; un clan de kobolds ha invadido los bosques del norte. Ve y liquida a todos los kobolds que encuentres; si reducimos sus filas podremos echarlos de Villanorte.",
+      "state": "entregada"
+    },
+    {
+      "id": 783,
+      "title": "Una amenaza del interior",
+      "giver": "Ayudante del alguacil Willem",
+      "zone": "Bosque de Elwynn",
+      "subzone": "Valle de Villanorte",
+      "objectives": "Habla con el alguacil McBride.",
+      "original": "Espero que vengas con ganas, druida, porque aquí en Villanorte hay mucho que hacer.\n\nY no me refiero a trabajar la tierra.\n\nLos guardias de Ventormenta no dan abasto, ahora que muchos de nosotros están lejos y hay tantas amenazas. Por eso estamos reclutando a quien esté dispuesto a defender su tierra. Y a su alianza.\n\nSi vienes a luchar, habla con mi superior, el mariscal McBride. Está ahí atrás, en la abadía.",
+      "state": "entregada"
+    },
+    {
+      "id": 97949,
+      "title": "Acampada para novatos: desuello",
+      "giver": "Lyreena Hoja Umbría",
+      "zone": "Teldrassil",
+      "objectives": "Habla con Radnaal Tejecrín en el camino que va hacia Darnassus desde Dolanaar para aprender a crear un objeto de acampada para tu profesión cuando hayas demostrado tu destreza en la habilidad.",
+      "original": "La capacidad de recolectar con destreza las pieles y los cueros de las bestias abatidas es una de las habilidades más valiosas de un aventurero.\r\n\r\nCreo recordar a alguien que puede enseñarte a crear una silla de campamento para tu campamento. A veces es importante tomarse un respiro, y puedes usar algunos de los cueros que has recolectado para fabricar una silla cómoda en la que sentarte. Un ratito de relajación puede contribuir a mantenerte en plena forma para que tus golpes sean certeros la próxima vez que estés en combate.",
+      "state": "entregada"
+    },
+    {
+      "id": 96634,
+      "title": "Acampada para novatos: cocinar",
+      "giver": "Lyreena Hoja Umbría",
+      "zone": "Teldrassil",
+      "objectives": "Habla con Zarrin en Dolanaar para aprender a cocinar.",
+      "original": "Así que quieres saber más sobre las acampadas. Me alegro por ti, druida. Lo primero que debe aprender cualquier aventurero que se precie es a cocinar y a preparar una hoguera.\r\n\r\nCocinar no solo consiste en preparar platos sabrosos; es la piedra angular de tu campamento.",
+      "state": "entregada"
+    },
+    {
+      "id": 96606,
+      "title": "El gran mundo exterior",
+      "giver": "Lyreena Hoja Umbría",
+      "zone": "Teldrassil",
+      "objectives": "Escribe /sentarse en el chat junto a la hoguera básica de Lyreena y espera hasta recibir el potenciador Descanso mejorado.",
+      "original": "Hola, druida. Tienes el aspecto de alguien que ama la aventura. Me gusta. El mundo necesita más espíritus inquietos como los nuestros, siempre en busca de fortuna y gloria.\r\n\r\nTendrás que aprender a valerte por ti mismo en la naturaleza si quieres triunfar en este oficio. No sé cómo te las apañas al aire libre, pero probablemente pueda enseñarte un par de cosas.\r\n\r\nVen, acomódate junto al fuego y te lo explicaré todo.",
+      "state": "entregada"
+    },
+    {
+      "id": 96630,
+      "title": "El aventurero",
+      "giver": "Diario perdido",
+      "zone": "Teldrassil",
+      "subzone": "Aldrassil",
+      "objectives": "Llévale el diario a Lyreena Hoja Umbría cerca de Dolanaar.",
+      "original": "\u003cEl diario no tiene nada de especial y cuenta la vida y las aventuras de alguien que no conoces.\r\n\r\nHay varias entradas que mencionan las acampadas. Parece algo bastante... divertido\u003e.",
+      "state": "entregada"
+    },
+    {
+      "id": 928,
+      "title": "La corona de la Tierra",
+      "giver": "Tenaron Tormentagarre",
+      "zone": "Teldrassil",
+      "subzone": "Aldrassil",
+      "objectives": "Lleva la vasija casi llena a Corithras Furia Lunar a Dolanaar.",
+      "original": "Aunque podría contarte mucho más de las pozas de la luna y de Teldrassil, debo dejarte ir; Corithras Furia Lunar te está esperando. He puesto el agua que has traído en esta vasija; llévasela. \n\nEstará en la poza de la luna de Dolanaar. Coge el camino del sur de Aldrassil al salir de Cañada Umbría y sigue los adoquines cuando el camino gira al oeste. \n\nTen cuidado, Nehonar. Últimamente hay criaturas muy peligrosas en el bosque.",
+      "state": "entregada"
+    },
+    {
+      "id": 921,
+      "title": "La corona de la Tierra",
+      "giver": "Tenaron Tormentagarre",
+      "zone": "Teldrassil",
+      "subzone": "Aldrassil",
+      "objectives": "Lleva la ampolla de cristal llena a Tenaron Tormentagarre a Aldrassil.",
+      "original": "Es hora de que vayas a buscar tu destino, Nehonar. Pero antes de que puedas aventurarte más allá de nuestros bosques, te queda mucho que aprender sobre nuestra historia reciente. \n\nHan cambiado muchas cosas desde la Batalla del Monte Hyjal. Nordrassil es una sombra de lo que fue cuando tenía poder para derrotar a Archimonde y expulsar a la Legión Ardiente... \n\nTienes una tarea que cumplir: ve a la poza de la luna que hay al norte de Aldrassil y tráeme una ampolla de su agua.",
+      "state": "entregada"
+    },
+    {
+      "id": 3522,
+      "title": "En antídoto de Iverron",
+      "giver": "Dirania Brillargente",
+      "zone": "Teldrassil",
+      "subzone": "Cañada Umbría",
+      "objectives": "Llévale el antídoto de Iverron a Iverron antes de que se acabe el tiempo. Lo encontrarás junto a la cueva situada al norte.",
+      "original": "El antídoto está listo, Nehonar. Por favor, encárgate de que Iverron se lo tome.\n\nHay algo más que debes saber; el antídoto solamente será efectivo durante los próximos 5 minutos. Debes llevárselo a tiempo.\n\nEspero que lo logres, Nehonar.",
+      "state": "entregada"
+    },
+    {
+      "id": 920,
+      "title": "Las invocaciones de Tenaron",
+      "giver": "Gilshalan Caminaviento",
+      "zone": "Teldrassil",
+      "subzone": "Aldrassil",
+      "objectives": "Habla con Tenaron Tormentagarre en Aldrassil, en Cañada Umbría.",
+      "original": "¿Eres Nehonar? He oído que Tenaron te estaba buscando. Está en la sala más alta de Aldrassil. \n\nAunque es mejor tomarse la vida con calma, no lo hagas esperar demasiado.",
+      "state": "entregada"
+    },
+    {
+      "id": 917,
+      "title": "Huevo de Tejemadera",
+      "giver": "Gilshalan Caminaviento",
+      "zone": "Teldrassil",
+      "subzone": "Aldrassil",
+      "objectives": "Lleva 1 huevo de Tejemadera a Gilshalan a Aldrassil.",
+      "original": "Ahora que ya tengo el veneno, me gustaría tener unos especímenes. Pero no puedo pedirte que captures una araña gigante viva, joven druida. ¡Ni siquiera yo podría conseguirlo! \n\nPero si me traes huevos, al final tendré mis especímenes en un entorno controlado. \n\nTiene que haber un nido en el fondo de la Gruta Narácnida; ve a buscar un huevo y tráemelo.",
+      "state": "entregada"
+    },
+    {
+      "id": 3521,
+      "title": "En antídoto de Iverron",
+      "giver": "Dirania Brillargente",
+      "zone": "Teldrassil",
+      "subzone": "Cañada Umbría",
+      "objectives": "Reúne 7 champiñones jacinto, 4 lirios alunados y 1 icor de Tejemadera para Dirania Brillargente, que está en Cañada Umbría.",
+      "original": "Conozco un antídoto que podría salvar a Iverron del veneno. Para prepararlo me harán falta algunos ingredientes.\n\nNecesitaré champiñones jacinto, que nacen al lado de los árboles. También puedes quitárselos a los grells que viven al sur de aquí, que parece que se han aficionado a ellos. También necesitaré lirios alunados, que solamente nacen cerca de charcas y grandes extensiones de agua.\n\nEl último ingrediente quizás sea el más difícil de conseguir. Se trata de coger icor de Tejemadera de las propias arañas que han envenenado a Iverron.",
+      "state": "entregada"
+    },
     {
       "id": 3519,
       "title": "Un amigo en apuros",
@@ -67,7 +634,7 @@
       "original": "Uy... Me ha picado una araña llamada Gythyiss la Vil mientras exploraba la cueva de las arañas cerca de aquí. Estoy seguro de que me ha envenenado así que tienes que ayudarme.\n\nPor favor, habla con Dirania Brillargente. Ella podrá ayudarme.\n\nDate prisa... me estoy mareando...",
       "heading": "El veneno de Gythyiss la Vil",
       "text": "Nehonar oyó la respiración antes que la voz: entrecortada, torpe, como la de un cervatillo que ha corrido demasiado. Iverron estaba pálido y le costaba mantenerse en pie.\n\n—Uy... Una araña, Gythyiss la Vil —balbuceó—. Me picó mientras exploraba la cueva de las arañas, aquí cerca. Me ha envenenado, estoy seguro.\n\nNehonar lo observó en silencio. No hacía falta ser sanador para leer el temblor de aquellas manos.\n\n—¿Qué necesitas?\n\n—Habla con Dirania Brillargente. Ella podrá ayudarme. Date prisa... me estoy mareando...\n\nNehonar no hizo más preguntas. A veces el bosque no da tiempo a entender, solo a actuar. Se incorporó y cruzó Cañada Umbría en busca de Dirania, con el paso ligero de quien no quiere llegar tarde.",
-      "state": "activa"
+      "state": "entregada"
     },
     {
       "id": 916,
@@ -79,7 +646,7 @@
       "original": "He venido a Cañada Umbría para observar a las arañas tejemadera de la Gruta Narácnida. Son parientes de unas arañas mucho más pequeñas; creo que el Árbol del Mundo ha tenido un profundo efecto en ellas y quiero estudiar unos especímenes para confirmarlo. \n\nPara empezar, necesito su veneno. Ve a la Gruta Narácnida, que está al norte de aquí, y tráeme glándulas de veneno; así podré compararlo con el veneno de sus parientes más pequeñas.",
       "heading": "Lo que el árbol transforma",
       "text": "Gilshalan Caminaviento tenía la mirada de quien lleva días observando lo mismo. Al pie de Aldrassil, señaló hacia el norte.\n\n—He venido a Cañada Umbría para estudiar a las tejemadera de la Gruta Narácnida. Son parientes de unas arañas mucho más pequeñas. Creo que el Árbol del Mundo ha cambiado profundamente su naturaleza.\n\nNehonar escuchó sin interrumpir. De niño había visto arañas diminutas entre la hojarasca, tan pacientes como las raíces.\n\n—¿Y cómo se prueba algo así? —preguntó al fin.\n\n—Empezando por su veneno. Ve a la gruta y tráeme sus glándulas. Lo compararé con el de sus parientes pequeñas.\n\nNehonar asintió despacio. No era cazar por cazar. Era entender qué hacía Teldrassil con quienes vivían a su sombra, y esa pregunta también era suya. Miró al norte, hacia la Gruta Narácnida, y echó a andar.",
-      "state": "activa"
+      "state": "entregada"
     },
     {
       "id": 97979,
@@ -131,7 +698,7 @@
       "original": "Acabar con los ejemplares más jóvenes de Cañada Umbría ha sido un buen comienzo, Nehonar, pero queda mucho por hacer. \n\nSi no tomamos medidas, se agotarán los recursos del bosque. Exterminar animales es un mal necesario por el bien de todos los que comparten la tierra. Para mantener el equilibrio, ve al bosque y acaba con los jabalís cardo y sables de la noche sarnosos.",
       "heading": "Un mal necesario",
       "text": "El conservador Ilthalaine lo esperaba en Cañada Umbría, con la mirada puesta en la espesura. Nehonar volvía de abatir a los ejemplares más jóvenes del bosque, y aún sentía el peso de aquello.\n\n—Ha sido un buen comienzo —dijo Ilthalaine—, pero queda mucho por hacer. Si no actuamos, el bosque agotará sus recursos.\n\nLe pidió que volviera a la espesura y diera caza a los jabalíes cardo y a los sables de la noche sarnosos.\n\nNehonar guardó silencio. Había visto en el bosque que un rebaño demasiado grande acaba muriendo de hambre. Aun así, preguntó con calma por qué.\n\n—Exterminar animales es un mal necesario —respondió el conservador—, por el bien de todos los que comparten la tierra.\n\nNehonar asintió despacio. No del todo convencido. Pero el equilibrio, pensó, también se defiende con garra.",
-      "state": "activa"
+      "state": "entregada"
     },
     {
       "id": 4495,
@@ -170,26 +737,30 @@
   ],
   "pending": {
     "loose": [
-      "La llamada de la naturaleza"
+      "La recompensa por Garrick Piesuaves"
     ],
     "openChains": [
       [
-        "El equilibrio de la naturaleza",
-        "El equilibrio de la naturaleza"
-      ],
-      [
-        "Un buen amigo",
-        "Un amigo en apuros"
+        "Una amenaza del interior",
+        "La limpieza del campamento kóbold",
+        "Investigar la Mina del Eco",
+        "Escarmuza en la Mina del eco",
+        "¡Sigue a ese kóbold!",
+        "¡Shhh! Aquí se cazan kóbolds"
       ]
     ]
   },
   "stats": {
-    "level": 4,
-    "played": 3320,
-    "questsDone": 7,
+    "level": 7,
+    "played": 9478,
+    "questsDone": 37,
     "deaths": 0,
     "zones": [
-      "Teldrassil"
+      "Teldrassil",
+      "Darnassus",
+      "Costa Oscura",
+      "Ciudad de Ventormenta",
+      "Bosque de Elwynn"
     ],
     "levelUps": [
       {
@@ -203,6 +774,18 @@
       {
         "level": 4,
         "played": 1798
+      },
+      {
+        "level": 5,
+        "played": 3517
+      },
+      {
+        "level": 6,
+        "played": 4828
+      },
+      {
+        "level": 7,
+        "played": 7551
       }
     ]
   }
