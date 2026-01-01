@@ -1,33 +1,6 @@
 {
   "characters": [
     {
-      "key": "NehonarGuts-ClassicBetaPvE",
-      "name": "Nehonar Guts",
-      "race": "Humano",
-      "class": "Guerrero",
-      "level": 16,
-      "stories": 0,
-      "new": true
-    },
-    {
-      "key": "NehonarLionhart-ClassicBetaPvE",
-      "name": "Nehonar Lionhart",
-      "race": "Humano",
-      "class": "Mago",
-      "level": 9,
-      "stories": 0,
-      "new": true
-    },
-    {
-      "key": "NehonarLionheart-ClassicBetaPvE",
-      "name": "Nehonar Lionhart",
-      "epithet": "el de la Cantera",
-      "race": "Humano",
-      "class": "Paladín",
-      "level": 17,
-      "stories": 17
-    },
-    {
       "key": "Nehonar-ClassicBetaPvP",
       "name": "Nehonar",
       "epithet": "el de la Cantera",
@@ -64,6 +37,33 @@
       "stories": 2
     },
     {
+      "key": "NehonarGuts-ClassicBetaPvE",
+      "name": "Nehonar Guts",
+      "race": "Humano",
+      "class": "Guerrero",
+      "level": 17,
+      "stories": 0,
+      "new": true
+    },
+    {
+      "key": "NehonarLionhart-ClassicBetaPvE",
+      "name": "Nehonar Lionhart",
+      "race": "Humano",
+      "class": "Mago",
+      "level": 9,
+      "stories": 0,
+      "new": true
+    },
+    {
+      "key": "NehonarLionheart-ClassicBetaPvE",
+      "name": "Nehonar Lionhart",
+      "epithet": "el de la Cantera",
+      "race": "Humano",
+      "class": "Paladín",
+      "level": 17,
+      "stories": 17
+    },
+    {
       "key": "Tobias-Demo",
       "name": "Tobias Brenn",
       "epithet": "El hijo del molinero",
@@ -73,5 +73,5 @@
       "stories": 3
     }
   ],
-  "updated": "2241c9e8493a6276"
+  "updated": "49a64b2c63d886fd"
 }

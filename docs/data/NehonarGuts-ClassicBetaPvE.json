@@ -11,36 +11,102 @@
     "threads": null,
     "motto": ""
   },
-  "level": 16,
+  "level": 17,
   "realm": "Classic Beta PvE",
   "stories": [],
   "current": {
     "zone": "Páramos de Poniente",
-    "quests": 5,
-    "levelFrom": 16,
-    "levelTo": 16,
-    "points": 5,
-    "threshold": 8,
-    "scenes": [
-      {
-        "kind": "zona",
-        "title": "Bosque del Ocaso"
-      },
-      {
-        "kind": "zona",
-        "title": "Costa Oscura"
-      },
-      {
-        "kind": "zona",
-        "title": "Teldrassil"
-      },
-      {
-        "kind": "zona",
-        "title": "Darnassus"
-      }
-    ]
+    "quests": 4,
+    "levelFrom": 17,
+    "levelTo": 17,
+    "threshold": 8
   },
   "encargos": [
+    {
+      "id": 13,
+      "title": "Las Milicias del Pueblo",
+      "giver": "Gryan Mantorrecio",
+      "zone": "Torre del Centinela",
+      "objectives": "Gryan Mantorrecio quiere que mates 15 saqueadores Defias y 15 despojadores Defias. Cuando lo hayas hecho vuelve a verle en la Colina del Centinela.",
+      "original": "Una banda de despiadados saqueadores Defias ha sido vista saqueando la Mina de la Costa de Oro, el Arroyo de la Luna y la Hacienda de Alexston. Las Milicias del Pueblo no tolerarán ese comportamiento. Avisa inmediatamente, Nehonar, y haz conocer la presencia de la Luz en los Páramos de Poniente. La Mina de la Costa de Oro está cerca de la costa, al oeste de la torre. El siguiente paso de tu instrucción consistirá en acabar con 15 de esos saqueadores Defias y con 15 despojadores Defias.",
+      "state": "activa"
+    },
+    {
+      "id": 92747,
+      "title": "Espionaje en Arroyo de la Luna",
+      "giver": "Alba Lunajusta",
+      "zone": "Páramos de Poniente",
+      "subzone": "Colina del Centinela",
+      "objectives": "Consigue 8 suministros industriales sospechosos en Arroyo de la Luna.",
+      "original": "Qué extraño... Parece que el veneno no proviene de las minas que has investigado.\r\n\r\nMe han dicho que las Minas de la Muerte que hay bajo Arroyo de la Luna son las más grandes y profundas de Páramos de Poniente, pero llevan abandonadas desde la Primera Guerra. ¿Podría haber actividad ahí abajo de nuevo?\r\n\r\nNehonar, necesito que vayas a Arroyo de la Luna y busques indicios de actividad minera o industrial. ¡Es la última pista que nos queda!",
+      "state": "activa"
+    },
+    {
+      "id": 6285,
+      "title": "Regresa con Lewis",
+      "giver": "Dungar Tragolargo",
+      "zone": "Ciudad de Ventormenta",
+      "subzone": "Distrito de Mercaderes",
+      "objectives": "Compra un vuelo en grifo hasta la Colina del Centinela al maestro de grifos Dungar Tragolargo y lleva el Cajón de Osric a Lewis de la Colina del Centinela.",
+      "original": "El maestro de grifos de los Páramos de Poniente es Thor. Si ya has hablado con él puedes coger uno de los grifos para ir hasta allí.\n\nTe conviene saber algo: los grifos siempre están entrenados para volar a su capital pero solo te llevarán a otro maestro de grifos si ya has estado con él.\n\nYa has hablado con Thor, así que vuelve a hablar conmigo cuando estés listo para volar hasta los Páramos de Poniente. Cuando estés allí podrás entregar el Cajón de Osric al intendente Lewis.",
+      "state": "entregada"
+    },
+    {
+      "id": 6261,
+      "title": "Dungar Tragolargo",
+      "giver": "Osric Strang",
+      "zone": "Ciudad de Ventormenta",
+      "subzone": "Casco Antiguo",
+      "objectives": "Lleva el Cajón de Osric a Dungar Tragolargo, el maestro de grifos.",
+      "original": "Nehonar, he reunido en este cajón todo lo que me pidió Lewis. ¿Puedes llevárselo?\n\nSi ya has hablado con Thor, en los Páramos de Poniente, podrás coger un grifo de vuelta. Dungar Tragolargo es nuestro maestro de grifos, lo encontrarás en el Distrito de Mercaderes.\n\nHabla con Dungar y lleva este cajón a Lewis tan rápido como puedas. ¡No queremos que nuestros combatientes de los Páramos de Poniente vayan mal equipados!",
+      "state": "entregada"
+    },
+    {
+      "id": 6281,
+      "title": "Prosigue hasta Ventormenta",
+      "giver": "Thor",
+      "zone": "Páramos de Poniente",
+      "subzone": "Colina del Centinela",
+      "objectives": "Cómprale al maestro de grifos Thor un vuelo en grifo y lleva la Nota de Lewis a Osric Strang, en la tienda Inmunidad Limitada, en el Casco Antiguo de Ventormenta.",
+      "original": "A cambio de una pequeña tarifa puedes coger un grifo hasta Ventormenta, y llevarle a Osric la nota de Lewis. No encontrarás un modo más rápido para ir hasta allí.\n\nSi te parece aceptable, vuelve a hablar conmigo cuando estés listo para el viaje. Te cobraré algo pero, créeme, ¡merece la pena!",
+      "state": "entregada"
+    },
+    {
+      "id": 6181,
+      "title": "Mensajero a toda prisa",
+      "giver": "Intendente Lewis",
+      "zone": "Torre del Centinela",
+      "objectives": "Lleva la Nota de Lewis a Thor, el maestro de grifos.",
+      "original": "Aunque no tenemos mucha ayuda directa desde Ventormenta, tengo un contacto en la ciudad que nos ayuda con los suministros de armaduras. Su nombre es Osric Strang. Su tienda, Inmunidad Limitada, está en el Casco Antiguo de Ventormenta.\n\nNuestro suministro se está agotando y debemos contactar con Osric para pedirle más. ¿Puedes llevarle esta nota?\n\nEl camino más rápido hasta Ventormenta es con Thor, nuestro maestro de grifos. Está justo bajo la colina, llévale mi nota y coge un grifo hasta Ventormenta.",
+      "state": "entregada"
+    },
+    {
+      "id": 102,
+      "title": "En patrulla por Páramos de Poniente",
+      "giver": "Capitán Danuvin",
+      "zone": "Torre del Centinela",
+      "objectives": "Lleva 8 zarpas de gnoll al capitán Danuvin en la Colina del Centinela.",
+      "original": "Ventormenta nos ha abandonado. Nauseabundos aires de depravación soplan por las llanuras de los Páramos de Poniente. Este era mi hogar y no daré la espalda a los ciudadanos que decidieron permanecer aquí. Nosotros, los antiguos granjeros, ofreceremos resistencia.\n\nTu tarea, si decidieras aceptar, consistirá en patrullar las praderas de los Páramos de Poniente. Localiza y aniquila a los infames gnolls que parecen colaborar con los ladrones de Las Minas de la Muerte. Tráeme 8 zarpas de gnoll y sabré recompensar tu valentía.",
+      "state": "entregada"
+    },
+    {
+      "id": 12,
+      "title": "Las Milicias del Pueblo",
+      "giver": "Gryan Mantorrecio",
+      "zone": "Torre del Centinela",
+      "objectives": "Gryan Mantorrecio quiere que mates 15 tramperos Defias y 15 contrabandistas Defias. Cuando lo hayas hecho vuelve a verle en la Colina del Centinela.",
+      "original": "Las Milicias del Pueblo solo tienen un objetivo: defender las tierras de los Páramos de Poniente y traer la paz a nuestro entorno. Por desgracia, el precio de la paz suele pagarse en sangre.\n\nSegún el informe de uno de mis rastreadores, una banda de tramperos Defias ha sido vista cerca de la Mina de Jango al noreste de aquí, en La Granja de Molsen y en la Plantación de Calabazas de Cejade. Si quieres unirte a nuestras filas, acaba con 15 tramperos Defias y con 15 contrabandistas Defias y vuelve a verme.",
+      "state": "entregada"
+    },
+    {
+      "id": 65,
+      "title": "La hermandad de los Defias",
+      "giver": "Gryan Mantorrecio",
+      "zone": "Torre del Centinela",
+      "objectives": "Gryan Mantorrecio quiere que hables con Wiley en Villa del Lago.",
+      "original": "La banda de desgraciados responsable de que las gentes de los Páramos de Poniente abandonaran sus tierras se llama a sí misma la Hermandad Defias. Necesito que te infiltres en este clan de matones. Debemos averiguar quién lidera el grupo y dónde se esconden. En Villa del Lago, en la posada, encontrarás a un pícaro que responde al nombre de Wiley; me debe un favor.\n\nViaja a Villa del Lago, en las Montañas Crestagrana, al este de Elwynn, y averigua todo lo que puedas.",
+      "state": "activa"
+    },
     {
       "id": 92745,
       "title": "El estado de las minas",
@@ -49,7 +115,7 @@
       "subzone": "Colina del Centinela",
       "objectives": "Acaba con 4 cavadores kóbolds en la Mina de Jango y con 6 mineros Zarparrío en la Mina de la Costa del Oro.",
       "original": "¡Las muestras de los pozos que has recolectado contienen metales tóxicos! Si no ponemos fin a esta corrupción pronto, pasarán décadas hasta que se pueda volver a cultivar en estas tierras.\r\nLos Defias han tomado las minas de los Páramos de Poniente y están usando criaturas como mano de obra para adueñarse de sus recursos. Para frustrar sus planes, acaba con sus mineros en la Mina de Jango, al norte, y en la Mina de la Costa del Oro, al oeste.",
-      "state": "activa"
+      "state": "entregada"
     },
     {
       "id": 153,
@@ -59,7 +125,7 @@
       "subzone": "Colina del Centinela",
       "objectives": "Lleva 15 pañuelos de cuero rojo al explorador Galiaan en la Colina del Centinela.",
       "original": "La tapadera de los Defias cambia constantemente. He estado siguiendo sus movimientos desde hace algún tiempo. Aunque, recuerda, he averiguado que muchos miembros de la banda se identifican por sus pañuelos de cuero rojo.\n\nTráeme 15 de esos pañuelos y procuraré que seas recompensado.",
-      "state": "activa"
+      "state": "entregada"
     },
     {
       "id": 92744,
@@ -308,12 +374,12 @@
   "pending": {
     "loose": [],
     "openChains": [],
-    "awaitingBackstory": 3
+    "awaitingBackstory": 4
   },
   "stats": {
-    "level": 16,
-    "played": 78520,
-    "questsDone": 34,
+    "level": 17,
+    "played": 84555,
+    "questsDone": 42,
     "deaths": 6,
     "zones": [
       "Bosque de Elwynn",
@@ -351,6 +417,10 @@
       {
         "level": 16,
         "played": 72011
+      },
+      {
+        "level": 17,
+        "played": 78854
       }
     ]
   }
