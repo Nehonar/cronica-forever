@@ -1,24 +1,6 @@
 {
   "characters": [
     {
-      "key": "Nehonar-ClassicBetaPvP",
-      "name": "Nehonar",
-      "epithet": "el de la Cantera",
-      "race": "Humano",
-      "class": "Paladín",
-      "level": 2,
-      "stories": 1
-    },
-    {
-      "key": "NehonarBanthalas-ClassicBetaPvE",
-      "name": "Nehonar Banthalas",
-      "race": "Cielonato de la Orden Eminente",
-      "class": "Guerrero",
-      "level": 6,
-      "stories": 0,
-      "new": true
-    },
-    {
       "key": "NehonarBolgar-ClassicBetaPvE",
       "name": "Nehonar Bolgar",
       "race": "Cielonato de la Orden Eminente",
@@ -64,6 +46,24 @@
       "stories": 17
     },
     {
+      "key": "Nehonar-ClassicBetaPvP",
+      "name": "Nehonar",
+      "epithet": "el de la Cantera",
+      "race": "Humano",
+      "class": "Paladín",
+      "level": 2,
+      "stories": 1
+    },
+    {
+      "key": "NehonarBanthalas-ClassicBetaPvE",
+      "name": "Nehonar Banthalas",
+      "race": "Cielonato de la Orden Eminente",
+      "class": "Guerrero",
+      "level": 6,
+      "stories": 0,
+      "new": true
+    },
+    {
       "key": "Tobias-Demo",
       "name": "Tobias Brenn",
       "epithet": "El hijo del molinero",
@@ -73,5 +73,5 @@
       "stories": 3
     }
   ],
-  "updated": "016ea15df3f1abe9"
+  "updated": "9bfdbe9fc1293a80"
 }
