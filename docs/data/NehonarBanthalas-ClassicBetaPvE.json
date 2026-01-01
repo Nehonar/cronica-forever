@@ -15,16 +15,28 @@
   "realm": "Classic Beta PvE",
   "stories": [],
   "current": {
-    "zone": "Ciudad de Ventormenta",
+    "zone": "Darnassus",
     "quests": 0,
     "levelFrom": 6,
     "levelTo": 6,
-    "points": 1,
+    "points": 4,
     "threshold": 8,
     "scenes": [
       {
         "kind": "zona",
         "title": "Ciudad de Ventormenta"
+      },
+      {
+        "kind": "zona",
+        "title": "Costa Oscura"
+      },
+      {
+        "kind": "zona",
+        "title": "Teldrassil"
+      },
+      {
+        "kind": "zona",
+        "title": "Darnassus"
       }
     ]
   },
@@ -217,7 +229,7 @@
   },
   "stats": {
     "level": 6,
-    "played": 5263,
+    "played": 8029,
     "questsDone": 17,
     "deaths": 0,
     "zones": [
@@ -225,7 +237,10 @@
       "Laderas de Trabalomas",
       "Montañas de Alterac",
       "Dalaran",
-      "Ciudad de Ventormenta"
+      "Ciudad de Ventormenta",
+      "Costa Oscura",
+      "Teldrassil",
+      "Darnassus"
     ],
     "levelUps": [
       {
