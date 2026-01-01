@@ -214,8 +214,8 @@
   },
   "stats": {
     "level": 14,
-    "played": 54368,
-    "questsDone": 24,
+    "played": 54637,
+    "questsDone": 25,
     "deaths": 3,
     "zones": [
       "Bosque de Elwynn",
@@ -226,7 +226,8 @@
       "Dun Morogh",
       "Loch Modan",
       "El Salón de los Feudales",
-      "Páramos de Poniente"
+      "Páramos de Poniente",
+      "Torre del Centinela"
     ],
     "levelUps": [
       {
