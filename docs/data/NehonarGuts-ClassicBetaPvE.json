@@ -11,10 +11,50 @@
     "threads": null,
     "motto": ""
   },
-  "level": 14,
+  "level": 15,
   "realm": "Classic Beta PvE",
   "stories": [],
   "encargos": [
+    {
+      "id": 96394,
+      "title": "Los muertos sin descanso",
+      "giver": "Malarky",
+      "zone": "Ciudad de Ventormenta",
+      "subzone": "Distrito de Mercaderes",
+      "objectives": "Mata a 15 apariciones iracundas y 10 almas atormentadas, antes de acabar con el espíritu de Yunquemar.",
+      "original": "Algo ha perturbado las tumbas del Salón de los Feudales, y hay quien dice haber oído ruidos extraños procedentes de lo más hondo del mausoleo. Los espíritus de los difuntos tienen el sueño muy ligero, y se conoce que los habrá alterado lo que quiera que se esté removiendo allí abajo.\r\n\r\nPonte en camino, a ver qué remedio le ves al asunto. Y, si algún muerto anda deambulando..., ¡se le manda a dormir otra vez!",
+      "state": "entregada"
+    },
+    {
+      "id": 92909,
+      "title": "Cosechar a los cosechadores",
+      "giver": "Ozwin Ferropiñón",
+      "zone": "Páramos de Poniente",
+      "subzone": "Finca de Saldean",
+      "objectives": "Ozwin Ferropiñón, en la Granja de Saldean, quiere que le lleves 14 isomuelles de gólem y 5 giroestabilizadores de cosechador.",
+      "original": "Ay, no... ¡Estoy en un buen lío!\r\n\r\nMe enteré de que unos cosechadores estaban aterrorizando los campos de los Páramos de Poniente, así que viajé hacia allí desde Forjaz para ver si podía recalibrarlos. Pero eran más agresivos de lo que había anticipado con mis cálculos ¡y me persiguieron hasta este establo!\r\n\r\nSi tuviera unos cuantos isomuelles y giroestabilizadores de los cosechadores, podría construir un dispositivo para huir. ¿Te importaría conseguirme las piezas?",
+      "state": "activa"
+    },
+    {
+      "id": 22,
+      "title": "Pastel de hígado de dentosangre",
+      "giver": "Salma Saldean",
+      "zone": "Páramos de Poniente",
+      "subzone": "Finca de Saldean",
+      "objectives": "Salma Saldean necesita 8 hígados de dentosangre para hacer un pastel de hígado de dentosangre.",
+      "original": "Las cebollas están peladas. El ajo machacado. La corteza está tostada. Las hierbas de eneldo picadas. ¡Lo único que me falta para mi famosa empanada de carne son 8 hígados de dentosangre!",
+      "state": "activa"
+    },
+    {
+      "id": 9,
+      "title": "Campos de la muerte",
+      "giver": "Granjero Saldean",
+      "zone": "Páramos de Poniente",
+      "subzone": "Finca de Saldean",
+      "objectives": "El granjero Saldean quiere que mates 20 Vigilantes de la cosecha.",
+      "original": "¡Mira lo que le ha ocurrido a este lugar! Estas tierras estaban antes en manos de buenos granjeros. Pero los condenados ladrones les han ahuyentado a todos. ¡Pero no a mí! Eso sí, parece que algunos Vigilantes de la cosecha han invadido los campos.\n\nSi estás preparado me gustaría que fueras y mataras a 20 de ellos. Vuelve cuando hayas terminado y te pagaré. Si terminas con los de mi campo, puedes limpiar también los campos vecinos.",
+      "state": "activa"
+    },
     {
       "id": 38,
       "title": "Estofado de los Páramos de Poniente",
@@ -23,7 +63,7 @@
       "subzone": "Finca de Saldean",
       "objectives": "Salma Saldean quiere 3 carnes fibrosas de buitre, 3 morros de dentosangre, 3 ojos de múrloc y 3 okras.",
       "original": "¡Ayúdame a preparar el estofado de los Páramos de Poniente! Vuelve con estos ingredientes:\n\n3 piezas de carne fibrosa de buitre\n3 morros de dentosangre\n3 ojos de múrloc\n3 okras",
-      "state": "activa"
+      "state": "entregada"
     },
     {
       "id": 151,
@@ -33,7 +73,7 @@
       "subzone": "La Finca de Jansen",
       "objectives": "Verna Furlbrow de los Páramos de Poniente quiere que le lleves 8 puñados de avena.",
       "original": "¡Pobre Vieja Blanchy! La bestia está agotada después de todo el trabajo que le dimos. Le di de comer antes de dejar la granja, pero no esperábamos que se rompiera el carro. Si pudieras traerle algunos puñados de avena te estaría muy agradecida.\n\nSeguro que podrás encontrar algunos por las granjas de los Páramos de Poniente, si puedes librarte de esas horribles máquinas que los han invadido. Hay varias granjas al suroeste de aquí.",
-      "state": "activa"
+      "state": "entregada"
     },
     {
       "id": 36,
@@ -201,21 +241,16 @@
   ],
   "pending": {
     "loose": [
-      "La reliquia olvidada"
+      "Los muertos sin descanso"
     ],
-    "openChains": [
-      [
-        "Estofado de los Páramos de Poniente",
-        "Estofado de los Páramos de Poniente"
-      ]
-    ],
-    "awaitingBackstory": 11
+    "openChains": [],
+    "awaitingBackstory": 14
   },
   "stats": {
-    "level": 14,
-    "played": 56877,
-    "questsDone": 26,
-    "deaths": 3,
+    "level": 15,
+    "played": 69504,
+    "questsDone": 29,
+    "deaths": 5,
     "zones": [
       "Bosque de Elwynn",
       "Ciudad de Ventormenta",
@@ -240,6 +275,10 @@
       {
         "level": 14,
         "played": 50426
+      },
+      {
+        "level": 15,
+        "played": 63026
       }
     ]
   }
