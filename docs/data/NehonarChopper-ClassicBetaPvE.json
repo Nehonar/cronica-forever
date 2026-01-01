@@ -16,10 +16,133 @@
     ],
     "motto": "El camino se revela al andarlo."
   },
-  "level": 1,
+  "level": 4,
   "realm": "Classic Beta PvE",
-  "stories": [],
+  "stories": [
+    {
+      "id": "b9072ef8ff7e",
+      "kind": "sueltas",
+      "zone": "Teldrassil",
+      "subzones": [
+        "Aldrassil",
+        "Cañada Umbría"
+      ],
+      "title": "Lo que el bosque dice en voz baja",
+      "text": "Nehonar aprendió pronto que Teldrassil hablaba de muchas maneras. A veces, con la voz de los suyos. El conservador Ilthalaine le tendió un sigilo verde enviado por Mardant Cebaforte, y el instructor, en Aldrassil, le prometió enseñarle a leer los designios de los espíritus y los secretos del Sueño Esmeralda. Nehonar asintió. Escuchar era lo único que siempre había sabido hacer.\n\nOtras veces hablaba la luna. Shanda le recordó que era hijo de las estrellas, que la larga vigilia tras Hyjal había terminado y que ahora los kaldorei tenían aliados al otro lado del mar. Le pidió que demostrara los dones de Elune. Nehonar dejó caer sobre la hierba la luz de la Madre Luna y después se fundió con las sombras, quieto como un búho en su rama. «La diosa provee», dijo ella. Él pensó que también exigía saber usarlo.\n\nY a veces el bosque susurraba advertencias. Melithar Corzocelada le habló de Tarindrella, una dríade que llevaba años sin pisar Kalimdor. La encontró al suroeste de Aldrassil. Ella le regaló un libro y le dijo, con cierta ternura, que aún le quedaba mucho por aprender.\n\nLuego le pidió algo menos amable: subir a las colinas que los pacíficos furbolgs habían abandonado. Allí los grells y los grellkin acechaban, y Nehonar arrancó de ellos muestras del musgovil que los envenenaba. Sostuvo aquella podredumbre entre los dedos. Un árbol joven, y ya enfermo.\n\nTarindrella palideció. Sus peores temores eran ciertos, y los furbolgs se reunían ahora bajo el nombre de Tuercepinos. Le habló de Athridas Manturso, en Dolanaar.\n\nNehonar no preguntó qué vendría después. Ya caminaba hacia allí.",
+      "summary": "Nehonar recibió instrucción de Mardant y los dones de Elune de Shanda, y por encargo de la dríade Tarindrella descubrió que el musgovil corrompía a los grells y había empujado a los furbolgs a convertirse en Tuercepinos, lo que lo llevó a partir hacia Dolanaar.",
+      "quests": [
+        {
+          "id": 458,
+          "title": "La protectora de los bosques",
+          "giver": "Melithar Corzocelada"
+        },
+        {
+          "id": 3120,
+          "title": "El sigilo verde",
+          "giver": "Conservador Ilthalaine"
+        },
+        {
+          "id": 97979,
+          "title": "La diosa provee",
+          "giver": "Shanda"
+        },
+        {
+          "id": 459,
+          "title": "La protectora de los bosques",
+          "giver": "Tarindrella"
+        }
+      ],
+      "levelFrom": 1,
+      "levelTo": 3
+    }
+  ],
   "encargos": [
+    {
+      "id": 3519,
+      "title": "Un amigo en apuros",
+      "giver": "Iverron",
+      "zone": "Teldrassil",
+      "subzone": "Cañada Umbría",
+      "objectives": "Habla con Dirania Brillargente en Cañada Umbría.",
+      "original": "Uy... Me ha picado una araña llamada Gythyiss la Vil mientras exploraba la cueva de las arañas cerca de aquí. Estoy seguro de que me ha envenenado así que tienes que ayudarme.\n\nPor favor, habla con Dirania Brillargente. Ella podrá ayudarme.\n\nDate prisa... me estoy mareando...",
+      "heading": "El veneno de Gythyiss la Vil",
+      "text": "Nehonar oyó la respiración antes que la voz: entrecortada, torpe, como la de un cervatillo que ha corrido demasiado. Iverron estaba pálido y le costaba mantenerse en pie.\n\n—Uy... Una araña, Gythyiss la Vil —balbuceó—. Me picó mientras exploraba la cueva de las arañas, aquí cerca. Me ha envenenado, estoy seguro.\n\nNehonar lo observó en silencio. No hacía falta ser sanador para leer el temblor de aquellas manos.\n\n—¿Qué necesitas?\n\n—Habla con Dirania Brillargente. Ella podrá ayudarme. Date prisa... me estoy mareando...\n\nNehonar no hizo más preguntas. A veces el bosque no da tiempo a entender, solo a actuar. Se incorporó y cruzó Cañada Umbría en busca de Dirania, con el paso ligero de quien no quiere llegar tarde.",
+      "state": "activa"
+    },
+    {
+      "id": 916,
+      "title": "El veneno de la Tejemadera",
+      "giver": "Gilshalan Caminaviento",
+      "zone": "Teldrassil",
+      "subzone": "Aldrassil",
+      "objectives": "Lleva 10 glándulas de veneno de Tejemadera a Gilshalan Caminaviento a Aldrassil.",
+      "original": "He venido a Cañada Umbría para observar a las arañas tejemadera de la Gruta Narácnida. Son parientes de unas arañas mucho más pequeñas; creo que el Árbol del Mundo ha tenido un profundo efecto en ellas y quiero estudiar unos especímenes para confirmarlo. \n\nPara empezar, necesito su veneno. Ve a la Gruta Narácnida, que está al norte de aquí, y tráeme glándulas de veneno; así podré compararlo con el veneno de sus parientes más pequeñas.",
+      "heading": "Lo que el árbol transforma",
+      "text": "Gilshalan Caminaviento tenía la mirada de quien lleva días observando lo mismo. Al pie de Aldrassil, señaló hacia el norte.\n\n—He venido a Cañada Umbría para estudiar a las tejemadera de la Gruta Narácnida. Son parientes de unas arañas mucho más pequeñas. Creo que el Árbol del Mundo ha cambiado profundamente su naturaleza.\n\nNehonar escuchó sin interrumpir. De niño había visto arañas diminutas entre la hojarasca, tan pacientes como las raíces.\n\n—¿Y cómo se prueba algo así? —preguntó al fin.\n\n—Empezando por su veneno. Ve a la gruta y tráeme sus glándulas. Lo compararé con el de sus parientes pequeñas.\n\nNehonar asintió despacio. No era cazar por cazar. Era entender qué hacía Teldrassil con quienes vivían a su sombra, y esa pregunta también era suya. Miró al norte, hacia la Gruta Narácnida, y echó a andar.",
+      "state": "activa"
+    },
+    {
+      "id": 97979,
+      "title": "La diosa provee",
+      "giver": "Shanda",
+      "zone": "Teldrassil",
+      "subzone": "Aldrassil",
+      "objectives": "Lanza Luz de Elune y Fusión de las Sombras.",
+      "original": "Has nacido entre los kaldorei, los hijos de las estrellas, y has heredado un derecho de nacimiento sin igual en este mundo. La gracia de Elune puede iluminar nuestras virtudes, guiar nuestros golpes para que sean certeros o ayudarnos a ocultarnos igual que la luna eclipsa el sol.\r\n\r\nYa ha finalizado nuestra larga vigilia tras la defensa del Monte Hyjal y nos hemos unido a una Alianza con otros pueblos... a quienes conocerás a su debido tiempo. Por ahora, moras entre las ramas de Teldrassil.\r\n\r\nDemuestra los dones de la Madre Luna y deléitate con sus bendiciones.",
+      "state": "entregada"
+    },
+    {
+      "id": 97977,
+      "title": "La llamada de la naturaleza",
+      "giver": "Tarindrella",
+      "zone": "Teldrassil",
+      "subzone": "Cañada Umbría",
+      "objectives": "Llévale 4 tótems Tuercepinos a Tarindrella.",
+      "original": "Los fúrbolgs Tuercepinos no se volverían contra sus antiguos aliados así por las buenas. Debemos averiguar más sobre su situación.\r\n\r\nBusca tótems en sus hogares abandonados. Si alguno ha sobrevivido al caos de su partida, sus inscripciones podrían contarnos más sobre lo ocurrido.\r\n\r\nSus campamentos están en el extremo occidental de la cañada, aunque puede que los grell y los grellines los hayan esparcido por los alrededores.",
+      "state": "entregada"
+    },
+    {
+      "id": 459,
+      "title": "La protectora de los bosques",
+      "giver": "Tarindrella",
+      "zone": "Teldrassil",
+      "subzone": "Cañada Umbría",
+      "objectives": "Lleva 8 muestras de musgovil a Tarindrella.",
+      "original": "En los bosques de Teldrassil está creciendo algo siniestro. Investiga en las colinas en las que vivían los pacíficos furbolgs. Han abandonado la zona y se están reuniendo bajo el nombre de la tribu Tuercepinos. \n\nSolo la corrupción del musgovil puede haber causado esta transformación. La zona está infestada de grells y grellkin, que amenazan a los residentes de Cañada Umbría. \n\nEnfréntate a ellos y averigua si se hallan bajo el encantamiento del musgovil.",
+      "state": "entregada"
+    },
+    {
+      "id": 3120,
+      "title": "El sigilo verde",
+      "giver": "Conservador Ilthalaine",
+      "zone": "Teldrassil",
+      "subzone": "Cañada Umbría",
+      "objectives": "Lee el sigilo verde y habla con Mardant Cebaforte en Aldrassil, en Cañada Umbría.",
+      "original": "Este sigilo me lo entregó un mensajero de nuestro instructor de druidas, Mardant. Parece que quiere hablar contigo. Léelo y luego llévaselo.",
+      "state": "entregada"
+    },
+    {
+      "id": 457,
+      "title": "El equilibrio de la naturaleza",
+      "giver": "Conservador Ilthalaine",
+      "zone": "Teldrassil",
+      "subzone": "Cañada Umbría",
+      "objectives": "El conservador Ilthalaine quiere que mates 7 sables de la noche sarnosos y 7 jabalíes cardo.",
+      "original": "Acabar con los ejemplares más jóvenes de Cañada Umbría ha sido un buen comienzo, Nehonar, pero queda mucho por hacer. \n\nSi no tomamos medidas, se agotarán los recursos del bosque. Exterminar animales es un mal necesario por el bien de todos los que comparten la tierra. Para mantener el equilibrio, ve al bosque y acaba con los jabalís cardo y sables de la noche sarnosos.",
+      "heading": "Un mal necesario",
+      "text": "El conservador Ilthalaine lo esperaba en Cañada Umbría, con la mirada puesta en la espesura. Nehonar volvía de abatir a los ejemplares más jóvenes del bosque, y aún sentía el peso de aquello.\n\n—Ha sido un buen comienzo —dijo Ilthalaine—, pero queda mucho por hacer. Si no actuamos, el bosque agotará sus recursos.\n\nLe pidió que volviera a la espesura y diera caza a los jabalíes cardo y a los sables de la noche sarnosos.\n\nNehonar guardó silencio. Había visto en el bosque que un rebaño demasiado grande acaba muriendo de hambre. Aun así, preguntó con calma por qué.\n\n—Exterminar animales es un mal necesario —respondió el conservador—, por el bien de todos los que comparten la tierra.\n\nNehonar asintió despacio. No del todo convencido. Pero el equilibrio, pensó, también se defiende con garra.",
+      "state": "activa"
+    },
+    {
+      "id": 4495,
+      "title": "Un buen amigo",
+      "giver": "Dirania Brillargente",
+      "zone": "Teldrassil",
+      "subzone": "Cañada Umbría",
+      "objectives": "Encuentra a Iverron cerca de la cueva que hay al norte.",
+      "original": "Tengo un amigo llamado Iverron que suele venir a verme a la misma hora cada día. Pero hoy no ha venido. \n\nReconozco que su ausencia me inquieta, Nehonar. Pasa mucho tiempo en la cueva que hay al norte, y ya sabes lo peligroso que es, con todas esas arañas por allí. \n\nSi vas hacia allí, ¿te importa buscar a mi amigo?",
+      "state": "entregada"
+    },
     {
       "id": 458,
       "title": "La protectora de los bosques",
@@ -30,7 +153,7 @@
       "original": "Me alegro de que hayas llegado, druida. El susurro de los espíritus del bosque me ha traído extrañas nuevas. \n\nLa misteriosa protectora de los bosques, Tarindrella, ha regresado a Cañada Umbría. Hacía años que la dríade no venía a los bosques de Kalimdor; su presencia aquí no presagia nada bueno. \n\nBusca a Tarindrella y averigua qué asuntos la han traído aquí. Uno de los centinelas la ha avistado al suroeste de Aldrassil.",
       "heading": "Un susurro bajo Aldrassil",
       "text": "Melithar Corzocelada lo recibió en Aldrassil con un gesto breve, como quien llevaba tiempo esperando.\n\n—Me alegro de que hayas llegado, druida. Los espíritus del bosque me han susurrado extrañas nuevas.\n\nNehonar guardó silencio y escuchó. La misteriosa protectora de los bosques, la dríade Tarindrella, había regresado a Cañada Umbría. Hacía años que no pisaba los bosques de Kalimdor, y Melithar no lo tomaba por buena señal.\n\n—Búscala y averigua qué asuntos la han traído. Uno de los centinelas la vio al suroeste de Aldrassil.\n\nNehonar pensó en los ciervos que vuelven a un claro abandonado: nunca lo hacen sin motivo. Algo había cambiado en el bosque, y no bastaba con temerlo. Había que entenderlo.\n\n—¿Qué busca? —preguntó.\n\n—Eso es lo que debes descubrir.\n\nAsintió y miró hacia el suroeste.",
-      "state": "activa"
+      "state": "entregada"
     },
     {
       "id": 456,
@@ -42,21 +165,45 @@
       "original": "Saludos, Nehonar. Soy el conservador Ilthalaine. He venido a Cañada Umbría para asegurarme de que se mantiene el equilibrio de la naturaleza. \n\nEsta primavera ha llovido más de lo normal, lo que ha beneficiado mucho a algunas criaturas del bosque, pero ha perjudicado a otras. \n\nAhora hay demasiados sables de la noche y jabalíes cardo; la zona no puede alimentar a tantas bestias. Joven druida, reduce las poblaciones de jabalí cardo y sable de la noche para mantener la armonía de la naturaleza.",
       "heading": "Lo que trajo la lluvia",
       "text": "En Cañada Umbría, el conservador Ilthalaine esperaba a Nehonar con la calma de quien vigila un estanque. Le habló de la primavera: había llovido más de lo normal, y el bosque no había repartido esa abundancia por igual.\n\n—Ahora hay demasiados sables de la noche y jabalíes cardo. La zona no puede alimentar a tantas bestias.\n\nNehonar guardó silencio. Había crecido imitando el paso de esos felinos. Darles caza no le parecía un acto pequeño.\n\n—¿Y si el bosque se corrige solo? —preguntó al fin.\n\n—Joven druida, reduce sus poblaciones. Así se mantiene la armonía de la naturaleza.\n\nNehonar miró hacia la maleza. Una manada que crece sin freno acaba devorando su propio refugio.\n\nTendría que adentrarse en la cañada, cazar sables de la noche y jabalíes cardo jóvenes, y volver después junto a Ilthalaine.",
-      "state": "activa"
+      "state": "entregada"
     }
   ],
   "pending": {
-    "loose": [],
-    "openChains": []
+    "loose": [
+      "La llamada de la naturaleza"
+    ],
+    "openChains": [
+      [
+        "El equilibrio de la naturaleza",
+        "El equilibrio de la naturaleza"
+      ],
+      [
+        "Un buen amigo",
+        "Un amigo en apuros"
+      ]
+    ]
   },
   "stats": {
-    "level": 1,
-    "played": 141,
-    "questsDone": 0,
+    "level": 4,
+    "played": 3320,
+    "questsDone": 7,
     "deaths": 0,
     "zones": [
       "Teldrassil"
     ],
-    "levelUps": []
+    "levelUps": [
+      {
+        "level": 2,
+        "played": 246
+      },
+      {
+        "level": 3,
+        "played": 836
+      },
+      {
+        "level": 4,
+        "played": 1798
+      }
+    ]
   }
 }
