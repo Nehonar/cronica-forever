@@ -17,8 +17,20 @@
   "current": {
     "zone": "Lion's Pride Inn",
     "quests": 2,
-    "levelFrom": 8,
-    "levelTo": 9
+    "levelFrom": 9,
+    "levelTo": 9,
+    "points": 2,
+    "threshold": 8,
+    "scenes": [
+      {
+        "kind": "zona",
+        "title": "Lion's Pride Inn"
+      },
+      {
+        "kind": "nivel",
+        "title": "Nivel 9"
+      }
+    ]
   },
   "encargos": [
     {

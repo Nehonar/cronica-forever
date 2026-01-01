@@ -383,10 +383,22 @@
     }
   ],
   "current": {
-    "zone": "Ciudad de Ventormenta",
-    "quests": 5,
-    "levelFrom": 16,
-    "levelTo": 17
+    "zone": "Forjaz",
+    "quests": 1,
+    "levelFrom": 17,
+    "levelTo": 17,
+    "points": 2,
+    "threshold": 8,
+    "scenes": [
+      {
+        "kind": "zona",
+        "title": "Las Minas de la Muerte"
+      },
+      {
+        "kind": "equipo",
+        "title": "Botines del gólem protector"
+      }
+    ]
   },
   "encargos": [
     {

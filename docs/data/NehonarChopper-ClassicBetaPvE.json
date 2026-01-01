@@ -317,12 +317,6 @@
       "levelTo": 8
     }
   ],
-  "current": {
-    "zone": "Bosque de Elwynn",
-    "quests": 23,
-    "levelFrom": 8,
-    "levelTo": 10
-  },
   "encargos": [
     {
       "id": 6001,

@@ -17,8 +17,20 @@
   "current": {
     "zone": "Bosque de Elwynn",
     "quests": 4,
-    "levelFrom": 5,
-    "levelTo": 6
+    "levelFrom": 6,
+    "levelTo": 6,
+    "points": 2,
+    "threshold": 8,
+    "scenes": [
+      {
+        "kind": "zona",
+        "title": "Bosque de Elwynn"
+      },
+      {
+        "kind": "nivel",
+        "title": "Nivel 6"
+      }
+    ]
   },
   "encargos": [
     {

@@ -15,10 +15,18 @@
   "realm": "Classic Beta PvE",
   "stories": [],
   "current": {
-    "zone": "Isla de Zephras",
-    "quests": 17,
-    "levelFrom": 1,
-    "levelTo": 6
+    "zone": "Ciudad de Ventormenta",
+    "quests": 0,
+    "levelFrom": 6,
+    "levelTo": 6,
+    "points": 1,
+    "threshold": 8,
+    "scenes": [
+      {
+        "kind": "zona",
+        "title": "Ciudad de Ventormenta"
+      }
+    ]
   },
   "encargos": [
     {
@@ -204,7 +212,8 @@
   ],
   "pending": {
     "loose": [],
-    "openChains": []
+    "openChains": [],
+    "awaitingBackstory": 2
   },
   "stats": {
     "level": 6,

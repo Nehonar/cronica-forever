@@ -16,9 +16,29 @@
   "stories": [],
   "current": {
     "zone": "Páramos de Poniente",
-    "quests": 9,
-    "levelFrom": 14,
-    "levelTo": 16
+    "quests": 5,
+    "levelFrom": 16,
+    "levelTo": 16,
+    "points": 5,
+    "threshold": 8,
+    "scenes": [
+      {
+        "kind": "zona",
+        "title": "Bosque del Ocaso"
+      },
+      {
+        "kind": "zona",
+        "title": "Costa Oscura"
+      },
+      {
+        "kind": "zona",
+        "title": "Teldrassil"
+      },
+      {
+        "kind": "zona",
+        "title": "Darnassus"
+      }
+    ]
   },
   "encargos": [
     {
@@ -288,7 +308,7 @@
   "pending": {
     "loose": [],
     "openChains": [],
-    "awaitingBackstory": 2
+    "awaitingBackstory": 3
   },
   "stats": {
     "level": 16,
