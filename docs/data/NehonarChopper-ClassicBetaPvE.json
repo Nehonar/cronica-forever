@@ -1,0 +1,29 @@
+{
+  "key": "NehonarChopper-ClassicBetaPvE",
+  "character": {
+    "key": "NehonarChopper-ClassicBetaPvE",
+    "name": "Nehonar Chopper",
+    "epithet": "",
+    "race": "Elfo de la noche",
+    "class": "Druida",
+    "voice": "",
+    "backstory": "",
+    "threads": null,
+    "motto": ""
+  },
+  "level": 10,
+  "realm": "Classic Beta PvE",
+  "stories": [],
+  "pending": {
+    "loose": [],
+    "openChains": []
+  },
+  "stats": {
+    "level": 10,
+    "played": 18629,
+    "questsDone": 0,
+    "deaths": 0,
+    "zones": [],
+    "levelUps": []
+  }
+}

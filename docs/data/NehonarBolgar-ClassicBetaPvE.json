@@ -1,0 +1,29 @@
+{
+  "key": "NehonarBolgar-ClassicBetaPvE",
+  "character": {
+    "key": "NehonarBolgar-ClassicBetaPvE",
+    "name": "Nehonar Bolgar",
+    "epithet": "",
+    "race": "Cielonato de la Orden Eminente",
+    "class": "Mago",
+    "voice": "",
+    "backstory": "",
+    "threads": null,
+    "motto": ""
+  },
+  "level": 6,
+  "realm": "Classic Beta PvE",
+  "stories": [],
+  "pending": {
+    "loose": [],
+    "openChains": []
+  },
+  "stats": {
+    "level": 6,
+    "played": 6987,
+    "questsDone": 0,
+    "deaths": 0,
+    "zones": [],
+    "levelUps": []
+  }
+}

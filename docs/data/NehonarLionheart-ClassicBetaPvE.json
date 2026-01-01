@@ -1,0 +1,29 @@
+{
+  "key": "NehonarLionheart-ClassicBetaPvE",
+  "character": {
+    "key": "NehonarLionheart-ClassicBetaPvE",
+    "name": "Nehonar Lionheart",
+    "epithet": "",
+    "race": "Humano",
+    "class": "Paladín",
+    "voice": "",
+    "backstory": "",
+    "threads": null,
+    "motto": ""
+  },
+  "level": 17,
+  "realm": "Classic Beta PvE",
+  "stories": [],
+  "pending": {
+    "loose": [],
+    "openChains": []
+  },
+  "stats": {
+    "level": 17,
+    "played": 93892,
+    "questsDone": 0,
+    "deaths": 0,
+    "zones": [],
+    "levelUps": []
+  }
+}
