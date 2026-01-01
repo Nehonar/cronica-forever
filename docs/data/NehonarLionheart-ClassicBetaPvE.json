@@ -16,7 +16,7 @@
     ],
     "motto": "Mientras quede alguien dentro, no he terminado."
   },
-  "level": 16,
+  "level": 17,
   "realm": "Classic Beta PvE",
   "stories": [
     {
@@ -252,9 +252,71 @@
       "levelFrom": 13,
       "levelTo": 15,
       "deaths": 2
+    },
+    {
+      "id": "37539224d7d0",
+      "kind": "sueltas",
+      "zone": "Ciudad de Ventormenta",
+      "subzones": [
+        "Distrito de los Enanos"
+      ],
+      "title": "El peso de un recado ajeno",
+      "text": "El Distrito de los Enanos olía a carbón y a hierro caliente, y Nehonar lo respiró como quien vuelve a casa. No era la cantera, pero el martilleo de las forjas latía al mismo ritmo que los picos contra la piedra.\n\nLlevaba bajo el brazo el pedido que le habían confiado, un encargo de un Pico Tormenta. Lo había cruzado por las calles con el mismo cuidado que ponía en los fardos del muelle: sin preguntar qué había dentro y sin olvidar que no era suyo.\n\nFuren Barbalarga lo recibió con una ceja alzada, y la sonrisa se le fue ensanchando bajo la barba.\n\n—Ah, un pedido de un Pico Tormenta... Es un orgulloso clan que cuenta con enanos de gran calidad. Ricos también. Gracias, Nehonar. Al final del día me pondré con el pedido del escudo del montaraz Pico Tormenta.\n\n—Pues que le quede bonito —respondió él—. Yo solo soy el burro de carga, y a mucha honra.\n\nAl salir notó que algunas miradas habían cambiado. Un par de enanos le saludaron con la cabeza, un gnomo le dedicó un gesto rápido desde su puesto y hasta una elfa que pasaba le miró como se mira a alguien de fiar. Por un simple recado, pensó, y no supo muy bien qué hacer con aquello.\n\nSe quedó un momento junto a la forja, viendo saltar las chispas. Un escudo para un montaraz. Quizá algún día se interpondría entre alguien y el peligro, lejos de allí, en manos que él nunca conocería.\n\nLe gustó pensar que también eso era sostener un escudo, aunque fuera un poco. Luego se sacudió el hollín de la manga y echó a andar en busca del siguiente encargo.",
+      "summary": "Nehonar entregó a Furen Barbalarga un pedido de un Pico Tormenta para el escudo de un montaraz, notó que en el Distrito de los Enanos le miraban con más aprecio y pensó que hasta un recado humilde podía ayudar a sostener un escudo.",
+      "quests": [
+        {
+          "id": 1338,
+          "title": "Un pedido de Pico Tormenta"
+        }
+      ],
+      "levelFrom": 16,
+      "levelTo": 16
+    },
+    {
+      "id": "c2759a23729b",
+      "kind": "sueltas",
+      "zone": "El Salón de los Feudales",
+      "title": "Alguien que todavía no ha salido",
+      "text": "El Salón de los Feudales olía a piedra vieja y a polvo quieto, como la cantera los días en que nadie picaba. Nehonar se descubrió bajando la voz sin saber por qué. Fue entonces cuando el auxiliar fantasmal se le acercó, apenas una silueta temblorosa que hablaba a trozos, como si cada palabra le costara un mundo.\n\n—Mi señor... no descansa. Ayúdalo... a descansar.\n\n—Tranquilo, que para eso estoy —respondió Nehonar, y le salió más suave de lo que pretendía—. Aunque te aviso: lo mío es cargar fardos, no consolar a nadie.\n\nEl espíritu de Faldrim Yunquemar seguía atado a aquel lugar por un rencor tan antiguo que ya nadie recordaba de dónde venía. Lo que no se borraba era el peso. Nehonar lo notó en cuanto estuvo cerca. Era la misma cerrazón de una galería hundida, donde el aire no se mueve y uno deja de saber cuánto tiempo lleva dentro.\n\nLa primera vez no le salió bien. Acabó en el suelo, con la boca llena de polvo, y se levantó refunfuñando que la piedra siempre había tenido más paciencia que él. Volvió de todos modos. Cuando el espíritu de Faldrim encontró por fin su descanso, el salón pareció soltar el aliento.\n\n—Gracias... Por fin... descanso —susurró el auxiliar.\n\nNehonar asintió, se sacudió el polvo y apartó la mirada. Pensó que había muchas maneras de quedarse atrapado. Las paredes eran solo una. Se marchó sin detenerse en lo que había hecho, como siempre. En el umbral, sin embargo, se dio la vuelta un momento. Quería comprobar que dentro ya no quedaba nadie.",
+      "summary": "Nehonar devolvió al descanso el espíritu de Faldrim Yunquemar, atrapado por un rencor ancestral en el Salón de los Feudales, y tras caer y levantarse pensó que también se puede quedar atrapado por dentro.",
+      "quests": [
+        {
+          "id": 96395,
+          "title": "Un agravio antiguo"
+        }
+      ],
+      "levelFrom": 16,
+      "levelTo": 16,
+      "deaths": 1
     }
   ],
   "encargos": [
+    {
+      "id": 98423,
+      "title": "El tratado de entendimiento",
+      "zone": "El Salón de los Feudales",
+      "subzone": "Relicario de los Reyes",
+      "objectives": "Entrega el tratado de entendimiento a Magni Barbabronce en Forjaz.",
+      "original": "\u003cDentro de la cámara encuentras una tablilla que detalla los términos de un tratado de paz entre los clanes Barbabronce y Martillo Salvaje. Parece que data de un periodo justo posterior a la Guerra de los Tres Martillos, y es muy probable que se trate de una pieza de suma importancia para los enanos. Seguro que el rey de Forjaz estaría interesado en este artefacto\u003e.",
+      "state": "entregada"
+    },
+    {
+      "id": 96395,
+      "title": "Un agravio antiguo",
+      "zone": "El Salón de los Feudales",
+      "objectives": "Devuelve el espíritu de Faldrim Yunquemar a su descanso eterno y luego vuelve con el auxiliar fantasmal en el Salón de los Feudales.",
+      "original": "El... señor... Mi excelso... señor feudal... Necesita... descanso.\r\n\r\nTe lo imploro... Ayúdalo. Ayúdalo a... descansar.\r\n\r\nConsumido... por un rencor... ancestral. No... descansa...",
+      "state": "entregada"
+    },
+    {
+      "id": 96403,
+      "title": "Reliquias importantes",
+      "giver": "Thom Filch",
+      "zone": "Forjaz",
+      "objectives": "Recupera 8 reliquias enanas en el Salón de los Feudales.",
+      "original": "Oye, tú... Me vendría muy bien tu ayuda.\r\n\r\nEstaba colándome... digo... patrullando por las cámaras cuando surgió de las profundidades un montón de enanos Hierro Negro en máquinas topo. No sé qué harán aquí, pero hay un botín de valor incalculable... esto, mejor dicho... ¡importantes reliquias culturales ahí abajo! Por favor, recupera cualquier reliquia que veas y tráemela.\r\n\r\nTe aseguro que todo lo que recuperes se catalogará y se devolverá a su lugar correspondiente.",
+      "state": "entregada"
+    },
     {
       "id": 97894,
       "title": "Asuntos en Auberdine",
@@ -270,23 +332,30 @@
   ],
   "pending": {
     "loose": [
-      "Un pedido de Pico Tormenta"
+      "Reliquias importantes"
     ],
     "openChains": []
   },
   "stats": {
-    "level": 16,
-    "played": 75179,
-    "questsDone": 1,
-    "deaths": 0,
+    "level": 17,
+    "played": 78932,
+    "questsDone": 4,
+    "deaths": 2,
     "zones": [
       "Páramos de Poniente",
       "Ciudad de Ventormenta",
       "Bosque de Elwynn",
       "Tren subterráneo",
       "Tranvía Subterráneo",
-      "Forjaz"
+      "Forjaz",
+      "El Salón de los Feudales",
+      "Dun Morogh"
     ],
-    "levelUps": []
+    "levelUps": [
+      {
+        "level": 17,
+        "played": 78847
+      }
+    ]
   }
 }
