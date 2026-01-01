@@ -384,7 +384,7 @@
   ],
   "current": {
     "zone": "Ciudad de Ventormenta",
-    "quests": 4,
+    "quests": 5,
     "levelFrom": 16,
     "levelTo": 17
   },
@@ -434,8 +434,8 @@
   },
   "stats": {
     "level": 17,
-    "played": 88380,
-    "questsDone": 4,
+    "played": 93892,
+    "questsDone": 5,
     "deaths": 7,
     "zones": [
       "Páramos de Poniente",
