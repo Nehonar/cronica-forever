@@ -1,0 +1,29 @@
+{
+  "key": "NehonarLionhart-ClassicBetaPvE",
+  "character": {
+    "key": "NehonarLionhart-ClassicBetaPvE",
+    "name": "Nehonar Lionhart",
+    "epithet": "",
+    "race": "Humano",
+    "class": "Mago",
+    "voice": "",
+    "backstory": "",
+    "threads": null,
+    "motto": ""
+  },
+  "level": 9,
+  "realm": "Classic Beta PvE",
+  "stories": [],
+  "pending": {
+    "loose": [],
+    "openChains": []
+  },
+  "stats": {
+    "level": 9,
+    "played": 14797,
+    "questsDone": 0,
+    "deaths": 0,
+    "zones": [],
+    "levelUps": []
+  }
+}
