@@ -16,7 +16,7 @@
   "stories": [],
   "current": {
     "zone": "Torre del Centinela",
-    "quests": 5,
+    "quests": 6,
     "levelFrom": 17,
     "levelTo": 17,
     "points": 1,
@@ -90,7 +90,7 @@
       "zone": "Loch Modan",
       "objectives": "Lleva 12 orejas de kobold al montaraz Kadrell a Thelsamar.",
       "original": "Tenemos una infestación grave al oeste. Esos kobolds asquerosos se han instalado en las laderas. ¡Están cavando madrigueras y ensuciándolo todo!\n\nQueremos erradicarlos. Si los cazas y me traes sus orejas, puedes quedarte con su botín.\n\nLos encontrarás por toda la ladera al oeste de Thelsamar.",
-      "state": "activa"
+      "state": "entregada"
     },
     {
       "id": 14,
@@ -457,8 +457,8 @@
   },
   "stats": {
     "level": 17,
-    "played": 89139,
-    "questsDone": 43,
+    "played": 89951,
+    "questsDone": 44,
     "deaths": 8,
     "zones": [
       "Bosque de Elwynn",
