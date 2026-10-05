@@ -16,9 +16,9 @@
     ],
     "motto": "Piedra a piedra"
   },
-  "level": 6,
+  "level": 7,
   "realm": "Demo",
-  "updated": "2026-10-05T13:38:10Z",
+  "updated": "2026-10-05T13:59:03Z",
   "stories": [
     {
       "id": "equipo-1791106000-espada-corta-de-la-cantera",
@@ -144,6 +144,34 @@
       "start": 1791100260,
       "end": 1791110800,
       "created": "2026-10-05T13:38:10Z"
+    },
+    {
+      "id": "cadena-62-76",
+      "kind": "cadena",
+      "zone": "Bosque de Elwynn",
+      "subzones": [
+        "Villadorada"
+      ],
+      "title": "Bajo tierra, piedra a piedra",
+      "text": "El alguacil Dughan no se anduvo con rodeos. Los mineros de Fargodeep habían dejado de mandar mineral y nadie quería bajar a averiguar por qué.\n\n—Tú ya conoces a esas alimañas —dijo.\n\nNehonar asintió. Habló poco, como siempre. Pensó que era la primera vez que alguien lo escogía por lo que sabía y no por lo que había a mano. Cogió la espada de la cantera y se echó al camino.\n\nLa mina olía a humedad y a vela barata. Bajó despacio, con una mano en la pared, porque la piedra le había enseñado hacía mucho que miente poco y que conviene escucharla. Las galerías bajas estaban tomadas, tal como decían. Vio lo suficiente para entender que aquello no era una plaga pasajera. Volvió a la superficie con polvo hasta en las pestañas y se lo contó a Dughan sin adornos.\n\n—Así que es peor de lo que pensaba —murmuró el alguacil—. Y no es la única mina que me preocupa.\n\nNo hubo descanso. Dughan le habló de Jasperlode, al este, donde los mineros hablaban de algo más que kóbolds: ruidos en la roca, herramientas que desaparecían. «Ve y mira. Si alguien ha despertado algo ahí dentro, quiero saberlo antes de que salga.»\n\nNehonar pensó en el puerto, en las cajas que nadie quería cargar, y encontró cierto consuelo en que los encargos incómodos siguieran siendo suyos. Cruzó el bosque hacia el este con un paso más firme que el de hacía unas semanas. No lo notó él; lo habría notado cualquiera que lo hubiera visto marchar con la espada al cinto.\n\nEn Jasperlode la roca crujía de una manera que no le gustó. Avanzó por las galerías contando sus propios pasos, atento a cada sonido, y miró lo que había que mirar. Salió con la misma calma con que había entrado, aunque por dentro llevaba algo más pesado que el polvo.\n\nDughan lo escuchó sin interrumpirle.\n\n—Bien hecho. Lo que me cuentas no me gusta nada, pero prefiero saberlo. Descansa: mañana el bosque seguirá necesitándote.\n\nNehonar se sentó a la puerta de Villadorada y se sacudió la roca de las botas. Dos minas, dos bocas oscuras, y ningún aplauso. Tampoco lo esperaba. Piedra a piedra, se dijo.",
+      "summary": "Nehonar exploró para el alguacil Dughan las minas Fargodeep y Jasperlode, descubrió que ambas escondían problemas peores de lo previsto y volvió a Villadorada con noticias incómodas pero necesarias.",
+      "quests": [
+        {
+          "id": 62,
+          "title": "La mina Fargodeep",
+          "giver": "Alguacil Dughan"
+        },
+        {
+          "id": 76,
+          "title": "La mina Jasperlode",
+          "giver": "Alguacil Dughan"
+        }
+      ],
+      "levelFrom": 6,
+      "levelTo": 7,
+      "start": 1791205786,
+      "end": 1791207826,
+      "created": "2026-10-05T13:59:03Z"
     }
   ],
   "pending": {
@@ -151,9 +179,9 @@
     "openChains": []
   },
   "stats": {
-    "level": 6,
-    "played": 11040,
-    "questsDone": 9,
+    "level": 7,
+    "played": 13440,
+    "questsDone": 11,
     "deaths": 1,
     "zones": [
       "Bosque de Elwynn"
@@ -178,9 +206,13 @@
       {
         "level": 6,
         "t": 1791109000
+      },
+      {
+        "level": 7,
+        "t": 1791207226
       }
     ],
     "firstSeen": 1791100000,
-    "lastSeen": 1791111040
+    "lastSeen": 1791208126
   }
 }
