@@ -18,7 +18,7 @@
   },
   "level": 2,
   "realm": "Classic Beta PvP",
-  "updated": "2026-10-05T21:22:50Z",
+  "updated": "2026-10-05T21:24:43Z",
   "stories": [
     {
       "id": "cadena-5261-33",
@@ -50,6 +50,20 @@
     }
   ],
   "encargos": [
+    {
+      "id": 18,
+      "title": "Hermandad de ladrones",
+      "giver": "Ayudante del alguacil Willem",
+      "zone": "Bosque de Elwynn",
+      "subzone": "Valle de Villanorte",
+      "objectives": "Lleva 12 pañuelos de tela de saco rojo al ayudante Willem cerca de la Abadía de Villanorte.",
+      "original": "Hace poco llegó una banda de maleantes a Villanorte. Se hacen llamar la Hermandad Defias; se les ha visto cruzando el río hacia el este.\n\nNo sé qué están haciendo, ¡pero seguro que no es nada bueno! Tráeme sus pañuelos y te daré un arma como recompensa.",
+      "heading": "Pañuelos rojos al otro lado",
+      "text": "Cerca de la Abadía de Villanorte, el ayudante del alguacil Willem le hizo un gesto para que se acercara.\n\n—Hace poco llegó una banda de maleantes a Villanorte —dijo en voz baja—. Se hacen llamar la Hermandad Defias. Los han visto cruzar el río hacia el este. No sé qué traman, ¡pero seguro que no es nada bueno!\n\nNehonar asintió. Él tampoco lo sabía, pero quien llega a escondidas rara vez viene a echar una mano con la cosecha.\n\n—Tráeme sus pañuelos y te daré un arma como recompensa.\n\n«Un arma por unos trapos», pensó Nehonar. «En los muelles me pagaban menos por cargar más». Aun así, no fue la paga lo que le hizo ajustarse el cinturón. Alguien había pedido ayuda, y con eso le bastaba. Se volvió hacia el este, buscando el río.",
+      "acceptT": 1791235429,
+      "state": "activa",
+      "narrated": "2026-10-05T21:24:43Z"
+    },
     {
       "id": 33,
       "title": "Los lobos cruzan la frontera",
@@ -112,7 +126,7 @@
   },
   "stats": {
     "level": 2,
-    "played": 3285,
+    "played": 3380,
     "questsDone": 3,
     "deaths": 0,
     "zones": [
@@ -125,6 +139,6 @@
       }
     ],
     "firstSeen": 1791232070,
-    "lastSeen": 1791234422
+    "lastSeen": 1791235429
   }
 }
