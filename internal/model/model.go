@@ -37,6 +37,11 @@ type Event struct {
 	Item       string `json:"item,omitempty"`
 	Quality    int    `json:"quality,omitempty"`
 	Slot       string `json:"slot,omitempty"`
+	// Datos de la pieza de equipo (solo en eventos «equip»).
+	ItemType    string         `json:"itemType,omitempty"`    // p. ej. «Arma», «Armadura»
+	ItemSubType string         `json:"itemSubType,omitempty"` // p. ej. «Espadas de una mano», «Placas»
+	Armor       int            `json:"armor,omitempty"`
+	Stats       map[string]int `json:"stats,omitempty"` // claves de la API: ITEM_MOD_STRENGTH_SHORT…
 }
 
 // Character es un personaje tal como lo guarda el addon.
@@ -103,20 +108,24 @@ func ParseSavedVariables(src string) ([]Character, error) {
 					continue
 				}
 				c.Events = append(c.Events, Event{
-					T:          et.Int("t"),
-					Type:       et.String("type"),
-					ID:         et.Int("id"),
-					Title:      et.String("title"),
-					NPC:        et.String("npc"),
-					Zone:       et.String("zone"),
-					Subzone:    et.String("subzone"),
-					Level:      int(et.Int("level")),
-					Text:       et.String("text"),
-					Objectives: et.String("objectives"),
-					Reward:     et.String("reward"),
-					Item:       et.String("item"),
-					Quality:    int(et.Int("quality")),
-					Slot:       et.String("slot"),
+					T:           et.Int("t"),
+					Type:        et.String("type"),
+					ID:          et.Int("id"),
+					Title:       et.String("title"),
+					NPC:         et.String("npc"),
+					Zone:        et.String("zone"),
+					Subzone:     et.String("subzone"),
+					Level:       int(et.Int("level")),
+					Text:        et.String("text"),
+					Objectives:  et.String("objectives"),
+					Reward:      et.String("reward"),
+					Item:        et.String("item"),
+					Quality:     int(et.Int("quality")),
+					Slot:        et.String("slot"),
+					ItemType:    et.String("itemType"),
+					ItemSubType: et.String("itemSubType"),
+					Armor:       int(et.Int("armor")),
+					Stats:       statsOf(et.Table("stats")),
 				})
 			}
 		}
@@ -124,4 +133,17 @@ func ParseSavedVariables(src string) ([]Character, error) {
 		out = append(out, c)
 	}
 	return out, nil
+}
+
+func statsOf(t *luasv.Table) map[string]int {
+	if t == nil || len(t.Hash) == 0 {
+		return nil
+	}
+	out := map[string]int{}
+	for k, v := range t.Hash {
+		if f, ok := v.(float64); ok && f != 0 {
+			out[k] = int(f)
+		}
+	}
+	return out
 }

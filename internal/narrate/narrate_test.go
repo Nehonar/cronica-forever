@@ -6,6 +6,7 @@ import (
 	"testing"
 
 	"github.com/Nehonar/cronica-forever/internal/group"
+	"github.com/Nehonar/cronica-forever/internal/model"
 )
 
 func TestParse(t *testing.T) {
@@ -42,5 +43,19 @@ func TestNarrateWithFake(t *testing.T) {
 	st, err := Narrate(context.Background(), Fake{}, Sheet{Name: "N"}, g, nil)
 	if err != nil || st.Title != "Relato de prueba" || st.Summary == "" {
 		t.Fatalf("%+v %v", st, err)
+	}
+}
+
+func TestItemFeelUsesStatsWithoutNumbers(t *testing.T) {
+	it := model.Event{Item: "Espada", Quality: 3, Slot: "MAINHAND", ItemSubType: "Espadas de una mano",
+		Stats: map[string]int{"ITEM_MOD_STRENGTH_SHORT": 3, "ITEM_MOD_STAMINA_SHORT": 7}}
+	line := itemLine(it)
+	for _, want := range []string{"espadas de una mano", "poderoso", "robusta", "muy notable"} {
+		if !strings.Contains(line, want) {
+			t.Errorf("falta %q en %q", want, line)
+		}
+	}
+	if strings.Contains(line, "7") || strings.Contains(line, "STRENGTH") {
+		t.Errorf("no debe pasar cifras ni claves de la API: %q", line)
 	}
 }

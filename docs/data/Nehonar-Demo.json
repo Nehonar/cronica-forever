@@ -18,7 +18,7 @@
   },
   "level": 6,
   "realm": "Demo",
-  "updated": "2026-10-05T11:57:27Z",
+  "updated": "2026-10-05T13:38:10Z",
   "stories": [
     {
       "id": "equipo-1791106000-espada-corta-de-la-cantera",
@@ -27,21 +27,26 @@
       "subzones": [
         "Valle de Villanorte"
       ],
-      "title": "El peso justo en la mano",
-      "text": "Nehonar ciñó la espada corta y la sopesó entre los árboles de Elwynn. No era una hoja de caballero, y lo sabía. Olía a polvo de cantera, y la empuñadura tenía el tacto honrado de las cosas hechas para trabajar.\n\nHizo un par de movimientos al aire. Encajaba en la mano como un cincel viejo.\n\n—No está mal —murmuró.\n\nLos del puerto se habrían reído. Él también, un poco. Pero la dejó donde estaba, en el cinto, y siguió camino.",
-      "summary": "Nehonar se puso por primera vez la espada corta de la cantera en Elwynn y la sintió como una herramienta honrada, suya, que encajaba con quien era.",
+      "title": "Una espada que sabe de piedra",
+      "text": "Nehonar ciñó la espada en la mano derecha y cerró los dedos despacio, como quien prueba el peso de una caja antes de levantarla. No era una hoja de caballero, pero tenía buena factura, y las manos, que entendían de cantera, lo notaron enseguida.\n\nUn tajo al aire, en pleno Valle de Villanorte. El brazo bajó con más peso del que esperaba. Las piernas, firmes, no cedieron. Se sintió robusto, difícil de tumbar, como un cimiento recién asentado.\n\n—No está mal —murmuró.\n\nEn el muelle se habrían reído. Él envainó y siguió andando.",
+      "summary": "Nehonar se puso por primera vez la espada corta de la cantera en el Valle de Villanorte y sintió en el cuerpo más peso en el golpe y más firmeza, como un cimiento recién asentado.",
       "items": [
         {
           "name": "Espada corta de la cantera",
           "quality": 3,
-          "slot": "MAINHAND"
+          "slot": "MAINHAND",
+          "subType": "Espadas de una mano",
+          "stats": {
+            "ITEM_MOD_STAMINA_SHORT": 2,
+            "ITEM_MOD_STRENGTH_SHORT": 3
+          }
         }
       ],
       "levelFrom": 4,
       "levelTo": 4,
       "start": 1791106000,
       "end": 1791106000,
-      "created": "2026-10-05T11:57:08Z"
+      "created": "2026-10-05T13:37:50Z"
     },
     {
       "id": "cadena-783-7-15-21-54",
@@ -51,9 +56,9 @@
         "Valle de Villanorte",
         "Abadía de Villanorte"
       ],
-      "title": "Piedra a piedra, valle adentro",
-      "text": "Ayudante Willem no se molestó en disimular la sorpresa al ver a Nehonar cruzar el portón de la abadía. Más años que cualquier novicio, ni una carta de recomendación. Le dijo que llegaba en mal momento: algo se movía en el valle y el alguacil McBride necesitaba a todo el que supiera sostener un arma. Nehonar asintió. Habló poco, como siempre.\n\nMcBride lo miró de arriba abajo, deteniéndose en las manos. «Bien. Necesito manos, y las tuyas parecen acostumbradas al trabajo duro. No eres el novicio típico, eso salta a la vista.» Nehonar pensó que, en veinte años de muelles y canteras, nadie le había dicho algo parecido y que sonara a elogio.\n\nLos kóbolds habían salido de las minas y levantado un campamento al norte, junto a los viñedos. Nehonar fue allí con la espada corta de la cantera, un arma de buena factura que empezaba a sentir como suya, y no se entretuvo. Hizo lo que le habían pedido: que entendieran que el valle no era suyo. McBride escuchó el relato y frunció el ceño. Si el campamento era tan grande, habría más dentro.\n\nAsí que lo mandó a la Cresta del Eco, una mina abandonada, a mirar y volver. Nehonar entró, miró y, cuando hubo que pelear, peleó. Salió con la certeza de que allí dentro había demasiados. «¿Tantos? Me lo temía», dijo McBride. «Esto ya no es una plaga, es una invasión.»\n\nLa siguiente vez no le pidió que mirara. En el corazón de la mina, entre los que cavaban y los que los vigilaban, Nehonar cayó. Se quedó un momento en el suelo, con el polvo en la boca y el eco de la galería en los oídos. Pensó en cajas más pesadas, y en que nunca había dejado una a medio levantar. Se puso en pie y terminó el trabajo.\n\nVolvió con el escudo abollado. McBride lo vio y no preguntó. «Eso me dice que hiciste lo que había que hacer.»\n\nLe entregó un informe para el alguacil Dughan, en Villadorada. Había hecho más por el valle en unos días que muchos en meses, dijo, y fuera lo iban a necesitar más. Nehonar llegó con el papel intacto y el cuerpo molido. Dughan lo leyó. «McBride habla bien de ti, y no habla bien de casi nadie. Descansa en la posada.»\n\nNehonar se sentó a una mesa y se miró las manos. Pensó que los del puerto no se lo creerían, y que tampoco hacía falta.",
-      "summary": "Nehonar ayudó al alguacil McBride a frenar la invasión kóbold, cayó una vez en la Cresta del Eco y se levantó, y llevó el informe a Dughan en Villadorada.",
+      "title": "Los kóbolds del valle de Villanorte",
+      "text": "El ayudante Willem lo recibió con poca ceremonia: llegaba en mal momento, dijo, porque algo se movía en el valle. Nehonar asintió y no preguntó más. Había descargado barcos con peores noticias. Entró en la abadía y buscó al alguacil McBride.\n\n—Necesito manos, y las tuyas parecen acostumbradas al trabajo duro —dijo McBride, mirándolas—. No eres el novicio típico, eso salta a la vista.\n\n—No —respondió Nehonar. Y ahí quedó la conversación.\n\nEl primer encargo fue el campamento kóbold, al norte, junto a los viñedos. Había que reducir su número y dejar claro que el valle no era suyo. Nehonar trabajó como siempre: sin prisa y sin pausa, un kóbold tras otro, piedra a piedra. Al volver, McBride no sonrió. Le preocupaba que un campamento tan grande tuviera más gente detrás.\n\nTenía razón. La Cresta del Eco, la mina abandonada de la que salían, estaba llena. Nehonar entró para mirar y volvió habiendo peleado, porque mirar solo no era posible. «¿Tantos? Me lo temía», dijo el alguacil. «Esto ya no es una plaga, es una invasión».\n\nPara la tercera entrada ya no iba a mirar. En la oscuridad de la mina, entre el eco de los picos, Nehonar cayó. Un golpe mal calculado, el suelo de piedra bajo la espalda y el techo girando. Se quedó allí un instante, pensando en los estibadores del puerto y en lo que dirían. Después se levantó. Siempre se había levantado.\n\nEn esa última incursión llevaba en la mano derecha la espada corta de la cantera, una hoja de buena factura. Le gustó desde el primer golpe: tenía un peso que se notaba en cada tajo y lo hacía sentirse más duro de tumbar. «Qué irónico», pensó. «Una espada de cantera para un cantero». Cuando salió, tenía el escudo abollado.\n\n—Has vuelto, y con el escudo abollado —dijo McBride—. Eso me dice que hiciste lo que había que hacer.\n\nPero el valle ya le quedaba pequeño, y el alguacil lo sabía. Le dio un informe sobre los kóbolds y los bandidos de pañuelo rojo, y lo envió a Villadorada, ante el alguacil Dughan.\n\n—McBride habla bien de ti, y no habla bien de casi nadie —dijo Dughan—. Descansa en la posada. Mañana hablaremos de lo que pasa en Elwynn.\n\nNehonar durmió esa noche como no dormía desde hacía años.",
+      "summary": "Nehonar ayudó al alguacil McBride a limpiar de kóbolds el valle y la Cresta del Eco, cayó una vez y se levantó, estrenó la espada corta de la cantera y fue enviado con un informe al alguacil Dughan, en Villadorada.",
       "quests": [
         {
           "id": 783,
@@ -85,7 +90,12 @@
         {
           "name": "Espada corta de la cantera",
           "quality": 3,
-          "slot": "MAINHAND"
+          "slot": "MAINHAND",
+          "subType": "Espadas de una mano",
+          "stats": {
+            "ITEM_MOD_STAMINA_SHORT": 2,
+            "ITEM_MOD_STRENGTH_SHORT": 3
+          }
         }
       ],
       "levelFrom": 1,
@@ -93,7 +103,7 @@
       "deaths": 1,
       "start": 1791100060,
       "end": 1791106700,
-      "created": "2026-10-05T11:57:19Z"
+      "created": "2026-10-05T13:38:01Z"
     },
     {
       "id": "sueltas-33-18-60-88",
@@ -104,9 +114,9 @@
         "Villadorada",
         "Granja de los Stonefield"
       ],
-      "title": "Cosas pequeñas que el valle necesitaba",
-      "text": "En el Valle de Villanorte, los lobos habían bajado de las colinas antes de tiempo, y la abadía necesitaba carne para el invierno. Eagan Peltskinner no pidió proezas, pidió carne. Nehonar la cortó como había aprendido a cortar tantas cosas: sin prisa y sin desperdicio. Eagan la miró y dijo que se notaba que había trabajado con las manos. Nehonar no contestó. Era el mejor elogio que sabía recibir.\n\nAl este, entre los viñedos, los Defias se reían de la guardia con sus pañuelos rojos. El ayudante Willem quería esos pañuelos, para que supieran que alguien los contaba. Nehonar los contó también, uno a uno, hasta doce. «No está mal para un novicio», le dijeron. Pensó en el novicio de buena cuna que tanto le miraba por encima del hombro, y decidió que aquello sabía mejor que cualquier apellido.\n\nEn Villadorada, William Pestle quería la cera de las velas que los kóbolds llevaban en la cabeza, y no pensaba ir él a buscarla. Nehonar la trajo, todavía con olor a mina. Pestle la pagó bien. Era la primera vez en mucho tiempo que alguien le pagaba a la primera, y casi le dio desconfianza.\n\nSu último encargo lo llevó a la granja de los Stonefield. Ma Stonefield estaba harta de una cerda vecina que le arrasaba los huertos. Nehonar volvió con el collar de Princesa. «No me mires así», dijo ella. «A veces la paz entre vecinos cuesta un disgusto.» Él se encogió de hombros. Ya sabía que lo que mantiene en pie un valle casi nunca se canta en las canciones.",
-      "summary": "Nehonar atendió encargos humildes por el valle (carne de lobo, pañuelos Defias, velas de kóbold y el collar de la cerda Princesa) y comprobó que el valle se sostiene con trabajos que nadie canta.",
+      "title": "Oficios de un valle que no regala nada",
+      "text": "Nehonar descubrió en Elwynn que el valle vivía de gente que se apañaba como podía, y eso le resultó familiar.\n\nEagan Peltskinner quería carne de lobo para el invierno de la abadía. Nehonar cortó las piezas como había aprendido a partir cualquier cosa en el puerto: sin prisa y sin desperdicio. Eagan las miró a contraluz y soltó: «Buena carne, y bien cortada. Se nota que has trabajado con las manos antes». Nehonar asintió. Era el primer elogio de la abadía que no hablaba de apellidos.\n\nLos pañuelos rojos de los Defias fueron otra cosa. El ayudante Willem quería que supieran que alguien los contaba, y Nehonar los contó uno a uno, doce, mientras caminaba de vuelta con los dedos todavía tensos. «Doce bandidos menos robando a gente honrada. No está mal para un novicio». Novicio. Se lo guardó. Algún día dejaría de oírlo.\n\nEn Villadorada, William Pestle le pidió velas de kóbold para sus preparados, porque él no pensaba ir a quitárselas. Nehonar pensó que siempre había alguien que no iba a ir, y que a ese alguien le tocaba a él. Pestle las olió, encantado. «Todavía huelen a mina». A Nehonar le olían a trabajo, que era mejor perfume.\n\nLa última fue en la granja de los Stonefield. Ma Stonefield quería muerta a Princesa, la cerda de los Maclure que le arrasaba los huertos. Nehonar le llevó el collar sin comentarios. «No me mires así: a veces la paz entre vecinos cuesta un disgusto». Él no la miraba de ninguna manera. Había descargado barcos por menos.\n\nEsa noche, camino del camastro, se notó más ancho de hombros. Piedra a piedra.",
+      "summary": "Entre lobos, bandidos Defias, velas de kóbold y una cerda enemistada con los vecinos, Nehonar hizo los recados que nadie quería hacer y encontró en ellos el reconocimiento que su oficio de siempre le había dado.",
       "quests": [
         {
           "id": 33,
@@ -133,7 +143,7 @@
       "levelTo": 6,
       "start": 1791100260,
       "end": 1791110800,
-      "created": "2026-10-05T11:57:27Z"
+      "created": "2026-10-05T13:38:10Z"
     }
   ],
   "pending": {

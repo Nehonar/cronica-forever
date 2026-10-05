@@ -25,9 +25,12 @@ type QuestRef struct {
 
 // ItemRef es una pieza de equipo dentro de un relato.
 type ItemRef struct {
-	Name    string `json:"name"`
-	Quality int    `json:"quality"`
-	Slot    string `json:"slot,omitempty"`
+	Name    string         `json:"name"`
+	Quality int            `json:"quality"`
+	Slot    string         `json:"slot,omitempty"`
+	SubType string         `json:"subType,omitempty"`
+	Armor   int            `json:"armor,omitempty"`
+	Stats   map[string]int `json:"stats,omitempty"`
 }
 
 // Story es un relato guardado.
@@ -123,7 +126,7 @@ func (d *Doc) Add(g group.Group, st narrate.Story) {
 		s.Quests = append(s.Quests, QuestRef{ID: q.ID, Title: q.Title, Giver: q.Giver})
 	}
 	for _, it := range g.Items {
-		s.Items = append(s.Items, ItemRef{Name: it.Item, Quality: it.Quality, Slot: it.Slot})
+		s.Items = append(s.Items, ItemRef{Name: it.Item, Quality: it.Quality, Slot: it.Slot, SubType: it.ItemSubType, Armor: it.Armor, Stats: it.Stats})
 	}
 	d.Stories = append(d.Stories, s)
 	sort.SliceStable(d.Stories, func(i, j int) bool { return d.Stories[i].End < d.Stories[j].End })

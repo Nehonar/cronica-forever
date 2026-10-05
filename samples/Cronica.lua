@@ -202,6 +202,12 @@ CronicaDB = {
 					["item"] = "Espada corta de la cantera",
 					["quality"] = 3,
 					["slot"] = "MAINHAND",
+					["itemType"] = "Arma",
+					["itemSubType"] = "Espadas de una mano",
+					["stats"] = {
+						["ITEM_MOD_STRENGTH_SHORT"] = 3,
+						["ITEM_MOD_STAMINA_SHORT"] = 2,
+					},
 					["zone"] = "Bosque de Elwynn",
 					["subzone"] = "Valle de Villanorte",
 					["level"] = 4,

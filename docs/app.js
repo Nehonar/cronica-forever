@@ -16,6 +16,20 @@
     trinket: "M12 4a6 6 0 1 1 0 12 6 6 0 0 1 0-12zm0 2.5a3.5 3.5 0 1 0 0 7 3.5 3.5 0 0 0 0-7zM11 16h2v5h-2z",
     armor: "M8 3 12 5 16 3 20.5 6.5 18 10.5V21H6V10.5L3.5 6.5zM9.5 9v9h5V9z",
   };
+  const STAT_NAMES = [
+    ["STRENGTH", "Fuerza"], ["STAMINA", "Aguante"], ["AGILITY", "Agilidad"], ["INTELLECT", "Intelecto"],
+    ["SPIRIT", "Espíritu"], ["DEFENSE", "Defensa"], ["ATTACK_POWER", "Poder de ataque"], ["SPELL_POWER", "Poder con hechizos"],
+    ["CRIT", "Golpe crítico"], ["HIT", "Golpe"], ["BLOCK", "Bloqueo"], ["DODGE", "Esquiva"], ["PARRY", "Parada"],
+  ];
+  function statLines(it) {
+    const out = [];
+    if (it.armor) out.push(el("div", { text: it.armor + " de armadura" }));
+    for (const [k, v] of Object.entries(it.stats || {})) {
+      const n = STAT_NAMES.find(([key]) => k.toUpperCase().includes(key));
+      out.push(el("div", { text: (v > 0 ? "+" : "") + v + " " + (n ? n[1] : k.replace(/^ITEM_MOD_|_SHORT$/g, "").toLowerCase()) }));
+    }
+    return out;
+  }
   function glyphFor(item) {
     const s = String(item.slot || "").toUpperCase();
     if (/HAND|RANGED|WEAPON/.test(s)) return "weapon";
@@ -265,7 +279,8 @@
           el("span", { class: "slot" }, g), el("span", { class: "nm", text: it.name }),
           el("span", { class: "tip", role: "tooltip" },
             el("div", { class: "t-name", text: it.name }),
-            el("div", { class: "t-q", text: QNAME[it.quality] || "" }),
+            el("div", { class: "t-q", text: [QNAME[it.quality], it.subType].filter(Boolean).join(" · ") }),
+            statLines(it),
             s.zone ? el("div", { text: "Se lo puso en " + s.zone }) : null,
             el("div", { class: "t-src", text: s.title })));
       })));

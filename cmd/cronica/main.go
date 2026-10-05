@@ -1,5 +1,6 @@
 // Crónica: convierte lo que haces en WoW: Forever en la historia de tu personaje.
 //
+//	cronica demo                 prueba completa con datos de ejemplo y abre la web
 //	cronica iniciar              crea cronica.json con la configuración
 //	cronica procesar             una pasada: lee el addon, narra lo nuevo y guarda
 //	cronica vigilar              se queda esperando y procesa cada vez que el juego guarda
@@ -37,6 +38,10 @@ func main() {
 		err = initConfig(args)
 	case "procesar", "vigilar":
 		err = run(cmd, args)
+	case "demo":
+		err = runDemo(args)
+	case "ver":
+		err = runView(args)
 	case "version", "-v", "--version":
 		fmt.Println("cronica", version)
 	case "ayuda", "-h", "--help", "help":
@@ -56,6 +61,8 @@ func usage() {
 	fmt.Print(`Crónica ` + version + ` — la historia de tu personaje de WoW: Forever
 
 Uso:
+  cronica demo                 prueba completa: narra una sesión de ejemplo y abre la web
+  cronica ver                  abre en el navegador la web de tu crónica
   cronica iniciar              crea cronica.json con la configuración
   cronica procesar [opciones]  una pasada: lee el addon, narra lo nuevo y guarda
   cronica vigilar  [opciones]  procesa cada vez que el juego guarda (al salir o con /reload)
@@ -68,6 +75,8 @@ Opciones:
   -publicar        subir los cambios a GitHub
   -max n           máximo de relatos nuevos por pasada
   -prueba          no llama a Claude: usa textos de prueba
+  -carpeta ruta    (demo) dónde preparar la demostración (por defecto ./cronica-demo)
+  -puerto n        (demo, ver) puerto de la web local (por defecto 8000)
 `)
 }
 

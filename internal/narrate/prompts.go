@@ -5,6 +5,7 @@ import (
 	"strings"
 
 	"github.com/Nehonar/cronica-forever/internal/group"
+	"github.com/Nehonar/cronica-forever/internal/model"
 )
 
 const systemPrompt = `Eres el cronista de un personaje de World of Warcraft: Forever (el Azeroth de WoW Classic). Conviertes lo que el jugador ha hecho en el juego en relatos breves de su historia personal.
@@ -55,7 +56,7 @@ func BuildPrompt(sheet Sheet, g group.Group, prev []Previous) (string, string) {
 		writeQuests(&b, g.Quests)
 	case group.Equip:
 		it := g.Items[0]
-		fmt.Fprintf(&b, "TAREA: el personaje se acaba de poner por primera vez esta pieza de equipo. Escribe un momento breve e íntimo sobre ello (qué significa para él, cómo la siente). Entre 50 y 90 palabras. No inventes cómo la consiguió.\n%s\nPIEZA: %s (una pieza %s; se lleva en: %s). La calidad describe lo valiosa que es, no su color.\n", ctx, it.Item, quality(it.Quality), slotName(it.Slot))
+		fmt.Fprintf(&b, "TAREA: el personaje se acaba de poner por primera vez esta pieza de equipo. Escribe un momento breve e íntimo sobre ello: qué significa para él y, sobre todo, cómo la siente en el cuerpo al llevarla. Entre 50 y 90 palabras. No inventes cómo la consiguió.\n%s\n%s", ctx, itemLine(it))
 	}
 	b.WriteString(`
 FORMATO DE RESPUESTA:
@@ -86,7 +87,7 @@ func groupContext(g group.Group) string {
 	}
 	if g.Kind != group.Equip {
 		for _, it := range g.Items {
-			parts = append(parts, fmt.Sprintf("Durante este tramo empezó a usar: %s (%s).", it.Item, quality(it.Quality)))
+			parts = append(parts, "Durante este tramo empezó a usar una pieza nueva. "+itemLine(it))
 		}
 	}
 	if len(parts) == 0 {
@@ -153,4 +154,62 @@ func slotName(s string) string {
 		return n
 	}
 	return strings.ToLower(s)
+}
+
+// itemLine describe una pieza para el prompt: tipo, calidad y lo que se nota al llevarla.
+func itemLine(it model.Event) string {
+	var b strings.Builder
+	fmt.Fprintf(&b, "PIEZA: %s", it.Item)
+	kind := it.ItemSubType
+	if kind == "" {
+		kind = it.ItemType
+	}
+	if kind != "" {
+		fmt.Fprintf(&b, " (%s)", strings.ToLower(kind))
+	}
+	fmt.Fprintf(&b, "; una pieza %s; se lleva en: %s. La calidad describe lo valiosa que es, no su color.\n", quality(it.Quality), slotName(it.Slot))
+	if feel := itemFeel(it); len(feel) > 0 {
+		b.WriteString("Lo que se nota al llevarla (úsalo como sensaciones del personaje, sin cifras ni nombres de atributos):\n- " + strings.Join(feel, "\n- ") + "\n")
+	}
+	return b.String()
+}
+
+var statFeel = []struct{ key, feel string }{
+	{"STRENGTH", "fuerza: golpea con más peso, se siente más poderoso"},
+	{"STAMINA", "aguante: la nota robusta, se siente más difícil de tumbar"},
+	{"AGILITY", "agilidad: se mueve más ligero y rápido"},
+	{"INTELLECT", "intelecto: la mente más clara, la Luz o la magia responden mejor"},
+	{"SPIRIT", "espíritu: más sereno, se recupera antes del cansancio"},
+	{"DEFENSE", "defensa: para y esquiva mejor los golpes"},
+	{"ATTACK_POWER", "potencia de ataque: cada golpe pesa más"},
+	{"CRIT", "golpes certeros: encuentra los puntos débiles"},
+	{"HIT", "precisión: falla menos"},
+	{"SPELL_POWER", "poder de los hechizos: la Luz brota con más fuerza"},
+	{"BLOCK", "bloqueo: el escudo aguanta mejor"},
+	{"DODGE", "esquiva: se aparta a tiempo"},
+	{"PARRY", "parada: desvía los golpes con el arma"},
+	{"HEALTH_REGEN", "recuperación: las heridas cierran antes"},
+	{"MANA_REGEN", "maná: la Luz no se le agota tan pronto"},
+}
+
+func itemFeel(it model.Event) []string {
+	var out []string
+	used := map[string]bool{}
+	for _, sf := range statFeel {
+		for k, v := range it.Stats {
+			if used[k] || v <= 0 || !strings.Contains(strings.ToUpper(k), sf.key) {
+				continue
+			}
+			used[k] = true
+			f := sf.feel
+			if v >= 6 {
+				f += " (de forma muy notable)"
+			}
+			out = append(out, f)
+		}
+	}
+	if it.Armor > 0 {
+		out = append(out, "protección: la armadura detiene mejor los golpes")
+	}
+	return out
 }
