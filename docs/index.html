@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Crónica de Forever</title>
+<meta name="description" content="La historia de mis personajes de WoW: Forever, contada a partir de lo que hago en el juego.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Marcellus+SC&family=IM+Fell+English:ital@0;1&family=Alegreya+Sans:wght@400;500;700&display=swap">
+<link rel="stylesheet" href="estilo.css">
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <filter id="deckle" x="-2%" y="-2%" width="104%" height="104%">
+    <feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="3" seed="11" result="t"/>
+    <feDisplacementMap in="SourceGraphic" in2="t" scale="9" xChannelSelector="R" yChannelSelector="G"/>
+  </filter>
+</svg>
+
+<div class="wrap">
+  <header class="frame hero">
+    <div class="portrait">
+      <svg viewBox="0 0 72 84" aria-hidden="true">
+        <path d="M6 6 H66 V38 C66 60 51 72 36 79 C21 72 6 60 6 38 Z" fill="#23417a" stroke="#e8bd4f" stroke-width="3"/>
+        <path d="M14 14 H58 V38 C58 54 47 64 36 70 C25 64 14 54 14 38 Z" fill="none" stroke="#e8bd4f" stroke-width="1" opacity=".55"/>
+        <text id="h-initials" x="36" y="49" text-anchor="middle" font-family="Marcellus SC, Georgia, serif" font-size="25" fill="#ffd24a">·</text>
+      </svg>
+      <span class="lvl-badge" id="h-lvl">–</span>
+    </div>
+    <div>
+      <h1 id="h-name">Crónica de Forever</h1>
+      <div class="epithet" id="h-epithet"></div>
+      <div class="unit-line" id="h-meta"></div>
+      <div class="xp" aria-label="Camino hasta el nivel 60">
+        <div class="xp-track"><div class="xp-fill" id="h-xp"></div><div class="xp-ticks"></div></div>
+        <div class="xp-label"><span id="h-xp-l">Nivel —</span><span>60</span></div>
+      </div>
+    </div>
+    <div class="hero-side" id="h-side" hidden>
+      <label for="pick">PERSONAJE</label>
+      <select class="pick" id="pick"></select>
+    </div>
+  </header>
+
+  <section class="frame route" aria-label="Ruta recorrida">
+    <div class="route-head"><span class="route-title">LA RUTA</span><span class="route-hint" id="route-hint"></span></div>
+    <div class="route-scroll" id="route"></div>
+  </section>
+
+  <div id="banner" class="uierr" role="status" hidden></div>
+
+  <div>
+    <div class="tabs" role="tablist">
+      <button class="tab" role="tab" id="tab-cronica" aria-selected="true" type="button">Crónica</button>
+      <button class="tab" role="tab" id="tab-diario" aria-selected="false" type="button">Diario de batalla</button>
+    </div>
+    <div class="layout">
+      <nav class="frame log" aria-label="Relatos">
+        <h2>Relatos</h2>
+        <div class="log-list" id="index"></div>
+        <div class="log-pending" id="pending" hidden></div>
+      </nav>
+      <main class="page" id="reader" aria-live="polite"></main>
+    </div>
+  </div>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>

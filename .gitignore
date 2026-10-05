@@ -1,0 +1,7 @@
+# Configuración local (rutas de tu PC)
+cronica.json
+# Binarios
+dist/
+cronica
+cronica.exe
+*.tmp
