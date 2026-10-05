@@ -19,6 +19,22 @@ Web: https://nehonar.github.io/cronica-forever/
 | Web | Funcionando, con un personaje de demostración |
 | Addon | Pendiente: de momento se prueba con `samples/Cronica.lua` |
 
+## Probarlo en 3 pasos (Linux)
+
+```bash
+# 1. Claude Code tiene que responder en la terminal
+echo "di hola" | claude -p
+
+# 2. Instalar el programa (necesita Go 1.22 o superior)
+go install github.com/Nehonar/cronica-forever/cmd/cronica@latest
+export PATH="$PATH:$HOME/go/bin"     # añádelo a ~/.bashrc para que se quede
+
+# 3. Demostración: narra una sesión de ejemplo y abre la web en http://localhost:8000
+cronica demo
+```
+
+`cronica demo` crea la carpeta `cronica-demo` donde lo ejecutes. Ctrl+C cierra la web. Para verla otra vez sin narrar de nuevo: `cronica ver -repo cronica-demo`.
+
 ## Requisitos
 
 - **Claude Code** instalado y con la sesión iniciada con tu cuenta (`claude` debe funcionar en la terminal). El programa lo usa en modo no interactivo (`claude -p`), así que las narraciones van con tu suscripción, sin clave de API.
