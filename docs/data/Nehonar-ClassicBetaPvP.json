@@ -16,10 +16,39 @@
     ],
     "motto": "Siempre uno más."
   },
-  "level": 1,
+  "level": 2,
   "realm": "Classic Beta PvP",
-  "updated": "2026-10-05T21:09:45Z",
-  "stories": null,
+  "updated": "2026-10-05T21:17:45Z",
+  "stories": [
+    {
+      "id": "cadena-5261-33",
+      "kind": "cadena",
+      "zone": "Bosque de Elwynn",
+      "subzones": [
+        "Valle de Villanorte"
+      ],
+      "title": "Carne dura para Eagan",
+      "text": "El ayudante del alguacil Willem lo paró junto a la abadía con cara de quien suelta un recado más que de quien pide un favor. Últimamente había más lobos de lo normal en el Valle de Villanorte, le dijo, y Eagan Desollapieles buscaba a alguien que los cazara. Estaba a la izquierda de la abadía, por si le interesaba.\n\nA Nehonar le interesaba. Siempre le interesaba que alguien necesitara algo.\n\nEagan no se anduvo con rodeos. Le preguntó si quería cazar lobos y, antes de que pudiera contestar, ya estaba maldiciendo a los Fauces de Madera. Luego se le escapó media sonrisa: los filetes de lobo le gustaban, la verdad. Si le traía carne dura, se la cambiaría por algo que le fuera útil.\n\n—Así que no es una cacería, es la compra de la semana —dijo Nehonar.\n\n—Llámalo como quieras, chico. Pero tráela.\n\nSalió a la campiña de Villanorte con el escudo a la espalda y la cabeza, como de costumbre, en otra parte. Los lobos y los lobeznos rondaban entre la hierba alta, flacos y descarados, demasiado cerca de las granjas. No le resultó un trabajo bonito. Tampoco se lo había parecido nunca descargar fardos en los muelles, y aquello lo había hecho igual, uno detrás de otro.\n\nCon cada encuentro notaba que el brazo le respondía mejor y que el escudo pesaba algo menos. Pensó que la Luz debía de tener un sentido del humor curioso: le había costado años salir de la cantera para acabar, al final, cargando con carne cruda hasta una abadía.\n\nCuando volvió, Eagan miró el hatillo como quien mira un banquete.\n\n—¡Estupendo! Qué ganas de hincarle el diente... Elige lo que quieras de aquí.\n\nNehonar tardó en decidirse, más por falta de costumbre que de opciones. Nadie le había ofrecido nunca escoger. Tomó lo suyo, dio las gracias y ya estaba mirando hacia el camino antes de que Eagan terminara de hablar. Tal vez debería haberse quedado un rato, compartir uno de esos filetes, darse por satisfecho.\n\nPero el valle seguía lleno de cosas por hacer. Siempre una más.",
+      "summary": "Por encargo del ayudante del alguacil Willem, Nehonar cazó lobos Fauces de Madera en Villanorte para llevarle carne a Eagan Desollapieles y, a cambio, recibió una recompensa que le costó aceptar sin pensar ya en la siguiente tarea.",
+      "quests": [
+        {
+          "id": 5261,
+          "title": "Eagan Desollapieles",
+          "giver": "Ayudante del alguacil Willem"
+        },
+        {
+          "id": 33,
+          "title": "Los lobos cruzan la frontera",
+          "giver": "Eagan Desollapelambres"
+        }
+      ],
+      "levelFrom": 1,
+      "levelTo": 2,
+      "start": 1791233283,
+      "end": 1791234422,
+      "created": "2026-10-05T21:17:45Z"
+    }
+  ],
   "encargos": [
     {
       "id": 33,
@@ -32,7 +61,7 @@
       "heading": "Filetes de lobo para Eagan",
       "text": "Eagan Desollapelambres refunfuñaba junto a la Abadía de Villanorte cuando Nehonar pasó por su lado.\n\n—¡Condenados lobos Fauces de Madera! —soltó, y enseguida torció el gesto en algo parecido a una sonrisa—. Aunque, la verdad, los filetes de lobo me gustan.\n\nEl trato era sencillo: carne dura de lobo a cambio de algo que le sería útil. La encontraría en los lobos y lobeznos Fauces de Madera que rondaban la campiña de Villanorte.\n\nNehonar asintió. Nadie le pedía salvar el reino, solo llenar una despensa, y aun así no supo decir que no. Pensó que entre cargar fardos en los muelles y cargar carne de lobo no había tanta diferencia. Los fardos, eso sí, no mordían.\n\n—Tráemela aquí cuando la tengas —añadió Eagan.\n\nPero Nehonar ya miraba hacia la campiña.",
       "acceptT": 1791233543,
-      "state": "activa",
+      "state": "entregada",
       "narrated": "2026-10-05T20:57:18Z"
     },
     {
@@ -78,23 +107,24 @@
       [
         "Una amenaza del interior",
         "La limpieza del campamento kóbold"
-      ],
-      [
-        "Eagan Desollapieles",
-        "Los lobos cruzan la frontera"
       ]
     ]
   },
   "stats": {
-    "level": 1,
-    "played": 1750,
-    "questsDone": 2,
+    "level": 2,
+    "played": 2969,
+    "questsDone": 3,
     "deaths": 0,
     "zones": [
       "Bosque de Elwynn"
     ],
-    "levelUps": [],
+    "levelUps": [
+      {
+        "level": 2,
+        "t": 1791234061
+      }
+    ],
     "firstSeen": 1791232070,
-    "lastSeen": 1791233543
+    "lastSeen": 1791234422
   }
 }
