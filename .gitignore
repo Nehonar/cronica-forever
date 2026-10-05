@@ -5,3 +5,4 @@ dist/
 /cronica
 /cronica.exe
 *.tmp
+cronica.log

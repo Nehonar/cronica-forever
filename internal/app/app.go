@@ -66,6 +66,39 @@ type Runner struct {
 	Narrator narrate.Narrator
 	Out      io.Writer
 	Now      func() time.Time
+	// Notify muestra un aviso en el escritorio (nil = sin avisos).
+	Notify func(title, message string)
+
+	status     store.Status
+	lastNotice time.Time
+}
+
+// warn avisa en el escritorio como mucho una vez cada hora por el mismo motivo.
+func (r *Runner) warn(message string) {
+	r.status = store.Status{OK: false, Message: message, T: time.Now().Unix()}
+	if r.Notify == nil || (time.Since(r.lastNotice) < time.Hour && !r.lastNotice.IsZero()) {
+		return
+	}
+	r.lastNotice = time.Now()
+	r.Notify("Crónica", message)
+}
+
+// CheckClaude comprueba que Claude Code tiene sesión y, si no, avisa.
+func (r *Runner) CheckClaude(ctx context.Context) error {
+	ac, ok := r.Narrator.(narrate.AuthChecker)
+	if !ok {
+		return nil
+	}
+	if err := ac.CheckAuth(ctx); err != nil {
+		msg := "El cronista no puede escribir: " + err.Error() + ". Abre una terminal, ejecuta «claude» e inicia sesión."
+		r.logf("%s", msg)
+		r.warn(msg)
+		return err
+	}
+	r.status = store.Status{OK: true, T: time.Now().Unix()}
+	r.lastNotice = time.Time{}
+	r.logf("Claude Code tiene la sesión iniciada.")
+	return nil
 }
 
 func (r *Runner) logf(format string, a ...any) {
@@ -130,10 +163,16 @@ func (r *Runner) Process(ctx context.Context) (Result, error) {
 				res.Failed++
 				r.logf("  ✗ %v", err)
 				if strings.Contains(err.Error(), "no encuentro el comando") {
+					r.warn("El cronista no puede escribir: " + err.Error())
 					return res, err
+				}
+				// Si falla por la sesión, se avisa; lo no narrado se reintenta en la próxima pasada.
+				if r.CheckClaude(ctx) != nil {
+					break
 				}
 				continue
 			}
+			r.status = store.Status{OK: true, T: time.Now().Unix()}
 			doc.Add(g, st)
 			res.NewStories++
 			r.logf("  ✓ «%s»", st.Title)
@@ -153,7 +192,7 @@ func (r *Runner) Process(ctx context.Context) (Result, error) {
 		return res, err
 	}
 	if r.Cfg.AddonTexts != "" {
-		if err := store.WriteAddonTexts(r.Cfg.AddonTexts, docs, 40); err != nil {
+		if err := store.WriteAddonTexts(r.Cfg.AddonTexts, docs, 40, r.status); err != nil {
 			r.logf("No he podido escribir los textos del addon: %v", err)
 		}
 	}
@@ -251,6 +290,7 @@ func Publish(repo, message string, out io.Writer) error {
 func (r *Runner) Watch(ctx context.Context, every time.Duration) error {
 	var last time.Time
 	r.logf("Vigilando %s (Ctrl+C para salir)", r.Cfg.SavedVariables)
+	r.CheckClaude(ctx)
 	for {
 		info, err := os.Stat(r.Cfg.SavedVariables)
 		switch {
@@ -269,6 +309,10 @@ func (r *Runner) Watch(ctx context.Context, every time.Duration) error {
 			} else {
 				r.logf("Listo: %d relato(s) nuevo(s), %d pendiente(s).", res.NewStories, res.Pending)
 			}
+		}
+		// Si Claude estaba sin sesión, se vuelve a comprobar cada 10 minutos.
+		if !r.status.OK && r.status.T > 0 && time.Since(time.Unix(r.status.T, 0)) > 10*time.Minute {
+			r.CheckClaude(ctx)
 		}
 		select {
 		case <-ctx.Done():

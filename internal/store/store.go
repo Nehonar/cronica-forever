@@ -249,7 +249,14 @@ func (p Paths) SaveIndex() error {
 
 // WriteAddonTexts escribe CronicaTextos.lua, que el addon carga al iniciar o con /reload.
 // Incluye los últimos `limit` relatos de cada personaje.
-func WriteAddonTexts(path string, docs []*Doc, limit int) error {
+// Status es el estado del cronista que el addon puede mostrar en el juego.
+type Status struct {
+	OK      bool
+	Message string
+	T       int64
+}
+
+func WriteAddonTexts(path string, docs []*Doc, limit int, st Status) error {
 	all := map[string]any{}
 	for _, d := range docs {
 		start := len(d.Stories) - limit
@@ -265,7 +272,9 @@ func WriteAddonTexts(path string, docs []*Doc, limit int) error {
 		}
 		all[d.Key] = list
 	}
-	src := "-- Generado por Crónica. No editar a mano.\nCronicaTextos = " + luasv.Encode(all, 0) + "\n"
+	estado := map[string]any{"ok": st.OK, "mensaje": st.Message, "t": st.T}
+	src := "-- Generado por Crónica. No editar a mano.\nCronicaTextos = " + luasv.Encode(all, 0) + "\n" +
+		"CronicaEstado = " + luasv.Encode(estado, 0) + "\n"
 	if err := os.MkdirAll(filepath.Dir(path), 0o755); err != nil {
 		return err
 	}

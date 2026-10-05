@@ -13,6 +13,7 @@ import (
 	"errors"
 	"flag"
 	"fmt"
+	"io"
 	"io/fs"
 	"os"
 	"os/signal"
@@ -22,6 +23,7 @@ import (
 
 	"github.com/Nehonar/cronica-forever/internal/app"
 	"github.com/Nehonar/cronica-forever/internal/narrate"
+	"github.com/Nehonar/cronica-forever/internal/system"
 )
 
 var version = "0.1.0"
@@ -42,6 +44,15 @@ func main() {
 		err = runDemo(args)
 	case "ver":
 		err = runView(args)
+	case "instalar":
+		err = runInstall(args)
+	case "desinstalar":
+		var msg string
+		if msg, err = system.Uninstall(); err == nil {
+			fmt.Println(msg)
+		}
+	case "estado":
+		err = runStatus(args)
 	case "version", "-v", "--version":
 		fmt.Println("cronica", version)
 	case "ayuda", "-h", "--help", "help":
@@ -64,6 +75,9 @@ Uso:
   cronica demo                 prueba completa: narra una sesión de ejemplo y abre la web
   cronica ver                  abre en el navegador la web de tu crónica
   cronica iniciar              crea cronica.json con la configuración
+  cronica instalar             arranca «vigilar» solo al iniciar sesión en el PC (una sola vez)
+  cronica desinstalar          quita el arranque automático
+  cronica estado               comprueba Claude, la configuración y el registro
   cronica procesar [opciones]  una pasada: lee el addon, narra lo nuevo y guarda
   cronica vigilar  [opciones]  procesa cada vez que el juego guarda (al salir o con /reload)
   cronica version
@@ -88,7 +102,23 @@ func run(cmd string, args []string) error {
 	publish := fl.Bool("publicar", false, "")
 	max := fl.Int("max", 0, "")
 	fake := fl.Bool("prueba", false, "")
+	logFile := fl.String("registro", "", "")
+	atBoot := fl.Bool("arranque", false, "")
 	fl.Parse(args)
+
+	out := io.Writer(os.Stdout)
+	if *logFile != "" {
+		if err := os.MkdirAll(filepath.Dir(*logFile), 0o755); err == nil {
+			if f, err := os.OpenFile(*logFile, os.O_CREATE|os.O_APPEND|os.O_WRONLY, 0o644); err == nil {
+				defer f.Close()
+				out = io.MultiWriter(os.Stdout, f)
+			}
+		}
+	}
+	if *atBoot {
+		// Al arrancar el PC, dar tiempo a que el escritorio y la red estén listos.
+		time.Sleep(20 * time.Second)
+	}
 
 	cfg, err := app.LoadConfig(*cfgPath)
 	if err != nil && !(errors.Is(err, fs.ErrNotExist) && *sv != "") {
@@ -120,7 +150,7 @@ func run(cmd string, args []string) error {
 	if *fake {
 		n = narrate.Fake{}
 	}
-	r := &app.Runner{Cfg: cfg, Narrator: n, Out: os.Stdout}
+	r := &app.Runner{Cfg: cfg, Narrator: n, Out: out, Notify: system.Notify}
 
 	ctx, stop := signal.NotifyContext(context.Background(), os.Interrupt)
 	defer stop()

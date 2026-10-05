@@ -63,6 +63,16 @@ cronica demo
    cronica vigilar
    ```
 
+### Que arranque solo
+
+```
+cronica instalar      # una sola vez: arranca «vigilar» al iniciar sesión en el PC (Linux: systemd; Windows: tarea programada)
+cronica estado        # comprueba Claude, la configuración y muestra el registro
+cronica desinstalar   # lo quita
+```
+
+En reposo solo mira la fecha del archivo del addon cada pocos segundos. Al arrancar comprueba que Claude Code tiene la sesión iniciada; si no, muestra un aviso en el escritorio (como mucho uno por hora) y deja el aviso en `CronicaTextos.lua` para que el addon lo enseñe en el juego. Lo que no se pudo narrar se reintenta solo en cuanto vuelve a haber sesión.
+
 Para probar sin juego ni addon:
 ```
 cronica procesar -sv samples/Cronica.lua -repo /tmp/prueba          # con Claude de verdad
