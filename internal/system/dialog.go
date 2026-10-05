@@ -54,7 +54,7 @@ func OpenTerminal(title, command string) error {
 	case "windows":
 		ps := "$host.UI.RawUI.WindowTitle = '" + psQuote(title) + "'; " + command +
 			"; Write-Host ''; Read-Host 'Pulsa Intro para cerrar esta ventana'"
-		return exec.Command("cmd", "/c", "start", title, "powershell", "-NoProfile", "-NoExit", "-Command", ps).Start()
+		return exec.Command("cmd", "/c", "start", title, "powershell", "-NoProfile", "-Command", ps).Start()
 	case "darwin":
 		script := `tell application "Terminal" to do script "` + strings.ReplaceAll(command, `"`, `\"`) + `"`
 		return exec.Command("osascript", "-e", script).Start()
