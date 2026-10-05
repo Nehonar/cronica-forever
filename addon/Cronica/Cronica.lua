@@ -348,7 +348,9 @@ on("PLAYER_LOGOUT", function()
 end)
 
 on("PLAYER_LEVEL_UP", function(level)
-	add({ type = "level", level = level })
+	-- Tiempo jugado al subir (para «tiempo en cada nivel»); sin fecha ni hora.
+	local played = char and ((char.played or 0) + math.floor(GetTime() - sessionStart)) or nil
+	add({ type = "level", level = level, played = played })
 	Cronica_Frase("nivel")
 end)
 

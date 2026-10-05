@@ -69,6 +69,7 @@ CronicaDB = {
 					["t"] = 1791101500,
 					["type"] = "level",
 					["level"] = 2,
+					["played"] = 780,
 					["zone"] = "Bosque de Elwynn",
 					["subzone"] = "Valle de Villanorte",
 				}, -- [6]
@@ -110,6 +111,7 @@ CronicaDB = {
 					["t"] = 1791102900,
 					["type"] = "level",
 					["level"] = 3,
+					["played"] = 2100,
 					["zone"] = "Bosque de Elwynn",
 					["subzone"] = "Cresta del Eco",
 				}, -- [10]
@@ -152,6 +154,7 @@ CronicaDB = {
 					["t"] = 1791104200,
 					["type"] = "level",
 					["level"] = 4,
+					["played"] = 3900,
 					["zone"] = "Bosque de Elwynn",
 					["subzone"] = "Viñedos de Villanorte",
 				}, -- [14]
@@ -216,6 +219,7 @@ CronicaDB = {
 					["t"] = 1791106100,
 					["type"] = "level",
 					["level"] = 5,
+					["played"] = 6300,
 					["zone"] = "Bosque de Elwynn",
 					["subzone"] = "Valle de Villanorte",
 				}, -- [20]
@@ -265,6 +269,7 @@ CronicaDB = {
 					["t"] = 1791109000,
 					["type"] = "level",
 					["level"] = 6,
+					["played"] = 9400,
 					["zone"] = "Bosque de Elwynn",
 					["subzone"] = "Mina Fargodeep",
 				}, -- [25]

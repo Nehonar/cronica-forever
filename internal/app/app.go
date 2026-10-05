@@ -473,7 +473,7 @@ func stats(c model.Character) store.Stats {
 		case model.EvDeath:
 			s.Deaths++
 		case model.EvLevel:
-			s.LevelUps = append(s.LevelUps, store.LevelUp{Level: e.Level, T: e.T})
+			s.LevelUps = append(s.LevelUps, store.LevelUp{Level: e.Level, T: e.T, Played: e.Played})
 		}
 		if e.Zone != "" && !seen[e.Zone] {
 			seen[e.Zone] = true
@@ -516,8 +516,13 @@ func Publish(repo, message string, out io.Writer) error {
 			}
 			args = append([]string{"-c", "user.name=" + owner, "-c", "user.email=" + owner + "@users.noreply.github.com"}, args...)
 		}
-		if o, err := git(args...); err != nil {
-			return fmt.Errorf("no he podido guardar el cambio (commit): %s", o)
+		// Fecha fija en el commit: el historial no dice a qué hora juegas.
+		commit := exec.Command("git", append([]string{"-C", repo}, args...)...)
+		commit.Env = append(os.Environ(), "GIT_TERMINAL_PROMPT=0",
+			"GIT_AUTHOR_DATE=2026-01-01T00:00:00+0000", "GIT_COMMITTER_DATE=2026-01-01T00:00:00+0000")
+		system.Hide(commit)
+		if o, err := commit.CombinedOutput(); err != nil {
+			return fmt.Errorf("no he podido guardar el cambio (commit): %s", strings.TrimSpace(string(o)))
 		}
 	}
 	if ahead, err := git("rev-list", "--count", "@{u}..HEAD"); err == nil && ahead == "0" {

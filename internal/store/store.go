@@ -2,6 +2,8 @@
 package store
 
 import (
+	"crypto/sha1"
+	"encoding/hex"
 	"encoding/json"
 	"errors"
 	"fmt"
@@ -48,15 +50,16 @@ type Story struct {
 	LevelFrom int        `json:"levelFrom,omitempty"`
 	LevelTo   int        `json:"levelTo,omitempty"`
 	Deaths    int        `json:"deaths,omitempty"`
-	Start     int64      `json:"start"`
-	End       int64      `json:"end"`
-	Created   string     `json:"created"`
+	Start     int64      `json:"start,omitempty"`
+	End       int64      `json:"end,omitempty"`
+	Created   string     `json:"created,omitempty"`
 }
 
 // LevelUp marca cuándo se alcanzó un nivel.
 type LevelUp struct {
-	Level int   `json:"level"`
-	T     int64 `json:"t"`
+	Level  int   `json:"level"`
+	T      int64 `json:"t,omitempty"`      // fecha (solo en la copia privada)
+	Played int64 `json:"played,omitempty"` // tiempo jugado total al alcanzarlo
 }
 
 // Stats son los números del personaje.
@@ -90,7 +93,7 @@ type Encargo struct {
 	Original   string `json:"original,omitempty"` // texto original de la misión
 	Heading    string `json:"heading,omitempty"`  // título narrativo
 	Text       string `json:"text,omitempty"`     // narración
-	AcceptT    int64  `json:"acceptT"`
+	AcceptT    int64  `json:"acceptT,omitempty"`
 	State      string `json:"state"` // activa, entregada, abandonada
 	Narrated   string `json:"narrated,omitempty"`
 }
@@ -101,7 +104,7 @@ type Doc struct {
 	Character narrate.Sheet `json:"character"`
 	Level     int           `json:"level"`
 	Realm     string        `json:"realm,omitempty"`
-	Updated   string        `json:"updated"`
+	Updated   string        `json:"updated,omitempty"`
 	Stories   []Story       `json:"stories"`
 	Encargos  []Encargo     `json:"encargos,omitempty"`
 	Pending   Pending       `json:"pending"`
@@ -163,10 +166,17 @@ func (p Paths) DataDir() string { return filepath.Join(p.Repo, "docs", "data") }
 // SheetsDir es la carpeta de fichas de personaje.
 func (p Paths) SheetsDir() string { return filepath.Join(p.Repo, "personajes") }
 
+// PrivateDir guarda la copia completa de cada personaje, con fechas y horas.
+// No se publica nunca: Publish solo sube docs/ y personajes/.
+func (p Paths) PrivateDir() string { return filepath.Join(p.Repo, "privado") }
+
 // LoadDoc lee el documento de un personaje; si no existe devuelve uno vacío.
 func (p Paths) LoadDoc(key string) (*Doc, error) {
 	d := &Doc{Key: key}
-	b, err := os.ReadFile(filepath.Join(p.DataDir(), key+".json"))
+	b, err := os.ReadFile(filepath.Join(p.PrivateDir(), key+".json"))
+	if errors.Is(err, fs.ErrNotExist) { // versiones anteriores solo tenían la copia pública
+		b, err = os.ReadFile(filepath.Join(p.DataDir(), key+".json"))
+	}
 	if errors.Is(err, fs.ErrNotExist) {
 		return d, nil
 	}
@@ -176,10 +186,47 @@ func (p Paths) LoadDoc(key string) (*Doc, error) {
 	return d, json.Unmarshal(b, d)
 }
 
-// SaveDoc escribe el documento de un personaje.
+// SaveDoc escribe el documento de un personaje: la copia completa en privado/
+// y, para la web, una copia sin fechas ni horas (para que nadie pueda saber
+// cuándo juegas).
 func (p Paths) SaveDoc(d *Doc) error {
 	d.Updated = time.Now().UTC().Format(time.RFC3339)
-	return writeJSON(filepath.Join(p.DataDir(), d.Key+".json"), d)
+	if err := writeJSON(filepath.Join(p.PrivateDir(), d.Key+".json"), d); err != nil {
+		return err
+	}
+	return writeJSON(filepath.Join(p.DataDir(), d.Key+".json"), Public(d))
+}
+
+// Public es la copia de un documento que se puede publicar: sin fechas, horas
+// ni nada que permita saber cuándo se ha jugado.
+func Public(d *Doc) *Doc {
+	c := *d
+	c.Updated = ""
+	c.Stories = make([]Story, len(d.Stories))
+	for i, s := range d.Stories {
+		s.Start, s.End, s.Created = 0, 0, ""
+		s.ID = publicID(s.ID)
+		c.Stories[i] = s
+	}
+	c.Encargos = make([]Encargo, len(d.Encargos))
+	for i, e := range d.Encargos {
+		e.AcceptT, e.Narrated = 0, ""
+		c.Encargos[i] = e
+	}
+	c.Stats.FirstSeen, c.Stats.LastSeen = 0, 0
+	c.Stats.LevelUps = make([]LevelUp, len(d.Stats.LevelUps))
+	for i, u := range d.Stats.LevelUps {
+		u.T = 0
+		c.Stats.LevelUps[i] = u
+	}
+	return &c
+}
+
+// publicID cambia el identificador de un relato por otro que no lleve la hora
+// dentro (los de equipo la llevaban).
+func publicID(id string) string {
+	h := sha1.Sum([]byte(id))
+	return hex.EncodeToString(h[:6])
 }
 
 // LoadSheet lee la ficha de un personaje. Si no existe, crea una ficha básica
@@ -237,7 +284,7 @@ type IndexEntry struct {
 	Class   string `json:"class"`
 	Level   int    `json:"level"`
 	Stories int    `json:"stories"`
-	Updated string `json:"updated"`
+	Updated string `json:"-"` // solo para ordenar; no se publica
 	New     bool   `json:"new,omitempty"`
 }
 
@@ -261,8 +308,15 @@ func (p Paths) SaveIndex() error {
 		})
 	}
 	sort.Slice(idx, func(i, j int) bool { return idx[i].Updated > idx[j].Updated })
+	// «updated» no es una hora: es una huella del contenido, para que la web sepa
+	// si hay algo nuevo sin revelar cuándo se ha jugado.
+	h := sha1.New()
+	for _, e := range idx {
+		b, _ := os.ReadFile(filepath.Join(p.DataDir(), e.Key+".json"))
+		h.Write(b)
+	}
 	return writeJSON(filepath.Join(p.DataDir(), "index.json"), map[string]any{
-		"updated":    time.Now().UTC().Format(time.RFC3339),
+		"updated":    hex.EncodeToString(h.Sum(nil))[:16],
 		"characters": idx,
 	})
 }
@@ -408,7 +462,7 @@ func (p Paths) SavePhrases(key string, ph Phrases) error {
 
 // ---------- Borrar ----------
 
-func (p Paths) deletedFile() string { return filepath.Join(p.SheetsDir(), "borrados.json") }
+func (p Paths) deletedFile() string { return filepath.Join(p.PrivateDir(), "borrados.json") }
 
 // DeletedAt devuelve desde cuándo vale la crónica de un personaje (0 = nunca se
 // borró). Lo anterior a esa fecha no se vuelve a narrar aunque siga en el juego.
@@ -427,7 +481,7 @@ func (p Paths) DeleteCharacter(key string, all bool, now int64) error {
 	if key == "" || strings.ContainsAny(key, `/\`) || strings.Contains(key, "..") {
 		return fmt.Errorf("personaje no válido")
 	}
-	files := []string{filepath.Join(p.DataDir(), key+".json")}
+	files := []string{filepath.Join(p.DataDir(), key+".json"), filepath.Join(p.PrivateDir(), key+".json")}
 	if all {
 		files = append(files, filepath.Join(p.SheetsDir(), key+".json"), filepath.Join(p.SheetsDir(), key+".frases.json"))
 	}

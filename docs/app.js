@@ -61,9 +61,6 @@
   }
   function banner(msg) { const b = $("banner"); b.textContent = msg || ""; b.hidden = !msg; }
 
-  function fmtDate(t) {
-    return t ? new Date(t * 1000).toLocaleDateString("es-ES", { day: "numeric", month: "long", year: "numeric" }) : "";
-  }
   function fmtDur(sec) {
     sec = Math.max(0, Math.round(sec || 0));
     const h = Math.floor(sec / 3600), m = Math.floor((sec % 3600) / 60);
@@ -266,7 +263,6 @@
     if (s.subzones && s.subzones.length) facts.append(el("span", { text: s.subzones.join(" · ") }));
     else if (s.zone) facts.append(el("span", { text: s.zone }));
     if (s.levelTo && s.levelFrom && s.levelTo > s.levelFrom) facts.append(el("span", { class: "lvlup", text: "Nivel " + s.levelFrom + " → " + s.levelTo }));
-    if (s.end) facts.append(el("span", { text: fmtDate(s.end) }));
 
     const kids = [el("div", { class: "rubric", text: k.label.toUpperCase() }), el("h2", { text: s.title }), flourish(), facts];
     if (s.quests && s.quests.length) kids.push(el("ul", { class: "quests", "aria-label": "Misiones" }, s.quests.map((q) => el("li", { text: q.title }))));
@@ -318,18 +314,25 @@
     $("reader").replaceChildren(...kids.flat().filter(Boolean));
   }
 
+  // Tiempo jugado en cada nivel (sin fechas: nadie debe poder saber cuándo juegas).
   function levelTable(st) {
     const ups = st.levelUps || [];
     if (!ups.length) return null;
     const rows = [];
-    let prevT = st.firstSeen || ups[0].t;
+    let prev = null; // tiempo jugado al llegar al nivel anterior
     for (const u of ups) {
-      rows.push(el("tr", null, el("td", { text: "Nivel " + u.level }), el("td", { text: fmtDate(u.t) }), el("td", { class: "num", text: fmtDur(u.t - prevT) })));
-      prevT = u.t;
+      let spent = null;
+      if (u.played) {
+        if (prev !== null) spent = u.played - prev;
+        else if (u.level === 2) spent = u.played; // desde que se creó el personaje
+      }
+      rows.push(el("tr", null, el("td", { text: "Nivel " + (u.level - 1) + " → " + u.level }),
+        el("td", { class: "num", text: spent !== null && spent >= 0 ? fmtDur(spent) : "–" })));
+      prev = u.played || null;
     }
-    return [el("h3", { text: "Subidas de nivel" }),
+    return [el("h3", { text: "Tiempo jugado en cada nivel" }),
       el("table", { class: "levels" },
-        el("thead", null, el("tr", null, el("th", { text: "NIVEL" }), el("th", { text: "FECHA" }), el("th", { class: "num", text: "DESDE EL ANTERIOR" }))),
+        el("thead", null, el("tr", null, el("th", { text: "NIVEL" }), el("th", { class: "num", text: "TIEMPO JUGADO" }))),
         el("tbody", null, rows))];
   }
 

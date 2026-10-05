@@ -43,6 +43,8 @@ type Event struct {
 	ItemSubType string         `json:"itemSubType,omitempty"` // p. ej. «Espadas de una mano», «Placas»
 	Armor       int            `json:"armor,omitempty"`
 	Stats       map[string]int `json:"stats,omitempty"` // claves de la API: ITEM_MOD_STRENGTH_SHORT…
+	// Tiempo jugado (segundos) en el momento del evento; solo en «level».
+	Played int64 `json:"played,omitempty"`
 }
 
 // Character es un personaje tal como lo guarda el addon.
@@ -127,6 +129,7 @@ func ParseSavedVariables(src string) ([]Character, error) {
 					ItemSubType: et.String("itemSubType"),
 					Armor:       int(et.Int("armor")),
 					Stats:       statsOf(et.Table("stats")),
+					Played:      et.Int("played"),
 				})
 			}
 		}
