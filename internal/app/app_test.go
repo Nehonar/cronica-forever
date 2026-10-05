@@ -124,7 +124,7 @@ func TestWarnsWhenClaudeIsLoggedOut(t *testing.T) {
 		t.Fatalf("un solo aviso por hora, no %d", len(notices))
 	}
 	b, _ := os.ReadFile(addon)
-	if !strings.Contains(string(b), `["ok"] = false`) || !strings.Contains(string(b), "claude") {
+	if !strings.Contains(string(b), `["ok"] = false`) || !strings.Contains(string(b), "Claude") {
 		t.Fatalf("el addon debe recibir el estado de error:\n%s", b)
 	}
 	// Lo no narrado queda para la próxima pasada.

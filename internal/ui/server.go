@@ -14,6 +14,7 @@ import (
 	"path/filepath"
 	"sort"
 	"strings"
+	"sync"
 	"time"
 
 	"github.com/Nehonar/cronica-forever/internal/app"
@@ -32,8 +33,20 @@ type Server struct {
 	Narrator narrate.Narrator
 	Port     int
 
-	addr string
-	srv  *http.Server
+	// Para la página «Preparar Crónica»:
+	ConfigPath    string // cronica.json
+	Version       string // versión del programa
+	Exe           string // ruta del programa (para el arranque automático)
+	AddonFiles    fs.FS  // archivos del addon (carpeta addon/Cronica)
+	PrepareWeb    func(repo string) error
+	OnChange      func() // la configuración o Claude han cambiado
+	OnClaudeReady func() // Claude acaba de quedar con la sesión iniciada
+	Fake          bool   // modo de prueba: no comprueba Claude
+
+	addr   string
+	srv    *http.Server
+	taskMu sync.Mutex
+	task   *task
 }
 
 // URL devuelve la dirección base del servidor una vez arrancado.
@@ -72,7 +85,7 @@ func (s *Server) Handler() http.Handler {
 	mux := http.NewServeMux()
 	sub, _ := fs.Sub(webFiles, "web")
 	files := http.FileServer(http.FS(sub))
-	for _, page := range []string{"/personaje", "/misiones"} {
+	for _, page := range []string{"/personaje", "/misiones", "/preparar"} {
 		page := page
 		mux.Handle(page+"/", files)
 		mux.HandleFunc(page, func(w http.ResponseWriter, r *http.Request) {
@@ -83,8 +96,32 @@ func (s *Server) Handler() http.Handler {
 	mux.HandleFunc("/api/personajes", s.apiCharacters)
 	mux.HandleFunc("/api/entrevista", s.apiInterview)
 	mux.HandleFunc("/api/guardar", s.apiSave)
-	mux.Handle("/", http.FileServer(http.Dir(filepath.Join(s.Runner.Cfg.Repo, "docs"))))
+	mux.HandleFunc("/api/hola", s.apiHello)
+	mux.HandleFunc("/api/preparar/estado", s.apiSetupState)
+	mux.HandleFunc("/api/preparar/juego", s.apiSetupGame)
+	mux.HandleFunc("/api/preparar/claude", s.apiSetupClaude)
+	mux.HandleFunc("/api/preparar/codigo", s.apiSetupInput)
+	mux.HandleFunc("/api/preparar/tarea", s.apiSetupTask)
+	mux.HandleFunc("/api/preparar/github", s.apiSetupGitHub)
+	mux.HandleFunc("/api/preparar/arranque", s.apiSetupAutostart)
+	mux.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
+		http.FileServer(http.Dir(filepath.Join(s.Runner.Config().Repo, "docs"))).ServeHTTP(w, r)
+	})
 	return s.guard(mux)
+}
+
+// Hello lo usa una segunda copia del programa para saber que Crónica ya está abierta.
+type Hello struct {
+	App  string `json:"app"`
+	Page string `json:"pagina"` // qué abrir si vuelves a hacer doble clic
+}
+
+func (s *Server) apiHello(w http.ResponseWriter, r *http.Request) {
+	h := Hello{App: "cronica", Page: "/"}
+	if cfg := s.Runner.Config(); cfg.WoW == "" && cfg.SavedVariables == "" {
+		h.Page = "/preparar/"
+	}
+	writeJSON(w, h)
 }
 
 func query(r *http.Request) string {
@@ -129,7 +166,7 @@ func (s *Server) characters() ([]CharacterView, map[string]model.Character, erro
 	if err != nil {
 		return nil, nil, err
 	}
-	paths := store.Paths{Repo: s.Runner.Cfg.Repo}
+	paths := store.Paths{Repo: s.Runner.Config().Repo}
 	byKey := map[string]model.Character{}
 	var out []CharacterView
 	for _, c := range chars {
@@ -246,7 +283,7 @@ func (s *Server) apiSave(w http.ResponseWriter, r *http.Request) {
 	if sh.Name == "" {
 		sh.Name = f.Name
 	}
-	if err := (store.Paths{Repo: s.Runner.Cfg.Repo}).SaveSheet(sh); err != nil {
+	if err := (store.Paths{Repo: s.Runner.Config().Repo}).SaveSheet(sh); err != nil {
 		writeErr(w, http.StatusInternalServerError, "No he podido guardar la ficha: "+err.Error())
 		return
 	}
@@ -262,7 +299,7 @@ func (s *Server) apiQuests(w http.ResponseWriter, r *http.Request) {
 		writeErr(w, http.StatusInternalServerError, "No puedo leer los datos del addon: "+err.Error())
 		return
 	}
-	paths := store.Paths{Repo: s.Runner.Cfg.Repo}
+	paths := store.Paths{Repo: s.Runner.Config().Repo}
 	key := r.URL.Query().Get("p")
 	var best *store.Doc
 	for _, c := range list {

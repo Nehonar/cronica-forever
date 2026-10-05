@@ -68,6 +68,23 @@ func LoadConfig(path string) (Config, error) {
 	return c, nil
 }
 
+// SaveConfig guarda la configuración en path.
+func SaveConfig(path string, c Config) error {
+	if err := os.MkdirAll(filepath.Dir(path), 0o755); err != nil {
+		return err
+	}
+	b, err := json.MarshalIndent(c, "", "  ")
+	if err != nil {
+		return err
+	}
+	return os.WriteFile(path, append(b, '\n'), 0o644)
+}
+
+// DefaultConfig es la configuración de partida, con los datos en home.
+func DefaultConfig(home string) Config {
+	return Config{Claude: "claude", MaxPerRun: 12, ChainWindow: 90, Repo: home}
+}
+
 // DefaultHome es la carpeta de datos de Crónica: %APPDATA%\Cronica en Windows,
 // ~/.config/Cronica en Linux.
 func DefaultHome() string {
@@ -105,9 +122,25 @@ type Runner struct {
 	Inform func(title, message string)
 
 	mu         sync.Mutex
+	cfgMu      sync.RWMutex
 	status     store.Status
 	lastNotice time.Time
 	announced  map[string]bool
+}
+
+// Config devuelve una copia de la configuración en uso.
+func (r *Runner) Config() Config {
+	r.cfgMu.RLock()
+	defer r.cfgMu.RUnlock()
+	return r.Cfg
+}
+
+// UpdateConfig cambia la configuración en uso y devuelve la nueva.
+func (r *Runner) UpdateConfig(f func(*Config)) Config {
+	r.cfgMu.Lock()
+	defer r.cfgMu.Unlock()
+	f(&r.Cfg)
+	return r.Cfg
 }
 
 // Status devuelve el último estado conocido del cronista.
@@ -130,7 +163,7 @@ func (r *Runner) CheckClaude(ctx context.Context) error {
 		return nil
 	}
 	if err := ac.CheckAuth(ctx); err != nil {
-		msg := "El cronista no puede escribir: " + err.Error() + ". Abre una terminal, ejecuta «claude» e inicia sesión."
+		msg := "El cronista no puede escribir: " + err.Error() + ". Haz clic en el icono de Crónica → «Configuración…» para arreglarlo."
 		r.logf("%s", msg)
 		r.warn(msg)
 		return err
@@ -181,10 +214,11 @@ func (r *Runner) Process(ctx context.Context) (res Result, err error) {
 // SVPath es el archivo del addon que se lee: el configurado o, si no hay, el
 // más reciente de cualquier cuenta de la carpeta del juego.
 func (r *Runner) SVPath() string {
-	if r.Cfg.SavedVariables != "" || r.Cfg.WoW == "" {
-		return r.Cfg.SavedVariables
+	c := r.Config()
+	if c.SavedVariables != "" || c.WoW == "" {
+		return c.SavedVariables
 	}
-	return wow.LatestSavedVariables(r.Cfg.WoW)
+	return wow.LatestSavedVariables(c.WoW)
 }
 
 func (r *Runner) process(ctx context.Context) (Result, error) {

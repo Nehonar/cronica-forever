@@ -14,7 +14,9 @@ func Ask(title, question string) (yes, ok bool) {
 	case "windows":
 		ps := "Add-Type -AssemblyName PresentationFramework; [System.Windows.MessageBox]::Show('" +
 			psQuote(question) + "', '" + psQuote(title) + "', 'YesNo', 'Question')"
-		out, err := exec.Command("powershell", "-NoProfile", "-WindowStyle", "Hidden", "-Command", ps).Output()
+		cmd := exec.Command("powershell", "-NoProfile", "-Command", ps)
+		Hide(cmd)
+		out, err := cmd.Output()
 		if err != nil {
 			return false, false
 		}
@@ -89,8 +91,11 @@ func PickFolder(title string) (path string, ok bool) {
 		ps := "[Console]::OutputEncoding = [Text.Encoding]::UTF8; Add-Type -AssemblyName System.Windows.Forms; " +
 			"$d = New-Object System.Windows.Forms.FolderBrowserDialog; " +
 			"$d.Description = '" + psQuote(title) + "'; $d.ShowNewFolderButton = $false; " +
-			"if ($d.ShowDialog() -eq 'OK') { $d.SelectedPath }"
-		out, err := exec.Command("powershell", "-NoProfile", "-STA", "-Command", ps).Output()
+			"$f = New-Object System.Windows.Forms.Form -Property @{TopMost = $true; ShowInTaskbar = $false}; " +
+			"if ($d.ShowDialog($f) -eq 'OK') { $d.SelectedPath }"
+		cmd := exec.Command("powershell", "-NoProfile", "-STA", "-Command", ps)
+		Hide(cmd)
+		out, err := cmd.Output()
 		if err != nil {
 			return "", false
 		}

@@ -24,12 +24,14 @@ Web: https://nehonar.github.io/cronica-forever/
 No hace falta descargar este repositorio: basta con **`cronica.exe`**.
 
 1. Descarga `cronica-windows-amd64.exe` (de la última ejecución en *Actions*, artefacto «cronica») y ponlo donde quieras, por ejemplo en `Documentos\Cronica`.
-2. **Haz doble clic.** La primera vez se abre un asistente que:
-   - busca WoW y te pregunta cuál es Forever (o te deja **elegir la carpeta tú** con el selector de Windows) e instala allí el addon;
-   - te pregunta si quieres publicar la crónica en GitHub (opcional, ver abajo);
-   - comprueba Claude Code y, si falta, te ofrece instalarlo e iniciar sesión;
-   - te ofrece que Crónica se abra sola con Windows.
-3. Las siguientes veces, el doble clic abre directamente Crónica en la bandeja del sistema.
+2. **Haz doble clic.** Crónica se queda en la bandeja del sistema (junto al reloj; puede estar dentro de la flechita ^) y la primera vez abre en el navegador la página **Preparar Crónica**, con cuatro pasos:
+   - **El juego**: propone las instalaciones que encuentra o te deja **elegir la carpeta** con el selector de Windows, e instala allí el addon;
+   - **Claude**: si falta, instala Claude Code con el instalador oficial (sin ventanas de consola) y abre el navegador para que inicies sesión;
+   - **GitHub** (opcional, ver abajo);
+   - **Arranque**: que Crónica se abra sola al encender el PC.
+3. Puedes volver a esa página cuando quieras desde el icono: **Configuración…**. Si vuelves a hacer doble clic con Crónica ya abierta, no se abre otra: se abre la página en el navegador.
+
+Si algo impide arrancar, sale una ventana con el error. El registro está en `%LOCALAPPDATA%\cronica\cronica.log`.
 
 Tus datos (configuración, fichas de personajes y crónica) se guardan en `%APPDATA%\Cronica`.
 
@@ -37,7 +39,7 @@ Tus datos (configuración, fichas de personajes y crónica) se guardan en `%APPD
 
 Si quieres que tu crónica sea también una web pública:
 - Necesitas **Git para Windows** (https://git-scm.com/download/win) y un repositorio tuyo en GitHub.
-- El asistente lo descarga en `%APPDATA%\Cronica\web` y prueba a subir: la primera vez, **el gestor de credenciales de Git abre el navegador** para que entres en GitHub. Crónica no ve ni guarda tu contraseña.
+- En **Preparar Crónica** pega la dirección de tu repositorio: Crónica lo descarga en `%APPDATA%\Cronica\web` y prueba a subir; la primera vez, **el gestor de credenciales de Git abre una ventana de GitHub** para que entres. Crónica no ve ni guarda tu contraseña.
 - Activa GitHub Pages en el repositorio: *Settings → Pages → rama principal, carpeta /docs*.
 
 ### En el juego
@@ -113,7 +115,7 @@ cronica desinstalar   # lo quita
 
 En reposo solo mira la fecha del archivo del addon cada pocos segundos. Al arrancar comprueba que Claude Code tiene la sesión iniciada; si no, muestra un aviso en el escritorio (como mucho uno por hora) y deja el aviso en `CronicaTextos.lua` para que el addon lo enseñe en el juego. Lo que no se pudo narrar se reintenta solo en cuanto vuelve a haber sesión.
 
-Si al arrancar Claude Code no está instalado o no tiene sesión, aparece una ventana preguntando si quieres arreglarlo. Si aceptas, se abre una terminal con el instalador oficial de Anthropic (`curl -fsSL https://claude.ai/install.sh | bash` en Linux, `irm https://claude.ai/install.ps1 | iex` en Windows) y/o `claude auth login`, que abre el navegador en la página de Anthropic. Crónica nunca ve ni guarda tus credenciales. En Linux las ventanas usan `zenity` o `kdialog` si están instalados.
+Si al arrancar Claude Code no está instalado o no tiene sesión, aparece una ventana preguntando si quieres arreglarlo y, si aceptas, se abre **Preparar Crónica**. Desde ahí se ejecuta, sin ventanas de consola, el instalador oficial de Anthropic (`curl -fsSL https://claude.ai/install.sh | bash` en Linux, `irm https://claude.ai/install.ps1 | iex` en Windows) y `claude auth login`, que abre el navegador en la página de Anthropic; si la página te da un código, se pega en Preparar Crónica. Crónica nunca ve ni guarda tus credenciales. En Linux las ventanas usan `zenity` o `kdialog` si están instalados. (`cronica iniciar` y `cronica preparar` siguen existiendo para quien prefiera la terminal.)
 
 Para probar sin juego ni addon:
 ```

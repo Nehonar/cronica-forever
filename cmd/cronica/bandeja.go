@@ -2,15 +2,19 @@ package main
 
 import (
 	"context"
+	"encoding/json"
+	"errors"
 	"flag"
 	"fmt"
 	"io"
+	"net/http"
 	"os"
 	"os/signal"
 	"path/filepath"
 	"sync"
 	"time"
 
+	cronicaforever "github.com/Nehonar/cronica-forever"
 	"github.com/Nehonar/cronica-forever/internal/app"
 	"github.com/Nehonar/cronica-forever/internal/narrate"
 	"github.com/Nehonar/cronica-forever/internal/system"
@@ -33,9 +37,27 @@ func runTray(args []string) error {
 	fl.Parse(args)
 	*cfgPath = app.ResolveConfig(*cfgPath)
 
+	// ¿Ya está abierta? Entonces no abrir otra: como mucho, enseñar la página.
+	if h, ok := alreadyRunning(*port); ok {
+		if !*atBoot {
+			openBrowser(fmt.Sprintf("http://127.0.0.1:%d%s", *port, h.Page))
+		}
+		return nil
+	}
+
+	home := filepath.Dir(*cfgPath)
+	if abs, err := filepath.Abs(home); err == nil {
+		home = abs
+	}
 	cfg, err := app.LoadConfig(*cfgPath)
-	if err != nil && *sv == "" {
-		return fmt.Errorf("no puedo leer %s (ejecuta antes «cronica iniciar»): %w", *cfgPath, err)
+	firstRun := false
+	if err != nil {
+		if !errors.Is(err, os.ErrNotExist) && *sv == "" {
+			return fmt.Errorf("no puedo leer %s: %w", *cfgPath, err)
+		}
+		// Primera vez: se configura desde la página «Preparar Crónica».
+		cfg, firstRun = app.DefaultConfig(home), true
+		os.MkdirAll(home, 0o755)
 	}
 	if *sv != "" {
 		cfg.SavedVariables = *sv
@@ -47,7 +69,11 @@ func runTray(args []string) error {
 		cfg.Repo = "."
 	}
 	ensureWeb(cfg.Repo)
+	needsSetup := firstRun || (cfg.WoW == "" && cfg.SavedVariables == "")
 
+	if *logFile == "" {
+		*logFile = system.DefaultLogFile()
+	}
 	out := io.Writer(os.Stdout)
 	if *logFile != "" {
 		if err := os.MkdirAll(filepath.Dir(*logFile), 0o755); err == nil {
@@ -57,6 +83,7 @@ func runTray(args []string) error {
 			}
 		}
 	}
+	fmt.Fprintf(out, "%s  Crónica %s arrancando (configuración: %s)\n", time.Now().Format("15:04:05"), version, *cfgPath)
 
 	var n narrate.Narrator = narrate.ClaudeCLI{Command: cfg.Claude, Model: cfg.Model}
 	if *fake {
@@ -100,26 +127,46 @@ func runTray(args []string) error {
 		update()
 	}
 
-	srv := &ui.Server{Runner: r, Narrator: n, Port: *port}
+	exe, _ := os.Executable()
+	if e, err := filepath.EvalSymlinks(exe); err == nil {
+		exe = e
+	}
+	srv := &ui.Server{Runner: r, Narrator: n, Port: *port,
+		ConfigPath: *cfgPath, Version: version, Exe: exe, AddonFiles: cronicaforever.Files,
+		PrepareWeb: ensureWeb, Fake: *fake,
+		OnChange: update,
+		OnClaudeReady: func() {
+			r.CheckClaude(ctx)
+			update()
+			r.Process(ctx)
+		},
+	}
 	if err := srv.Start(); err != nil {
 		return fmt.Errorf("no puedo arrancar el servidor local: %w", err)
 	}
 	defer srv.Stop()
 	fmt.Fprintf(out, "%s  Web local: %s  ·  Misiones: %smisiones/  ·  Cronista: %spersonaje/\n", time.Now().Format("15:04:05"), srv.URL(), srv.URL(), srv.URL())
 
-	setup := func() {
-		if *fake {
-			return
-		}
-		(&app.Setup{Claude: cfg.Claude, Out: out}).Ensure(ctx)
-		r.CheckClaude(ctx)
-		update()
-	}
+	setupPage := func() { openBrowser(srv.URL() + "preparar/") }
 	go func() {
-		if *atBoot {
-			time.Sleep(20 * time.Second)
+		if needsSetup {
+			if !*atBoot {
+				setupPage()
+			}
+		} else if !*fake {
+			if *atBoot {
+				time.Sleep(20 * time.Second)
+			}
+			if err := r.CheckClaude(ctx); err != nil {
+				update()
+				if !*atBoot {
+					setupPage()
+				} else if yes, ok := system.Ask("Crónica", "El cronista no puede escribir: Claude no tiene la sesión iniciada o no está instalado.\n\n¿Quieres arreglarlo ahora? Se abrirá la página de configuración de Crónica."); ok && yes {
+					setupPage()
+				}
+			}
 		}
-		setup()
+		update()
 		r.Watch(ctx, 2*time.Second)
 	}()
 
@@ -138,7 +185,8 @@ func runTray(args []string) error {
 			openBrowser(u)
 		},
 		NarrateNow: func() { go r.Process(ctx) },
-		FixClaude:  func() { go setup() },
+		FixClaude:  setupPage,
+		Settings:   setupPage,
 		Quit:       cancel,
 	}, func(a *tray.App) {
 		mu.Lock()
@@ -148,4 +196,22 @@ func runTray(args []string) error {
 		go func() { <-ctx.Done(); a.Quit() }()
 	})
 	return nil
+}
+
+// alreadyRunning pregunta en el puerto de Crónica si ya hay una abierta.
+func alreadyRunning(port int) (ui.Hello, bool) {
+	var h ui.Hello
+	c := http.Client{Timeout: 2 * time.Second}
+	resp, err := c.Get(fmt.Sprintf("http://127.0.0.1:%d/api/hola", port))
+	if err != nil {
+		return h, false
+	}
+	defer resp.Body.Close()
+	if json.NewDecoder(resp.Body).Decode(&h) != nil || h.App != "cronica" {
+		return h, false
+	}
+	if h.Page == "" {
+		h.Page = "/"
+	}
+	return h, true
 }

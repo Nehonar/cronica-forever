@@ -26,14 +26,18 @@ import (
 	"github.com/Nehonar/cronica-forever/internal/wow"
 )
 
-var version = "0.2.1"
+var version = "0.3.0"
 
 func main() {
 	if len(os.Args) < 2 {
-		// Doble clic en el programa: la primera vez, el asistente; después, la bandeja.
+		// Doble clic: Crónica en la bandeja; la primera vez, además, la página «Preparar Crónica».
 		if err := defaultAction(); err != nil {
 			fmt.Fprintln(os.Stderr, "Error:", err)
-			pauseIfOwnConsole()
+			if f, ferr := os.OpenFile(system.DefaultLogFile(), os.O_CREATE|os.O_APPEND|os.O_WRONLY, 0o644); ferr == nil {
+				fmt.Fprintf(f, "%s  Error: %v\n", time.Now().Format("2006-01-02 15:04:05"), err)
+				f.Close()
+			}
+			system.Alert("Crónica", "Crónica no ha podido arrancar:\n\n"+err.Error())
 			os.Exit(1)
 		}
 		return
@@ -212,22 +216,12 @@ func installAddonCmd(args []string) error {
 	return nil
 }
 
-func defaultAction() error {
-	cfg := app.ResolveConfig("")
-	if _, err := os.Stat(cfg); err != nil {
-		err := runWizard(nil)
-		pauseIfOwnConsole()
-		if err != nil {
-			return err
+func defaultAction() (err error) {
+	defer func() {
+		if p := recover(); p != nil {
+			err = fmt.Errorf("error inesperado: %v", p)
 		}
-		// Si el asistente ya ha dejado la bandeja arrancando sola, no abrir otra.
-		if system.Installed() {
-			return nil
-		}
-		if _, err := os.Stat(cfg); err != nil {
-			return nil
-		}
-	}
+	}()
 	hideOwnConsole()
 	return runTray(nil)
 }

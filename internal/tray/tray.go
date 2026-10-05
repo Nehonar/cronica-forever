@@ -57,6 +57,7 @@ type Actions struct {
 	OpenCharacter func(key string) // key vacío = página de personajes
 	NarrateNow    func()
 	FixClaude     func()
+	Settings      func()
 	Quit          func()
 }
 
@@ -130,6 +131,7 @@ func (a *App) build() {
 	chars := systray.AddMenuItem("Personajes e historias", "Crear o reescribir la historia de un personaje")
 	now := systray.AddMenuItem("Narrar ahora", "Procesar ya lo que haya guardado el juego")
 	a.claude = systray.AddMenuItem("Claude: comprobando…", "")
+	settings := systray.AddMenuItem("Configuración…", "Carpeta del juego, Claude, GitHub y arranque")
 	systray.AddSeparator()
 	quit := systray.AddMenuItem("Salir", "Cerrar Crónica (dejará de narrar hasta que vuelvas a abrirla)")
 
@@ -151,6 +153,7 @@ func (a *App) build() {
 	})
 	click(now, a.act.NarrateNow)
 	click(a.claude, a.act.FixClaude)
+	click(settings, a.act.Settings)
 	click(quit, func() {
 		if a.act.Quit != nil {
 			a.act.Quit()
@@ -193,7 +196,7 @@ func (a *App) Update(s State) {
 		a.claude.SetTooltip("Todo en orden")
 	} else {
 		a.claude.SetTitle("⚠ Claude: iniciar sesión…")
-		a.claude.SetTooltip("Abrir el asistente para instalar Claude Code o iniciar sesión")
+		a.claude.SetTooltip("Abrir la configuración para instalar Claude Code o iniciar sesión")
 	}
 
 	a.mu.Lock()

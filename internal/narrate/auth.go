@@ -15,7 +15,10 @@ var ErrNotLoggedIn = errors.New("Claude Code no tiene la sesión iniciada")
 
 // CheckAuth comprueba, sin gastar uso, que Claude Code está instalado y con sesión.
 func (c ClaudeCLI) CheckAuth(ctx context.Context) error {
-	cmdName, _ := FindClaude(c.Command)
+	cmdName, found := FindClaude(c.Command)
+	if !found {
+		return fmt.Errorf("Claude Code no está instalado")
+	}
 	ctx, cancel := context.WithTimeout(ctx, 30*time.Second)
 	defer cancel()
 	out, err := exec.CommandContext(ctx, cmdName, "auth", "status").Output()

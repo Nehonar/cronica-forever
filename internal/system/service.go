@@ -47,30 +47,43 @@ func Install(s Service) (string, error) {
 	return "", fmt.Errorf("el arranque automático aún no está preparado para %s", runtime.GOOS)
 }
 
-// Uninstall quita el arranque automático.
+// Uninstall quita el arranque automático y cierra Crónica si está abierta.
 func Uninstall() (string, error) {
+	switch runtime.GOOS {
+	case "linux":
+		exec.Command("pkill", "-f", "cronica bandeja").Run()
+	case "windows":
+		hiddenCmd("schtasks", "/End", "/TN", taskName).Run()
+	}
+	if err := RemoveAutostart(); err != nil {
+		return "", err
+	}
+	return "Arranque automático quitado.", nil
+}
+
+// RemoveAutostart quita el arranque automático sin cerrar el programa.
+func RemoveAutostart() error {
 	switch runtime.GOOS {
 	case "linux":
 		removeOldSystemd()
 		if p, err := autostartPath(); err == nil {
 			if err := os.Remove(p); err != nil && !errors.Is(err, os.ErrNotExist) {
-				return "", err
+				return err
 			}
 		}
-		exec.Command("pkill", "-f", "cronica bandeja").Run()
-		return "Arranque automático quitado.", nil
+		return nil
 	case "windows":
-		exec.Command("schtasks", "/End", "/TN", taskName).Run()
-		out, err := exec.Command("schtasks", "/Delete", "/TN", taskName, "/F").CombinedOutput()
-		if err != nil {
-			return "", fmt.Errorf("schtasks: %s", strings.TrimSpace(string(out)))
+		cmd := hiddenCmd("schtasks", "/Delete", "/TN", taskName, "/F")
+		Hide(cmd)
+		if out, err := cmd.CombinedOutput(); err != nil && Installed() {
+			return fmt.Errorf("schtasks: %s", strings.TrimSpace(string(out)))
 		}
 		if dir, err := os.UserConfigDir(); err == nil {
 			os.Remove(filepath.Join(dir, "Cronica", "iniciar.ps1"))
 		}
-		return "Arranque automático quitado.", nil
+		return nil
 	}
-	return "", fmt.Errorf("no hay arranque automático en %s", runtime.GOOS)
+	return fmt.Errorf("no hay arranque automático en %s", runtime.GOOS)
 }
 
 // ---------- Linux: servicio de usuario de systemd ----------
@@ -154,11 +167,11 @@ func installWindows(s Service) (string, error) {
 		return "", err
 	}
 	tr := `powershell.exe -NoProfile -WindowStyle Hidden -ExecutionPolicy Bypass -File "` + script + `"`
-	out, err := exec.Command("schtasks", "/Create", "/TN", taskName, "/TR", tr, "/SC", "ONLOGON", "/RL", "LIMITED", "/F").CombinedOutput()
+	out, err := hiddenCmd("schtasks", "/Create", "/TN", taskName, "/TR", tr, "/SC", "ONLOGON", "/RL", "LIMITED", "/F").CombinedOutput()
 	if err != nil {
 		return "", fmt.Errorf("schtasks: %s", strings.TrimSpace(string(out)))
 	}
-	exec.Command("schtasks", "/Run", "/TN", taskName).Run()
+	hiddenCmd("schtasks", "/Run", "/TN", taskName).Run()
 	return fmt.Sprintf("Instalado como tarea programada «%s» al iniciar sesión.\nRegistro: %s", taskName, s.LogFile), nil
 }
 
@@ -236,7 +249,14 @@ func Installed() bool {
 		_, err = os.Stat(p)
 		return err == nil
 	case "windows":
-		return exec.Command("schtasks", "/Query", "/TN", taskName).Run() == nil
+		return hiddenCmd("schtasks", "/Query", "/TN", taskName).Run() == nil
 	}
 	return false
+}
+
+// hiddenCmd prepara un comando que no abre ventana de consola.
+func hiddenCmd(name string, args ...string) *exec.Cmd {
+	cmd := exec.Command(name, args...)
+	Hide(cmd)
+	return cmd
 }
