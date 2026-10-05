@@ -139,18 +139,12 @@ def main(out_path):
     ev("PLAYER_ENTERING_WORLD", True, False)
     adv(10)
 
-    # El botón viene apagado; se activa con /cronica boton.
-    G.SlashCmdList.CRONICA("boton")
-    # 1) Misión aceptada con el botón «Aceptar y leer en Crónica».
+    # 1) Misión aceptada (con el botón normal del juego).
     quest(106, "La joven enamorada", "Maybell Maclure",
           "Mi familia y los Stonefield no se hablan, pero yo quiero a Tommy Joe Stonefield. ¿Le llevarías esta carta? Está junto al río, al sur de la granja de su familia.",
           "Lleva la carta de Maybell a Tommy Joe Stonefield.")
-    btn = G.CronicaLeerBoton
-    assert btn.shown, "el botón debe aparecer en la ventana de misión"
-    btn.scripts.OnClick(btn)
-    adv(1)
-    assert G.RELOADS == 1, "el botón debe recargar para enviar la misión"
-    ev("QUEST_ACCEPTED", 106)  # el servidor confirma: no debe duplicarse
+    ev("QUEST_ACCEPTED", 106)
+    assert G.RELOADS == 0, "el addon no puede ni debe recargar por su cuenta"
     adv(300)
 
     # 2) Cadena: entregar a Tommy Joe, que te da la siguiente.
@@ -195,11 +189,11 @@ def main(out_path):
     complete(111, "Maybell Maclure", "¡Su colgante! Gracias… nadie debe saberlo.")
     adv(200)
 
-    # 6) Última misión, aceptada con el botón y aún sin hacer: debe aparecer en «Misiones».
+    # 6) Última misión, aceptada y aún sin hacer: debe aparecer en «Misiones».
     quest(176, "Se busca: Hogger", "Cartel de «Se busca»",
           "SE BUSCA: un gnoll enorme llamado Hogger aterroriza el oeste del Bosque de Elwynn. La guardia de Ventormenta paga una recompensa por su cabeza. Se le ha visto cerca del Bosque Brumoso, al suroeste. Entregad la prueba al alguacil Dughan en Villadorada.",
           "Trae la garra de Hogger al alguacil Dughan, en Villadorada.")
-    btn.scripts.OnClick(btn)
+    ev("QUEST_ACCEPTED", 176)
     adv(1)
     ev("PLAYER_LOGOUT")
 

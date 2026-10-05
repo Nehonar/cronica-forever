@@ -47,7 +47,7 @@ Si quieres que tu crónica sea también una web pública:
 ### En el juego
 
 - **Cuándo llega a Crónica**: WoW solo deja que un addon guarde sus datos al cerrar sesión o al recargar (`/reload`). Juega normal: al salir, Crónica lo recibe todo y el cronista escribe. Si quieres verlo antes, haz `/reload` en una pausa.
-- **Aceptar y leer en Crónica** (opcional, `/cronica boton`): botón en la ventana de misión que acepta y recarga, para ver la misión contada al momento en *Misiones en curso*.
+- **Enviar a Crónica con una tecla**: en *Opciones → Atajos → Crónica*, «Enviar a Crónica» recarga la interfaz (lo mismo que `/reload`). Un addon no puede recargar por su cuenta: Blizzard lo reserva para sus propias teclas y macros.
 - **Frases del personaje**: `/cronica frases no | local | voz`. En *local* solo las ves tú; en *voz* aparecen en pantalla y, al pulsar tu tecla (o hacer clic en ellas), tu personaje las dice en /decir. Blizzard no deja que un addon hable por su cuenta, por eso hace falta la tecla.
 - `/cronica espera <minutos>`: como mucho una frase cada tantos minutos (4 por defecto). `/cronica`: estado y comandos.
 

@@ -9,7 +9,6 @@ local VERSION = "0.1.0"
 local DEFAULTS = {
 	frases = "local",   -- "no", "local" (solo tú) o "voz" (/decir con una tecla)
 	espera = 240,       -- segundos mínimos entre frases
-	boton = false,      -- botón «Aceptar y leer en Crónica» (recarga la interfaz; opcional)
 }
 
 -- Probabilidad de que el personaje diga algo en cada momento.
@@ -281,45 +280,18 @@ function Cronica_Decir()
 	subtitle:Hide()
 end
 
--- Guarda y recarga para que el programa lea lo nuevo.
-function Cronica_Leer()
-	if InCombatLockdown() then
-		say("en combate no se puede recargar; inténtalo al terminar.")
-		return
-	end
-	ReloadUI()
-end
+-- Recargar (para que Crónica reciba lo nuevo sin cerrar sesión).
+-- ReloadUI() está reservada a Blizzard: un addon no puede llamarla ni desde un
+-- clic. Lo que sí se puede es un botón seguro que ejecuta la macro «/reload»;
+-- se usa con una tecla (Opciones → Atajos → Crónica).
+local reloadButton = CreateFrame("Button", "CronicaRecargar", UIParent, "SecureActionButtonTemplate")
+reloadButton:SetAttribute("type", "macro")
+reloadButton:SetAttribute("macrotext", "/reload")
+reloadButton:RegisterForClicks("AnyUp", "AnyDown")
 
 BINDING_HEADER_CRONICA = "Crónica"
 BINDING_NAME_CRONICA_DECIR = "Decir en voz alta la frase de mi personaje"
-BINDING_NAME_CRONICA_LEER = "Enviar a Crónica (recarga la interfaz)"
-
--- ---------------------------------------------------------------------------
--- Botón «Aceptar y leer en Crónica»
--- ---------------------------------------------------------------------------
-
-local readButton
-local function setupButton()
-	if readButton or not QuestFrame then return end
-	readButton = CreateFrame("Button", "CronicaLeerBoton", QuestFrame, "UIPanelButtonTemplate")
-	readButton:SetSize(190, 22)
-	if QuestFrameAcceptButton then
-		readButton:SetPoint("BOTTOMLEFT", QuestFrameAcceptButton, "TOPLEFT", 0, 4)
-	else
-		readButton:SetPoint("BOTTOM", QuestFrame, "BOTTOM", 0, 60)
-	end
-	readButton:SetText("Aceptar y leer en Crónica")
-	readButton:SetScript("OnClick", function()
-		local id = GetQuestID and GetQuestID() or 0
-		recordAccept(id)
-		AcceptQuest()
-		say("misión enviada al cronista; recargando…")
-		-- Recargar dentro del propio clic: si se hace después (con un temporizador),
-		-- el juego lo bloquea («acción bloqueada por un addon»).
-		Cronica_Leer()
-	end)
-	readButton:Hide()
-end
+_G["BINDING_NAME_CLICK CronicaRecargar:LeftButton"] = "Enviar a Crónica (recarga la interfaz)"
 
 -- ---------------------------------------------------------------------------
 -- Eventos
@@ -333,8 +305,6 @@ on("ADDON_LOADED", function(name)
 	if name ~= ADDON then return end
 	CronicaDB = CronicaDB or {}
 	db = CronicaDB
-	-- v2: el botón que recarga pasa a ser opcional (apagado), porque recargar molesta.
-	if (db.version or 1) < 2 and db.config then db.config.boton = false end
 	db.version = 2
 	db.config = db.config or {}
 	for k, v in pairs(DEFAULTS) do
@@ -344,7 +314,6 @@ end)
 
 on("PLAYER_LOGIN", function()
 	setupCharacter()
-	setupButton()
 end)
 
 on("PLAYER_ENTERING_WORLD", function(isInitialLogin, isReloadingUi)
@@ -398,9 +367,7 @@ end)
 
 on("QUEST_DETAIL", function()
 	onQuestDetail()
-	if readButton and db.config.boton then readButton:Show() end
 end)
-on("QUEST_FINISHED", function() if readButton then readButton:Hide() end end)
 on("QUEST_COMPLETE", onQuestComplete)
 
 on("QUEST_ACCEPTED", function(a, b)
@@ -472,11 +439,8 @@ SlashCmdList.CRONICA = function(msg)
 		else
 			say("usa: /cronica espera <minutos> (1 a 60)")
 		end
-	elseif cmd == "boton" then
-		db.config.boton = not db.config.boton
-		say("botón «Aceptar y leer en Crónica» " .. (db.config.boton and "activado." or "desactivado."))
-	elseif cmd == "leer" or cmd == "enviar" then
-		Cronica_Leer()
+	elseif cmd == "leer" or cmd == "enviar" or cmd == "boton" then
+		say("para enviar lo nuevo a Crónica escribe /reload o usa tu tecla (Opciones → Atajos → Crónica). Al cerrar sesión se envía solo.")
 	elseif cmd == "prueba" then
 		Cronica_Frase("descanso", nil, true)
 	else
@@ -484,6 +448,6 @@ SlashCmdList.CRONICA = function(msg)
 		say(("v%s · %s · %d suceso(s) registrado(s)."):format(VERSION, key or "?", n))
 		say("frases: " .. (MODES[db.config.frases] or "?") .. " · espera: " .. math.floor((db.config.espera or 240) / 60) .. " min")
 		if CronicaEstado and CronicaEstado.ok == false then say(RED .. (CronicaEstado.mensaje or "") .. "|r") end
-		say("comandos: /cronica frases no|local|voz · espera <min> · boton · leer · prueba")
+		say("comandos: /cronica frases no|local|voz · espera <min> · prueba · (para enviar a Crónica: /reload o tu tecla)")
 	end
 end
