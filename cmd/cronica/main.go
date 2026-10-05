@@ -53,6 +53,8 @@ func main() {
 		}
 	case "estado":
 		err = runStatus(args)
+	case "preparar":
+		err = runPrepare(args)
 	case "version", "-v", "--version":
 		fmt.Println("cronica", version)
 	case "ayuda", "-h", "--help", "help":
@@ -75,6 +77,7 @@ Uso:
   cronica demo                 prueba completa: narra una sesión de ejemplo y abre la web
   cronica ver                  abre en el navegador la web de tu crónica
   cronica iniciar              crea cronica.json con la configuración
+  cronica preparar             comprueba Claude Code y, si hace falta, te ayuda a instalarlo e iniciar sesión
   cronica instalar             arranca «vigilar» solo al iniciar sesión en el PC (una sola vez)
   cronica desinstalar          quita el arranque automático
   cronica estado               comprueba Claude, la configuración y el registro
@@ -115,10 +118,6 @@ func run(cmd string, args []string) error {
 			}
 		}
 	}
-	if *atBoot {
-		// Al arrancar el PC, dar tiempo a que el escritorio y la red estén listos.
-		time.Sleep(20 * time.Second)
-	}
 
 	cfg, err := app.LoadConfig(*cfgPath)
 	if err != nil && !(errors.Is(err, fs.ErrNotExist) && *sv != "") {
@@ -144,6 +143,15 @@ func run(cmd string, args []string) error {
 	}
 	if cfg.SavedVariables == "" {
 		return fmt.Errorf("falta la ruta de Cronica.lua (campo «savedvariables» en %s)", *cfgPath)
+	}
+
+	if *atBoot {
+		// Al arrancar el PC, dar tiempo a que el escritorio y la red estén listos,
+		// y si Claude no está listo, preguntar con una ventana.
+		time.Sleep(20 * time.Second)
+		if !*fake {
+			(&app.Setup{Claude: cfg.Claude, Out: out}).Ensure(context.Background())
+		}
 	}
 
 	var n narrate.Narrator = narrate.ClaudeCLI{Command: cfg.Claude, Model: cfg.Model}

@@ -66,12 +66,15 @@ cronica demo
 ### Que arranque solo
 
 ```
+cronica preparar      # comprueba Claude Code; si falta, ofrece instalarlo (instalador oficial) e iniciar sesión
 cronica instalar      # una sola vez: arranca «vigilar» al iniciar sesión en el PC (Linux: systemd; Windows: tarea programada)
 cronica estado        # comprueba Claude, la configuración y muestra el registro
 cronica desinstalar   # lo quita
 ```
 
 En reposo solo mira la fecha del archivo del addon cada pocos segundos. Al arrancar comprueba que Claude Code tiene la sesión iniciada; si no, muestra un aviso en el escritorio (como mucho uno por hora) y deja el aviso en `CronicaTextos.lua` para que el addon lo enseñe en el juego. Lo que no se pudo narrar se reintenta solo en cuanto vuelve a haber sesión.
+
+Si al arrancar Claude Code no está instalado o no tiene sesión, aparece una ventana preguntando si quieres arreglarlo. Si aceptas, se abre una terminal con el instalador oficial de Anthropic (`curl -fsSL https://claude.ai/install.sh | bash` en Linux, `irm https://claude.ai/install.ps1 | iex` en Windows) y/o `claude auth login`, que abre el navegador en la página de Anthropic. Crónica nunca ve ni guarda tus credenciales. En Linux las ventanas usan `zenity` o `kdialog` si están instalados.
 
 Para probar sin juego ni addon:
 ```

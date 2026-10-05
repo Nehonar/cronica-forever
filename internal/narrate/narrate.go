@@ -56,10 +56,7 @@ type ClaudeCLI struct {
 
 // Generate envía el prompt por la entrada estándar y devuelve la respuesta.
 func (c ClaudeCLI) Generate(ctx context.Context, system, prompt string) (string, error) {
-	cmdName := c.Command
-	if cmdName == "" {
-		cmdName = "claude"
-	}
+	cmdName, _ := FindClaude(c.Command)
 	timeout := c.Timeout
 	if timeout == 0 {
 		timeout = 3 * time.Minute

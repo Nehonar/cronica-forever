@@ -36,8 +36,8 @@ func runInstall(args []string) error {
 	if work == "" {
 		work = filepath.Dir(absCfg)
 	}
-	if err := (narrate.ClaudeCLI{Command: cfg.Claude}).CheckAuth(context.Background()); err != nil {
-		fmt.Println("Aviso:", err, "— el programa te avisará al arrancar hasta que inicies sesión con «claude».")
+	if err := (&app.Setup{Claude: cfg.Claude, Out: os.Stdout, In: os.Stdin}).Ensure(context.Background()); err != nil {
+		fmt.Println("Aviso:", err, "— al arrancar el PC te lo volveré a preguntar.")
 	}
 	msg, err := system.Install(system.Service{Exe: exe, Config: absCfg, WorkDir: work, LogFile: system.DefaultLogFile()})
 	if err != nil {
@@ -98,4 +98,12 @@ func runStatus(args []string) error {
 		fmt.Println("   ", l)
 	}
 	return nil
+}
+
+func runPrepare(args []string) error {
+	fl := flag.NewFlagSet("preparar", flag.ExitOnError)
+	cfgPath := fl.String("config", "cronica.json", "")
+	fl.Parse(args)
+	cfg, _ := app.LoadConfig(*cfgPath) // sin configuración también sirve
+	return (&app.Setup{Claude: cfg.Claude, Out: os.Stdout, In: os.Stdin}).Ensure(context.Background())
 }
