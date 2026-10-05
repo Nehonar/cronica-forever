@@ -78,6 +78,22 @@ type Pending struct {
 	AwaitingBackstory int `json:"awaitingBackstory,omitempty"`
 }
 
+// Encargo es una misión aceptada, narrada al momento para leerla en la app.
+type Encargo struct {
+	ID         int64  `json:"id"`
+	Title      string `json:"title"`
+	Giver      string `json:"giver,omitempty"`
+	Zone       string `json:"zone,omitempty"`
+	Subzone    string `json:"subzone,omitempty"`
+	Objectives string `json:"objectives,omitempty"`
+	Original   string `json:"original,omitempty"` // texto original de la misión
+	Heading    string `json:"heading,omitempty"`  // título narrativo
+	Text       string `json:"text,omitempty"`     // narración
+	AcceptT    int64  `json:"acceptT"`
+	State      string `json:"state"` // activa, entregada, abandonada
+	Narrated   string `json:"narrated,omitempty"`
+}
+
 // Doc es todo lo que la web sabe de un personaje.
 type Doc struct {
 	Key       string        `json:"key"`
@@ -86,6 +102,7 @@ type Doc struct {
 	Realm     string        `json:"realm,omitempty"`
 	Updated   string        `json:"updated"`
 	Stories   []Story       `json:"stories"`
+	Encargos  []Encargo     `json:"encargos,omitempty"`
 	Pending   Pending       `json:"pending"`
 	Stats     Stats         `json:"stats"`
 }
@@ -258,7 +275,7 @@ type Status struct {
 	T       int64
 }
 
-func WriteAddonTexts(path string, docs []*Doc, limit int, st Status) error {
+func WriteAddonTexts(path string, docs []*Doc, limit int, st Status, phrases map[string]Phrases) error {
 	all := map[string]any{}
 	for _, d := range docs {
 		start := len(d.Stories) - limit
@@ -274,8 +291,21 @@ func WriteAddonTexts(path string, docs []*Doc, limit int, st Status) error {
 		}
 		all[d.Key] = list
 	}
+	frases := map[string]any{}
+	for k, ph := range phrases {
+		cats := map[string]any{}
+		for cat, list := range ph {
+			arr := make([]any, len(list))
+			for i, x := range list {
+				arr[i] = x
+			}
+			cats[cat] = arr
+		}
+		frases[k] = cats
+	}
 	estado := map[string]any{"ok": st.OK, "mensaje": st.Message, "t": st.T}
 	src := "-- Generado por Crónica. No editar a mano.\nCronicaTextos = " + luasv.Encode(all, 0) + "\n" +
+		"CronicaFrases = " + luasv.Encode(frases, 0) + "\n" +
 		"CronicaEstado = " + luasv.Encode(estado, 0) + "\n"
 	if err := os.MkdirAll(filepath.Dir(path), 0o755); err != nil {
 		return err
@@ -304,4 +334,73 @@ func (p Paths) SaveSheet(s narrate.Sheet) error {
 		return fmt.Errorf("la ficha no tiene clave de personaje")
 	}
 	return writeJSON(filepath.Join(p.SheetsDir(), s.Key+".json"), s)
+}
+
+// SyncEncargos actualiza la lista de misiones aceptadas a partir de los eventos:
+// añade las nuevas y marca las entregadas o abandonadas. Devuelve las activas sin narrar.
+func (d *Doc) SyncEncargos(accepts, turnins, abandons map[int64]Encargo) []int {
+	idx := map[int64]int{}
+	for i, e := range d.Encargos {
+		idx[e.ID] = i
+	}
+	for id, a := range accepts {
+		if i, ok := idx[id]; ok {
+			// Si se volvió a aceptar después de abandonarla, vuelve a estar activa.
+			if a.AcceptT > d.Encargos[i].AcceptT {
+				d.Encargos[i].AcceptT, d.Encargos[i].State = a.AcceptT, "activa"
+			}
+			continue
+		}
+		a.State = "activa"
+		d.Encargos = append(d.Encargos, a)
+		idx[id] = len(d.Encargos) - 1
+	}
+	for id, t := range turnins {
+		if i, ok := idx[id]; ok && t.AcceptT >= d.Encargos[i].AcceptT {
+			d.Encargos[i].State = "entregada"
+		}
+	}
+	for id, t := range abandons {
+		if i, ok := idx[id]; ok && t.AcceptT >= d.Encargos[i].AcceptT && d.Encargos[i].State == "activa" {
+			d.Encargos[i].State = "abandonada"
+		}
+	}
+	sort.SliceStable(d.Encargos, func(i, j int) bool { return d.Encargos[i].AcceptT > d.Encargos[j].AcceptT })
+	var todo []int
+	for i, e := range d.Encargos {
+		if e.State == "activa" && e.Text == "" {
+			todo = append(todo, i)
+		}
+	}
+	return todo
+}
+
+// Phrases son las frases que el personaje piensa o dice, por categoría.
+type Phrases map[string][]string
+
+// LoadPhrases lee personajes/<clave>.frases.json; ok=false si no existe o está desfasada
+// respecto a la ficha (se ha cambiado el trasfondo después).
+func (p Paths) LoadPhrases(key string) (Phrases, bool) {
+	path := filepath.Join(p.SheetsDir(), key+".frases.json")
+	info, err := os.Stat(path)
+	if err != nil {
+		return nil, false
+	}
+	if sheet, err := os.Stat(filepath.Join(p.SheetsDir(), key+".json")); err == nil && sheet.ModTime().After(info.ModTime()) {
+		return nil, false
+	}
+	b, err := os.ReadFile(path)
+	if err != nil {
+		return nil, false
+	}
+	var ph Phrases
+	if json.Unmarshal(b, &ph) != nil || len(ph) == 0 {
+		return nil, false
+	}
+	return ph, true
+}
+
+// SavePhrases guarda la baraja de frases de un personaje.
+func (p Paths) SavePhrases(key string, ph Phrases) error {
+	return writeJSON(filepath.Join(p.SheetsDir(), key+".frases.json"), ph)
 }

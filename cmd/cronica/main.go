@@ -8,6 +8,7 @@
 package main
 
 import (
+	"bufio"
 	"context"
 	"encoding/json"
 	"errors"
@@ -16,14 +17,18 @@ import (
 	"io"
 	"io/fs"
 	"os"
+	"os/exec"
 	"os/signal"
 	"path/filepath"
-	"runtime"
+	"strconv"
+	"strings"
 	"time"
 
+	cronicaforever "github.com/Nehonar/cronica-forever"
 	"github.com/Nehonar/cronica-forever/internal/app"
 	"github.com/Nehonar/cronica-forever/internal/narrate"
 	"github.com/Nehonar/cronica-forever/internal/system"
+	"github.com/Nehonar/cronica-forever/internal/wow"
 )
 
 var version = "0.1.0"
@@ -57,6 +62,8 @@ func main() {
 		err = runPrepare(args)
 	case "bandeja":
 		err = runTray(args)
+	case "instalar-addon":
+		err = installAddonCmd(args)
 	case "version", "-v", "--version":
 		fmt.Println("cronica", version)
 	case "ayuda", "-h", "--help", "help":
@@ -79,7 +86,8 @@ Uso:
   cronica bandeja              Crónica completa: icono en la bandeja, vigila, narra y abre el chat del cronista
   cronica demo                 prueba completa: narra una sesión de ejemplo y abre la web
   cronica ver                  abre en el navegador la web de tu crónica
-  cronica iniciar              crea cronica.json con la configuración
+  cronica iniciar              busca WoW, instala el addon y crea cronica.json
+  cronica instalar-addon       reinstala o actualiza el addon en la carpeta del juego
   cronica preparar             comprueba Claude Code y, si hace falta, te ayuda a instalarlo e iniciar sesión
   cronica instalar             arranca «vigilar» solo al iniciar sesión en el PC (una sola vez)
   cronica desinstalar          quita el arranque automático
@@ -144,8 +152,8 @@ func run(cmd string, args []string) error {
 	if *max > 0 {
 		cfg.MaxPerRun = *max
 	}
-	if cfg.SavedVariables == "" {
-		return fmt.Errorf("falta la ruta de Cronica.lua (campo «savedvariables» en %s)", *cfgPath)
+	if cfg.SavedVariables == "" && cfg.WoW == "" {
+		return fmt.Errorf("falta la carpeta del juego (campo «wow») o la ruta de Cronica.lua («savedvariables») en %s", *cfgPath)
 	}
 
 	if *atBoot {
@@ -179,30 +187,92 @@ func run(cmd string, args []string) error {
 func initConfig(args []string) error {
 	fl := flag.NewFlagSet("iniciar", flag.ExitOnError)
 	path := fl.String("config", "cronica.json", "")
+	wowDir := fl.String("wow", "", "")
 	fl.Parse(args)
 	if _, err := os.Stat(*path); err == nil {
-		return fmt.Errorf("%s ya existe; edítalo directamente", *path)
+		return fmt.Errorf("%s ya existe; edítalo directamente (o bórralo para empezar de cero). Para reinstalar solo el addon: cronica instalar-addon", *path)
 	}
-	wow := "/ruta/a/World of Warcraft/_forever_/WTF/Account/TU_CUENTA/SavedVariables/Cronica.lua"
-	addon := "/ruta/a/World of Warcraft/_forever_/Interface/AddOns/Cronica/CronicaTextos.lua"
-	if runtime.GOOS == "windows" {
-		wow = `C:\Program Files (x86)\World of Warcraft\_forever_\WTF\Account\TU_CUENTA\SavedVariables\Cronica.lua`
-		addon = `C:\Program Files (x86)\World of Warcraft\_forever_\Interface\AddOns\Cronica\CronicaTextos.lua`
+	cfg := app.Config{Repo: ".", Claude: "claude", MaxPerRun: 12, ChainWindow: 90}
+
+	var extra []string
+	if *wowDir != "" {
+		extra = append(extra, *wowDir, filepath.Dir(*wowDir))
 	}
-	cfg := app.Config{
-		SavedVariables: wow,
-		Repo:           ".",
-		AddonTexts:     addon,
-		Claude:         "claude",
-		Publish:        false,
-		MaxPerRun:      12,
-		ChainWindow:    90,
+	flavor, err := pickFlavor(extra)
+	if err != nil {
+		fmt.Println(err)
+		fmt.Println("Puedes indicarla tú: cronica iniciar -wow \"C:\\...\\World of Warcraft\\_carpeta_de_forever_\"")
+	} else {
+		cfg.WoW = flavor.Path
+		dir, err := wow.InstallAddon(flavor, cronicaforever.Files)
+		if err != nil {
+			fmt.Println("✗ No he podido instalar el addon:", err)
+		} else {
+			fmt.Println("✓ Addon instalado en", dir)
+			cfg.AddonTexts = filepath.Join(dir, "CronicaTextos.lua")
+		}
+		if acc := wow.Accounts(flavor); len(acc) == 1 {
+			cfg.SavedVariables = wow.SavedVariablesPath(flavor, acc[0])
+		}
+		// Con varias cuentas (o ninguna todavía) se usa el Cronica.lua más reciente.
+	}
+	if out, err := exec.Command("git", "-C", ".", "remote", "get-url", "origin").Output(); err == nil && strings.Contains(string(out), "cronica") {
+		cfg.Publish = true
+		fmt.Println("✓ Repositorio de GitHub detectado: se publicará la crónica (\"publicar\": true).")
+	} else {
+		fmt.Println("· No estás en la carpeta del repositorio clonado: la crónica se guardará aquí sin publicar.")
 	}
 	b, _ := json.MarshalIndent(cfg, "", "  ")
 	if err := os.WriteFile(*path, append(b, '\n'), 0o644); err != nil {
 		return err
 	}
 	abs, _ := filepath.Abs(*path)
-	fmt.Printf("He creado %s.\nRevisa las rutas (la carpeta exacta de Forever puede variar) y luego ejecuta «cronica procesar».\n", abs)
+	fmt.Printf("\nHe creado %s.\nSiguiente paso: «cronica instalar» para que Crónica arranque sola con el PC (o «cronica bandeja» para abrirla ahora).\n", abs)
+	return nil
+}
+
+// pickFlavor busca las instalaciones del juego y, si hay varias, pregunta cuál usar.
+func pickFlavor(extra []string) (wow.Flavor, error) {
+	found := wow.Find(extra...)
+	if len(found) == 0 {
+		return wow.Flavor{}, fmt.Errorf("no encuentro World of Warcraft en las carpetas habituales")
+	}
+	if len(found) == 1 {
+		fmt.Println("✓ World of Warcraft encontrado:", found[0].Path)
+		return found[0], nil
+	}
+	fmt.Println("He encontrado varias versiones del juego:")
+	for i, f := range found {
+		fmt.Printf("  %d) %s\n", i+1, f.Path)
+	}
+	fmt.Printf("¿Cuál es WoW Forever? [1-%d, Intro = 1] ", len(found))
+	line, _ := bufio.NewReader(os.Stdin).ReadString('\n')
+	n, err := strconv.Atoi(strings.TrimSpace(line))
+	if err != nil || n < 1 || n > len(found) {
+		n = 1
+	}
+	return found[n-1], nil
+}
+
+// installAddonCmd reinstala (o actualiza) el addon en la carpeta del juego configurada.
+func installAddonCmd(args []string) error {
+	fl := flag.NewFlagSet("instalar-addon", flag.ExitOnError)
+	cfgPath := fl.String("config", "cronica.json", "")
+	fl.Parse(args)
+	cfg, err := app.LoadConfig(*cfgPath)
+	if err != nil {
+		return fmt.Errorf("no puedo leer %s (ejecuta antes «cronica iniciar»): %w", *cfgPath, err)
+	}
+	var f wow.Flavor
+	if cfg.WoW != "" {
+		f = wow.Flavor{Name: filepath.Base(cfg.WoW), Path: cfg.WoW}
+	} else if f, err = pickFlavor(nil); err != nil {
+		return err
+	}
+	dir, err := wow.InstallAddon(f, cronicaforever.Files)
+	if err != nil {
+		return err
+	}
+	fmt.Println("✓ Addon instalado en", dir, "— si el juego está abierto, haz /reload.")
 	return nil
 }

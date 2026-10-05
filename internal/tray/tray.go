@@ -53,6 +53,7 @@ type State struct {
 // Actions son las respuestas a los clics del menú.
 type Actions struct {
 	OpenChronicle func()
+	OpenQuests    func()
 	OpenCharacter func(key string) // key vacío = página de personajes
 	NarrateNow    func()
 	FixClaude     func()
@@ -124,6 +125,7 @@ func (a *App) build() {
 		}(i, mi)
 	}
 
+	quests := systray.AddMenuItem("Misiones en curso", "Tus misiones contadas por el cronista, al momento")
 	chron := systray.AddMenuItem("Abrir mi crónica", "La web con tus relatos")
 	chars := systray.AddMenuItem("Personajes e historias", "Crear o reescribir la historia de un personaje")
 	now := systray.AddMenuItem("Narrar ahora", "Procesar ya lo que haya guardado el juego")
@@ -140,6 +142,7 @@ func (a *App) build() {
 			}
 		}()
 	}
+	click(quests, a.act.OpenQuests)
 	click(chron, a.act.OpenChronicle)
 	click(chars, func() {
 		if a.act.OpenCharacter != nil {

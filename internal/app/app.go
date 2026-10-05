@@ -18,12 +18,16 @@ import (
 	"github.com/Nehonar/cronica-forever/internal/model"
 	"github.com/Nehonar/cronica-forever/internal/narrate"
 	"github.com/Nehonar/cronica-forever/internal/store"
+	"github.com/Nehonar/cronica-forever/internal/wow"
 )
 
 // Config es el contenido de cronica.json.
 type Config struct {
-	// Ruta a WTF/Account/<CUENTA>/SavedVariables/Cronica.lua
+	// Ruta a WTF/Account/<CUENTA>/SavedVariables/Cronica.lua. Si se deja vacía y
+	// está «wow», se usa el Cronica.lua más reciente de cualquier cuenta.
 	SavedVariables string `json:"savedvariables"`
+	// Carpeta de la versión del juego (p. ej. C:\...\World of Warcraft\_forever_).
+	WoW string `json:"wow,omitempty"`
 	// Carpeta del repositorio cronica-forever (donde están docs/ y personajes/).
 	Repo string `json:"repo"`
 	// Ruta a Interface/AddOns/Cronica/CronicaTextos.lua (opcional hasta que exista el addon).
@@ -57,7 +61,7 @@ func LoadConfig(path string) (Config, error) {
 		}
 		return filepath.Join(base, p)
 	}
-	c.SavedVariables, c.Repo, c.AddonTexts = abs(c.SavedVariables), abs(c.Repo), abs(c.AddonTexts)
+	c.SavedVariables, c.Repo, c.AddonTexts, c.WoW = abs(c.SavedVariables), abs(c.Repo), abs(c.AddonTexts), abs(c.WoW)
 	return c, nil
 }
 
@@ -71,6 +75,8 @@ type Runner struct {
 	Notify func(title, message string)
 	// OnResult se llama tras cada pasada (la bandeja lo usa para refrescar su menú).
 	OnResult func(Result, error)
+	// Inform muestra un aviso discreto (misiones nuevas). nil = sin avisos.
+	Inform func(title, message string)
 
 	mu         sync.Mutex
 	status     store.Status
@@ -121,6 +127,7 @@ type Result struct {
 	// Personajes sin trasfondo: su progreso se registra pero no se narra hasta que lo tengan.
 	NeedsBackstory []CharacterInfo
 	LastTitle      string
+	NewEncargos    int
 }
 
 // CharacterInfo describe un personaje para la bandeja y la entrevista.
@@ -145,11 +152,24 @@ func (r *Runner) Process(ctx context.Context) (res Result, err error) {
 	return r.process(ctx)
 }
 
+// SVPath es el archivo del addon que se lee: el configurado o, si no hay, el
+// más reciente de cualquier cuenta de la carpeta del juego.
+func (r *Runner) SVPath() string {
+	if r.Cfg.SavedVariables != "" || r.Cfg.WoW == "" {
+		return r.Cfg.SavedVariables
+	}
+	return wow.LatestSavedVariables(r.Cfg.WoW)
+}
+
 func (r *Runner) process(ctx context.Context) (Result, error) {
 	var res Result
-	chars, err := model.LoadSavedVariables(r.Cfg.SavedVariables)
+	sv := r.SVPath()
+	if sv == "" {
+		return res, fmt.Errorf("aún no hay datos del addon: entra al juego con el addon activado y haz /reload o sal")
+	}
+	chars, err := model.LoadSavedVariables(sv)
 	if err != nil {
-		return res, fmt.Errorf("no puedo leer %s: %w", r.Cfg.SavedVariables, err)
+		return res, fmt.Errorf("no puedo leer %s: %w", sv, err)
 	}
 	paths := store.Paths{Repo: r.Cfg.Repo}
 	opt := group.DefaultOptions()
@@ -179,6 +199,53 @@ func (r *Runner) process(ctx context.Context) (Result, error) {
 			return res, err
 		}
 		doc.Character, doc.Level, doc.Realm = sheet, c.Level, c.Realm
+
+		// Misiones aceptadas: se narran al momento para leerlas en la app.
+		todo := doc.SyncEncargos(questMaps(c.Events))
+		if sheet.Backstory != "" {
+			var titles []string
+			for _, i := range todo {
+				if res.NewEncargos >= 10 {
+					break
+				}
+				e := &doc.Encargos[i]
+				r.logf("%s · nueva misión: «%s»…", c.Name, e.Title)
+				h, txt, err := narrate.Encargo(ctx, r.Narrator, sheet, narrate.QuestInfo{
+					Title: e.Title, Giver: e.Giver, Zone: e.Zone, Subzone: e.Subzone, Text: e.Original, Objectives: e.Objectives,
+				})
+				if err != nil {
+					r.logf("  ✗ %v", err)
+					if r.CheckClaude(ctx) != nil {
+						break
+					}
+					continue
+				}
+				e.Heading, e.Text, e.Narrated = h, txt, time.Now().UTC().Format(time.RFC3339)
+				res.NewEncargos++
+				titles = append(titles, e.Title)
+				r.logf("  ✓ «%s»", h)
+				if err := paths.SaveDoc(doc); err != nil {
+					return res, err
+				}
+			}
+			if len(titles) > 0 && r.Inform != nil {
+				msg := "«" + titles[0] + "»"
+				if len(titles) > 1 {
+					msg = fmt.Sprintf("%s y %d más", msg, len(titles)-1)
+				}
+				r.Inform("Crónica: nueva misión", msg+". Léela en Misiones.")
+			}
+			if _, ok := paths.LoadPhrases(c.Key); !ok {
+				r.logf("%s · escribiendo sus frases…", c.Name)
+				if ph, err := narrate.Phrases(ctx, r.Narrator, sheet); err != nil {
+					r.logf("  ✗ frases: %v", err)
+				} else if err := paths.SavePhrases(c.Key, ph); err != nil {
+					r.logf("  ✗ frases: %v", err)
+				} else {
+					r.logf("  ✓ frases listas")
+				}
+			}
+		}
 
 		built := group.Build(c.Events, now().Unix(), opt)
 		if sheet.Backstory == "" {
@@ -253,7 +320,13 @@ func (r *Runner) process(ctx context.Context) (Result, error) {
 		return res, err
 	}
 	if r.Cfg.AddonTexts != "" {
-		if err := store.WriteAddonTexts(r.Cfg.AddonTexts, docs, 40, r.status); err != nil {
+		phrases := map[string]store.Phrases{}
+		for _, d := range docs {
+			if ph, ok := paths.LoadPhrases(d.Key); ok {
+				phrases[d.Key] = ph
+			}
+		}
+		if err := store.WriteAddonTexts(r.Cfg.AddonTexts, docs, 40, r.status, phrases); err != nil {
 			r.logf("No he podido escribir los textos del addon: %v", err)
 		}
 	}
@@ -350,25 +423,31 @@ func Publish(repo, message string, out io.Writer) error {
 // (el juego lo escribe al salir o al hacer /reload).
 func (r *Runner) Watch(ctx context.Context, every time.Duration) error {
 	var last time.Time
-	r.logf("Vigilando %s (Ctrl+C para salir)", r.Cfg.SavedVariables)
+	var lastPath string
+	r.logf("Vigilando los datos del addon (Ctrl+C para salir)")
 	r.CheckClaude(ctx)
 	for {
-		info, err := os.Stat(r.Cfg.SavedVariables)
+		path := r.SVPath()
+		if path != lastPath && path != "" {
+			r.logf("Archivo del addon: %s", path)
+			lastPath, last = path, time.Time{}
+		}
+		info, err := os.Stat(path)
 		switch {
-		case errors.Is(err, os.ErrNotExist):
+		case path == "" || errors.Is(err, os.ErrNotExist):
 			// aún no existe: el addon no ha guardado nada todavía
 		case err != nil:
 			r.logf("No puedo leer el archivo: %v", err)
 		case info.ModTime().After(last):
 			if !last.IsZero() {
-				time.Sleep(2 * time.Second) // dejar que el juego termine de escribir
+				time.Sleep(time.Second) // dejar que el juego termine de escribir
 			}
 			last = info.ModTime()
 			res, err := r.Process(ctx)
 			if err != nil {
 				r.logf("Error: %v", err)
 			} else {
-				r.logf("Listo: %d relato(s) nuevo(s), %d pendiente(s).", res.NewStories, res.Pending)
+				r.logf("Listo: %d relato(s) y %d misión(es) nuevas, %d pendiente(s).", res.NewStories, res.NewEncargos, res.Pending)
 			}
 		}
 		// Si Claude estaba sin sesión, se vuelve a comprobar cada 10 minutos.
@@ -381,4 +460,23 @@ func (r *Runner) Watch(ctx context.Context, every time.Duration) error {
 		case <-time.After(every):
 		}
 	}
+}
+
+// questMaps extrae de los eventos las misiones aceptadas, entregadas y abandonadas.
+func questMaps(events []model.Event) (accepts, turnins, abandons map[int64]store.Encargo) {
+	accepts, turnins, abandons = map[int64]store.Encargo{}, map[int64]store.Encargo{}, map[int64]store.Encargo{}
+	lastAccept := map[int64]int64{}
+	for _, e := range events {
+		switch e.Type {
+		case model.EvQuestAccept:
+			lastAccept[e.ID] = e.T
+			accepts[e.ID] = store.Encargo{ID: e.ID, Title: e.Title, Giver: e.NPC, Zone: e.Zone, Subzone: e.Subzone,
+				Objectives: e.Objectives, Original: e.Text, AcceptT: e.T}
+		case model.EvQuestTurnin:
+			turnins[e.ID] = store.Encargo{ID: e.ID, AcceptT: lastAccept[e.ID]}
+		case model.EvQuestAbandon:
+			abandons[e.ID] = store.Encargo{ID: e.ID, AcceptT: lastAccept[e.ID]}
+		}
+	}
+	return
 }

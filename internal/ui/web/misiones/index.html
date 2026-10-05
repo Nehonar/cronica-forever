@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Misiones · Crónica de Forever</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Marcellus+SC&family=IM+Fell+English:ital@0;1&family=Alegreya+Sans:wght@400;500;700&display=swap">
+<link rel="stylesheet" href="/estilo.css">
+<link rel="stylesheet" href="/personaje/chat.css">
+<style>
+  .quests-wrap { max-width: 860px; margin: 0 auto; width: 100%; }
+  .q { padding: 6px 0 26px; border-bottom: 1px dashed var(--line); margin-bottom: 26px; }
+  .q:last-child { border-bottom: 0; }
+  .q.fresh h2::after { content: "NUEVA"; font-family: var(--font-ui); font-size: .7rem; letter-spacing: .1em; vertical-align: middle; margin-left: 10px; padding: 2px 6px; border-radius: 3px; background: var(--gold); color: var(--parch); }
+  .q h2 { margin: 2px 0 2px; }
+  .q .orig { font-family: var(--font-body); font-style: italic; color: var(--ink-soft); margin-bottom: 14px; }
+  .todo { margin-top: 14px; padding: 12px 16px; border-left: 3px solid var(--rubric); background: rgba(0,0,0,.04); }
+  .todo .rubric { font-size: .78rem; margin-bottom: 4px; }
+  .todo p { margin: 0; font-family: var(--font-ui); font-size: 1rem; }
+  .writing { font-family: var(--font-body); font-style: italic; color: var(--ink-soft); }
+  .writing::after { content: "▍"; animation: blink 1s steps(2) infinite; color: var(--gold); margin-left: 2px; }
+  details.notes { margin-top: 10px; }
+  details.notes summary { cursor: pointer; font-family: var(--font-body); font-style: italic; color: var(--ink-soft); font-size: 1.05rem; }
+  .done-list { margin: 0; padding-left: 1.2em; font-family: var(--font-body); color: var(--ink-soft); }
+  .done-list li { margin: 2px 0; }
+  .pick-row { display: flex; gap: 10px; align-items: center; }
+  select.pick { font: inherit; font-family: var(--font-display); color: var(--frame-title); background: #0d0a06; border: 1px solid var(--frame-line); border-radius: 4px; padding: 8px 10px; min-height: 40px; }
+  @media (prefers-reduced-motion: reduce) { .writing::after { animation: none; } }
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <filter id="deckle" x="-2%" y="-2%" width="104%" height="104%">
+    <feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="3" seed="11" result="t"/>
+    <feDisplacementMap in="SourceGraphic" in2="t" scale="9" xChannelSelector="R" yChannelSelector="G"/>
+  </filter>
+</svg>
+<div class="wrap">
+  <header class="frame bar">
+    <div>
+      <div class="bar-title">MISIONES EN CURSO</div>
+      <div class="bar-sub" id="sub">Lo que te han encargado, contado por el cronista</div>
+    </div>
+    <div class="pick-row">
+      <select class="pick" id="pick" aria-label="Personaje" hidden></select>
+      <a class="btn dark" href="/">Ver la crónica</a>
+    </div>
+  </header>
+  <main class="page quests-wrap" id="list" aria-live="polite"></main>
+</div>
+<script src="misiones.js"></script>
+</body>
+</html>

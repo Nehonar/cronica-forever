@@ -19,6 +19,33 @@ Web: https://nehonar.github.io/cronica-forever/
 | Web | Funcionando, con un personaje de demostración |
 | Addon | Pendiente: de momento se prueba con `samples/Cronica.lua` |
 
+## Instalación en Windows (para jugar)
+
+1. **Claude Code**: si no lo tienes, Crónica te ofrecerá instalarlo con el instalador oficial (o hazlo tú: `irm https://claude.ai/install.ps1 | iex` en PowerShell) e iniciar sesión.
+2. **Clona este repositorio** donde quieras, por ejemplo en tu carpeta de usuario:
+   ```
+   git clone https://github.com/Nehonar/cronica-forever.git
+   cd cronica-forever
+   ```
+3. **Consigue `cronica.exe`** y déjalo en esa carpeta: descárgalo de la última ejecución de *Actions* (artefacto «cronica») o, si tienes Go, `go install github.com/Nehonar/cronica-forever/cmd/cronica@latest`.
+4. **Prepáralo todo** (busca WoW, instala el addon y crea `cronica.json`):
+   ```
+   .\cronica.exe iniciar
+   ```
+5. **Que arranque solo con el PC** (y ábrelo ya en la bandeja):
+   ```
+   .\cronica.exe instalar
+   ```
+6. **En el juego**: activa el addon «Crónica» y, en *Opciones → Atajos → Crónica*, asigna teclas a «Decir en voz alta la frase de mi personaje» y «Enviar a Crónica».
+
+Si tu personaje se llama igual que una ficha que ya existe (por ejemplo Nehonar), hereda su historia; si no, el icono te avisará para crearla con el cronista.
+
+### En el juego
+
+- **Aceptar y leer en Crónica**: botón en la ventana de misión. Acepta, recarga (2-3 s) y en unos segundos la misión aparece contada en *Misiones en curso* (menú del icono), con lo que hay que hacer debajo.
+- **Frases del personaje**: `/cronica frases no | local | voz`. En *local* solo las ves tú; en *voz* aparecen en pantalla y, al pulsar tu tecla (o hacer clic en ellas), tu personaje las dice en /decir. Blizzard no deja que un addon hable por su cuenta, por eso hace falta la tecla.
+- `/cronica espera <minutos>`: como mucho una frase cada tantos minutos (4 por defecto). `/cronica`: estado y comandos.
+
 ## Probarlo en 3 pasos (Linux)
 
 ```bash

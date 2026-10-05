@@ -11,14 +11,15 @@ import (
 
 // Tipos de evento que escribe el addon.
 const (
-	EvLogin       = "login"
-	EvLogout      = "logout"
-	EvLevel       = "level"
-	EvZone        = "zone"
-	EvQuestAccept = "quest_accept"
-	EvQuestTurnin = "quest_turnin"
-	EvEquip       = "equip"
-	EvDeath       = "death"
+	EvLogin        = "login"
+	EvLogout       = "logout"
+	EvLevel        = "level"
+	EvZone         = "zone"
+	EvQuestAccept  = "quest_accept"
+	EvQuestTurnin  = "quest_turnin"
+	EvEquip        = "equip"
+	EvDeath        = "death"
+	EvQuestAbandon = "quest_abandon"
 )
 
 // Event es una cosa que ha pasado en el juego.

@@ -103,6 +103,9 @@ type Fake struct{}
 
 // Generate implementa Narrator.
 func (Fake) Generate(_ context.Context, _ string, prompt string) (string, error) {
+	if strings.Contains(prompt, "Responde SOLO con un objeto JSON") {
+		return `{"nivel":["Me noto más fuerte."],"muerte":["Arriba."],"zona":["Tierra nueva."],"aceptar":["Otro encargo."],"entregar":["Hecho."],"equipo":["{objeto}. Se nota."],"descanso":["Un respiro."]}`, nil
+	}
 	first := strings.SplitN(prompt, "\n", 2)[0]
 	return "TÍTULO: Relato de prueba\n\nTexto de prueba generado sin IA.\n\nSegundo párrafo de prueba.\n\nRESUMEN: Prueba. " + first, nil
 }

@@ -71,10 +71,15 @@ func (s *Server) Stop() {
 func (s *Server) Handler() http.Handler {
 	mux := http.NewServeMux()
 	sub, _ := fs.Sub(webFiles, "web")
-	mux.Handle("/personaje/", http.StripPrefix("/personaje/", http.FileServer(http.FS(sub))))
-	mux.HandleFunc("/personaje", func(w http.ResponseWriter, r *http.Request) {
-		http.Redirect(w, r, "/personaje/"+query(r), http.StatusFound)
-	})
+	files := http.FileServer(http.FS(sub))
+	for _, page := range []string{"/personaje", "/misiones"} {
+		page := page
+		mux.Handle(page+"/", files)
+		mux.HandleFunc(page, func(w http.ResponseWriter, r *http.Request) {
+			http.Redirect(w, r, page+"/"+query(r), http.StatusFound)
+		})
+	}
+	mux.HandleFunc("/api/misiones", s.apiQuests)
 	mux.HandleFunc("/api/personajes", s.apiCharacters)
 	mux.HandleFunc("/api/entrevista", s.apiInterview)
 	mux.HandleFunc("/api/guardar", s.apiSave)
@@ -120,7 +125,7 @@ type CharacterView struct {
 }
 
 func (s *Server) characters() ([]CharacterView, map[string]model.Character, error) {
-	chars, err := model.LoadSavedVariables(s.Runner.Cfg.SavedVariables)
+	chars, err := model.LoadSavedVariables(s.Runner.SVPath())
 	if err != nil {
 		return nil, nil, err
 	}
@@ -248,6 +253,50 @@ func (s *Server) apiSave(w http.ResponseWriter, r *http.Request) {
 	// Narrar ya lo que estaba esperando a esta historia.
 	go s.Runner.Process(context.Background())
 	writeJSON(w, map[string]any{"ok": true, "key": req.Key})
+}
+
+// apiQuests devuelve las misiones aceptadas de un personaje (o del más reciente).
+func (s *Server) apiQuests(w http.ResponseWriter, r *http.Request) {
+	list, _, err := s.characters()
+	if err != nil {
+		writeErr(w, http.StatusInternalServerError, "No puedo leer los datos del addon: "+err.Error())
+		return
+	}
+	paths := store.Paths{Repo: s.Runner.Cfg.Repo}
+	key := r.URL.Query().Get("p")
+	var best *store.Doc
+	for _, c := range list {
+		d, err := paths.LoadDoc(c.Key)
+		if err != nil {
+			continue
+		}
+		if c.Key == key {
+			best = d
+			break
+		}
+		if key == "" && (best == nil || latest(d) > latest(best)) {
+			best = d
+		}
+	}
+	resp := map[string]any{"characters": list}
+	if best != nil {
+		name := best.Character.Name
+		if name == "" {
+			name = best.Key
+		}
+		resp["key"], resp["name"], resp["encargos"] = best.Key, name, best.Encargos
+	}
+	writeJSON(w, resp)
+}
+
+func latest(d *store.Doc) int64 {
+	var t int64
+	for _, e := range d.Encargos {
+		if e.AcceptT > t {
+			t = e.AcceptT
+		}
+	}
+	return t
 }
 
 func writeJSON(w http.ResponseWriter, v any) {

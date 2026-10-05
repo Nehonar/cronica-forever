@@ -1,0 +1,8 @@
+<Bindings>
+	<Binding name="CRONICA_DECIR" header="CRONICA" category="ADDONS">
+		Cronica_Decir()
+	</Binding>
+	<Binding name="CRONICA_LEER" category="ADDONS">
+		Cronica_Leer()
+	</Binding>
+</Bindings>

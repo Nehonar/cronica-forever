@@ -68,7 +68,7 @@ func runTray(args []string) error {
 		trayApp *tray.App
 		last    app.Result
 	)
-	r := &app.Runner{Cfg: cfg, Narrator: n, Out: out, Notify: system.Notify}
+	r := &app.Runner{Cfg: cfg, Narrator: n, Out: out, Notify: system.Notify, Inform: system.Toast}
 	update := func() {
 		mu.Lock()
 		defer mu.Unlock()
@@ -103,7 +103,7 @@ func runTray(args []string) error {
 		return fmt.Errorf("no puedo arrancar el servidor local: %w", err)
 	}
 	defer srv.Stop()
-	fmt.Fprintf(out, "%s  Web local: %s  ·  Chat del cronista: %spersonaje/\n", time.Now().Format("15:04:05"), srv.URL(), srv.URL())
+	fmt.Fprintf(out, "%s  Web local: %s  ·  Misiones: %smisiones/  ·  Cronista: %spersonaje/\n", time.Now().Format("15:04:05"), srv.URL(), srv.URL(), srv.URL())
 
 	setup := func() {
 		if *fake {
@@ -118,7 +118,7 @@ func runTray(args []string) error {
 			time.Sleep(20 * time.Second)
 		}
 		setup()
-		r.Watch(ctx, 5*time.Second)
+		r.Watch(ctx, 2*time.Second)
 	}()
 
 	if *headless {
@@ -127,6 +127,7 @@ func runTray(args []string) error {
 	}
 	tray.Run(tray.Actions{
 		OpenChronicle: func() { openBrowser(srv.URL()) },
+		OpenQuests:    func() { openBrowser(srv.URL() + "misiones/") },
 		OpenCharacter: func(key string) {
 			u := srv.URL() + "personaje/"
 			if key != "" {
