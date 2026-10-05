@@ -9,6 +9,7 @@ import (
 	"os"
 	"path/filepath"
 	"sort"
+	"strings"
 	"time"
 
 	"github.com/Nehonar/cronica-forever/internal/group"
@@ -403,4 +404,45 @@ func (p Paths) LoadPhrases(key string) (Phrases, bool) {
 // SavePhrases guarda la baraja de frases de un personaje.
 func (p Paths) SavePhrases(key string, ph Phrases) error {
 	return writeJSON(filepath.Join(p.SheetsDir(), key+".frases.json"), ph)
+}
+
+// ---------- Borrar ----------
+
+func (p Paths) deletedFile() string { return filepath.Join(p.SheetsDir(), "borrados.json") }
+
+// DeletedAt devuelve desde cuándo vale la crónica de un personaje (0 = nunca se
+// borró). Lo anterior a esa fecha no se vuelve a narrar aunque siga en el juego.
+func (p Paths) DeletedAt(key string) int64 {
+	var m map[string]int64
+	if b, err := os.ReadFile(p.deletedFile()); err == nil {
+		json.Unmarshal(b, &m)
+	}
+	return m[key]
+}
+
+// DeleteCharacter borra la crónica de un personaje: sus relatos y misiones y,
+// si all, también su historia y sus frases. Lo jugado hasta ahora no se vuelve a
+// narrar; si sigues jugándolo, el cronista empieza desde este momento.
+func (p Paths) DeleteCharacter(key string, all bool, now int64) error {
+	if key == "" || strings.ContainsAny(key, `/\`) || strings.Contains(key, "..") {
+		return fmt.Errorf("personaje no válido")
+	}
+	files := []string{filepath.Join(p.DataDir(), key+".json")}
+	if all {
+		files = append(files, filepath.Join(p.SheetsDir(), key+".json"), filepath.Join(p.SheetsDir(), key+".frases.json"))
+	}
+	for _, f := range files {
+		if err := os.Remove(f); err != nil && !errors.Is(err, fs.ErrNotExist) {
+			return err
+		}
+	}
+	m := map[string]int64{}
+	if b, err := os.ReadFile(p.deletedFile()); err == nil {
+		json.Unmarshal(b, &m)
+	}
+	m[key] = now
+	if err := writeJSON(p.deletedFile(), m); err != nil {
+		return err
+	}
+	return p.SaveIndex()
 }

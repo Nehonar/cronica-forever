@@ -136,6 +136,13 @@ type Runner struct {
 	announced  map[string]bool
 }
 
+// Exclusive ejecuta f sin que haya ninguna pasada en marcha a la vez.
+func (r *Runner) Exclusive(f func() error) error {
+	r.mu.Lock()
+	defer r.mu.Unlock()
+	return f()
+}
+
 // Config devuelve una copia de la configuración en uso.
 func (r *Runner) Config() Config {
 	r.cfgMu.RLock()
@@ -255,6 +262,16 @@ func (r *Runner) process(ctx context.Context) (Result, error) {
 
 	var docs []*store.Doc
 	for _, c := range chars {
+		// Si borraste su crónica, lo anterior a ese momento no se vuelve a contar.
+		if since := paths.DeletedAt(c.Key); since > 0 {
+			var evs []model.Event
+			for _, e := range c.Events {
+				if e.T >= since {
+					evs = append(evs, e)
+				}
+			}
+			c.Events = evs
+		}
 		sheet, created, err := paths.LoadSheet(c.Key, c.Name, c.Race, c.Class)
 		if err != nil {
 			return res, err

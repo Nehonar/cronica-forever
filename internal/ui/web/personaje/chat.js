@@ -208,6 +208,56 @@
     }
   }
 
+  /* ---------- Borrar la crónica ---------- */
+  function renderTools(c) {
+    let tools = $("c-tools");
+    if (!tools) {
+      tools = el("div", { id: "c-tools", class: "c-tools" });
+      $("c-facts").after(tools);
+    }
+    tools.replaceChildren(el("button", { class: "link-btn", type: "button", onclick: () => renderDelete(c) }, "Borrar su crónica…"));
+  }
+
+  function renderDelete(c) {
+    const old = $("del-panel");
+    if (old) { old.remove(); return; }
+    const name = c.title || c.name;
+    const choice = (label, desc, all) => {
+      const b = el("button", { class: "btn dark", type: "button" }, label);
+      b.addEventListener("click", async () => {
+        if (!b.dataset.sure) {
+          b.dataset.sure = "1";
+          b.textContent = "Sí, borrar";
+          b.classList.remove("dark");
+          return;
+        }
+        b.disabled = true;
+        try {
+          await api("/api/borrar", { key: c.key, todo: all });
+          clearLocal(c.key);
+          panel.replaceChildren(el("p", { class: "done", text: all
+            ? "Borrado. " + name + " ya no está en tu crónica; si vuelves a jugarlo, empezará como personaje nuevo."
+            : "Borrados sus relatos y misiones. Su historia se queda y el cronista empieza de cero a partir de ahora." }));
+          const d = await api("/api/personajes");
+          state.chars = d.characters || [];
+          renderChars();
+        } catch (e) {
+          b.disabled = false;
+          addError(e.message);
+        }
+      });
+      return el("div", { class: "del-choice" }, b, el("p", { class: "hint", text: desc }));
+    };
+    const panel = el("section", { id: "del-panel", class: "del-panel", "aria-label": "Borrar su crónica" },
+      el("div", { class: "rubric", text: "BORRAR SU CRÓNICA" }),
+      el("p", null, "¿Qué quieres borrar de " + name + "? No se puede deshacer, aunque lo ya publicado sigue en el historial de GitHub."),
+      c.solo_cronica ? null : choice("Solo los relatos", "Se quedan su historia y sus frases. Lo jugado hasta ahora no se vuelve a contar; el cronista sigue desde este momento.", false),
+      choice("El personaje entero", "Relatos, misiones, historia y frases. Si vuelves a jugarlo, aparecerá como personaje nuevo para crear su historia otra vez.", true),
+      el("button", { class: "link-btn", type: "button", onclick: () => panel.remove() }, "Cancelar"));
+    $("thread").prepend(panel);
+    panel.scrollIntoView({ block: "nearest", behavior: "smooth" });
+  }
+
   function select(key) {
     const c = state.chars.find((x) => x.key === key);
     if (!c) return;
@@ -220,6 +270,12 @@
       .filter(Boolean).map((t) => el("span", { text: t })));
     $("thread").replaceChildren();
     $("composer").hidden = true;
+    renderTools(c);
+    if (c.solo_cronica) {
+      $("thread").append(el("p", { class: "empty-note", text: "Este personaje está en tu crónica pero no en los datos del juego (por ejemplo, el personaje de prueba). Puedes leer su crónica o borrarla." }),
+        el("p", null, el("a", { class: "btn dark", href: "/#" + encodeURIComponent(key) }, "Ver su crónica")));
+      return;
+    }
     const saved = loadLocal(key);
     state.history = saved && saved.history ? saved.history : [];
     state.sheet = saved ? saved.sheet : null;

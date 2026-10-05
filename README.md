@@ -126,6 +126,14 @@ cronica procesar -sv samples/Cronica.lua -repo /tmp/prueba          # con Claude
 cronica procesar -sv samples/Cronica.lua -repo /tmp/prueba -prueba  # sin llamar a Claude
 ```
 
+## Borrar la crónica de un personaje
+
+En *Personajes*, elige el personaje → **Borrar su crónica…**:
+- **Solo los relatos**: se quedan su historia y sus frases; lo jugado hasta ahora no se vuelve a contar y el cronista sigue desde ese momento.
+- **El personaje entero**: relatos, misiones, historia y frases. Si vuelves a jugarlo, aparece como personaje nuevo.
+
+El borrado se publica en GitHub como cualquier otro cambio (lo anterior queda en el historial del repositorio).
+
 ## Cómo agrupa
 
 - **Cadena**: entregas una misión a un PNJ y ese mismo PNJ te da otra en menos de 90 s. Se narra cuando terminas la cadena, si tiene 3 misiones o más; las de 2 (por ejemplo «ve a hablar con X» y su encargo) se cuentan con las sueltas.

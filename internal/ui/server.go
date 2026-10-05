@@ -11,6 +11,7 @@ import (
 	"io/fs"
 	"net"
 	"net/http"
+	"os"
 	"path/filepath"
 	"sort"
 	"strings"
@@ -159,6 +160,7 @@ func (s *Server) Handler() http.Handler {
 	mux.HandleFunc("/api/personajes", s.apiCharacters)
 	mux.HandleFunc("/api/entrevista", s.apiInterview)
 	mux.HandleFunc("/api/guardar", s.apiSave)
+	mux.HandleFunc("/api/borrar", s.apiDelete)
 	mux.HandleFunc("/api/hola", s.apiHello)
 	mux.HandleFunc("/api/preparar/estado", s.apiSetupState)
 	mux.HandleFunc("/api/preparar/juego", s.apiSetupGame)
@@ -223,13 +225,12 @@ type CharacterView struct {
 	New   bool     `json:"new"`
 	Title string   `json:"title,omitempty"` // nombre de la ficha, si existe
 	Zones []string `json:"zones,omitempty"`
+	// OnlyChronicle: está en la crónica pero no en los datos del juego.
+	OnlyChronicle bool `json:"solo_cronica,omitempty"`
 }
 
 func (s *Server) characters() ([]CharacterView, map[string]model.Character, error) {
-	chars, err := model.LoadSavedVariables(s.Runner.SVPath())
-	if err != nil {
-		return nil, nil, err
-	}
+	chars, svErr := model.LoadSavedVariables(s.Runner.SVPath())
 	paths := store.Paths{Repo: s.Runner.Config().Repo}
 	byKey := map[string]model.Character{}
 	var out []CharacterView
@@ -250,6 +251,31 @@ func (s *Server) characters() ([]CharacterView, map[string]model.Character, erro
 			v.Zones = doc.Stats.Zones
 		}
 		out = append(out, v)
+	}
+	// Personajes que solo están en la crónica (por ejemplo, el de prueba).
+	if entries, err := os.ReadDir(paths.DataDir()); err == nil {
+		for _, e := range entries {
+			name := e.Name()
+			if e.IsDir() || filepath.Ext(name) != ".json" || name == "index.json" {
+				continue
+			}
+			key := strings.TrimSuffix(name, ".json")
+			if _, ok := byKey[key]; ok {
+				continue
+			}
+			doc, err := paths.LoadDoc(key)
+			if err != nil {
+				continue
+			}
+			out = append(out, CharacterView{
+				CharacterInfo: app.CharacterInfo{Key: key, Name: doc.Character.Name, Race: doc.Character.Race, Class: doc.Character.Class, Level: doc.Level},
+				Title:         doc.Character.Name,
+				OnlyChronicle: true,
+			})
+		}
+	}
+	if len(out) == 0 && svErr != nil {
+		return nil, nil, svErr
 	}
 	sort.SliceStable(out, func(i, j int) bool { return out[i].New && !out[j].New })
 	return out, byKey, nil
@@ -412,4 +438,31 @@ func writeErr(w http.ResponseWriter, code int, msg string) {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(code)
 	json.NewEncoder(w).Encode(map[string]string{"error": msg})
+}
+
+// apiDelete borra la crónica de un personaje (solo relatos, o todo).
+func (s *Server) apiDelete(w http.ResponseWriter, r *http.Request) {
+	if r.Method != http.MethodPost {
+		writeErr(w, http.StatusMethodNotAllowed, "usa POST")
+		return
+	}
+	var req struct {
+		Key string `json:"key"`
+		All bool   `json:"todo"`
+	}
+	if err := json.NewDecoder(http.MaxBytesReader(w, r.Body, 4<<10)).Decode(&req); err != nil || req.Key == "" {
+		writeErr(w, http.StatusBadRequest, "petición no válida")
+		return
+	}
+	paths := store.Paths{Repo: s.Runner.Config().Repo}
+	err := s.Runner.Exclusive(func() error { return paths.DeleteCharacter(req.Key, req.All, time.Now().Unix()) })
+	if err != nil {
+		writeErr(w, http.StatusInternalServerError, "No he podido borrarla: "+err.Error())
+		return
+	}
+	go func() {
+		s.Runner.Process(context.Background())
+		s.Runner.PublishNow("Crónica: borrada la crónica de "+req.Key, nil)
+	}()
+	writeJSON(w, map[string]any{"ok": true})
 }
