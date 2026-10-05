@@ -48,6 +48,8 @@ type State struct {
 	LastStory   string      // último relato escrito
 	NewChars    []Character // personajes sin trasfondo
 	PendingText string      // «3 relatos pendientes», etc.
+	GitHub      string      // estado de la publicación («» = no se publica)
+	GitHubError bool
 }
 
 // Actions son las respuestas a los clics del menú.
@@ -70,6 +72,7 @@ type App struct {
 	pending   *State
 	status    *systray.MenuItem
 	claude    *systray.MenuItem
+	github    *systray.MenuItem
 	last      *systray.MenuItem
 	pendingMI *systray.MenuItem
 	newHeader *systray.MenuItem
@@ -131,6 +134,8 @@ func (a *App) build() {
 	chars := systray.AddMenuItem("Personajes e historias", "Crear o reescribir la historia de un personaje")
 	now := systray.AddMenuItem("Narrar ahora", "Procesar ya lo que haya guardado el juego")
 	a.claude = systray.AddMenuItem("Claude: comprobando…", "")
+	a.github = systray.AddMenuItem("", "Ver el estado de la publicación")
+	a.github.Hide()
 	settings := systray.AddMenuItem("Configuración…", "Carpeta del juego, Claude, GitHub y arranque")
 	systray.AddSeparator()
 	quit := systray.AddMenuItem("Salir", "Cerrar Crónica (dejará de narrar hasta que vuelvas a abrirla)")
@@ -154,6 +159,7 @@ func (a *App) build() {
 	click(now, a.act.NarrateNow)
 	click(a.claude, a.act.FixClaude)
 	click(settings, a.act.Settings)
+	click(a.github, a.act.Settings)
 	click(quit, func() {
 		if a.act.Quit != nil {
 			a.act.Quit()
@@ -190,6 +196,16 @@ func (a *App) Update(s State) {
 		a.pendingMI.Show()
 	} else {
 		a.pendingMI.Hide()
+	}
+	if s.GitHub != "" {
+		prefix := "GitHub: "
+		if s.GitHubError {
+			prefix = "⚠ GitHub: "
+		}
+		a.github.SetTitle(prefix + s.GitHub)
+		a.github.Show()
+	} else {
+		a.github.Hide()
 	}
 	if s.ClaudeOK {
 		a.claude.SetTitle("Claude: sesión iniciada ✓")

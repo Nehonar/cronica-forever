@@ -8,9 +8,11 @@ import (
 	"fmt"
 	"io"
 	"net/http"
+	"net/url"
 	"os"
 	"os/signal"
 	"path/filepath"
+	"strings"
 	"sync"
 	"time"
 
@@ -20,6 +22,7 @@ import (
 	"github.com/Nehonar/cronica-forever/internal/system"
 	"github.com/Nehonar/cronica-forever/internal/tray"
 	"github.com/Nehonar/cronica-forever/internal/ui"
+	"github.com/Nehonar/cronica-forever/internal/wow"
 )
 
 // runTray arranca Crónica completa: vigila el archivo del addon, sirve la web y
@@ -69,6 +72,12 @@ func runTray(args []string) error {
 		cfg.Repo = "."
 	}
 	ensureWeb(cfg.Repo)
+	// Mantener el addon al día con la versión del programa (no toca CronicaTextos.lua).
+	if cfg.WoW != "" {
+		if _, err := os.Stat(cfg.WoW); err == nil {
+			wow.InstallAddon(wow.Flavor{Path: cfg.WoW}, cronicaforever.Files)
+		}
+	}
 	needsSetup := firstRun || (cfg.WoW == "" && cfg.SavedVariables == "")
 
 	if *logFile == "" {
@@ -112,11 +121,23 @@ func runTray(args []string) error {
 		for _, c := range last.NeedsBackstory {
 			st.NewChars = append(st.NewChars, tray.Character{Key: c.Key, Label: c.Name + " (" + c.Race + " " + c.Class + ")"})
 		}
+		if r.Config().Publish {
+			p := r.PublishStatus()
+			switch {
+			case p.Err != "":
+				st.GitHub, st.GitHubError = "no se ha podido publicar", true
+			case !p.At.IsZero():
+				st.GitHub = "publicado a las " + p.At.Format("15:04")
+			default:
+				st.GitHub = "al día"
+			}
+		}
 		if last.Pending > 0 {
 			st.PendingText = fmt.Sprintf("%d misión(es) o cadena(s) por completar", last.Pending)
 		}
 		trayApp.Update(st)
 	}
+	r.OnPublish = func() { go update() }
 	r.OnResult = func(res app.Result, err error) {
 		mu.Lock()
 		if res.LastTitle == "" {
@@ -147,7 +168,15 @@ func runTray(args []string) error {
 	defer srv.Stop()
 	fmt.Fprintf(out, "%s  Web local: %s  ·  Misiones: %smisiones/  ·  Cronista: %spersonaje/\n", time.Now().Format("15:04:05"), srv.URL(), srv.URL(), srv.URL())
 
-	setupPage := func() { openBrowser(srv.URL() + "preparar/") }
+	// show lleva la pestaña de Crónica ya abierta a path y la trae delante; si
+	// no hay ninguna (o no se puede traer delante), abre una nueva.
+	show := func(path string) {
+		if system.FocusWindow("Crónica (este PC)") && srv.Navigate(path) {
+			return
+		}
+		openBrowser(srv.URL() + strings.TrimPrefix(path, "/"))
+	}
+	setupPage := func() { show("/preparar/") }
 	go func() {
 		if needsSetup {
 			if !*atBoot {
@@ -175,14 +204,14 @@ func runTray(args []string) error {
 		return nil
 	}
 	tray.Run(tray.Actions{
-		OpenChronicle: func() { openBrowser(srv.URL()) },
-		OpenQuests:    func() { openBrowser(srv.URL() + "misiones/") },
+		OpenChronicle: func() { show("/") },
+		OpenQuests:    func() { show("/misiones/") },
 		OpenCharacter: func(key string) {
-			u := srv.URL() + "personaje/"
+			u := "/personaje/"
 			if key != "" {
-				u += "?p=" + key
+				u += "?p=" + url.QueryEscape(key)
 			}
-			openBrowser(u)
+			show(u)
 		},
 		NarrateNow: func() { go r.Process(ctx) },
 		FixClaude:  setupPage,

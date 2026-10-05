@@ -198,6 +198,9 @@ type GitState struct {
 	Git     bool   `json:"git"`
 	Publish bool   `json:"publicar"`
 	URL     string `json:"url,omitempty"`
+	Last    int64  `json:"ultima,omitempty"`  // última publicación correcta (unix)
+	Tried   int64  `json:"intento,omitempty"` // último intento (unix)
+	Err     string `json:"error,omitempty"`
 }
 
 func flavorViews(list []wow.Flavor) []FlavorView {
@@ -247,6 +250,12 @@ func (s *Server) setupState(ctx context.Context) SetupState {
 		system.Hide(cmd)
 		if out, err := cmd.Output(); err == nil {
 			st.GitHub.URL = strings.TrimSpace(string(out))
+		}
+	}
+	if p := s.Runner.PublishStatus(); !p.T.IsZero() {
+		st.GitHub.Tried, st.GitHub.Err = p.T.Unix(), p.Err
+		if !p.At.IsZero() {
+			st.GitHub.Last = p.At.Unix()
 		}
 	}
 	st.CanAuto = runtime.GOOS == "windows" || runtime.GOOS == "linux"
@@ -535,6 +544,30 @@ func (s *Server) apiSetupAutostart(w http.ResponseWriter, r *http.Request) {
 	}
 	if err != nil {
 		writeErr(w, http.StatusInternalServerError, err.Error())
+		return
+	}
+	writeJSON(w, s.setupState(r.Context()))
+}
+
+func (s *Server) apiSetupPublish(w http.ResponseWriter, r *http.Request) {
+	if r.Method != http.MethodPost {
+		writeErr(w, http.StatusMethodNotAllowed, "usa POST")
+		return
+	}
+	if !s.Runner.Config().Publish {
+		writeErr(w, http.StatusBadRequest, "La publicación en GitHub no está activada.")
+		return
+	}
+	err := s.startTask("Publicar en GitHub", func(ctx context.Context, t *task) error {
+		t.say("Subiendo tu crónica a GitHub…")
+		if err := s.Runner.PublishNow("Crónica: publicada a mano", t); err != nil {
+			return err
+		}
+		t.say("✓ Todo subido. GitHub Pages tarda uno o dos minutos en mostrar los cambios.")
+		return nil
+	})
+	if err != nil {
+		writeErr(w, http.StatusConflict, err.Error())
 		return
 	}
 	writeJSON(w, s.setupState(r.Context()))

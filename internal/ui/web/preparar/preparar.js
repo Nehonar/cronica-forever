@@ -201,6 +201,20 @@
     const ok = g.publicar;
     const body = el("div", { class: "body" });
     if (ok) {
+      const ago = (t) => {
+        const m = Math.round((Date.now() / 1000 - t) / 60);
+        return m < 1 ? "hace un momento" : m < 60 ? "hace " + m + " min" : "a las " + new Date(t * 1000).toLocaleTimeString("es-ES", { hour: "2-digit", minute: "2-digit" });
+      };
+      if (g.error) {
+        body.append(el("div", { class: "callout" },
+          el("div", { class: "rubric", text: "NO SE HA PODIDO PUBLICAR" }),
+          el("p", { class: "err", text: g.error })));
+      } else if (g.ultima) {
+        body.append(el("p", { class: "hint", text: "✓ Última publicación " + ago(g.ultima) + "." }));
+      } else {
+        body.append(el("p", { class: "hint", text: "Aún no se ha publicado nada en esta sesión: se publica solo cada vez que el cronista escribe o guardas una historia." }));
+      }
+      body.append(el("div", { class: "row" }, btn("Publicar ahora", () => act("github", "/api/preparar/publicar", {}))));
       body.append(el("p", { class: "hint", text: "Recuerda activar GitHub Pages en el repositorio: Settings → Pages → rama principal, carpeta /docs." }),
         el("div", { class: "row" },
           btn("Cambiar de repositorio", () => { st.github.publicar = false; lastJSON = ""; render(); }, "dark"),
@@ -218,7 +232,7 @@
         el("p", { class: "hint", text: "La primera vez se abrirá una ventana de GitHub para que entres en tu cuenta. Si no quieres web pública, sáltate este paso." }));
     }
     add(body, errLine("github"));
-    step("s-github", 3, "Web pública en GitHub (opcional)", ok, ok ? "Publicando en " + (g.url || "GitHub") : "Solo en este PC.", false, body);
+    step("s-github", 3, "Web pública en GitHub (opcional)", ok && !g.error, ok ? "Publicando en " + (g.url || "GitHub") : "Solo en este PC.", !!g.error, body);
   }
 
   function stepAutostart() {

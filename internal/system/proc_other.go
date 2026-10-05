@@ -28,3 +28,6 @@ func Alert(title, message string) {
 
 func messageBoxYesNo(title, question string) bool  { return false }
 func pickFolderNative(title string) (string, bool) { return "", false }
+
+// FocusWindow solo está disponible en Windows.
+func FocusWindow(string) bool { return false }

@@ -12,6 +12,7 @@ import (
 	"os"
 	"os/exec"
 	"path/filepath"
+	"regexp"
 	"strings"
 	"sync"
 	"time"
@@ -120,11 +121,16 @@ type Runner struct {
 	Notify func(title, message string)
 	// OnResult se llama tras cada pasada (la bandeja lo usa para refrescar su menú).
 	OnResult func(Result, error)
+	// OnPublish se llama tras cada intento de publicar en GitHub.
+	OnPublish func()
 	// Inform muestra un aviso discreto (misiones nuevas). nil = sin avisos.
 	Inform func(title, message string)
 
 	mu         sync.Mutex
 	cfgMu      sync.RWMutex
+	pubMu      sync.Mutex
+	pub        PublishState
+	pubNotice  time.Time
 	status     store.Status
 	lastNotice time.Time
 	announced  map[string]bool
@@ -392,11 +398,11 @@ func (r *Runner) process(ctx context.Context) (Result, error) {
 			r.logf("No he podido escribir los textos del addon: %v", err)
 		}
 	}
-	if r.Cfg.Publish && res.NewStories > 0 {
-		if err := Publish(r.Cfg.Repo, fmt.Sprintf("Crónica: %d relato(s) nuevo(s)", res.NewStories), r.Out); err != nil {
-			r.logf("No he podido publicar: %v", err)
-		}
+	msg := "Crónica: misiones y personajes al día"
+	if res.NewStories > 0 {
+		msg = fmt.Sprintf("Crónica: %d relato(s) nuevo(s)", res.NewStories)
 	}
+	r.PublishNow(msg, nil)
 	return res, nil
 }
 
@@ -453,7 +459,8 @@ func stats(c model.Character) store.Stats {
 	return s
 }
 
-// Publish hace commit y push de docs/ y personajes/.
+// Publish hace commit y push de docs/ y personajes/. También sube los
+// commits que se quedaron sin subir en un intento anterior.
 func Publish(repo, message string, out io.Writer) error {
 	git := func(args ...string) (string, error) {
 		cmd := exec.Command("git", append([]string{"-C", repo}, args...)...)
@@ -462,25 +469,97 @@ func Publish(repo, message string, out io.Writer) error {
 		b, err := cmd.CombinedOutput()
 		return strings.TrimSpace(string(b)), err
 	}
-	if _, err := git("add", "docs", "personajes"); err != nil {
-		return err
+	add := []string{"add"}
+	for _, d := range []string{"docs", "personajes"} {
+		if _, err := os.Stat(filepath.Join(repo, d)); err == nil {
+			add = append(add, d)
+		}
 	}
-	if _, err := git("diff", "--cached", "--quiet"); err == nil {
+	if len(add) > 1 {
+		if o, err := git(add...); err != nil {
+			return fmt.Errorf("git add: %s", o)
+		}
+	}
+	if _, err := git("diff", "--cached", "--quiet"); err != nil {
+		args := []string{"commit", "-m", message}
+		// Git recién instalado no sabe quién eres: firmar como el dueño del repositorio.
+		if email, _ := git("config", "user.email"); email == "" {
+			owner := "cronica"
+			if u, err := git("config", "--get", "remote.origin.url"); err == nil {
+				if m := reOwner.FindStringSubmatch(u); m != nil {
+					owner = m[1]
+				}
+			}
+			args = append([]string{"-c", "user.name=" + owner, "-c", "user.email=" + owner + "@users.noreply.github.com"}, args...)
+		}
+		if o, err := git(args...); err != nil {
+			return fmt.Errorf("no he podido guardar el cambio (commit): %s", o)
+		}
+	}
+	if ahead, err := git("rev-list", "--count", "@{u}..HEAD"); err == nil && ahead == "0" {
 		return nil // nada que subir
-	}
-	if o, err := git("commit", "-m", message); err != nil {
-		return fmt.Errorf("commit: %s", o)
 	}
 	if _, err := git("push"); err != nil {
 		if o, err := git("pull", "--rebase"); err != nil {
-			return fmt.Errorf("pull: %s", o)
+			git("rebase", "--abort")
+			return fmt.Errorf("no he podido traer los cambios de GitHub: %s", o)
 		}
 		if o, err := git("push"); err != nil {
-			return fmt.Errorf("push: %s", o)
+			return fmt.Errorf("GitHub no acepta la subida: %s", o)
 		}
 	}
 	fmt.Fprintf(out, "%s  Publicado en GitHub.\n", time.Now().Format("15:04:05"))
 	return nil
+}
+
+var reOwner = regexp.MustCompile(`github\.com[/:]([\w.-]+)/`)
+
+// PublishState es el resultado de la última publicación en GitHub.
+type PublishState struct {
+	At  time.Time // última vez que se publicó bien (o que no había nada que subir)
+	Err string    // último error, si lo hubo
+	T   time.Time // última vez que se intentó
+}
+
+// PublishStatus devuelve cómo fue la última publicación.
+func (r *Runner) PublishStatus() PublishState {
+	r.pubMu.Lock()
+	defer r.pubMu.Unlock()
+	return r.pub
+}
+
+// PublishNow publica ya en GitHub (si está activado) y apunta el resultado.
+func (r *Runner) PublishNow(message string, out io.Writer) error {
+	cfg := r.Config()
+	if !cfg.Publish {
+		return nil
+	}
+	if out == nil {
+		out = r.Out
+	}
+	err := Publish(cfg.Repo, message, out)
+	r.pubMu.Lock()
+	r.pub.T = time.Now()
+	if err != nil {
+		r.pub.Err = err.Error()
+	} else {
+		r.pub.Err, r.pub.At = "", time.Now()
+	}
+	notice := err != nil && time.Since(r.pubNotice) > time.Hour
+	if notice {
+		r.pubNotice = time.Now()
+	}
+	r.pubMu.Unlock()
+	if err != nil {
+		r.logf("No he podido publicar en GitHub: %v", err)
+		if notice && r.Notify != nil {
+			r.Notify("Crónica", "No he podido publicar en GitHub. Mira el detalle en el icono de Crónica → Configuración…")
+		}
+	}
+	if r.OnPublish != nil {
+		r.OnPublish()
+	}
+	return err
 }
 
 // Watch vigila el archivo del addon y procesa cada vez que cambia

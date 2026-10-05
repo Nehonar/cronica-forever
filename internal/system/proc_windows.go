@@ -5,6 +5,7 @@ package system
 import (
 	"os/exec"
 	"runtime"
+	"strings"
 	"syscall"
 	"unsafe"
 )
@@ -95,4 +96,39 @@ func pickFolderNative(title string) (string, bool) {
 		return "", true
 	}
 	return syscall.UTF16ToString(path), true
+}
+
+var (
+	procEnumWindows     = user32.NewProc("EnumWindows")
+	procGetWindowText   = user32.NewProc("GetWindowTextW")
+	procIsWindowVisible = user32.NewProc("IsWindowVisible")
+	procIsIconic        = user32.NewProc("IsIconic")
+	procShowWindowW     = user32.NewProc("ShowWindow")
+)
+
+// FocusWindow trae delante la ventana cuyo título contiene text (por ejemplo,
+// la del navegador con la pestaña de Crónica activa). Devuelve false si no la hay.
+func FocusWindow(text string) bool {
+	var found uintptr
+	cb := syscall.NewCallback(func(hwnd, _ uintptr) uintptr {
+		if v, _, _ := procIsWindowVisible.Call(hwnd); v == 0 {
+			return 1
+		}
+		buf := make([]uint16, 512)
+		n, _, _ := procGetWindowText.Call(hwnd, uintptr(unsafe.Pointer(&buf[0])), uintptr(len(buf)))
+		if n > 0 && strings.Contains(syscall.UTF16ToString(buf[:n]), text) {
+			found = hwnd
+			return 0
+		}
+		return 1
+	})
+	procEnumWindows.Call(cb, 0)
+	if found == 0 {
+		return false
+	}
+	if ic, _, _ := procIsIconic.Call(found); ic != 0 {
+		procShowWindowW.Call(found, 9) // SW_RESTORE
+	}
+	procSetForeground.Call(found)
+	return true
 }

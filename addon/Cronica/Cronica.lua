@@ -314,7 +314,9 @@ local function setupButton()
 		recordAccept(id)
 		AcceptQuest()
 		say("misión enviada al cronista; recargando…")
-		C_Timer.After(0.6, Cronica_Leer)
+		-- Recargar dentro del propio clic: si se hace después (con un temporizador),
+		-- el juego lo bloquea («acción bloqueada por un addon»).
+		Cronica_Leer()
 	end)
 	readButton:Hide()
 end

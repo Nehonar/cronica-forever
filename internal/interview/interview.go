@@ -1,5 +1,5 @@
 // Package interview conduce la entrevista con Claude para crear el trasfondo
-// de un personaje nuevo: un cuestionario corto, pregunta a pregunta.
+// de un personaje nuevo: un cuestionario corto que se contesta de una vez.
 package interview
 
 import (
@@ -36,32 +36,23 @@ type Reply struct {
 	Sheet *narrate.Sheet `json:"sheet,omitempty"`
 }
 
-const system = `Eres el cronista de «Crónica de Forever». Vas a ayudar a un jugador a crear el trasfondo de su personaje de World of Warcraft: Forever (el Azeroth de WoW Classic), mediante una entrevista corta y amable, en español de España.
+const system = `Eres el cronista de «Crónica de Forever». Vas a ayudar a un jugador a crear el trasfondo de su personaje de World of Warcraft: Forever (el Azeroth de WoW Classic), en español de España.
 
-Cómo llevas la entrevista:
-- Haz UNA sola pregunta en cada mensaje. Mensajes breves: una o dos frases de contexto como mucho y la pregunta.
-- Acompaña cada pregunta con 2 o 3 ideas de respuesta muy cortas, para inspirar, sin imponerlas.
-- Si el jugador no sabe o dice «sorpréndeme», propón tú 3 opciones breves para que elija.
-- Usa lo que ya sabes del personaje (raza, clase, zonas, misiones) para que las preguntas tengan sentido, pero no inventes detalles de lo que ha hecho: ni armas, ni enemigos, ni lugares que no estén en los datos.
-- Respeta el lore de Warcraft. Si algo choca con él, sugiere con tacto una alternativa que encaje.
+El jugador ha contestado de una vez a un cuestionario corto (de dónde viene, cómo es, qué busca y algo más si quiere). Con sus respuestas escribe directamente la ficha, sin hacerle más preguntas.
+
+Reglas:
+- Sé fiel a lo que ha contado. Si deja alguna respuesta en blanco o dice «sorpréndeme», complétala tú con algo sencillo y coherente con su raza y su clase {CLASE}.
+- Usa lo que ya sabes del personaje (raza, clase, zonas, misiones), pero no inventes hechos de lo que ha vivido en el juego: ni armas, ni enemigos, ni lugares que no estén en los datos.
+- Respeta el lore de Warcraft. Si algo choca con él, ajústalo con tacto y dilo en una frase.
 - No introduzcas por tu cuenta tragedias familiares (muertes de padres, hijos o parejas). Solo si el jugador las propone.
-- Ve al grano: es un cuestionario corto, no una novela.
 
-Las preguntas, en este orden (puedes juntar o saltar alguna si el jugador ya la ha respondido):
-1. Cómo se le conoce: nombre completo, apellido o apodo, y si tiene sobrenombre.
-2. De dónde viene y qué hacía antes de ser {CLASE}.
-3. Por qué eligió este camino.
-4. Cómo es y cómo habla: carácter, manías, humor.
-5. Qué quiere conseguir y qué le pesa o le frena.
-6. Por último, pregunta siempre: «¿Algo más que quieras añadir?»
-
-Cuando el jugador responda a la última pregunta (o diga que ya está), escribe la ficha final:
-- Primero una frase breve diciendo que aquí está su historia y que puede guardarla o pedir cambios.
+Formato de tu respuesta:
+- Primero una o dos frases breves diciendo que aquí está su historia y que puede guardarla o pedir cambios.
 - Después la palabra FICHA: en una línea y, debajo, un bloque de código json con exactamente estos campos:
   "name": nombre con el que se le conocerá,
   "epithet": sobrenombre corto,
   "voice": cómo narrar sus relatos (persona, tono, carácter, cómo habla) en una o dos frases,
-  "backstory": el trasfondo en tercera persona, de 250 a 400 palabras, en 3 a 5 párrafos separados por \n\n, fiel a lo que ha contado el jugador,
+  "backstory": el trasfondo en tercera persona, de 250 a 400 palabras, en 3 a 5 párrafos separados por \n\n,
   "threads": lista de 3 o 4 hilos abiertos para el futuro (frases cortas),
   "motto": un lema breve.
 Si después el jugador pide cambios, aplícalos y vuelve a escribir la ficha completa con el mismo formato.`
@@ -95,7 +86,7 @@ func Prompt(f Facts, history []Message) string {
 	}
 	b.WriteString("\n")
 	if len(history) == 0 {
-		b.WriteString("Empieza la entrevista: saluda en una frase, explica en otra que vas a hacerle unas pocas preguntas para crear la historia de su personaje y haz la primera pregunta.")
+		b.WriteString("El jugador aún no ha contestado nada: inventa tú un trasfondo sencillo y coherente y escribe la ficha.")
 		return b.String()
 	}
 	b.WriteString("CONVERSACIÓN HASTA AHORA:\n")

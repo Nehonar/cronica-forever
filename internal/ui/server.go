@@ -47,6 +47,67 @@ type Server struct {
 	srv    *http.Server
 	taskMu sync.Mutex
 	task   *task
+
+	evMu    sync.Mutex
+	clients []chan string // páginas abiertas, la última al final
+}
+
+// Navigate lleva la última página de Crónica abierta en el navegador a path.
+// Devuelve false si no hay ninguna abierta.
+func (s *Server) Navigate(path string) bool {
+	s.evMu.Lock()
+	defer s.evMu.Unlock()
+	if len(s.clients) == 0 {
+		return false
+	}
+	b, _ := json.Marshal(map[string]string{"ruta": path})
+	select {
+	case s.clients[len(s.clients)-1] <- string(b):
+		return true
+	default:
+		return false
+	}
+}
+
+// apiEvents mantiene abierta una conexión con cada página (Server-Sent Events).
+func (s *Server) apiEvents(w http.ResponseWriter, r *http.Request) {
+	fl, ok := w.(http.Flusher)
+	if !ok {
+		http.Error(w, "sin streaming", http.StatusInternalServerError)
+		return
+	}
+	ch := make(chan string, 4)
+	s.evMu.Lock()
+	s.clients = append(s.clients, ch)
+	s.evMu.Unlock()
+	defer func() {
+		s.evMu.Lock()
+		for i, c := range s.clients {
+			if c == ch {
+				s.clients = append(s.clients[:i], s.clients[i+1:]...)
+				break
+			}
+		}
+		s.evMu.Unlock()
+	}()
+	w.Header().Set("Content-Type", "text/event-stream")
+	w.WriteHeader(http.StatusOK)
+	fmt.Fprint(w, ": hola\n\n")
+	fl.Flush()
+	ping := time.NewTicker(25 * time.Second)
+	defer ping.Stop()
+	for {
+		select {
+		case <-r.Context().Done():
+			return
+		case msg := <-ch:
+			fmt.Fprintf(w, "event: ir\ndata: %s\n\n", msg)
+			fl.Flush()
+		case <-ping.C:
+			fmt.Fprint(w, ": ping\n\n")
+			fl.Flush()
+		}
+	}
 }
 
 // URL devuelve la dirección base del servidor una vez arrancado.
@@ -92,6 +153,8 @@ func (s *Server) Handler() http.Handler {
 			http.Redirect(w, r, page+"/"+query(r), http.StatusFound)
 		})
 	}
+	mux.Handle("/app/", files)
+	mux.HandleFunc("/api/eventos", s.apiEvents)
 	mux.HandleFunc("/api/misiones", s.apiQuests)
 	mux.HandleFunc("/api/personajes", s.apiCharacters)
 	mux.HandleFunc("/api/entrevista", s.apiInterview)
@@ -104,6 +167,7 @@ func (s *Server) Handler() http.Handler {
 	mux.HandleFunc("/api/preparar/tarea", s.apiSetupTask)
 	mux.HandleFunc("/api/preparar/github", s.apiSetupGitHub)
 	mux.HandleFunc("/api/preparar/arranque", s.apiSetupAutostart)
+	mux.HandleFunc("/api/preparar/publicar", s.apiSetupPublish)
 	mux.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
 		http.FileServer(http.Dir(filepath.Join(s.Runner.Config().Repo, "docs"))).ServeHTTP(w, r)
 	})
@@ -287,8 +351,11 @@ func (s *Server) apiSave(w http.ResponseWriter, r *http.Request) {
 		writeErr(w, http.StatusInternalServerError, "No he podido guardar la ficha: "+err.Error())
 		return
 	}
-	// Narrar ya lo que estaba esperando a esta historia.
-	go s.Runner.Process(context.Background())
+	// Narrar ya lo que estaba esperando a esta historia y publicarla.
+	go func() {
+		s.Runner.Process(context.Background())
+		s.Runner.PublishNow("Crónica: historia de "+sh.Name, nil)
+	}()
 	writeJSON(w, map[string]any{"ok": true, "key": req.Key})
 }
 

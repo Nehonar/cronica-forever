@@ -88,6 +88,42 @@
     }
   }
 
+  /* ---------- Cuestionario (todas las preguntas a la vez) ---------- */
+  function questions(c) {
+    const clase = (c.class || "aventurero").toLowerCase();
+    return [
+      { id: "origen", q: "¿De dónde viene y qué hacía antes de ser " + clase + "?", hint: "Por ejemplo: hijo de granjeros de Elwynn, aprendiz de herrero, huérfano de Ventormenta…" },
+      { id: "como", q: "¿Cómo es?", hint: "Carácter, aspecto, cómo habla, alguna manía. Por ejemplo: callado y testarudo, se ríe de todo…" },
+      { id: "busca", q: "¿Qué busca? ¿Por qué se ha echado al camino?", hint: "Su propósito: hacerse un nombre, pagar una deuda, demostrar algo…" },
+      { id: "mas", q: "¿Algo más? (opcional)", hint: "Nombre completo o apodo, algo que le pese, alguien importante para él…" },
+    ];
+  }
+  function questionsText(c) {
+    return "Contéstame a estas preguntas y escribo su historia:\n\n" + questions(c).map((x) => "- " + x.q).join("\n");
+  }
+  function renderForm(c) {
+    const qs = questions(c);
+    const form = el("form", { class: "qform", id: "qform" },
+      el("p", { class: "qintro", text: "Contesta lo que quieras, con tus palabras. Lo que dejes en blanco lo completa el cronista." }),
+      qs.map((x) => el("label", { class: "qfield" },
+        el("span", { class: "qlabel", text: x.q }),
+        el("textarea", { name: x.id, rows: "3", placeholder: x.hint }))),
+      el("div", { class: "composer-actions" },
+        el("span"),
+        el("button", { class: "btn", type: "submit" }, "Escribir su historia")));
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+      const fd = new FormData(form);
+      const answers = qs.map((x, i) => (i + 1) + ". " + x.q + "\n" + (String(fd.get(x.id) || "").trim() || "(en blanco)")).join("\n\n");
+      form.remove();
+      state.history = [{ role: "cronista", content: questionsText(c) }];
+      addMsg("cronista", questionsText(c));
+      ask(answers);
+    });
+    $("thread").append(form);
+    form.querySelector("textarea").focus();
+  }
+
   /* ---------- Conversación ---------- */
   function addMsg(role, text) {
     const who = role === "jugador" ? "TÚ" : "EL CRONISTA";
@@ -100,6 +136,7 @@
   }
   function setBusy(b) {
     state.busy = b;
+    if (b) $("composer").hidden = true;
     $("send").disabled = b;
     $("msg").disabled = b;
     const t = document.querySelector(".typing");
@@ -139,14 +176,20 @@
         // El modelo necesita ver la ficha anterior si se piden cambios.
         state.history.push({ role: "cronista", content: "FICHA:\n```json\n" + JSON.stringify(r.sheet) + "\n```" });
         renderSheet(r.sheet);
+        $("composer").hidden = false;
       }
       saveLocal();
     } catch (e) {
       setBusy(false);
-      if (text) { state.history.pop(); saveLocal(); $("msg").value = text; }
+      if (text) { state.history.pop(); saveLocal(); }
       addError(e.message);
+      if (state.sheet) $("composer").hidden = false;
+      else if (text) {
+        const c = state.chars.find((x) => x.key === state.key);
+        $("thread").replaceChildren(); state.history = []; if (c) renderForm(c);
+      }
     }
-    $("msg").focus();
+    if (!$("composer").hidden) $("msg").focus();
   }
 
   async function save(sh) {
@@ -176,15 +219,15 @@
     $("c-facts").replaceChildren(...[c.race, c.class, c.level ? "Nivel " + c.level : null, c.waiting ? c.waiting + " relato(s) esperando a esta historia" : null]
       .filter(Boolean).map((t) => el("span", { text: t })));
     $("thread").replaceChildren();
-    $("composer").hidden = false;
+    $("composer").hidden = true;
     const saved = loadLocal(key);
     state.history = saved && saved.history ? saved.history : [];
     state.sheet = saved ? saved.sheet : null;
     if (state.history.length) {
       for (const m of state.history) if (!m.content.startsWith("FICHA:")) addMsg(m.role, m.content);
-      if (state.sheet) renderSheet(state.sheet);
+      if (state.sheet) { renderSheet(state.sheet); $("composer").hidden = false; }
     } else {
-      ask(null);
+      renderForm(c);
     }
   }
 
