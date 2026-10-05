@@ -139,6 +139,8 @@ def main(out_path):
     ev("PLAYER_ENTERING_WORLD", True, False)
     adv(10)
 
+    # El botón viene apagado; se activa con /cronica boton.
+    G.SlashCmdList.CRONICA("boton")
     # 1) Misión aceptada con el botón «Aceptar y leer en Crónica».
     quest(106, "La joven enamorada", "Maybell Maclure",
           "Mi familia y los Stonefield no se hablan, pero yo quiero a Tommy Joe Stonefield. ¿Le llevarías esta carta? Está junto al río, al sur de la granja de su familia.",

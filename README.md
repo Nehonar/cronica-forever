@@ -46,7 +46,8 @@ Si quieres que tu crónica sea también una web pública:
 
 ### En el juego
 
-- **Aceptar y leer en Crónica**: botón en la ventana de misión. Acepta, recarga (2-3 s) y en unos segundos la misión aparece contada en *Misiones en curso* (menú del icono), con lo que hay que hacer debajo.
+- **Cuándo llega a Crónica**: WoW solo deja que un addon guarde sus datos al cerrar sesión o al recargar (`/reload`). Juega normal: al salir, Crónica lo recibe todo y el cronista escribe. Si quieres verlo antes, haz `/reload` en una pausa.
+- **Aceptar y leer en Crónica** (opcional, `/cronica boton`): botón en la ventana de misión que acepta y recarga, para ver la misión contada al momento en *Misiones en curso*.
 - **Frases del personaje**: `/cronica frases no | local | voz`. En *local* solo las ves tú; en *voz* aparecen en pantalla y, al pulsar tu tecla (o hacer clic en ellas), tu personaje las dice en /decir. Blizzard no deja que un addon hable por su cuenta, por eso hace falta la tecla.
 - `/cronica espera <minutos>`: como mucho una frase cada tantos minutos (4 por defecto). `/cronica`: estado y comandos.
 

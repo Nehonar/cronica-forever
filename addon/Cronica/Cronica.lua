@@ -9,7 +9,7 @@ local VERSION = "0.1.0"
 local DEFAULTS = {
 	frases = "local",   -- "no", "local" (solo tú) o "voz" (/decir con una tecla)
 	espera = 240,       -- segundos mínimos entre frases
-	boton = true,       -- botón «Aceptar y leer en Crónica»
+	boton = false,      -- botón «Aceptar y leer en Crónica» (recarga la interfaz; opcional)
 }
 
 -- Probabilidad de que el personaje diga algo en cada momento.
@@ -333,7 +333,9 @@ on("ADDON_LOADED", function(name)
 	if name ~= ADDON then return end
 	CronicaDB = CronicaDB or {}
 	db = CronicaDB
-	db.version = 1
+	-- v2: el botón que recarga pasa a ser opcional (apagado), porque recargar molesta.
+	if (db.version or 1) < 2 and db.config then db.config.boton = false end
+	db.version = 2
 	db.config = db.config or {}
 	for k, v in pairs(DEFAULTS) do
 		if db.config[k] == nil then db.config[k] = v end

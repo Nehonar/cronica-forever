@@ -54,7 +54,7 @@
     const kids = [];
     if (!active.length) {
       kids.push(el("div", { class: "rubric", text: "SIN ENCARGOS" }), el("h2", { text: "Nada pendiente" }), flourish(),
-        el("p", { class: "empty-note", text: "Cuando aceptes una misión y pulses «Aceptar y leer en Crónica» (o recargues), aparecerá aquí contada por el cronista." }));
+        el("p", { class: "empty-note", text: "Tus misiones aparecen aquí contadas por el cronista cuando el juego guarda: al cerrar sesión o si haces /reload en una pausa." }));
     }
     for (const e of active) {
       const place = [e.subzone, e.zone].filter(Boolean).join(", ");
