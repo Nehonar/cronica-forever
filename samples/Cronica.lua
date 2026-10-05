@@ -2,12 +2,12 @@
 CronicaDB = {
 	["version"] = 1,
 	["characters"] = {
-		["Nehonar-Demo"] = {
-			["name"] = "Nehonar",
+		["Tobias-Demo"] = {
+			["name"] = "Tobias",
 			["realm"] = "Demo",
 			["race"] = "Humano",
-			["class"] = "Paladín",
-			["classFile"] = "PALADIN",
+			["class"] = "Guerrero",
+			["classFile"] = "WARRIOR",
 			["level"] = 6,
 			["played"] = 11040,
 			["events"] = {
@@ -39,7 +39,7 @@ CronicaDB = {
 					["zone"] = "Bosque de Elwynn",
 					["subzone"] = "Abadía de Villanorte",
 					["level"] = 1,
-					["reward"] = "Bien. Necesito manos, y las tuyas parecen acostumbradas al trabajo duro. No eres el novicio típico, eso salta a la vista.",
+					["reward"] = "Bien. Necesito manos, y las tuyas parecen acostumbradas al trabajo duro. Se nota que tienes ganas, aunque esa armadura te quede grande.",
 				}, -- [3]
 				{
 					["t"] = 1791100200,
@@ -104,7 +104,7 @@ CronicaDB = {
 					["zone"] = "Bosque de Elwynn",
 					["subzone"] = "Valle de Villanorte",
 					["level"] = 2,
-					["reward"] = "Buena carne, y bien cortada. Se nota que has trabajado con las manos antes.",
+					["reward"] = "Buena carne, y bien cortada. Algo me dice que no es la primera vez que cargas sacos.",
 				}, -- [9]
 				{
 					["t"] = 1791102900,
@@ -199,7 +199,7 @@ CronicaDB = {
 				{
 					["t"] = 1791106000,
 					["type"] = "equip",
-					["item"] = "Espada corta de la cantera",
+					["item"] = "Espada corta del vigía",
 					["quality"] = 3,
 					["slot"] = "MAINHAND",
 					["itemType"] = "Arma",

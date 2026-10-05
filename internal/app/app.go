@@ -62,7 +62,33 @@ func LoadConfig(path string) (Config, error) {
 		return filepath.Join(base, p)
 	}
 	c.SavedVariables, c.Repo, c.AddonTexts, c.WoW = abs(c.SavedVariables), abs(c.Repo), abs(c.AddonTexts), abs(c.WoW)
+	if c.Repo == "" {
+		c.Repo = base
+	}
 	return c, nil
+}
+
+// DefaultHome es la carpeta de datos de Crónica: %APPDATA%\Cronica en Windows,
+// ~/.config/Cronica en Linux.
+func DefaultHome() string {
+	dir, err := os.UserConfigDir()
+	if err != nil {
+		return "Cronica"
+	}
+	return filepath.Join(dir, "Cronica")
+}
+
+// ResolveConfig decide qué archivo de configuración usar: el indicado, el
+// cronica.json de la carpeta actual si existe (modo desarrollo) o el de la
+// carpeta de datos.
+func ResolveConfig(flagValue string) string {
+	if flagValue != "" {
+		return flagValue
+	}
+	if _, err := os.Stat("cronica.json"); err == nil {
+		return "cronica.json"
+	}
+	return filepath.Join(DefaultHome(), "cronica.json")
 }
 
 // Runner ejecuta el proceso completo.

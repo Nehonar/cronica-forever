@@ -15,8 +15,9 @@ import (
 
 func runInstall(args []string) error {
 	fl := flag.NewFlagSet("instalar", flag.ExitOnError)
-	cfgPath := fl.String("config", "cronica.json", "")
+	cfgPath := fl.String("config", "", "")
 	fl.Parse(args)
+	*cfgPath = app.ResolveConfig(*cfgPath)
 	absCfg, err := filepath.Abs(*cfgPath)
 	if err != nil {
 		return err
@@ -50,8 +51,9 @@ func runInstall(args []string) error {
 
 func runStatus(args []string) error {
 	fl := flag.NewFlagSet("estado", flag.ExitOnError)
-	cfgPath := fl.String("config", "cronica.json", "")
+	cfgPath := fl.String("config", "", "")
 	fl.Parse(args)
+	*cfgPath = app.ResolveConfig(*cfgPath)
 
 	cfg, cfgErr := app.LoadConfig(*cfgPath)
 	fmt.Println("Crónica", version)
@@ -102,8 +104,9 @@ func runStatus(args []string) error {
 
 func runPrepare(args []string) error {
 	fl := flag.NewFlagSet("preparar", flag.ExitOnError)
-	cfgPath := fl.String("config", "cronica.json", "")
+	cfgPath := fl.String("config", "", "")
 	fl.Parse(args)
+	*cfgPath = app.ResolveConfig(*cfgPath)
 	cfg, _ := app.LoadConfig(*cfgPath) // sin configuración también sirve
 	return (&app.Setup{Claude: cfg.Claude, Out: os.Stdout, In: os.Stdin}).Ensure(context.Background())
 }

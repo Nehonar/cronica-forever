@@ -21,24 +21,24 @@ Web: https://nehonar.github.io/cronica-forever/
 
 ## Instalación en Windows (para jugar)
 
-1. **Claude Code**: si no lo tienes, Crónica te ofrecerá instalarlo con el instalador oficial (o hazlo tú: `irm https://claude.ai/install.ps1 | iex` en PowerShell) e iniciar sesión.
-2. **Clona este repositorio** donde quieras, por ejemplo en tu carpeta de usuario:
-   ```
-   git clone https://github.com/Nehonar/cronica-forever.git
-   cd cronica-forever
-   ```
-3. **Consigue `cronica.exe`** y déjalo en esa carpeta: descárgalo de la última ejecución de *Actions* (artefacto «cronica») o, si tienes Go, `go install github.com/Nehonar/cronica-forever/cmd/cronica@latest`.
-4. **Prepáralo todo** (busca WoW, instala el addon y crea `cronica.json`):
-   ```
-   .\cronica.exe iniciar
-   ```
-5. **Que arranque solo con el PC** (y ábrelo ya en la bandeja):
-   ```
-   .\cronica.exe instalar
-   ```
-6. **En el juego**: activa el addon «Crónica» y, en *Opciones → Atajos → Crónica*, asigna teclas a «Decir en voz alta la frase de mi personaje» y «Enviar a Crónica».
+No hace falta descargar este repositorio: basta con **`cronica.exe`**.
 
-Si tu personaje se llama igual que una ficha que ya existe (por ejemplo Nehonar), hereda su historia; si no, el icono te avisará para crearla con el cronista.
+1. Descarga `cronica-windows-amd64.exe` (de la última ejecución en *Actions*, artefacto «cronica») y ponlo donde quieras, por ejemplo en `Documentos\Cronica`.
+2. **Haz doble clic.** La primera vez se abre un asistente que:
+   - busca WoW y te pregunta cuál es Forever (o te deja **elegir la carpeta tú** con el selector de Windows) e instala allí el addon;
+   - te pregunta si quieres publicar la crónica en GitHub (opcional, ver abajo);
+   - comprueba Claude Code y, si falta, te ofrece instalarlo e iniciar sesión;
+   - te ofrece que Crónica se abra sola con Windows.
+3. Las siguientes veces, el doble clic abre directamente Crónica en la bandeja del sistema.
+
+Tus datos (configuración, fichas de personajes y crónica) se guardan en `%APPDATA%\Cronica`.
+
+### Publicar en GitHub (opcional)
+
+Si quieres que tu crónica sea también una web pública:
+- Necesitas **Git para Windows** (https://git-scm.com/download/win) y un repositorio tuyo en GitHub.
+- El asistente lo descarga en `%APPDATA%\Cronica\web` y prueba a subir: la primera vez, **el gestor de credenciales de Git abre el navegador** para que entres en GitHub. Crónica no ve ni guarda tu contraseña.
+- Activa GitHub Pages en el repositorio: *Settings → Pages → rama principal, carpeta /docs*.
 
 ### En el juego
 
@@ -130,7 +130,7 @@ cronica procesar -sv samples/Cronica.lua -repo /tmp/prueba -prueba  # sin llamar
 
 ## Personajes
 
-Cada personaje tiene su ficha en `personajes/<Nombre>-<Reino>.json` (trasfondo, voz, hilos abiertos, lema). Si aparece un personaje nuevo, el programa crea su ficha vacía; si ya existe una ficha con trasfondo para el mismo nombre (por ejemplo `Nehonar-Demo.json`), la copia como punto de partida.
+Cada personaje tiene su ficha en `personajes/<Nombre>-<Reino>.json` (trasfondo, voz, hilos abiertos, lema). Si aparece un personaje nuevo, el programa crea su ficha vacía; si ya existe una ficha con trasfondo para el mismo nombre (por ejemplo `Tobias-Demo.json`, el personaje de prueba), la copia como punto de partida.
 
 ## Estructura
 

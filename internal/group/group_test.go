@@ -45,7 +45,7 @@ func TestSampleGroups(t *testing.T) {
 	if loose[0].Deaths != 0 || len(loose[0].Items) != 0 {
 		t.Errorf("la muerte y la espada ya cuentan en la cadena; no deben repetirse en las sueltas")
 	}
-	if len(equip) != 1 || equip[0].Items[0].Item != "Espada corta de la cantera" {
+	if len(equip) != 1 || equip[0].Items[0].Item != "Espada corta del vigía" {
 		t.Fatalf("equipo = %+v", equip)
 	}
 	if len(res.PendingLoose) != 0 || len(res.OpenChains) != 0 {

@@ -58,7 +58,7 @@ func TestParseSample(t *testing.T) {
 		t.Fatal(err)
 	}
 	db := vars["CronicaDB"].(*Table)
-	ch := db.Table("characters").Table("Nehonar-Demo")
+	ch := db.Table("characters").Table("Tobias-Demo")
 	if ch == nil || len(ch.Table("events").Array) != 28 {
 		t.Fatalf("muestra mal leída")
 	}

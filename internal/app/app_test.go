@@ -15,12 +15,12 @@ import (
 // withDemoSheet copia la ficha de demostración al repositorio de prueba.
 func withDemoSheet(t *testing.T, repo string) {
 	t.Helper()
-	b, err := os.ReadFile("../../personajes/Nehonar-Demo.json")
+	b, err := os.ReadFile("../../personajes/Tobias-Demo.json")
 	if err != nil {
 		t.Fatal(err)
 	}
 	os.MkdirAll(filepath.Join(repo, "personajes"), 0o755)
-	os.WriteFile(filepath.Join(repo, "personajes", "Nehonar-Demo.json"), b, 0o644)
+	os.WriteFile(filepath.Join(repo, "personajes", "Tobias-Demo.json"), b, 0o644)
 }
 
 func TestNewCharacterWaitsForBackstory(t *testing.T) {
@@ -43,7 +43,7 @@ func TestNewCharacterWaitsForBackstory(t *testing.T) {
 	if notices != 1 {
 		t.Fatalf("debe avisar una sola vez, no %d", notices)
 	}
-	doc, _ := store.Paths{Repo: repo}.LoadDoc("Nehonar-Demo")
+	doc, _ := store.Paths{Repo: repo}.LoadDoc("Tobias-Demo")
 	if doc.Pending.AwaitingBackstory != 3 || doc.Stats.QuestsDone == 0 {
 		t.Fatalf("el progreso debe guardarse: %+v", doc.Pending)
 	}
@@ -75,7 +75,7 @@ func TestProcessIsIncremental(t *testing.T) {
 	if err != nil || res.NewStories != 0 {
 		t.Fatalf("segunda pasada no debería narrar nada: %+v %v", res, err)
 	}
-	doc, err := store.Paths{Repo: repo}.LoadDoc("Nehonar-Demo")
+	doc, err := store.Paths{Repo: repo}.LoadDoc("Tobias-Demo")
 	if err != nil || len(doc.Stories) != 3 || doc.Stats.QuestsDone != 9 || doc.Stats.Deaths != 1 {
 		t.Fatalf("documento: %+v %v", doc.Stats, err)
 	}
@@ -89,9 +89,9 @@ func TestNewCharacterInheritsSheetByName(t *testing.T) {
 	repo := t.TempDir()
 	p := store.Paths{Repo: repo}
 	os.MkdirAll(p.SheetsDir(), 0o755)
-	os.WriteFile(filepath.Join(p.SheetsDir(), "Nehonar-Demo.json"), []byte(`{"key":"Nehonar-Demo","name":"Nehonar Lionhart","backstory":"Hijo del puerto."}`), 0o644)
-	s, created, err := p.LoadSheet("Nehonar-Reino", "Nehonar", "Humano", "Paladín")
-	if err != nil || !created || s.Backstory != "Hijo del puerto." || s.Key != "Nehonar-Reino" {
+	os.WriteFile(filepath.Join(p.SheetsDir(), "Tobias-Demo.json"), []byte(`{"key":"Tobias-Demo","name":"Tobias Brenn","backstory":"Hijo del molinero."}`), 0o644)
+	s, created, err := p.LoadSheet("Tobias-Reino", "Tobias", "Humano", "Guerrero")
+	if err != nil || !created || s.Backstory != "Hijo del molinero." || s.Key != "Tobias-Reino" {
 		t.Fatalf("%+v %v %v", s, created, err)
 	}
 }
@@ -128,7 +128,7 @@ func TestWarnsWhenClaudeIsLoggedOut(t *testing.T) {
 		t.Fatalf("el addon debe recibir el estado de error:\n%s", b)
 	}
 	// Lo no narrado queda para la próxima pasada.
-	doc, _ := store.Paths{Repo: dir}.LoadDoc("Nehonar-Demo")
+	doc, _ := store.Paths{Repo: dir}.LoadDoc("Tobias-Demo")
 	if len(doc.Stories) != 0 {
 		t.Fatal("no debe guardar relatos fallidos")
 	}

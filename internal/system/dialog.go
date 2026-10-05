@@ -80,3 +80,39 @@ func OpenTerminal(title, command string) error {
 	}
 	return last
 }
+
+// PickFolder abre el selector de carpetas del sistema. Devuelve "" si se
+// cancela; ok=false si no hay forma de mostrarlo.
+func PickFolder(title string) (path string, ok bool) {
+	switch runtime.GOOS {
+	case "windows":
+		ps := "[Console]::OutputEncoding = [Text.Encoding]::UTF8; Add-Type -AssemblyName System.Windows.Forms; " +
+			"$d = New-Object System.Windows.Forms.FolderBrowserDialog; " +
+			"$d.Description = '" + psQuote(title) + "'; $d.ShowNewFolderButton = $false; " +
+			"if ($d.ShowDialog() -eq 'OK') { $d.SelectedPath }"
+		out, err := exec.Command("powershell", "-NoProfile", "-STA", "-Command", ps).Output()
+		if err != nil {
+			return "", false
+		}
+		return strings.TrimSpace(string(out)), true
+	case "linux":
+		if !HasDesktop() {
+			return "", false
+		}
+		if p, err := exec.LookPath("zenity"); err == nil {
+			out, err := exec.Command(p, "--file-selection", "--directory", "--title="+title).Output()
+			if err != nil {
+				return "", true // cancelado
+			}
+			return strings.TrimSpace(string(out)), true
+		}
+		if p, err := exec.LookPath("kdialog"); err == nil {
+			out, err := exec.Command(p, "--getexistingdirectory", ".", "--title", title).Output()
+			if err != nil {
+				return "", true
+			}
+			return strings.TrimSpace(string(out)), true
+		}
+	}
+	return "", false
+}

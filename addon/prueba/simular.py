@@ -50,11 +50,11 @@ function ADVANCE(sec)
     end
   end
 end
-PLAYER = { name = "Nehonar", level = 7, zone = "Bosque de Elwynn", sub = "Villadorada", combat = false }
+PLAYER = { name = "Tobias", level = 7, zone = "Bosque de Elwynn", sub = "Villadorada", combat = false }
 function UnitName(u) if u == "player" then return PLAYER.name end if u == "npc" or u == "questnpc" then return NPC end end
 function UnitLevel() return PLAYER.level end
 function UnitRace() return "Humano", "Human" end
-function UnitClass() return "Paladín", "PALADIN" end
+function UnitClass() return "Guerrero", "WARRIOR" end
 function GetRealmName() return "Forever Beta" end
 function GetNormalizedRealmName() return "ForeverBeta" end
 function GetRealZoneText() return PLAYER.zone end
@@ -202,7 +202,7 @@ def main(out_path):
     ev("PLAYER_LOGOUT")
 
     db = G.CronicaDB
-    ch = db.characters["Nehonar-ForeverBeta"]
+    ch = db.characters["Tobias-ForeverBeta"]
     types = [ch.events[i].type for i in range(1, len(ch.events) + 1)]
     print("eventos:", types)
     print("chat:", [G.CHAT.lines[i] for i in range(1, len(G.CHAT.lines) + 1)])

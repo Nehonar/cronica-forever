@@ -29,7 +29,7 @@ func TestParse(t *testing.T) {
 func TestPromptHasNoMechanicsLeak(t *testing.T) {
 	g := group.Group{Kind: group.Chain, Zone: "Bosque de Elwynn", LevelFrom: 1, LevelTo: 5,
 		Quests: []group.Quest{{ID: 1, Title: "A", Giver: "X", Text: "t"}, {ID: 2, Title: "B", Giver: "X"}}}
-	_, p := BuildPrompt(Sheet{Name: "Nehonar"}, g, nil)
+	_, p := BuildPrompt(Sheet{Name: "Tobias"}, g, nil)
 	if strings.Contains(p, "nivel 1") || strings.Contains(p, "nivel 5") {
 		t.Error("el prompt no debe dar números de nivel")
 	}

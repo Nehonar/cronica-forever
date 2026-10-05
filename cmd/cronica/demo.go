@@ -36,11 +36,11 @@ func runDemo(args []string) error {
 	}
 	fmt.Printf("Preparando la demostración en %s\n", abs)
 	copies := map[string]string{
-		"docs/index.html":              "docs/index.html",
-		"docs/app.js":                  "docs/app.js",
-		"docs/estilo.css":              "docs/estilo.css",
-		"personajes/Nehonar-Demo.json": "personajes/Nehonar-Demo.json",
-		"samples/Cronica.lua":          "Cronica.lua",
+		"docs/index.html":             "docs/index.html",
+		"docs/app.js":                 "docs/app.js",
+		"docs/estilo.css":             "docs/estilo.css",
+		"personajes/Tobias-Demo.json": "personajes/Tobias-Demo.json",
+		"samples/Cronica.lua":         "Cronica.lua",
 	}
 	for src, dst := range copies {
 		b, err := fs.ReadFile(cronicaforever.Files, src)
@@ -87,10 +87,11 @@ func runDemo(args []string) error {
 // runView sirve la web de la carpeta docs del repositorio.
 func runView(args []string) error {
 	fl := flag.NewFlagSet("ver", flag.ExitOnError)
-	cfgPath := fl.String("config", "cronica.json", "")
+	cfgPath := fl.String("config", "", "")
 	repo := fl.String("repo", "", "")
 	port := fl.Int("puerto", 8000, "")
 	fl.Parse(args)
+	*cfgPath = app.ResolveConfig(*cfgPath)
 	dir := *repo
 	if dir == "" {
 		if cfg, err := app.LoadConfig(*cfgPath); err == nil && cfg.Repo != "" {

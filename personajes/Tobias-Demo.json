@@ -1,0 +1,15 @@
+{
+  "key": "Tobias-Demo",
+  "name": "Tobias Brenn",
+  "epithet": "El hijo del molinero",
+  "race": "Humano",
+  "class": "Guerrero",
+  "voice": "Tercera persona, tono ligero y cálido, con algo de torpeza y mucho entusiasmo. Tobias habla rápido, exagera sus hazañas y se ríe de sí mismo cuando le salen mal.",
+  "backstory": "Tobias Brenn creció entre sacos de harina en el molino de su familia, a orillas del río que cruza el Bosque de Elwynn. Su padre quería que heredara la muela; su madre, que aprendiera a leer. Tobias solo quería que alguien le contara historias de soldados.\n\nA los diecisiete años cambió su primera paga por una espada mellada que un vendedor ambulante juraba haber sido de un capitán de Ventormenta. Nadie le creyó, ni siquiera Tobias, pero desde ese día practicó cada tarde contra los sacos del molino, que acabaron con más remiendos que harina.\n\nCuando los kóbolds empezaron a salir de las minas y la guardia pidió voluntarios, fue el primero en apuntarse y el último en aprender a ponerse la armadura. Lo que le falta de técnica lo compensa con unas ganas que asustan a los sargentos.\n\nNo busca gloria, o eso dice. Busca volver un día al molino con una historia mejor que las que le contaban de niño.",
+  "threads": [
+    "La espada mellada que quizá sí fue de un capitán",
+    "El molino familiar y lo que su padre espera de él",
+    "Ganarse el respeto de los sargentos de Villadorada"
+  ],
+  "motto": "Primero se golpea, luego se piensa"
+}

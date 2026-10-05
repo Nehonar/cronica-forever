@@ -224,3 +224,19 @@ X-GNOME-Autostart-enabled=true
 	}
 	return fmt.Sprintf("Instalado en el autoarranque del escritorio (%s).\nRegistro: %s", p, s.LogFile), nil
 }
+
+// Installed indica si el arranque automático está configurado.
+func Installed() bool {
+	switch runtime.GOOS {
+	case "linux":
+		p, err := autostartPath()
+		if err != nil {
+			return false
+		}
+		_, err = os.Stat(p)
+		return err == nil
+	case "windows":
+		return exec.Command("schtasks", "/Query", "/TN", taskName).Run() == nil
+	}
+	return false
+}

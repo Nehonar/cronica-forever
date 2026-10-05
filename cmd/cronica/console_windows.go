@@ -1,0 +1,46 @@
+//go:build windows
+
+package main
+
+import (
+	"bufio"
+	"fmt"
+	"os"
+	"syscall"
+	"unsafe"
+)
+
+var (
+	kernel32              = syscall.NewLazyDLL("kernel32.dll")
+	user32                = syscall.NewLazyDLL("user32.dll")
+	procGetConsoleWindow  = kernel32.NewProc("GetConsoleWindow")
+	procGetConsoleProcess = kernel32.NewProc("GetConsoleProcessList")
+	procShowWindow        = user32.NewProc("ShowWindow")
+)
+
+// ownConsole indica si la ventana de consola es solo nuestra (se ha abierto con
+// doble clic) y no una terminal que el usuario ya tenía abierta.
+func ownConsole() bool {
+	var ids [4]uint32
+	n, _, _ := procGetConsoleProcess.Call(uintptr(unsafe.Pointer(&ids[0])), 4)
+	return n == 1
+}
+
+// hideOwnConsole oculta la ventana negra si la abrió el doble clic.
+func hideOwnConsole() {
+	if !ownConsole() {
+		return
+	}
+	if h, _, _ := procGetConsoleWindow.Call(); h != 0 {
+		procShowWindow.Call(h, 0) // SW_HIDE
+	}
+}
+
+// pauseIfOwnConsole espera a que el usuario lea el resultado antes de cerrar la ventana.
+func pauseIfOwnConsole() {
+	if !ownConsole() {
+		return
+	}
+	fmt.Print("\nPulsa Intro para cerrar esta ventana…")
+	bufio.NewReader(os.Stdin).ReadString('\n')
+}

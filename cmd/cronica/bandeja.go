@@ -22,7 +22,7 @@ import (
 // el chat del cronista en local, y muestra el icono en la bandeja del sistema.
 func runTray(args []string) error {
 	fl := flag.NewFlagSet("bandeja", flag.ExitOnError)
-	cfgPath := fl.String("config", "cronica.json", "")
+	cfgPath := fl.String("config", "", "")
 	logFile := fl.String("registro", "", "")
 	atBoot := fl.Bool("arranque", false, "")
 	headless := fl.Bool("sin-bandeja", false, "")
@@ -31,6 +31,7 @@ func runTray(args []string) error {
 	sv := fl.String("sv", "", "")
 	repo := fl.String("repo", "", "")
 	fl.Parse(args)
+	*cfgPath = app.ResolveConfig(*cfgPath)
 
 	cfg, err := app.LoadConfig(*cfgPath)
 	if err != nil && *sv == "" {
@@ -45,6 +46,7 @@ func runTray(args []string) error {
 	if cfg.Repo == "" {
 		cfg.Repo = "."
 	}
+	ensureWeb(cfg.Repo)
 
 	out := io.Writer(os.Stdout)
 	if *logFile != "" {

@@ -156,3 +156,32 @@ func InstallAddon(f Flavor, files fs.FS) (string, error) {
 	}
 	return dst, nil
 }
+
+// FromPath interpreta la carpeta que ha elegido el usuario. Acepta la carpeta
+// de la versión del juego (_forever_…), la de World of Warcraft (y entonces
+// devuelve las versiones que contiene para elegir) o carpetas de dentro como
+// Interface, AddOns o WTF.
+func FromPath(p string) (Flavor, []Flavor, error) {
+	p = filepath.Clean(strings.TrimSpace(strings.Trim(p, `"`)))
+	for i := 0; i < 3; i++ {
+		switch strings.ToLower(filepath.Base(p)) {
+		case "cronica", "addons", "interface", "wtf":
+			p = filepath.Dir(p)
+		}
+	}
+	info, err := os.Stat(p)
+	if err != nil || !info.IsDir() {
+		return Flavor{}, nil, fmt.Errorf("la carpeta %s no existe", p)
+	}
+	if isFlavor(p) {
+		return Flavor{Name: filepath.Base(p), Path: p}, nil, nil
+	}
+	list := Find(p)
+	if len(list) == 0 {
+		return Flavor{}, nil, fmt.Errorf("en %s no veo una instalación del juego (busco carpetas como _forever_ con Interface o WTF dentro)", p)
+	}
+	if len(list) == 1 {
+		return list[0], nil, nil
+	}
+	return Flavor{}, list, nil
+}
