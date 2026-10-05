@@ -128,7 +128,7 @@ cronica procesar -sv samples/Cronica.lua -repo /tmp/prueba -prueba  # sin llamar
 
 ## Cómo agrupa
 
-- **Cadena**: entregas una misión a un PNJ y ese mismo PNJ te da otra en menos de 90 s. Se narra cuando terminas la cadena.
+- **Cadena**: entregas una misión a un PNJ y ese mismo PNJ te da otra en menos de 90 s. Se narra cuando terminas la cadena, si tiene 3 misiones o más; las de 2 (por ejemplo «ve a hablar con X» y su encargo) se cuentan con las sueltas.
 - **Encargos sueltos**: misiones sin relación. Se juntan de 4 en 4, o antes si cambias de zona.
 - **Hito de equipo**: la primera vez que te pones una pieza azul o mejor.
 - Las caídas y el equipo nuevo se cuentan una sola vez, en el relato del tramo en el que ocurrieron.

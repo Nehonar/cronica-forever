@@ -26,7 +26,7 @@ import (
 	"github.com/Nehonar/cronica-forever/internal/wow"
 )
 
-var version = "0.3.4"
+var version = "0.3.5"
 
 func main() {
 	if len(os.Args) < 2 {

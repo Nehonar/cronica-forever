@@ -93,3 +93,35 @@ func TestLooseFlushOnZoneChange(t *testing.T) {
 		t.Fatalf("la de Páramos queda pendiente")
 	}
 }
+
+// Una «cadena» de solo 2 misiones (p. ej. «ve a hablar con X» + su encargo) no
+// merece relato propio: se cuenta junto a las sueltas.
+func TestShortChainGoesWithLoose(t *testing.T) {
+	ev := func(typ string, t int64, id int64, npc string) model.Event {
+		return model.Event{Type: typ, T: t, ID: id, Title: "M", NPC: npc, Zone: "Elwynn"}
+	}
+	evs := []model.Event{
+		ev(model.EvQuestAccept, 100, 1, "Willem"),
+		ev(model.EvQuestTurnin, 200, 1, "Eagan"),
+		ev(model.EvQuestAccept, 210, 2, "Eagan"), // cadena 1→2
+		ev(model.EvQuestAccept, 220, 3, "Otro"),
+		ev(model.EvQuestTurnin, 400, 2, "Eagan"),
+		ev(model.EvQuestTurnin, 500, 3, "Otro"),
+	}
+	res := Build(evs, 10000, DefaultOptions())
+	for _, g := range res.Groups {
+		if g.Kind == Chain {
+			t.Fatalf("no debe haber cadena de 2: %+v", g)
+		}
+	}
+	if len(res.PendingLoose) != 3 {
+		t.Fatalf("las 3 misiones deben esperar a juntar 4 sueltas: %+v", res.PendingLoose)
+	}
+	// Las ya narradas no se vuelven a agrupar.
+	opt := DefaultOptions()
+	opt.Narrated = map[int64]bool{1: true, 2: true}
+	res = Build(evs, 10000, opt)
+	if len(res.PendingLoose) != 1 || res.PendingLoose[0].ID != 3 {
+		t.Fatalf("solo debe quedar la 3: %+v", res.PendingLoose)
+	}
+}

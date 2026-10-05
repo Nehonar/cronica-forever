@@ -28,10 +28,16 @@ type Options struct {
 	LooseMax int
 	// MinQuality: calidad mínima del equipo que genera hito (3 = azul).
 	MinQuality int
+	// MinChain: una cadena más corta que esto se cuenta junto a las sueltas.
+	MinChain int
+	// Narrated: misiones que ya tienen relato (no se vuelven a agrupar).
+	Narrated map[int64]bool
 }
 
 // DefaultOptions son los valores por defecto.
-func DefaultOptions() Options { return Options{ChainWindow: 90, LooseMax: 4, MinQuality: 3} }
+func DefaultOptions() Options {
+	return Options{ChainWindow: 90, LooseMax: 4, MinQuality: 3, MinChain: 3}
+}
 
 // Quest reúne lo que se sabe de una misión.
 type Quest struct {
@@ -150,8 +156,12 @@ func Build(events []model.Event, now int64, opt Options) Result {
 	}
 	settled := func(q *Quest) bool { return q.TurninT > 0 && horizon-q.TurninT > opt.ChainWindow }
 
+	if opt.MinChain <= 0 {
+		opt.MinChain = 3
+	}
 	var res Result
-	// Cadenas
+	// Cadenas (las cortas, de 2 misiones, se cuentan con las sueltas)
+	shortChain := map[int64]bool{}
 	for _, id := range order {
 		if _, hasPrev := prev[id]; hasPrev {
 			continue
@@ -169,9 +179,21 @@ func Build(events []model.Event, now int64, opt Options) Result {
 			}
 		}
 		last := quests[chain[len(chain)-1].ID]
-		if complete && settled(last) {
+		narrated := true
+		for _, q := range chain {
+			if !opt.Narrated[q.ID] {
+				narrated = false
+			}
+		}
+		switch {
+		case narrated:
+		case complete && len(chain) < opt.MinChain:
+			for _, q := range chain {
+				shortChain[q.ID] = true
+			}
+		case complete && settled(last):
 			res.Groups = append(res.Groups, makeGroup(Chain, chain, events))
-		} else {
+		default:
 			res.OpenChains = append(res.OpenChains, chain)
 		}
 	}
@@ -182,7 +204,7 @@ func Build(events []model.Event, now int64, opt Options) Result {
 		_, p := prev[id]
 		_, n := next[id]
 		q := quests[id]
-		if !p && !n && settled(q) {
+		if ((!p && !n) || shortChain[id]) && settled(q) && !opt.Narrated[id] {
 			loose = append(loose, q)
 		}
 	}

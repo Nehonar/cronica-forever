@@ -315,7 +315,14 @@ func (r *Runner) process(ctx context.Context) (Result, error) {
 			}
 		}
 
-		built := group.Build(c.Events, now().Unix(), opt)
+		copt := opt
+		copt.Narrated = map[int64]bool{}
+		for _, st := range doc.Stories {
+			for _, q := range st.Quests {
+				copt.Narrated[q.ID] = true
+			}
+		}
+		built := group.Build(c.Events, now().Unix(), copt)
 		if sheet.Backstory == "" {
 			// Sin trasfondo no se narra: se guarda el progreso y se espera a que lo crees.
 			waiting := 0
