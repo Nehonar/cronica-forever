@@ -25,3 +25,6 @@ func Alert(title, message string) {
 	}
 	fmt.Fprintf(os.Stderr, "%s: %s\n", title, message)
 }
+
+func messageBoxYesNo(title, question string) bool  { return false }
+func pickFolderNative(title string) (string, bool) { return "", false }

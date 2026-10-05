@@ -8,7 +8,6 @@ import (
 	"io"
 	"os"
 	"os/exec"
-	"runtime"
 	"strings"
 	"time"
 
@@ -16,17 +15,20 @@ import (
 	"github.com/Nehonar/cronica-forever/internal/system"
 )
 
-// Setup prepara Claude Code: si no está instalado o no tiene sesión, lo pregunta
-// (con una ventana si hay escritorio, o en la terminal) y abre el instalador o el
-// inicio de sesión OFICIALES de Anthropic. Este programa nunca ve tus credenciales:
-// el inicio de sesión se hace en el navegador, en la página de Anthropic.
+// Setup prepara Claude Code desde la terminal (órdenes «cronica preparar» e
+// «cronica iniciar»): si no está instalado o no tiene sesión, lo pregunta y
+// ejecuta el instalador o el inicio de sesión OFICIALES de Anthropic. Este
+// programa nunca ve tus credenciales: el inicio de sesión se hace en el
+// navegador, en la página de Anthropic. (La bandeja usa la página «Preparar
+// Crónica» en su lugar.)
 type Setup struct {
 	Claude string    // comando configurado (vacío = buscarlo)
 	Out    io.Writer // mensajes
-	In     io.Reader // respuestas en modo terminal (nil = no preguntar por terminal)
+	In     io.Reader // respuestas (nil = no preguntar por terminal)
 	// Para pruebas:
 	ask      func(title, question string) (yes, ok bool)
-	terminal func(title, command string) error
+	run      func(name string, args ...string) error
+	download func(ctx context.Context) (string, []string, func(), error)
 	wait     time.Duration
 }
 
@@ -36,7 +38,7 @@ func (s *Setup) askUser(question string) (yes, asked bool) {
 	if s.ask == nil {
 		s.ask = system.Ask
 	}
-	if system.HasDesktop() {
+	if s.In == nil && system.HasDesktop() {
 		if yes, ok := s.ask("Crónica", question); ok {
 			return yes, true
 		}
@@ -50,69 +52,51 @@ func (s *Setup) askUser(question string) (yes, asked bool) {
 	return line == "s" || line == "si" || line == "sí" || line == "y" || line == "yes", true
 }
 
-// run ejecuta un comando visible: en una ventana de terminal nueva si hay
-// escritorio, o en esta misma terminal si estamos en modo interactivo.
-func (s *Setup) run(title, command string) error {
-	if s.terminal == nil {
-		s.terminal = system.OpenTerminal
+// exec ejecuta un comando en esta misma terminal.
+func (s *Setup) exec(name string, args ...string) error {
+	if s.run != nil {
+		return s.run(name, args...)
 	}
-	if s.In == nil || system.HasDesktop() {
-		if err := s.terminal(title, command); err == nil {
-			return nil
-		} else if s.In == nil {
-			return err
-		}
-	}
-	var cmd *exec.Cmd
-	if runtime.GOOS == "windows" {
-		cmd = exec.Command("powershell", "-NoProfile", "-Command", command)
-	} else {
-		cmd = exec.Command("bash", "-c", command)
-	}
-	cmd.Stdin, cmd.Stdout, cmd.Stderr = os.Stdin, os.Stdout, os.Stderr
+	cmd := exec.Command(name, args...)
+	cmd.Stdin, cmd.Stdout, cmd.Stderr = os.Stdin, s.Out, s.Out
 	return cmd.Run()
-}
-
-func shellQuote(p string) string {
-	if runtime.GOOS == "windows" {
-		return "& '" + strings.ReplaceAll(p, "'", "''") + "'"
-	}
-	return "'" + strings.ReplaceAll(p, "'", `'\''`) + "'"
 }
 
 // Ensure comprueba instalación y sesión y ofrece arreglarlas. Devuelve nil si
 // al final Claude Code está listo.
 func (s *Setup) Ensure(ctx context.Context) error {
 	if s.wait == 0 {
-		s.wait = 15 * time.Minute
+		s.wait = 2 * time.Minute
+	}
+	if s.download == nil {
+		s.download = narrate.DownloadInstaller
 	}
 	check := func() error { return narrate.ClaudeCLI{Command: s.Claude}.CheckAuth(ctx) }
 
 	path, found := narrate.FindClaude(s.Claude)
 	if !found {
 		s.say("Claude Code no está instalado en este equipo.")
-		install := narrate.InstallCommand()
 		yes, asked := s.askUser("Crónica necesita Claude Code para escribir tus relatos y no está instalado.\n\n" +
-			"¿Quieres instalarlo ahora con el instalador oficial de Anthropic?\n\nSe abrirá una terminal que ejecutará:\n" + install +
-			"\n\nDespués se abrirá el navegador para que inicies sesión con tu cuenta de Claude.")
-		if !asked {
-			s.say("Instálalo con: %s\nY después inicia sesión con: claude", install)
+			"¿Quieres instalarlo ahora con el instalador oficial de Anthropic (" + narrate.InstallerURL() + ")?\n\n" +
+			"Después se abrirá el navegador para que inicies sesión con tu cuenta de Claude.")
+		if !asked || !yes {
+			s.say("Puedes instalarlo cuando quieras desde la página de configuración de Crónica, o siguiendo https://code.claude.com/docs/en/setup")
 			return fmt.Errorf("Claude Code no está instalado")
 		}
-		if !yes {
-			s.say("De acuerdo, no instalo nada. Cuando quieras: %s", install)
-			return fmt.Errorf("Claude Code no está instalado")
+		name, args, cleanup, err := s.download(ctx)
+		if err != nil {
+			return err
 		}
-		login := "~/.local/bin/claude auth login"
-		if runtime.GOOS == "windows" {
-			login = `& "$env:USERPROFILE\.local\bin\claude.exe" auth login`
+		defer cleanup()
+		if err := s.exec(name, args...); err != nil {
+			return fmt.Errorf("el instalador ha fallado: %w", err)
 		}
-		sep := " && "
-		if runtime.GOOS == "windows" {
-			sep = "; "
+		if path, found = narrate.FindClaude(s.Claude); !found {
+			return fmt.Errorf("no encuentro Claude Code después de instalarlo")
 		}
-		if err := s.run("Instalar Claude Code", install+sep+login); err != nil {
-			return fmt.Errorf("no he podido abrir el instalador: %w", err)
+		s.say("Abriendo el navegador para que inicies sesión…")
+		if err := s.exec(path, "auth", "login"); err != nil {
+			return fmt.Errorf("el inicio de sesión no ha terminado: %w", err)
 		}
 		return s.waitReady(ctx, check)
 	}
@@ -129,29 +113,30 @@ func (s *Setup) Ensure(ctx context.Context) error {
 		"¿Quieres iniciar sesión ahora? Se abrirá el navegador en la página oficial de Anthropic; " +
 		"Crónica no ve ni guarda tus credenciales.")
 	if !asked || !yes {
-		s.say("Para iniciar sesión más tarde, ejecuta en una terminal: claude auth login")
+		s.say("Para iniciar sesión más tarde: claude auth login")
 		return err
 	}
-	if err := s.run("Iniciar sesión en Claude", shellQuote(path)+" auth login"); err != nil {
-		return fmt.Errorf("no he podido abrir el inicio de sesión: %w", err)
+	if err := s.exec(path, "auth", "login"); err != nil {
+		return fmt.Errorf("el inicio de sesión no ha terminado: %w", err)
 	}
 	return s.waitReady(ctx, check)
 }
 
 // waitReady espera a que Claude Code quede listo (instalado y con sesión).
 func (s *Setup) waitReady(ctx context.Context, check func() error) error {
-	s.say("Esperando a que termines de instalar o iniciar sesión…")
 	deadline := time.Now().Add(s.wait)
-	for time.Now().Before(deadline) {
+	for {
 		if check() == nil {
 			s.say("✓ Listo: Claude Code tiene la sesión iniciada.")
 			return nil
 		}
+		if time.Now().After(deadline) {
+			return fmt.Errorf("Claude Code sigue sin estar listo")
+		}
 		select {
 		case <-ctx.Done():
 			return ctx.Err()
-		case <-time.After(5 * time.Second):
+		case <-time.After(time.Second):
 		}
 	}
-	return fmt.Errorf("Claude Code sigue sin estar listo")
 }

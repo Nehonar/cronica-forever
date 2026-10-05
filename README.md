@@ -31,6 +31,8 @@ No hace falta descargar este repositorio: basta con **`cronica.exe`**.
    - **Arranque**: que Crónica se abra sola al encender el PC.
 3. Puedes volver a esa página cuando quieras desde el icono: **Configuración…**. Si vuelves a hacer doble clic con Crónica ya abierta, no se abre otra: se abre la página en el navegador.
 
+Windows Defender puede desconfiar de un programa nuevo sin firma. Si lo pone en cuarentena: *Seguridad de Windows → Protección contra virus y amenazas → Historial de protección → Crónica → Acciones → Restaurar/Permitir*.
+
 Si algo impide arrancar, sale una ventana con el error. El registro está en `%LOCALAPPDATA%\cronica\cronica.log`.
 
 Tus datos (configuración, fichas de personajes y crónica) se guardan en `%APPDATA%\Cronica`.
@@ -108,7 +110,7 @@ En GNOME, para ver iconos de bandeja hace falta la extensión «AppIndicator and
 
 ```
 cronica preparar      # comprueba Claude Code; si falta, ofrece instalarlo (instalador oficial) e iniciar sesión
-cronica instalar      # una sola vez: abre la bandeja al iniciar sesión en el PC (Linux: autoarranque del escritorio; Windows: tarea programada)
+cronica instalar      # una sola vez: abre la bandeja al iniciar sesión en el PC (Linux: autoarranque del escritorio; Windows: Inicio del usuario, sin permisos de administrador)
 cronica estado        # comprueba Claude, la configuración y muestra el registro
 cronica desinstalar   # lo quita
 ```

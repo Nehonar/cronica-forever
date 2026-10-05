@@ -2,6 +2,8 @@
 package app
 
 import (
+	"github.com/Nehonar/cronica-forever/internal/system"
+
 	"context"
 	"encoding/json"
 	"errors"
@@ -455,6 +457,8 @@ func stats(c model.Character) store.Stats {
 func Publish(repo, message string, out io.Writer) error {
 	git := func(args ...string) (string, error) {
 		cmd := exec.Command("git", append([]string{"-C", repo}, args...)...)
+		cmd.Env = append(os.Environ(), "GIT_TERMINAL_PROMPT=0")
+		system.Hide(cmd)
 		b, err := cmd.CombinedOutput()
 		return strings.TrimSpace(string(b)), err
 	}

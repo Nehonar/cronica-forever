@@ -16,7 +16,24 @@ var (
 	procGetConsoleWindow  = kernel32.NewProc("GetConsoleWindow")
 	procGetConsoleProcess = kernel32.NewProc("GetConsoleProcessList")
 	procShowWindow        = user32.NewProc("ShowWindow")
+	procAttachConsole     = kernel32.NewProc("AttachConsole")
 )
+
+// attachParentConsole: el programa se compila como aplicación de ventana (sin
+// consola negra al hacer doble clic). Si se ejecuta desde una terminal con
+// órdenes («cronica demo»…), escribe en esa terminal.
+func attachParentConsole() {
+	if r, _, _ := procAttachConsole.Call(uintptr(^uint32(0))); r == 0 { // ATTACH_PARENT_PROCESS
+		return
+	}
+	if f, err := os.OpenFile("CONOUT$", os.O_WRONLY, 0); err == nil {
+		os.Stdout, os.Stderr = f, f
+	}
+	if f, err := os.OpenFile("CONIN$", os.O_RDONLY, 0); err == nil {
+		os.Stdin = f
+	}
+	fmt.Println()
+}
 
 // ownConsole indica si la ventana de consola es solo nuestra (se ha abierto con
 // doble clic) y no una terminal que el usuario ya tenía abierta.

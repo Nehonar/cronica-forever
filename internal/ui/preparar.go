@@ -369,14 +369,13 @@ func (s *Server) apiSetupClaude(w http.ResponseWriter, r *http.Request) {
 	switch req.Action {
 	case "instalar":
 		err = s.startTask("Instalar Claude Code", func(ctx context.Context, t *task) error {
-			t.say("Descargando el instalador oficial de Anthropic (%s)…", narrate.InstallCommand())
-			var ierr error
-			if runtime.GOOS == "windows" {
-				ierr = t.exec(ctx, "powershell", "-NoProfile", "-ExecutionPolicy", "Bypass", "-Command", narrate.InstallCommand())
-			} else {
-				ierr = t.exec(ctx, "bash", "-c", narrate.InstallCommand())
-			}
+			t.say("Descargando el instalador oficial de Anthropic (%s)…", narrate.InstallerURL())
+			name, args, cleanup, ierr := narrate.DownloadInstaller(ctx)
 			if ierr != nil {
+				return ierr
+			}
+			defer cleanup()
+			if ierr = t.exec(ctx, name, args...); ierr != nil {
 				return fmt.Errorf("el instalador ha fallado: %w", ierr)
 			}
 			t.say("✓ Claude Code instalado.\n")

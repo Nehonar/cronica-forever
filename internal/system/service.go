@@ -49,16 +49,13 @@ func Install(s Service) (string, error) {
 
 // Uninstall quita el arranque automático y cierra Crónica si está abierta.
 func Uninstall() (string, error) {
-	switch runtime.GOOS {
-	case "linux":
-		exec.Command("pkill", "-f", "cronica bandeja").Run()
-	case "windows":
-		hiddenCmd("schtasks", "/End", "/TN", taskName).Run()
-	}
 	if err := RemoveAutostart(); err != nil {
 		return "", err
 	}
-	return "Arranque automático quitado.", nil
+	if runtime.GOOS == "linux" {
+		exec.Command("pkill", "-f", "cronica bandeja").Run()
+	}
+	return "Arranque automático quitado. Si Crónica sigue abierta, ciérrala desde su icono (Salir).", nil
 }
 
 // RemoveAutostart quita el arranque automático sin cerrar el programa.
@@ -73,15 +70,8 @@ func RemoveAutostart() error {
 		}
 		return nil
 	case "windows":
-		cmd := hiddenCmd("schtasks", "/Delete", "/TN", taskName, "/F")
-		Hide(cmd)
-		if out, err := cmd.CombinedOutput(); err != nil && Installed() {
-			return fmt.Errorf("schtasks: %s", strings.TrimSpace(string(out)))
-		}
-		if dir, err := os.UserConfigDir(); err == nil {
-			os.Remove(filepath.Join(dir, "Cronica", "iniciar.ps1"))
-		}
-		return nil
+		removeOldTask()
+		return deleteRunKey()
 	}
 	return fmt.Errorf("no hay arranque automático en %s", runtime.GOOS)
 }
@@ -147,32 +137,37 @@ WantedBy=default.target
 // ---------- Windows: tarea programada al iniciar sesión ----------
 
 func installWindows(s Service) (string, error) {
-	dir, err := os.UserConfigDir() // %APPDATA%
-	if err != nil {
-		return "", err
-	}
-	scriptDir := filepath.Join(dir, "Cronica")
-	if err := os.MkdirAll(scriptDir, 0o755); err != nil {
-		return "", err
-	}
-	script := filepath.Join(scriptDir, "iniciar.ps1")
-	var b strings.Builder
-	fmt.Fprintf(&b, "Set-Location -LiteralPath '%s'\r\n", psQuote(s.WorkDir))
-	fmt.Fprintf(&b, "& '%s'", psQuote(s.Exe))
+	cmdline := winQuote(s.Exe)
 	for _, a := range s.args() {
-		fmt.Fprintf(&b, " '%s'", psQuote(a))
+		cmdline += " " + winQuote(a)
 	}
-	b.WriteString("\r\n")
-	if err := os.WriteFile(script, []byte(b.String()), 0o644); err != nil {
-		return "", err
+	if err := setRunKey(cmdline); err != nil {
+		return "", fmt.Errorf("no puedo activar el arranque: %w", err)
 	}
-	tr := `powershell.exe -NoProfile -WindowStyle Hidden -ExecutionPolicy Bypass -File "` + script + `"`
-	out, err := hiddenCmd("schtasks", "/Create", "/TN", taskName, "/TR", tr, "/SC", "ONLOGON", "/RL", "LIMITED", "/F").CombinedOutput()
-	if err != nil {
-		return "", fmt.Errorf("schtasks: %s", strings.TrimSpace(string(out)))
+	removeOldTask()
+	// Arrancarla ya (si ya está abierta, la copia nueva se cierra sola).
+	cmd := exec.Command(s.Exe, "bandeja", "-config", s.Config, "-registro", s.LogFile)
+	cmd.Dir = s.WorkDir
+	if err := cmd.Start(); err == nil {
+		go cmd.Wait()
 	}
-	hiddenCmd("schtasks", "/Run", "/TN", taskName).Run()
-	return fmt.Sprintf("Instalado como tarea programada «%s» al iniciar sesión.\nRegistro: %s", taskName, s.LogFile), nil
+	return fmt.Sprintf("Crónica se abrirá al iniciar sesión en Windows.\nRegistro: %s", s.LogFile), nil
+}
+
+// winQuote pone comillas a un argumento de la línea de órdenes de Windows.
+func winQuote(a string) string {
+	if a != "" && !strings.ContainsAny(a, " \t\"") {
+		return a
+	}
+	return `"` + strings.ReplaceAll(a, `"`, `\"`) + `"`
+}
+
+// removeOldTask quita la tarea programada de versiones anteriores, si la hubiera.
+func removeOldTask() {
+	hiddenCmd("schtasks", "/Delete", "/TN", taskName, "/F").Run()
+	if dir, err := os.UserConfigDir(); err == nil {
+		os.Remove(filepath.Join(dir, "Cronica", "iniciar.ps1"))
+	}
 }
 
 // ---------- Linux: autoarranque del escritorio (para el icono de la bandeja) ----------
@@ -249,7 +244,7 @@ func Installed() bool {
 		_, err = os.Stat(p)
 		return err == nil
 	case "windows":
-		return hiddenCmd("schtasks", "/Query", "/TN", taskName).Run() == nil
+		return runKeySet()
 	}
 	return false
 }

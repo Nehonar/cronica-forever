@@ -27,8 +27,8 @@ func TestSetupOffersLoginAndWaits(t *testing.T) {
 	s := &Setup{
 		Claude: cmd, Out: io.Discard, wait: 20 * time.Second,
 		ask: func(_, q string) (bool, bool) { asked = q; return true, true },
-		terminal: func(_, c string) error {
-			opened = c
+		run: func(name string, args ...string) error {
+			opened = strings.Join(append([]string{name}, args...), " ")
 			os.WriteFile(flag, nil, 0o644) // el usuario inicia sesión en el navegador
 			return nil
 		},
@@ -47,8 +47,8 @@ func TestSetupRespectsNo(t *testing.T) {
 	opened := false
 	s := &Setup{
 		Claude: cmd, Out: io.Discard,
-		ask:      func(_, _ string) (bool, bool) { return false, true },
-		terminal: func(_, _ string) error { opened = true; return nil },
+		ask: func(_, _ string) (bool, bool) { return false, true },
+		run: func(string, ...string) error { opened = true; return nil },
 	}
 	if err := s.Ensure(context.Background()); err == nil || opened {
 		t.Fatalf("si dice que no, no se abre nada (err=%v, abierto=%v)", err, opened)
@@ -59,14 +59,21 @@ func TestSetupOffersOfficialInstaller(t *testing.T) {
 	t.Setenv("DISPLAY", ":0")
 	t.Setenv("PATH", t.TempDir())
 	t.Setenv("HOME", t.TempDir())
-	var asked, opened string
+	var asked string
+	var opened []string
 	s := &Setup{
 		Out: io.Discard, wait: time.Second,
-		ask:      func(_, q string) (bool, bool) { asked = q; return true, true },
-		terminal: func(_, c string) error { opened = c; return nil },
+		ask: func(_, q string) (bool, bool) { asked = q; return true, true },
+		download: func(context.Context) (string, []string, func(), error) {
+			return "bash", []string{"/tmp/instalar-claude.sh"}, func() {}, nil
+		},
+		run: func(name string, args ...string) error {
+			opened = append(opened, strings.Join(append([]string{name}, args...), " "))
+			return nil
+		},
 	}
 	s.Ensure(context.Background())
-	if !strings.Contains(asked, "no está instalado") || !strings.Contains(opened, "https://claude.ai/install.sh") || !strings.Contains(opened, "auth login") {
+	if !strings.Contains(asked, "https://claude.ai/install.sh") || len(opened) != 1 || opened[0] != "bash /tmp/instalar-claude.sh" {
 		t.Fatalf("pregunta=%q orden=%q", asked, opened)
 	}
 }

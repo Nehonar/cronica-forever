@@ -26,7 +26,7 @@ import (
 	"github.com/Nehonar/cronica-forever/internal/wow"
 )
 
-var version = "0.3.0"
+var version = "0.3.1"
 
 func main() {
 	if len(os.Args) < 2 {
@@ -42,6 +42,7 @@ func main() {
 		}
 		return
 	}
+	attachParentConsole()
 	cmd, args := os.Args[1], os.Args[2:]
 	var err error
 	switch cmd {

@@ -2,6 +2,8 @@
 package narrate
 
 import (
+	osys "github.com/Nehonar/cronica-forever/internal/system"
+
 	"bytes"
 	"context"
 	"errors"
@@ -82,6 +84,7 @@ func (c ClaudeCLI) Generate(ctx context.Context, system, prompt string) (string,
 	}
 	cmd := exec.CommandContext(ctx, cmdName, args...)
 	cmd.Dir = os.TempDir() // sin el contexto de ningún proyecto
+	osys.Hide(cmd)
 	cmd.Stdin = strings.NewReader(prompt)
 	var out, errb bytes.Buffer
 	cmd.Stdout, cmd.Stderr = &out, &errb

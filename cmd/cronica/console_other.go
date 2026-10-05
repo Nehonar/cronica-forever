@@ -2,5 +2,6 @@
 
 package main
 
-func hideOwnConsole()    {}
-func pauseIfOwnConsole() {}
+func hideOwnConsole()      {}
+func pauseIfOwnConsole()   {}
+func attachParentConsole() {}

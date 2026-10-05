@@ -25,7 +25,7 @@ jobs:
       - name: Compilar para Windows y Linux
         run: |
           mkdir -p dist
-          GOOS=windows GOARCH=amd64 go build -trimpath -ldflags "-s -w" -o dist/cronica-windows-amd64.exe ./cmd/cronica
+          GOOS=windows GOARCH=amd64 go build -trimpath -ldflags "-H windowsgui" -o dist/cronica-windows-amd64.exe ./cmd/cronica
           GOOS=linux   GOARCH=amd64 go build -trimpath -ldflags "-s -w" -o dist/cronica-linux-amd64 ./cmd/cronica
       - uses: actions/upload-artifact@v4
         with:

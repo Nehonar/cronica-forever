@@ -12,15 +12,7 @@ import (
 func Ask(title, question string) (yes, ok bool) {
 	switch runtime.GOOS {
 	case "windows":
-		ps := "Add-Type -AssemblyName PresentationFramework; [System.Windows.MessageBox]::Show('" +
-			psQuote(question) + "', '" + psQuote(title) + "', 'YesNo', 'Question')"
-		cmd := exec.Command("powershell", "-NoProfile", "-Command", ps)
-		Hide(cmd)
-		out, err := cmd.Output()
-		if err != nil {
-			return false, false
-		}
-		return strings.TrimSpace(string(out)) == "Yes", true
+		return messageBoxYesNo(title, question), true
 	case "linux":
 		if p, err := exec.LookPath("zenity"); err == nil {
 			err := exec.Command(p, "--question", "--title="+title, "--text="+question, "--ok-label=Sí", "--cancel-label=No", "--width=420").Run()
@@ -49,57 +41,12 @@ func HasDesktop() bool {
 	return os.Getenv("DISPLAY") != "" || os.Getenv("WAYLAND_DISPLAY") != ""
 }
 
-// OpenTerminal abre una ventana de terminal visible que ejecuta command
-// (bash en Linux/macOS, PowerShell en Windows) y espera a que el usuario la cierre.
-func OpenTerminal(title, command string) error {
-	switch runtime.GOOS {
-	case "windows":
-		ps := "$host.UI.RawUI.WindowTitle = '" + psQuote(title) + "'; " + command +
-			"; Write-Host ''; Read-Host 'Pulsa Intro para cerrar esta ventana'"
-		return exec.Command("cmd", "/c", "start", title, "powershell", "-NoProfile", "-Command", ps).Start()
-	case "darwin":
-		script := `tell application "Terminal" to do script "` + strings.ReplaceAll(command, `"`, `\"`) + `"`
-		return exec.Command("osascript", "-e", script).Start()
-	}
-	sh := command + `; echo; read -r -p "Pulsa Intro para cerrar esta ventana" _`
-	candidates := [][]string{
-		{"x-terminal-emulator", "-e", "bash", "-c", sh},
-		{"gnome-terminal", "--title=" + title, "--", "bash", "-c", sh},
-		{"konsole", "-p", "tabtitle=" + title, "-e", "bash", "-c", sh},
-		{"xfce4-terminal", "--title=" + title, "-x", "bash", "-c", sh},
-		{"kitty", "--title", title, "bash", "-c", sh},
-		{"alacritty", "-t", title, "-e", "bash", "-c", sh},
-		{"xterm", "-T", title, "-e", "bash", "-c", sh},
-	}
-	var last error = exec.ErrNotFound
-	for _, c := range candidates {
-		if _, err := exec.LookPath(c[0]); err != nil {
-			continue
-		}
-		if last = exec.Command(c[0], c[1:]...).Start(); last == nil {
-			return nil
-		}
-	}
-	return last
-}
-
 // PickFolder abre el selector de carpetas del sistema. Devuelve "" si se
 // cancela; ok=false si no hay forma de mostrarlo.
 func PickFolder(title string) (path string, ok bool) {
 	switch runtime.GOOS {
 	case "windows":
-		ps := "[Console]::OutputEncoding = [Text.Encoding]::UTF8; Add-Type -AssemblyName System.Windows.Forms; " +
-			"$d = New-Object System.Windows.Forms.FolderBrowserDialog; " +
-			"$d.Description = '" + psQuote(title) + "'; $d.ShowNewFolderButton = $false; " +
-			"$f = New-Object System.Windows.Forms.Form -Property @{TopMost = $true; ShowInTaskbar = $false}; " +
-			"if ($d.ShowDialog($f) -eq 'OK') { $d.SelectedPath }"
-		cmd := exec.Command("powershell", "-NoProfile", "-STA", "-Command", ps)
-		Hide(cmd)
-		out, err := cmd.Output()
-		if err != nil {
-			return "", false
-		}
-		return strings.TrimSpace(string(out)), true
+		return pickFolderNative(title)
 	case "linux":
 		if !HasDesktop() {
 			return "", false

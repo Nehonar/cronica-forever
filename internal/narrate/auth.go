@@ -1,6 +1,8 @@
 package narrate
 
 import (
+	"github.com/Nehonar/cronica-forever/internal/system"
+
 	"context"
 	"encoding/json"
 	"errors"
@@ -21,7 +23,9 @@ func (c ClaudeCLI) CheckAuth(ctx context.Context) error {
 	}
 	ctx, cancel := context.WithTimeout(ctx, 30*time.Second)
 	defer cancel()
-	out, err := exec.CommandContext(ctx, cmdName, "auth", "status").Output()
+	cmd := exec.CommandContext(ctx, cmdName, "auth", "status")
+	system.Hide(cmd)
+	out, err := cmd.Output()
 	var nf *exec.Error
 	if errors.As(err, &nf) {
 		return fmt.Errorf("no encuentro el comando %q: ¿está instalado Claude Code?", cmdName)
