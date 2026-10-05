@@ -164,7 +164,6 @@
     meta.replaceChildren(el("b", { text: ch.class || "" }), " " + String(ch.race || "").toLowerCase());
     const lvl = doc.level || (doc.stats && doc.stats.level) || 0;
     $("h-lvl").textContent = lvl || "–";
-    $("h-xp-l").textContent = lvl ? "Nivel " + lvl + " · faltan " + Math.max(0, 60 - lvl) + " para el 60" : "Nivel —";
     $("h-xp").style.width = lvl ? Math.min(100, (lvl / 60) * 100) + "%" : "0%";
     document.title = (ch.name || doc.key) + " · Crónica de Forever";
 
@@ -348,7 +347,23 @@
   window.addEventListener("hashchange", route);
   let rT; window.addEventListener("resize", () => { clearTimeout(rT); rT = setTimeout(() => { const d = state.docs[state.key]; if (d) renderRoute(d); }, 150); });
 
+  let lastUpdated = null;
   getJSON("data/index.json")
-    .then((idx) => { state.index = idx.characters || []; route(); })
+    .then((idx) => { state.index = idx.characters || []; lastUpdated = idx.updated; route(); })
     .catch(() => { renderEmpty(); });
+
+  // Refrescarse sola cuando el cronista escribe algo nuevo (en tu PC cada 20 s;
+  // en la web publicada cada 2 min, que es lo que tarda GitHub en publicar).
+  const local = location.hostname === "127.0.0.1" || location.hostname === "localhost";
+  setInterval(async () => {
+    if (document.hidden) return;
+    try {
+      const idx = await getJSON("data/index.json?t=" + Date.now());
+      if (!idx.updated || idx.updated === lastUpdated) return;
+      lastUpdated = idx.updated;
+      state.index = idx.characters || [];
+      state.docs = {};
+      route();
+    } catch (_) { /* sin conexión: lo intenta más tarde */ }
+  }, local ? 20000 : 120000);
 })();
