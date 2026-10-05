@@ -2,6 +2,6 @@
 cronica.json
 # Binarios
 dist/
-cronica
-cronica.exe
+/cronica
+/cronica.exe
 *.tmp
