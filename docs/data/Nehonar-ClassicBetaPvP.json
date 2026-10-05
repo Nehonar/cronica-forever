@@ -1,0 +1,39 @@
+{
+  "key": "Nehonar-ClassicBetaPvP",
+  "character": {
+    "key": "Nehonar-ClassicBetaPvP",
+    "name": "Nehonar",
+    "epithet": "el de la Cantera",
+    "race": "Humano",
+    "class": "Paladín",
+    "voice": "Primera persona, tono cercano y sencillo de trabajador curtido; tira de humor ligero para quitarle peso a las cosas, se resta méritos y deja entrever, entre broma y broma, unos pensamientos más hondos de lo que aparenta.",
+    "backstory": "Nehonar fue durante mucho tiempo un joven buscavidas de manos encallecidas. Pasó largas jornadas picando piedra en la cantera y otras tantas descargando mercancías en los muelles de Ventormenta, de fardo en fardo y de bloque en bloque. Mientras tanto, soñaba con otra vida: se imaginaba blandiendo espada y escudo, convertido en estandarte de lo justo. Lo contaba sin reparo, y por eso los demás se reían de él.\n\nTodo cambió el día del accidente en las minas. Con la cueva convertida en una trampa y un grupo de hombres atrapados dentro, alguien tenía que dar un paso al frente, y fue él. Nehonar tomó el mando sin que nadie se lo pidiera y, a base de pura tenacidad, consiguió sacarlos a todos con vida. Quienes antes se burlaban de sus fantasías empezaron a contar aquella historia de otra manera.\n\nLos relatos corrieron hasta llegar a oídos de un paladín de la Mano de Plata. El paladín empezó a preguntar por aquel chico de la cantera y escuchó lo que se decía de él: sus ganas de ser alguien más, su terquedad y su forma de no abandonar a nadie. Vio en él algo que merecía la pena, y así comenzó el camino de Nehonar en la Luz, que hoy recorre los senderos del Bosque de Elwynn.\n\nEs amistoso y siempre tiene una broma a mano, porque el humor es su vía de escape. Aun así, guarda cierta distancia con los demás. No es por desconfianza, sino por miedo a coger estima a la gente. Si le llaman, acude sin dudar, aunque rara vez toma la iniciativa. Suele andar inmerso en sus pensamientos y está dispuesto a hacer lo que haga falta por quien sea.\n\nLo que de verdad persigue es ser útil. Todo lo que hace le parece poco, y nunca se detiene a celebrar un logro: en cuanto alcanza una meta, ya está buscando la siguiente.",
+    "threads": [
+      "¿Qué vio exactamente en él el paladín de la Mano de Plata y qué espera de su aprendiz?",
+      "Los hombres que sacó con vida de la cueva siguen ahí fuera, y quizá algún día se crucen de nuevo en su camino.",
+      "Aprender a detenerse y celebrar un logro antes de buscar el siguiente.",
+      "Llegará alguien capaz de romper la distancia que mantiene con los demás."
+    ],
+    "motto": "Siempre uno más."
+  },
+  "level": 1,
+  "realm": "Classic Beta PvP",
+  "updated": "2026-10-05T20:51:39Z",
+  "stories": null,
+  "pending": {
+    "loose": [],
+    "openChains": []
+  },
+  "stats": {
+    "level": 1,
+    "played": 95,
+    "questsDone": 0,
+    "deaths": 0,
+    "zones": [
+      "Bosque de Elwynn"
+    ],
+    "levelUps": [],
+    "firstSeen": 1791232070,
+    "lastSeen": 1791232078
+  }
+}
