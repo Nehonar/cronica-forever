@@ -11,6 +11,7 @@ import (
 	"os/exec"
 	"path/filepath"
 	"strings"
+	"sync"
 	"time"
 
 	"github.com/Nehonar/cronica-forever/internal/group"
@@ -68,10 +69,17 @@ type Runner struct {
 	Now      func() time.Time
 	// Notify muestra un aviso en el escritorio (nil = sin avisos).
 	Notify func(title, message string)
+	// OnResult se llama tras cada pasada (la bandeja lo usa para refrescar su menú).
+	OnResult func(Result, error)
 
+	mu         sync.Mutex
 	status     store.Status
 	lastNotice time.Time
+	announced  map[string]bool
 }
+
+// Status devuelve el último estado conocido del cronista.
+func (r *Runner) Status() store.Status { return r.status }
 
 // warn avisa en el escritorio como mucho una vez cada hora por el mismo motivo.
 func (r *Runner) warn(message string) {
@@ -110,10 +118,34 @@ type Result struct {
 	NewStories int
 	Failed     int
 	Pending    int
+	// Personajes sin trasfondo: su progreso se registra pero no se narra hasta que lo tengan.
+	NeedsBackstory []CharacterInfo
+	LastTitle      string
+}
+
+// CharacterInfo describe un personaje para la bandeja y la entrevista.
+type CharacterInfo struct {
+	Key     string `json:"key"`
+	Name    string `json:"name"`
+	Race    string `json:"race"`
+	Class   string `json:"class"`
+	Level   int    `json:"level"`
+	Waiting int    `json:"waiting"` // relatos que esperan a tener trasfondo
 }
 
 // Process hace una pasada completa sobre el archivo del addon.
-func (r *Runner) Process(ctx context.Context) (Result, error) {
+func (r *Runner) Process(ctx context.Context) (res Result, err error) {
+	r.mu.Lock()
+	defer r.mu.Unlock()
+	defer func() {
+		if r.OnResult != nil {
+			r.OnResult(res, err)
+		}
+	}()
+	return r.process(ctx)
+}
+
+func (r *Runner) process(ctx context.Context) (Result, error) {
 	var res Result
 	chars, err := model.LoadSavedVariables(r.Cfg.SavedVariables)
 	if err != nil {
@@ -140,7 +172,7 @@ func (r *Runner) Process(ctx context.Context) (Result, error) {
 			return res, err
 		}
 		if created {
-			r.logf("Personaje nuevo: %s. He creado personajes/%s.json para que escribas su trasfondo.", c.Name, c.Key)
+			r.logf("Personaje nuevo: %s (personajes/%s.json).", c.Name, c.Key)
 		}
 		doc, err := paths.LoadDoc(c.Key)
 		if err != nil {
@@ -149,6 +181,34 @@ func (r *Runner) Process(ctx context.Context) (Result, error) {
 		doc.Character, doc.Level, doc.Realm = sheet, c.Level, c.Realm
 
 		built := group.Build(c.Events, now().Unix(), opt)
+		if sheet.Backstory == "" {
+			// Sin trasfondo no se narra: se guarda el progreso y se espera a que lo crees.
+			waiting := 0
+			for _, g := range built.Groups {
+				if !doc.Has(g.ID) {
+					waiting++
+				}
+			}
+			res.NeedsBackstory = append(res.NeedsBackstory, CharacterInfo{Key: c.Key, Name: c.Name, Race: c.Race, Class: c.Class, Level: c.Level, Waiting: waiting})
+			if r.announced == nil {
+				r.announced = map[string]bool{}
+			}
+			if !r.announced[c.Key] {
+				r.announced[c.Key] = true
+				r.logf("%s aún no tiene trasfondo: guardo su progreso (%d relato(s) en espera) hasta que crees su historia.", c.Name, waiting)
+				if r.Notify != nil {
+					r.Notify("Crónica: personaje nuevo", c.Name+" ("+strings.ToLower(c.Race)+" "+strings.ToLower(c.Class)+") aún no tiene historia. Ábrela desde el icono de Crónica para crearla.")
+				}
+			}
+			doc.Pending = pending(built)
+			doc.Pending.AwaitingBackstory = waiting
+			doc.Stats = stats(c)
+			if err := paths.SaveDoc(doc); err != nil {
+				return res, err
+			}
+			docs = append(docs, doc)
+			continue
+		}
 		for _, g := range built.Groups {
 			if doc.Has(g.ID) {
 				continue
@@ -176,6 +236,7 @@ func (r *Runner) Process(ctx context.Context) (Result, error) {
 			doc.Add(g, st)
 			res.NewStories++
 			r.logf("  ✓ «%s»", st.Title)
+			res.LastTitle = st.Title
 			if err := paths.SaveDoc(doc); err != nil { // guardar tras cada relato
 				return res, err
 			}

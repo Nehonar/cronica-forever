@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Crear historia · Crónica de Forever</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Marcellus+SC&family=IM+Fell+English:ital@0;1&family=Alegreya+Sans:wght@400;500;700&display=swap">
+<link rel="stylesheet" href="/estilo.css">
+<link rel="stylesheet" href="chat.css">
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <filter id="deckle" x="-2%" y="-2%" width="104%" height="104%">
+    <feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="3" seed="11" result="t"/>
+    <feDisplacementMap in="SourceGraphic" in2="t" scale="9" xChannelSelector="R" yChannelSelector="G"/>
+  </filter>
+</svg>
+<div class="wrap">
+  <header class="frame bar">
+    <div>
+      <div class="bar-title">EL CRONISTA</div>
+      <div class="bar-sub">Crear la historia de tus personajes</div>
+    </div>
+    <a class="btn dark" href="/">Ver la crónica</a>
+  </header>
+
+  <div class="layout">
+    <nav class="frame log" aria-label="Personajes">
+      <h2>Personajes</h2>
+      <div class="log-list" id="chars"></div>
+    </nav>
+    <main class="page chat" id="main">
+      <div class="rubric" id="c-rubric">PERSONAJE</div>
+      <h2 id="c-title">Elige un personaje</h2>
+      <svg class="flourish" viewBox="0 0 180 14" aria-hidden="true"><path d="M2 7 H70 M110 7 H178" stroke="currentColor" stroke-width="1" fill="none"/><path d="M90 1 L96 7 L90 13 L84 7 Z" fill="currentColor"/><circle cx="76" cy="7" r="2" fill="currentColor"/><circle cx="104" cy="7" r="2" fill="currentColor"/></svg>
+      <div class="facts" id="c-facts"></div>
+      <div id="thread" class="thread" aria-live="polite"></div>
+      <form id="composer" class="composer" hidden>
+        <label for="msg" class="sr-only">Tu respuesta</label>
+        <textarea id="msg" rows="3" placeholder="Escribe tu respuesta… (Intro para enviar, Mayús+Intro para nueva línea)"></textarea>
+        <div class="composer-actions">
+          <button type="button" class="link-btn" id="restart">Empezar de nuevo</button>
+          <button type="submit" class="btn" id="send">Responder</button>
+        </div>
+      </form>
+    </main>
+  </div>
+</div>
+<script src="chat.js"></script>
+</body>
+</html>

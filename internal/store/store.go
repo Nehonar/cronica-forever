@@ -74,6 +74,8 @@ type Stats struct {
 type Pending struct {
 	Loose      []string   `json:"loose"`
 	OpenChains [][]string `json:"openChains"`
+	// Relatos que esperan a que el personaje tenga trasfondo.
+	AwaitingBackstory int `json:"awaitingBackstory,omitempty"`
 }
 
 // Doc es todo lo que la web sabe de un personaje.
@@ -294,4 +296,12 @@ func writeJSON(path string, v any) error {
 		return err
 	}
 	return os.Rename(tmp, path)
+}
+
+// SaveSheet guarda la ficha de un personaje (personajes/<clave>.json).
+func (p Paths) SaveSheet(s narrate.Sheet) error {
+	if s.Key == "" {
+		return fmt.Errorf("la ficha no tiene clave de personaje")
+	}
+	return writeJSON(filepath.Join(p.SheetsDir(), s.Key+".json"), s)
 }

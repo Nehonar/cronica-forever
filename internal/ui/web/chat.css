@@ -1,0 +1,51 @@
+.bar { display: flex; justify-content: space-between; align-items: center; gap: 16px; padding: 16px 26px; }
+.bar-title { font-family: var(--font-display); color: var(--frame-title); font-size: 1.5rem; letter-spacing: .1em; text-shadow: 0 2px 0 #000; }
+.bar-sub { font-family: var(--font-body); font-style: italic; color: var(--frame-gold); }
+a.btn { text-decoration: none; display: inline-flex; align-items: center; }
+.btn {
+  font-family: var(--font-display); font-size: .98rem; letter-spacing: .03em; cursor: pointer;
+  min-height: 40px; padding: 8px 18px; border-radius: 4px; color: var(--frame-title); text-shadow: 0 1px 0 #000;
+  background: linear-gradient(180deg, #a8241b 0%, #741410 50%, #4e0b08 100%);
+  border: 1px solid #000; box-shadow: inset 0 0 0 1px var(--frame-gold), inset 0 1px 0 2px rgba(255,255,255,.12);
+}
+.btn:hover { filter: brightness(1.15); }
+.btn.dark { background: linear-gradient(180deg, #3a2f20, #1b150d); }
+.btn:disabled { opacity: .55; cursor: default; filter: none; }
+.link-btn { background: none; border: 0; padding: 8px 4px; color: var(--ink-soft); font-family: var(--font-body); font-style: italic; font-size: 1.02rem; text-decoration: underline; text-decoration-color: var(--line); text-underline-offset: 3px; cursor: pointer; min-height: 40px; }
+.link-btn:hover { color: var(--rubric); }
+.badge { display: inline-block; margin-left: 6px; font-family: var(--font-ui); font-size: .7rem; letter-spacing: .08em; text-transform: uppercase; color: #1b150d; background: var(--frame-gold); border-radius: 3px; padding: 0 5px; vertical-align: 2px; }
+.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+.chat { display: flex; flex-direction: column; min-height: 70vh; }
+.thread { display: flex; flex-direction: column; gap: 18px; flex: 1; }
+.msg { max-width: 64ch; }
+.msg .who { font-family: var(--font-display); font-size: .78rem; letter-spacing: .16em; color: var(--rubric); margin-bottom: 4px; }
+.msg .body { font-family: var(--font-body); font-size: 1.15rem; line-height: 1.6; }
+.msg .body p { margin: 0 0 .6em; }
+.msg .body ul { margin: .2em 0 .6em; padding-left: 1.2em; }
+.msg .body li::marker { color: var(--gold); }
+.msg.you { align-self: flex-end; text-align: left; background: rgba(0,0,0,.06); border: 1px solid var(--line); border-radius: 6px 6px 0 6px; padding: 10px 14px; }
+.msg.you .who { color: var(--ink-soft); }
+.msg.err .body { color: var(--rubric); font-style: italic; }
+.typing { font-family: var(--font-body); font-style: italic; color: var(--ink-soft); }
+.typing::after { content: "▍"; animation: blink 1s steps(2) infinite; color: var(--gold); margin-left: 2px; }
+@keyframes blink { 50% { opacity: 0; } }
+
+.composer { margin-top: 22px; padding-top: 16px; border-top: 1px dashed var(--line); display: flex; flex-direction: column; gap: 8px; }
+.composer textarea {
+  font: inherit; font-family: var(--font-body); font-size: 1.1rem; color: var(--ink); width: 100%; resize: vertical; min-height: 84px;
+  background: rgba(255,255,255,.35); border: 1px solid var(--line); border-radius: 4px; padding: 10px 12px; box-shadow: inset 0 1px 3px rgba(0,0,0,.12);
+}
+@media (prefers-color-scheme: dark) { .composer textarea { background: rgba(0,0,0,.25); } }
+.composer textarea:focus-visible { outline: 2px solid var(--gold); outline-offset: 1px; }
+.composer-actions { display: flex; justify-content: space-between; align-items: center; gap: 10px; }
+
+.sheet { border: 1px dashed var(--gold); border-radius: 6px; padding: 18px 20px; background: rgba(0,0,0,.035); }
+.sheet h3 { font-family: var(--font-display); font-weight: 400; font-size: 1.6rem; margin: 0; }
+.sheet .ep { font-family: var(--font-body); font-style: italic; color: var(--gold); font-size: 1.15rem; margin-bottom: 10px; }
+.sheet .voice { font-family: var(--font-body); font-style: italic; color: var(--ink-soft); margin: 10px 0 0; }
+.sheet .motto { font-family: var(--font-display); color: var(--rubric); letter-spacing: .06em; margin-top: 12px; }
+.sheet-actions { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; margin-top: 16px; }
+.done { font-family: var(--font-body); font-size: 1.1rem; }
+.done a { color: var(--rubric); }
+.empty-note { font-family: var(--font-body); font-style: italic; color: var(--ink-soft); font-size: 1.1rem; }

@@ -30,7 +30,7 @@ func DefaultLogFile() string {
 }
 
 func (s Service) args() []string {
-	return []string{"vigilar", "-config", s.Config, "-registro", s.LogFile, "-arranque"}
+	return []string{"bandeja", "-config", s.Config, "-registro", s.LogFile, "-arranque"}
 }
 
 // Install deja el programa preparado para arrancar solo al iniciar sesión y lo arranca ya.
@@ -40,7 +40,7 @@ func Install(s Service) (string, error) {
 	}
 	switch runtime.GOOS {
 	case "linux":
-		return installSystemd(s)
+		return installAutostart(s)
 	case "windows":
 		return installWindows(s)
 	}
@@ -51,12 +51,13 @@ func Install(s Service) (string, error) {
 func Uninstall() (string, error) {
 	switch runtime.GOOS {
 	case "linux":
-		unit, _ := systemdUnitPath()
-		exec.Command("systemctl", "--user", "disable", "--now", "cronica.service").Run()
-		if err := os.Remove(unit); err != nil && !errors.Is(err, os.ErrNotExist) {
-			return "", err
+		removeOldSystemd()
+		if p, err := autostartPath(); err == nil {
+			if err := os.Remove(p); err != nil && !errors.Is(err, os.ErrNotExist) {
+				return "", err
+			}
 		}
-		exec.Command("systemctl", "--user", "daemon-reload").Run()
+		exec.Command("pkill", "-f", "cronica bandeja").Run()
 		return "Arranque automático quitado.", nil
 	case "windows":
 		exec.Command("schtasks", "/End", "/TN", taskName).Run()
@@ -159,4 +160,67 @@ func installWindows(s Service) (string, error) {
 	}
 	exec.Command("schtasks", "/Run", "/TN", taskName).Run()
 	return fmt.Sprintf("Instalado como tarea programada «%s» al iniciar sesión.\nRegistro: %s", taskName, s.LogFile), nil
+}
+
+// ---------- Linux: autoarranque del escritorio (para el icono de la bandeja) ----------
+
+func autostartPath() (string, error) {
+	dir, err := os.UserConfigDir()
+	if err != nil {
+		return "", err
+	}
+	return filepath.Join(dir, "autostart", "cronica.desktop"), nil
+}
+
+// removeOldSystemd quita el servicio de versiones anteriores, que no tenía bandeja.
+func removeOldSystemd() {
+	unit, err := systemdUnitPath()
+	if err != nil {
+		return
+	}
+	if _, err := os.Stat(unit); err != nil {
+		return
+	}
+	exec.Command("systemctl", "--user", "disable", "--now", "cronica.service").Run()
+	os.Remove(unit)
+	exec.Command("systemctl", "--user", "daemon-reload").Run()
+}
+
+func installAutostart(s Service) (string, error) {
+	removeOldSystemd()
+	p, err := autostartPath()
+	if err != nil {
+		return "", err
+	}
+	q := func(a string) string {
+		r := strings.NewReplacer(`\`, `\\`, `"`, `\"`, "`", "\\`", "$", `\$`)
+		return `"` + r.Replace(a) + `"`
+	}
+	var b strings.Builder
+	b.WriteString(q(s.Exe))
+	for _, a := range s.args() {
+		b.WriteString(" " + q(a))
+	}
+	content := fmt.Sprintf(`[Desktop Entry]
+Type=Application
+Name=Crónica de Forever
+Comment=Narra tus sesiones de WoW: Forever
+Exec=%s
+Path=%s
+Terminal=false
+X-GNOME-Autostart-enabled=true
+`, b.String(), s.WorkDir)
+	if err := os.MkdirAll(filepath.Dir(p), 0o755); err != nil {
+		return "", err
+	}
+	if err := os.WriteFile(p, []byte(content), 0o644); err != nil {
+		return "", err
+	}
+	// Arrancarla ya, sin esperar al próximo inicio de sesión.
+	cmd := exec.Command(s.Exe, "bandeja", "-config", s.Config, "-registro", s.LogFile)
+	cmd.Dir = s.WorkDir
+	if err := cmd.Start(); err == nil {
+		go cmd.Wait()
+	}
+	return fmt.Sprintf("Instalado en el autoarranque del escritorio (%s).\nRegistro: %s", p, s.LogFile), nil
 }

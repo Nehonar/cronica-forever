@@ -12,8 +12,52 @@ import (
 	"github.com/Nehonar/cronica-forever/internal/store"
 )
 
+// withDemoSheet copia la ficha de demostración al repositorio de prueba.
+func withDemoSheet(t *testing.T, repo string) {
+	t.Helper()
+	b, err := os.ReadFile("../../personajes/Nehonar-Demo.json")
+	if err != nil {
+		t.Fatal(err)
+	}
+	os.MkdirAll(filepath.Join(repo, "personajes"), 0o755)
+	os.WriteFile(filepath.Join(repo, "personajes", "Nehonar-Demo.json"), b, 0o644)
+}
+
+func TestNewCharacterWaitsForBackstory(t *testing.T) {
+	repo := t.TempDir()
+	var notices int
+	r := &Runner{
+		Cfg:      Config{SavedVariables: "../../samples/Cronica.lua", Repo: repo},
+		Narrator: narrate.Fake{},
+		Out:      io.Discard,
+		Notify:   func(_, _ string) { notices++ },
+	}
+	res, err := r.Process(context.Background())
+	if err != nil {
+		t.Fatal(err)
+	}
+	if res.NewStories != 0 || len(res.NeedsBackstory) != 1 || res.NeedsBackstory[0].Waiting != 3 {
+		t.Fatalf("sin trasfondo no se narra: %+v", res)
+	}
+	r.Process(context.Background())
+	if notices != 1 {
+		t.Fatalf("debe avisar una sola vez, no %d", notices)
+	}
+	doc, _ := store.Paths{Repo: repo}.LoadDoc("Nehonar-Demo")
+	if doc.Pending.AwaitingBackstory != 3 || doc.Stats.QuestsDone == 0 {
+		t.Fatalf("el progreso debe guardarse: %+v", doc.Pending)
+	}
+	// Al crear la historia, se narra todo lo pendiente.
+	withDemoSheet(t, repo)
+	res, _ = r.Process(context.Background())
+	if res.NewStories != 3 {
+		t.Fatalf("con trasfondo se narra lo pendiente: %+v", res)
+	}
+}
+
 func TestProcessIsIncremental(t *testing.T) {
 	repo := t.TempDir()
+	withDemoSheet(t, repo)
 	addon := filepath.Join(repo, "addon", "CronicaTextos.lua")
 	r := &Runner{
 		Cfg:      Config{SavedVariables: "../../samples/Cronica.lua", Repo: repo, AddonTexts: addon},
@@ -58,6 +102,7 @@ func TestWarnsWhenClaudeIsLoggedOut(t *testing.T) {
 	// Simula «claude auth status» sin sesión y «claude -p» fallando.
 	os.WriteFile(fakeClaude, []byte("#!/bin/sh\nif [ \"$1\" = auth ]; then echo '{\"loggedIn\": false}'; exit 1; fi\necho 'Not logged in' >&2; exit 1\n"), 0o755)
 	var notices []string
+	withDemoSheet(t, dir)
 	addon := filepath.Join(dir, "CronicaTextos.lua")
 	r := &Runner{
 		Cfg:      Config{SavedVariables: "../../samples/Cronica.lua", Repo: dir, AddonTexts: addon},

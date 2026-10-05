@@ -55,6 +55,8 @@ func main() {
 		err = runStatus(args)
 	case "preparar":
 		err = runPrepare(args)
+	case "bandeja":
+		err = runTray(args)
 	case "version", "-v", "--version":
 		fmt.Println("cronica", version)
 	case "ayuda", "-h", "--help", "help":
@@ -74,6 +76,7 @@ func usage() {
 	fmt.Print(`Crónica ` + version + ` — la historia de tu personaje de WoW: Forever
 
 Uso:
+  cronica bandeja              Crónica completa: icono en la bandeja, vigila, narra y abre el chat del cronista
   cronica demo                 prueba completa: narra una sesión de ejemplo y abre la web
   cronica ver                  abre en el navegador la web de tu crónica
   cronica iniciar              crea cronica.json con la configuración

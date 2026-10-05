@@ -63,11 +63,23 @@ cronica demo
    cronica vigilar
    ```
 
+### La app de la bandeja
+
+```
+cronica bandeja
+```
+
+Pone un icono en la bandeja del sistema y hace todo a la vez: vigila el archivo del addon, narra, publica y sirve en local la web y **el cronista**, un chat con Claude para crear la historia de cada personaje nuevo (cuestionario corto, pregunta a pregunta, que termina en una ficha que puedes guardar o pedir que cambie).
+
+Mientras un personaje no tiene historia, su progreso se registra pero no se narra; el icono se marca y el menú muestra «✦ Nombre — crear su historia». Al guardar la ficha, se narra todo lo que esperaba.
+
+En GNOME, para ver iconos de bandeja hace falta la extensión «AppIndicator and KStatusNotifierItem Support» (Ubuntu ya la trae). En KDE, XFCE, Cinnamon y Windows funciona tal cual.
+
 ### Que arranque solo
 
 ```
 cronica preparar      # comprueba Claude Code; si falta, ofrece instalarlo (instalador oficial) e iniciar sesión
-cronica instalar      # una sola vez: arranca «vigilar» al iniciar sesión en el PC (Linux: systemd; Windows: tarea programada)
+cronica instalar      # una sola vez: abre la bandeja al iniciar sesión en el PC (Linux: autoarranque del escritorio; Windows: tarea programada)
 cronica estado        # comprueba Claude, la configuración y muestra el registro
 cronica desinstalar   # lo quita
 ```
