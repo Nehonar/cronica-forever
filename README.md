@@ -139,6 +139,8 @@ El borrado se publica en GitHub como cualquier otro cambio (lo anterior queda en
 - **Cadena**: entregas una misión a un PNJ y ese mismo PNJ te da otra en menos de 90 s. Se narra cuando terminas la cadena, si tiene 3 misiones o más; las de 2 (por ejemplo «ve a hablar con X» y su encargo) se cuentan con las sueltas.
 - **Encargos sueltos**: misiones sin relación. Se juntan de 4 en 4, o antes si cambias de zona.
 - **Hito de equipo**: la primera vez que te pones una pieza azul o mejor.
+- **Hito de reputación**: cada vez que subes de rango con una facción (Amistoso, Honorable, Venerado, Exaltado). El cronista cuenta quién es esa gente con el lore de Warcraft y la descripción oficial de la facción, y cómo empiezan a tratarte.
+- La reputación que ganas con las misiones también aparece, sin cifras, en el relato del tramo en que la ganaste.
 - Las caídas y el equipo nuevo se cuentan una sola vez, en el relato del tramo en el que ocurrieron.
 
 ## Personajes

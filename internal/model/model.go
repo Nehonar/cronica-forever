@@ -17,6 +17,8 @@ const (
 	EvZone         = "zone"
 	EvQuestAccept  = "quest_accept"
 	EvQuestTurnin  = "quest_turnin"
+	EvRep          = "rep"
+	EvStanding     = "standing"
 	EvEquip        = "equip"
 	EvDeath        = "death"
 	EvQuestAbandon = "quest_abandon"
@@ -45,6 +47,11 @@ type Event struct {
 	Stats       map[string]int `json:"stats,omitempty"` // claves de la API: ITEM_MOD_STRENGTH_SHORT…
 	// Tiempo jugado (segundos) en el momento del evento; solo en «level».
 	Played int64 `json:"played,omitempty"`
+	// Reputación (eventos «rep» y «standing»).
+	Faction    string `json:"faction,omitempty"`
+	Amount     int    `json:"amount,omitempty"`     // reputación ganada
+	Standing   string `json:"standing,omitempty"`   // rango alcanzado: «Amistoso»…
+	StandingID int    `json:"standingID,omitempty"` // 5 Amistoso, 6 Honorable, 7 Venerado, 8 Exaltado
 }
 
 // Character es un personaje tal como lo guarda el addon.
@@ -130,6 +137,10 @@ func ParseSavedVariables(src string) ([]Character, error) {
 					Armor:       int(et.Int("armor")),
 					Stats:       statsOf(et.Table("stats")),
 					Played:      et.Int("played"),
+					Faction:     et.String("faction"),
+					Amount:      int(et.Int("amount")),
+					Standing:    et.String("standing"),
+					StandingID:  int(et.Int("standingID")),
 				})
 			}
 		}

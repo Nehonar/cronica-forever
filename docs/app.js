@@ -9,6 +9,7 @@
     cadena: { mark: "⚜", label: "Cadena" },
     sueltas: { mark: "✎", label: "Encargos" },
     equipo: { mark: "⚔", label: "Hito" },
+    reputacion: { mark: "⚑", label: "Reputación" },
   };
   const GLYPH = {
     weapon: "M18.5 2.5 21.5 5.5 11 16 8 13zM7 14l3 3-1.6 1.6-1-1-2.6 2.6L3.4 19l2.6-2.6-1-1z",
@@ -263,6 +264,7 @@
     if (s.subzones && s.subzones.length) facts.append(el("span", { text: s.subzones.join(" · ") }));
     else if (s.zone) facts.append(el("span", { text: s.zone }));
     if (s.levelTo && s.levelFrom && s.levelTo > s.levelFrom) facts.append(el("span", { class: "lvlup", text: "Nivel " + s.levelFrom + " → " + s.levelTo }));
+    if (s.faction) facts.append(el("span", { class: "lvlup", text: (s.standing ? s.standing + " con " : "") + s.faction }));
 
     const kids = [el("div", { class: "rubric", text: k.label.toUpperCase() }), el("h2", { text: s.title }), flourish(), facts];
     if (s.quests && s.quests.length) kids.push(el("ul", { class: "quests", "aria-label": "Misiones" }, s.quests.map((q) => el("li", { text: q.title }))));
@@ -309,6 +311,9 @@
           tile((doc.stories || []).length, "Relatos"),
           tile((st.zones || []).length, "Zonas")),
         levelTable(st),
+        st.reputation && st.reputation.length ? [el("h3", { text: "Reputación" }),
+          el("table", { class: "levels" }, el("tbody", null, st.reputation.map((r) =>
+            el("tr", null, el("td", { text: r.faction }), el("td", { class: "num", text: r.standing })))))] : null,
         st.zones && st.zones.length ? [el("h3", { text: "Zonas pisadas" }), el("ul", { class: "zones" }, st.zones.map((z) => el("li", { text: z })))] : null,
         el("p", { class: "page-note", text: "Más adelante, con el registro de combate: enemigos derrotados, daño, DPS y tu rotación." }))];
     $("reader").replaceChildren(...kids.flat().filter(Boolean));

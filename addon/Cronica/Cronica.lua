@@ -398,6 +398,72 @@ end)
 
 on("PLAYER_EQUIPMENT_CHANGED", function(slot) onEquip(slot) end)
 
+-- ---------------------------------------------------------------------------
+-- Reputación: lo ganado con cada facción (para el contexto de los relatos) y
+-- cada vez que sube de rango (Amistoso, Honorable…), que es un hito con lore.
+-- ---------------------------------------------------------------------------
+
+-- Convierte un texto del juego como «Tu reputación con %s ha aumentado en %d.»
+-- en un patrón que devuelve sus partes (respeta %1$s, %2$d de otros idiomas).
+local function matcher(fmt)
+	if type(fmt) ~= "string" then return function() end end
+	local order = {}
+	for n in fmt:gmatch("%%(%d)%$") do order[#order + 1] = tonumber(n) end
+	local p = fmt:gsub("%%%d%$", "%%")
+	p = p:gsub("([%(%)%.%[%]%*%+%-%?%^%$])", "%%%1")
+	p = p:gsub("%%s", "(.+)"):gsub("%%d", "(%%d+)")
+	p = "^" .. p .. "$"
+	return function(msg)
+		local c = { msg:match(p) }
+		if #c == 0 then return end
+		if #order == #c then
+			local r = {}
+			for i, n in ipairs(order) do r[n] = c[i] end
+			c = r
+		end
+		return (unpack or table.unpack)(c)
+	end
+end
+
+local repIncreased = matcher(FACTION_STANDING_INCREASED)
+
+-- Recorre las facciones visibles y apunta las que han subido de rango.
+local function scanFactions()
+	if not char or not GetNumFactions or not GetFactionInfo then return end
+	char.standings = char.standings or {}
+	for i = 1, GetNumFactions() do
+		local name, description, standingID, _, _, _, _, _, isHeader, _, hasRep = GetFactionInfo(i)
+		if name and standingID and (not isHeader or hasRep) then
+			local prev = char.standings[name]
+			if prev and standingID > prev and standingID >= 5 then -- 5 = Amistoso
+				add({ type = "standing", faction = name, standingID = standingID,
+					standing = _G["FACTION_STANDING_LABEL" .. standingID] or tostring(standingID),
+					text = description })
+			end
+			char.standings[name] = standingID
+		end
+	end
+end
+
+local scanPending = false
+local function scanSoon()
+	if scanPending then return end
+	scanPending = true
+	C_Timer.After(1, function() scanPending = false; scanFactions() end)
+end
+
+local function onFactionMessage(msg)
+	if not msg then return end
+	local faction, amount = repIncreased(msg)
+	if faction and tonumber(amount) then
+		add({ type = "rep", faction = faction, amount = tonumber(amount) })
+	end
+	scanSoon()
+end
+
+on("CHAT_MSG_COMBAT_FACTION_CHANGE", onFactionMessage)
+on("UPDATE_FACTION", scanSoon)
+
 on("PLAYER_DEAD", function()
 	add({ type = "death" })
 	Cronica_Frase("muerte")

@@ -17,6 +17,7 @@ const (
 	Chain Kind = "cadena"
 	Loose Kind = "sueltas"
 	Equip Kind = "equipo"
+	Rep   Kind = "reputacion"
 )
 
 // Options controla la agrupación.
@@ -68,6 +69,10 @@ type Group struct {
 	LevelFrom int           `json:"levelFrom,omitempty"`
 	LevelTo   int           `json:"levelTo,omitempty"`
 	Deaths    int           `json:"deaths,omitempty"`
+	// Reputación ganada durante el tramo, por facción.
+	RepGains map[string]int `json:"repGains,omitempty"`
+	// En los hitos de reputación: el rango alcanzado (evento «standing»).
+	Standing *model.Event `json:"standing,omitempty"`
 }
 
 // Result es la salida de Build.
@@ -252,6 +257,25 @@ func Build(events []model.Event, now int64, opt Options) Result {
 		res.Groups = append(res.Groups, g)
 	}
 
+	// Hitos de reputación: cada vez que sube de rango con una facción (Amistoso o más).
+	seenRank := map[string]bool{}
+	for _, e := range events {
+		if e.Type != model.EvStanding || e.Faction == "" || e.StandingID < 5 {
+			continue
+		}
+		id := fmt.Sprintf("reputacion-%s-%d", slug(e.Faction), e.StandingID)
+		if seenRank[id] {
+			continue
+		}
+		seenRank[id] = true
+		ev := e
+		g := Group{ID: id, Kind: Rep, Zone: e.Zone, Start: e.T, End: e.T, LevelFrom: e.Level, LevelTo: e.Level, Standing: &ev}
+		if e.Subzone != "" {
+			g.Subzones = []string{e.Subzone}
+		}
+		res.Groups = append(res.Groups, g)
+	}
+
 	sort.SliceStable(res.Groups, func(i, j int) bool { return res.Groups[i].End < res.Groups[j].End })
 	return res
 }
@@ -297,7 +321,8 @@ func attachContext(groups []Group, events []model.Event, minQuality int) {
 	for _, e := range events {
 		isDeath := e.Type == model.EvDeath
 		isItem := e.Type == model.EvEquip && e.Quality >= minQuality
-		if !isDeath && !isItem {
+		isRep := e.Type == model.EvRep && e.Faction != "" && e.Amount > 0
+		if !isDeath && !isItem && !isRep {
 			continue
 		}
 		best := -1
@@ -309,9 +334,15 @@ func attachContext(groups []Group, events []model.Event, minQuality int) {
 		if best < 0 {
 			continue
 		}
-		if isDeath {
+		switch {
+		case isRep:
+			if groups[best].RepGains == nil {
+				groups[best].RepGains = map[string]int{}
+			}
+			groups[best].RepGains[e.Faction] += e.Amount
+		case isDeath:
 			groups[best].Deaths++
-		} else {
+		default:
 			groups[best].Items = append(groups[best].Items, e)
 		}
 	}

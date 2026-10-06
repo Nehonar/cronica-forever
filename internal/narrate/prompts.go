@@ -2,6 +2,7 @@ package narrate
 
 import (
 	"fmt"
+	"sort"
 	"strings"
 
 	"github.com/Nehonar/cronica-forever/internal/group"
@@ -57,6 +58,12 @@ func BuildPrompt(sheet Sheet, g group.Group, prev []Previous) (string, string) {
 	case group.Equip:
 		it := g.Items[0]
 		fmt.Fprintf(&b, "TAREA: el personaje se acaba de poner por primera vez esta pieza de equipo. Escribe un momento breve e íntimo sobre ello: qué significa para él y, sobre todo, cómo la siente en el cuerpo al llevarla. Entre 50 y 90 palabras. No inventes cómo la consiguió.\n%s\n%s", ctx, itemLine(it))
+	case group.Rep:
+		st := g.Standing
+		fmt.Fprintf(&b, "TAREA: el personaje acaba de ganarse un nuevo grado de confianza con una facción de Azeroth. Escribe un momento breve sobre ello, entre 90 y 150 palabras: quién es esa gente (usa el lore de Warcraft y la descripción oficial, sin inventar hechos que contradigan el canon), qué significa para él que ahora le vean así y cómo se lo hacen notar (un saludo distinto, una puerta que se abre, una mirada). No digas «reputación» ni nombres de rangos como si fueran números; tradúcelo a cómo le tratan.\n%s\nFACCIÓN: %s\nAHORA LE CONSIDERAN: %s (%s)\n", ctx, st.Faction, strings.ToLower(st.Standing), standingFeel(st.StandingID))
+		if strings.TrimSpace(st.Text) != "" {
+			fmt.Fprintf(&b, "DESCRIPCIÓN OFICIAL DE LA FACCIÓN (en el juego): %s\n", strings.TrimSpace(st.Text))
+		}
 	}
 	b.WriteString(`
 FORMATO DE RESPUESTA:
@@ -77,13 +84,21 @@ func groupContext(g group.Group) string {
 		}
 		parts = append(parts, z)
 	}
-	if g.LevelTo > g.LevelFrom && g.Kind != group.Equip {
+	if g.LevelTo > g.LevelFrom && g.Kind != group.Equip && g.Kind != group.Rep {
 		parts = append(parts, "Durante este tramo el personaje creció y se hizo más fuerte (no lo cuentes como niveles).")
 	}
 	if g.Deaths == 1 {
 		parts = append(parts, "Durante este tramo cayó derrotado una vez y se levantó.")
 	} else if g.Deaths > 1 {
 		parts = append(parts, fmt.Sprintf("Durante este tramo cayó derrotado %d veces y siguió adelante.", g.Deaths))
+	}
+	if len(g.RepGains) > 0 {
+		var fs []string
+		for f, n := range g.RepGains {
+			fs = append(fs, f+" ("+repAmount(n)+")")
+		}
+		sort.Strings(fs)
+		parts = append(parts, "Con lo que hizo en este tramo se ganó el aprecio de: "+strings.Join(fs, ", ")+". Puedes reflejarlo con naturalidad (cómo le miran o le tratan), sin cifras.")
 	}
 	if g.Kind != group.Equip {
 		for _, it := range g.Items {
@@ -212,4 +227,31 @@ func itemFeel(it model.Event) []string {
 		out = append(out, "protección: la armadura detiene mejor los golpes")
 	}
 	return out
+}
+
+// repAmount traduce la reputación ganada a palabras.
+func repAmount(n int) string {
+	switch {
+	case n >= 1000:
+		return "mucho"
+	case n >= 300:
+		return "bastante"
+	default:
+		return "un poco"
+	}
+}
+
+// standingFeel explica cada rango sin hablar de mecánicas.
+func standingFeel(id int) string {
+	switch id {
+	case 5:
+		return "ya no es un desconocido: le reciben con simpatía"
+	case 6:
+		return "le respetan y se fían de él"
+	case 7:
+		return "le veneran: es uno de los suyos, de los que más aprecian"
+	case 8:
+		return "le ensalzan: su nombre se pronuncia con orgullo entre ellos"
+	}
+	return "le tienen en mejor estima"
 }

@@ -84,6 +84,12 @@ function GetInventoryItemLink(u, slot) return EQUIP[slot] end
 function GetItemInfo(link) local it = ITEMS[link]; if not it then return nil end; return it.name, link, it.quality, 10, 1, it.type, it.sub end
 C_Item = { GetItemStats = function(link) return ITEMS[link] and ITEMS[link].stats or {} end }
 SlashCmdList = {}
+FACTION_STANDING_INCREASED = "Tu reputación con %s ha aumentado en %d."
+FACTION_STANDING_LABEL4 = "Neutral"
+FACTION_STANDING_LABEL5 = "Amistoso"
+FACTIONS = { { name = "Ventormenta", desc = "La capital de los humanos en Azeroth.", standing = 4 } }
+function GetNumFactions() return #FACTIONS end
+function GetFactionInfo(i) local f = FACTIONS[i]; return f.name, f.desc, f.standing, 0, 0, 0, false, false, false, false, true end
 math.random = function(n) if n then return 1 end return 0 end  -- siempre «sí», sin azar
 """
 
@@ -195,6 +201,13 @@ def main(out_path):
           "Trae la garra de Hogger al alguacil Dughan, en Villadorada.")
     ev("QUEST_ACCEPTED", 176)
     adv(1)
+
+    # 7) Reputación: lo ganado y la subida a Amistoso.
+    ev("UPDATE_FACTION"); adv(2)                      # rango de partida, sin evento
+    ev("CHAT_MSG_COMBAT_FACTION_CHANGE", "Tu reputación con Ventormenta ha aumentado en 250.")
+    G.FACTIONS[1].standing = 5
+    ev("UPDATE_FACTION"); adv(2)
+    ev("UPDATE_FACTION"); adv(2)                      # sin cambios: no repite
     ev("PLAYER_LOGOUT")
 
     db = G.CronicaDB
@@ -204,6 +217,9 @@ def main(out_path):
     print("chat:", [G.CHAT.lines[i] for i in range(1, len(G.CHAT.lines) + 1)])
     assert types.count("quest_accept") == 4, "una aceptación por misión, sin duplicados"
     assert "quest_abandon" in types and "equip" in types and "death" in types
+    reps = [ch.events[i] for i in range(1, len(ch.events) + 1) if ch.events[i].type in ("rep", "standing")]
+    assert [(e.type, e.faction) for e in reps] == [("rep", "Ventormenta"), ("standing", "Ventormenta")], [(e.type, e.faction) for e in reps]
+    assert reps[0].amount == 250 and reps[1].standing == "Amistoso" and "capital" in reps[1].text
     with open(out_path, "w", encoding="utf-8") as f:
         f.write("\nCronicaDB = " + G.SERIALIZE(db) + "\n")
     print("escrito", out_path)

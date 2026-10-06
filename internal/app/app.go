@@ -438,6 +438,8 @@ func describe(g group.Group) string {
 		return fmt.Sprintf("%d misiones sueltas", len(g.Quests))
 	case group.Equip:
 		return "pieza nueva: " + g.Items[0].Item
+	case group.Rep:
+		return g.Standing.Faction + ": " + g.Standing.Standing
 	}
 	return string(g.Kind)
 }
@@ -474,6 +476,17 @@ func stats(c model.Character) store.Stats {
 			s.Deaths++
 		case model.EvLevel:
 			s.LevelUps = append(s.LevelUps, store.LevelUp{Level: e.Level, T: e.T, Played: e.Played})
+		case model.EvStanding:
+			found := false
+			for i := range s.Reputation {
+				if s.Reputation[i].Faction == e.Faction {
+					s.Reputation[i] = store.RepStanding{Faction: e.Faction, Standing: e.Standing, StandingID: e.StandingID}
+					found = true
+				}
+			}
+			if !found && e.Faction != "" {
+				s.Reputation = append(s.Reputation, store.RepStanding{Faction: e.Faction, Standing: e.Standing, StandingID: e.StandingID})
+			}
 		}
 		if e.Zone != "" && !seen[e.Zone] {
 			seen[e.Zone] = true

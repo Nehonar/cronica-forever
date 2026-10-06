@@ -50,6 +50,8 @@ type Story struct {
 	LevelFrom int        `json:"levelFrom,omitempty"`
 	LevelTo   int        `json:"levelTo,omitempty"`
 	Deaths    int        `json:"deaths,omitempty"`
+	Faction   string     `json:"faction,omitempty"`  // hitos de reputación
+	Standing  string     `json:"standing,omitempty"` // rango alcanzado
 	Start     int64      `json:"start,omitempty"`
 	End       int64      `json:"end,omitempty"`
 	Created   string     `json:"created,omitempty"`
@@ -70,8 +72,17 @@ type Stats struct {
 	Deaths     int       `json:"deaths"`
 	Zones      []string  `json:"zones"`
 	LevelUps   []LevelUp `json:"levelUps"`
-	FirstSeen  int64     `json:"firstSeen,omitempty"`
-	LastSeen   int64     `json:"lastSeen,omitempty"`
+	// Rango actual con cada facción (solo las que han subido a Amistoso o más).
+	Reputation []RepStanding `json:"reputation,omitempty"`
+	FirstSeen  int64         `json:"firstSeen,omitempty"`
+	LastSeen   int64         `json:"lastSeen,omitempty"`
+}
+
+// RepStanding es el rango con una facción.
+type RepStanding struct {
+	Faction    string `json:"faction"`
+	Standing   string `json:"standing"`
+	StandingID int    `json:"standingID"`
 }
 
 // Pending es lo registrado que aún no se ha narrado.
@@ -147,6 +158,9 @@ func (d *Doc) Add(g group.Group, st narrate.Story) {
 	}
 	for _, q := range g.Quests {
 		s.Quests = append(s.Quests, QuestRef{ID: q.ID, Title: q.Title, Giver: q.Giver})
+	}
+	if g.Standing != nil {
+		s.Faction, s.Standing = g.Standing.Faction, g.Standing.Standing
 	}
 	for _, it := range g.Items {
 		s.Items = append(s.Items, ItemRef{Name: it.Item, Quality: it.Quality, Slot: it.Slot, SubType: it.ItemSubType, Armor: it.Armor, Stats: it.Stats})
