@@ -2,23 +2,23 @@
   "key": "Nehonar-ClassicBetaPvE",
   "character": {
     "key": "Nehonar-ClassicBetaPvE",
-    "name": "Nehonar",
+    "name": "Nehonar Lionhart",
     "epithet": "el de la Cantera",
     "race": "Humano",
     "class": "Paladín",
-    "voice": "Primera persona, tono cercano y sencillo de trabajador curtido; tira de humor ligero para quitarle peso a las cosas, se resta méritos y deja entrever, entre broma y broma, unos pensamientos más hondos de lo que aparenta.",
-    "backstory": "Nehonar fue durante mucho tiempo un joven buscavidas de manos encallecidas. Pasó largas jornadas picando piedra en la cantera y otras tantas descargando mercancías en los muelles de Ventormenta, de fardo en fardo y de bloque en bloque. Mientras tanto, soñaba con otra vida: se imaginaba blandiendo espada y escudo, convertido en estandarte de lo justo. Lo contaba sin reparo, y por eso los demás se reían de él.\n\nTodo cambió el día del accidente en las minas. Con la cueva convertida en una trampa y un grupo de hombres atrapados dentro, alguien tenía que dar un paso al frente, y fue él. Nehonar tomó el mando sin que nadie se lo pidiera y, a base de pura tenacidad, consiguió sacarlos a todos con vida. Quienes antes se burlaban de sus fantasías empezaron a contar aquella historia de otra manera.\n\nLos relatos corrieron hasta llegar a oídos de un paladín de la Mano de Plata. El paladín empezó a preguntar por aquel chico de la cantera y escuchó lo que se decía de él: sus ganas de ser alguien más, su terquedad y su forma de no abandonar a nadie. Vio en él algo que merecía la pena, y así comenzó el camino de Nehonar en la Luz, que hoy recorre los senderos del Bosque de Elwynn.\n\nEs amistoso y siempre tiene una broma a mano, porque el humor es su vía de escape. Aun así, guarda cierta distancia con los demás. No es por desconfianza, sino por miedo a coger estima a la gente. Si le llaman, acude sin dudar, aunque rara vez toma la iniciativa. Suele andar inmerso en sus pensamientos y está dispuesto a hacer lo que haga falta por quien sea.\n\nLo que de verdad persigue es ser útil. Todo lo que hace le parece poco, y nunca se detiene a celebrar un logro: en cuanto alcanza una meta, ya está buscando la siguiente.",
+    "voice": "Narra en primera persona, con tono cercano y bromista que se vuelve pensativo cuando nadie mira. Habla llano, como un trabajador del muelle, y quita importancia a sus propias hazañas.",
+    "backstory": "Antes de conocer la Luz, Nehonar Lionhart fue un joven buscavidas de manos encallecidas. Repartía sus días entre la cantera, picando piedra, y los muelles de Ventormenta, cargando fardos de sol a sol. Mientras tanto soñaba con otra vida, con espada y escudo, convertido en estandarte de lo justo. Lo contaba sin reparo, y por eso los demás se reían de él.\n\nTodo cambió el día del accidente en las minas. La cueva se convirtió en una trampa y un grupo de hombres quedó atrapado dentro. Alguien tenía que dar un paso al frente, y fue él. Nehonar tomó el mando sin que nadie se lo pidiera y, a fuerza de pura tenacidad, consiguió sacarlos a todos con vida. Quienes antes se burlaban de sus fantasías empezaron a contar aquella historia de otra manera.\n\nLos relatos llegaron a oídos de un veterano paladín de la antigua orden de la Mano de Plata. El paladín preguntó por el chico de la cantera y escuchó lo que se decía de él: sus ganas de ser alguien más, su terquedad y su negativa a abandonar a nadie. Vio en él algo que merecía la pena, y así empezó el camino de Nehonar en la Luz, que hoy le lleva por los senderos del Bosque de Elwynn y bajo el techo de la Posada del Orgullo de León.\n\nEs amistoso y siempre tiene una broma a mano, porque el humor es su vía de escape. Aun así, guarda cierta distancia con los demás. No lo hace por desconfianza, sino por miedo a coger estima a la gente. Si le llaman, acude sin dudar, aunque rara vez toma la iniciativa. Suele andar perdido en sus pensamientos y está dispuesto a hacer lo que haga falta por quien sea.\n\nLo que de verdad persigue es ser útil. Todo lo que hace le parece poco, y nunca se detiene a celebrar un logro: en cuanto alcanza una meta, ya está buscando la siguiente.",
     "threads": [
-      "¿Qué vio exactamente en él el paladín de la Mano de Plata y qué espera de su aprendiz?",
-      "Los hombres que sacó con vida de la cueva siguen ahí fuera, y quizá algún día se crucen de nuevo en su camino.",
-      "Aprender a detenerse y celebrar un logro antes de buscar el siguiente.",
-      "Llegará alguien capaz de romper la distancia que mantiene con los demás."
+      "¿Volverá a cruzarse con el veterano que vio algo en él?",
+      "Los hombres que sacó de la mina no han olvidado lo que le deben.",
+      "Algún día tendrá que dejar que alguien se le acerque de verdad.",
+      "Aprender a celebrar una victoria antes de buscar la siguiente."
     ],
-    "motto": "Siempre uno más."
+    "motto": "Mientras quede alguien dentro, no he terminado."
   },
   "level": 13,
   "realm": "Classic Beta PvE",
-  "updated": "2026-10-05T21:30:35Z",
+  "updated": "2026-10-06T03:23:23Z",
   "stories": null,
   "pending": {
     "loose": [],
@@ -26,7 +26,7 @@
   },
   "stats": {
     "level": 13,
-    "played": 65,
+    "played": 298,
     "questsDone": 0,
     "deaths": 0,
     "zones": [
