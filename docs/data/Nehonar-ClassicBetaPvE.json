@@ -16,9 +16,9 @@
     ],
     "motto": "Mientras quede alguien dentro, no he terminado."
   },
-  "level": 13,
+  "level": 14,
   "realm": "Classic Beta PvE",
-  "updated": "2026-10-06T07:56:43Z",
+  "updated": "2026-10-06T09:48:59Z",
   "stories": [
     {
       "id": "sueltas-91777-91724-33-91741",
@@ -119,6 +119,120 @@
   ],
   "encargos": [
     {
+      "id": 6285,
+      "title": "Regresa con Lewis",
+      "giver": "Dungar Tragolargo",
+      "zone": "Ciudad de Ventormenta",
+      "subzone": "Distrito de Mercaderes",
+      "objectives": "Compra un vuelo en grifo hasta la Colina del Centinela al maestro de grifos Dungar Tragolargo y lleva el Cajón de Osric a Lewis de la Colina del Centinela.",
+      "original": "El maestro de grifos de los Páramos de Poniente es Thor. Si ya has hablado con él puedes coger uno de los grifos para ir hasta allí.\n\nTe conviene saber algo: los grifos siempre están entrenados para volar a su capital pero solo te llevarán a otro maestro de grifos si ya has estado con él.\n\nYa has hablado con Thor, así que vuelve a hablar conmigo cuando estés listo para volar hasta los Páramos de Poniente. Cuando estés allí podrás entregar el Cajón de Osric al intendente Lewis.",
+      "heading": "Un cajón y un par de alas",
+      "text": "Nehonar llevaba el Cajón de Osric bajo el brazo cuando se plantó ante Dungar Tragolargo, en el Distrito de Mercaderes. El enano lo miró de arriba abajo, como quien calcula cuánto peso aguanta un grifo.\n\n—Los grifos siempre saben volver a su capital —le explicó—, pero solo te llevan a otro maestro si ya has estado con él. Tú ya hablaste con Thor, en los Páramos de Poniente. Cuando estés listo, te subo a uno.\n\nNehonar soltó una risa corta.\n\n—Toda la vida cargando fardos a pie, y ahora resulta que los míos vuelan.\n\nLuego miró el cajón y la broma se le quedó a medias. No era gran cosa, un encargo de recadero. Pero al otro lado lo esperaba el intendente Lewis, en la Colina del Centinela. Y a él, con eso, le bastaba.",
+      "acceptT": 1791279884,
+      "state": "activa",
+      "narrated": "2026-10-06T09:47:55Z"
+    },
+    {
+      "id": 6261,
+      "title": "Dungar Tragolargo",
+      "giver": "Osric Strang",
+      "zone": "Ciudad de Ventormenta",
+      "subzone": "Casco Antiguo",
+      "objectives": "Lleva el Cajón de Osric a Dungar Tragolargo, el maestro de grifos.",
+      "original": "Nehonar, he reunido en este cajón todo lo que me pidió Lewis. ¿Puedes llevárselo?\n\nSi ya has hablado con Thor, en los Páramos de Poniente, podrás coger un grifo de vuelta. Dungar Tragolargo es nuestro maestro de grifos, lo encontrarás en el Distrito de Mercaderes.\n\nHabla con Dungar y lleva este cajón a Lewis tan rápido como puedas. ¡No queremos que nuestros combatientes de los Páramos de Poniente vayan mal equipados!",
+      "acceptT": 1791278586,
+      "state": "entregada"
+    },
+    {
+      "id": 6281,
+      "title": "Prosigue hasta Ventormenta",
+      "giver": "Thor",
+      "zone": "Páramos de Poniente",
+      "subzone": "Colina del Centinela",
+      "objectives": "Cómprale al maestro de grifos Thor un vuelo en grifo y lleva la Nota de Lewis a Osric Strang, en la tienda Inmunidad Limitada, en el Casco Antiguo de Ventormenta.",
+      "original": "A cambio de una pequeña tarifa puedes coger un grifo hasta Ventormenta, y llevarle a Osric la nota de Lewis. No encontrarás un modo más rápido para ir hasta allí.\n\nSi te parece aceptable, vuelve a hablar conmigo cuando estés listo para el viaje. Te cobraré algo pero, créeme, ¡merece la pena!",
+      "acceptT": 1791278240,
+      "state": "entregada"
+    },
+    {
+      "id": 92744,
+      "title": "Branquias de múrloc",
+      "giver": "Alba Lunajusta",
+      "zone": "Páramos de Poniente",
+      "subzone": "Colina del Centinela",
+      "objectives": "Alba Lunajusta quiere que consigas 7 branquias de múrloc de Playa Larga por la cosa de los Páramos de Poniente.",
+      "original": "La corrupción que afecta a los cultivos de los Páramos de Poniente puede haberse filtrado al océano. Si los peces locales terminan afectados también, condenarían a Ventormenta a la hambruna.\r\nConsigue branquias de los múrlocs de la costa y tráemelas. Estas criaturas son bastante resistentes, pero su fisiología es especialmente sensible a los contaminantes. Sus branquias estarán infectadas de cualquier toxina que haya en el agua del mar.",
+      "heading": "Branquias para un mar enfermo",
+      "text": "En la Colina del Centinela, Alba Lunajusta lo esperaba con el ceño de quien lleva días sin dormir bien. Le habló de la corrupción que pudría los cultivos de los Páramos de Poniente y de su temor a que se hubiera filtrado al océano.\n\n—Si los peces enferman, Ventormenta pasará hambre —dijo—. Necesito branquias de los múrlocs de Playa Larga. Son duros, pero sus cuerpos absorben cualquier toxina que haya en el agua.\n\nNehonar se rascó la nuca y sonrió de medio lado.\n\n—O sea, que me toca hacer de pescadero. Para eso no hacía falta la Luz.\n\nElla no rio, y él no insistió. Había cargado suficientes cajas de pescado en los muelles como para saber cuántas bocas dependían de aquellas redes. Se ajustó el escudo y miró hacia la costa.",
+      "acceptT": 1791278204,
+      "state": "activa",
+      "narrated": "2026-10-06T09:48:09Z"
+    },
+    {
+      "id": 92742,
+      "title": "Probar los pozos",
+      "giver": "Alba Lunajusta",
+      "zone": "Páramos de Poniente",
+      "subzone": "Colina del Centinela",
+      "objectives": "Usa el equipo de muestras de agua de pozo para conseguir muestras de los pozos de la Finca de Jansen y la Granja de Molsen.",
+      "original": "Debemos determinar el origen y la naturaleza del veneno que corrompe estas tierras. Comencemos con el agua subterránea de las granjas de la zona.\r\nVe a la Finca de Jansen y la Granja de Molsen y consigue muestras de los pozos.",
+      "heading": "Lo que esconde el agua",
+      "text": "En la Colina del Centinela, Alba Lunajusta le tendió el equipo de muestras sin perder tiempo en saludos.\n\n—Debemos averiguar el origen y la naturaleza del veneno que corrompe estas tierras. Empezaremos por el agua subterránea de las granjas.\n\nNehonar sopesó el equipo como quien calcula un fardo en el muelle.\n\n—Frascos y cuerdas. Y yo que esperaba algo con más gloria.\n\nElla no le rio la gracia, y él tampoco insistió. Bajo la broma lo había entendido. Si el veneno estaba en los pozos, estaba en lo que bebía la gente de aquellas tierras, y eso no era poca cosa. Alguien tenía que bajar a mirar.\n\n—Ve a la Finca de Jansen y a la Granja de Molsen —añadió Alba—. Tráeme muestras de sus pozos.\n\nÉl asintió, guardó el equipo y echó a andar.",
+      "acceptT": 1791278201,
+      "state": "activa",
+      "narrated": "2026-10-06T09:48:25Z"
+    },
+    {
+      "id": 153,
+      "title": "Pañuelos rojos de cuero",
+      "giver": "Explorador Galiaan",
+      "zone": "Páramos de Poniente",
+      "subzone": "Colina del Centinela",
+      "objectives": "Lleva 15 pañuelos de cuero rojo al explorador Galiaan en la Colina del Centinela.",
+      "original": "La tapadera de los Defias cambia constantemente. He estado siguiendo sus movimientos desde hace algún tiempo. Aunque, recuerda, he averiguado que muchos miembros de la banda se identifican por sus pañuelos de cuero rojo.\n\nTráeme 15 de esos pañuelos y procuraré que seas recompensado.",
+      "heading": "Pañuelos rojos para el explorador",
+      "text": "En la Colina del Centinela, el explorador Galiaan hablaba sin apartar la vista de los campos de los Páramos de Poniente, como si temiera perder algo de vista.\n\n—La tapadera de los Defias cambia constantemente —le dijo a Nehonar—. Llevo tiempo siguiendo sus movimientos. Pero he averiguado algo: muchos de ellos se identifican por sus pañuelos de cuero rojo.\n\nLe pidió que le trajera esos pañuelos y le prometió que procuraría que fuera recompensado.\n\nNehonar soltó una media sonrisa y comentó que, para variar, al menos esta vez no tendría que cargar fardos. Galiaan no se rio. Entonces Nehonar miró también hacia los campos y se quedó callado. Detrás de cada pañuelo había un hombre que alguien conocía. Se ajustó el escudo y bajó de la colina a buscarlos.",
+      "acceptT": 1791278177,
+      "state": "activa",
+      "narrated": "2026-10-06T09:48:33Z"
+    },
+    {
+      "id": 6181,
+      "title": "Mensajero a toda prisa",
+      "giver": "Intendente Lewis",
+      "zone": "Torre del Centinela",
+      "objectives": "Lleva la Nota de Lewis a Thor, el maestro de grifos.",
+      "original": "Aunque no tenemos mucha ayuda directa desde Ventormenta, tengo un contacto en la ciudad que nos ayuda con los suministros de armaduras. Su nombre es Osric Strang. Su tienda, Inmunidad Limitada, está en el Casco Antiguo de Ventormenta.\n\nNuestro suministro se está agotando y debemos contactar con Osric para pedirle más. ¿Puedes llevarle esta nota?\n\nEl camino más rápido hasta Ventormenta es con Thor, nuestro maestro de grifos. Está justo bajo la colina, llévale mi nota y coge un grifo hasta Ventormenta.",
+      "acceptT": 1791278128,
+      "state": "entregada"
+    },
+    {
+      "id": 102,
+      "title": "En patrulla por Páramos de Poniente",
+      "giver": "Capitán Danuvin",
+      "zone": "Torre del Centinela",
+      "objectives": "Lleva 8 zarpas de gnoll al capitán Danuvin en la Colina del Centinela.",
+      "original": "Ventormenta nos ha abandonado. Nauseabundos aires de depravación soplan por las llanuras de los Páramos de Poniente. Este era mi hogar y no daré la espalda a los ciudadanos que decidieron permanecer aquí. Nosotros, los antiguos granjeros, ofreceremos resistencia.\n\nTu tarea, si decidieras aceptar, consistirá en patrullar las praderas de los Páramos de Poniente. Localiza y aniquila a los infames gnolls que parecen colaborar con los ladrones de Las Minas de la Muerte. Tráeme 8 zarpas de gnoll y sabré recompensar tu valentía.",
+      "heading": "Los que decidieron quedarse",
+      "text": "En la Torre del Centinela, el capitán Danuvin fue directo al grano.\n\n—Ventormenta nos ha abandonado. Este era mi hogar, y no daré la espalda a quienes se quedaron.\n\nNehonar miró las praderas de los Páramos de Poniente. El viento traía algo rancio, y no era solo polvo.\n\n—Los antiguos granjeros resistiremos —siguió Danuvin—. Patrulla las praderas. Hay gnolls que colaboran con los ladrones de Las Minas de la Muerte. Acaba con ellos y tráeme sus zarpas.\n\n—Y yo que pensaba que lo de cargar fardos se había acabado —bromeó Nehonar.\n\nEl capitán no sonrió, y él no insistió. Gente que aguanta dentro de algo que se derrumba; eso lo conocía bien. Se ajustó el escudo y echó a andar hacia las praderas. Volvería a la Colina del Centinela con las zarpas.",
+      "acceptT": 1791278121,
+      "state": "activa",
+      "narrated": "2026-10-06T09:48:47Z"
+    },
+    {
+      "id": 12,
+      "title": "Las Milicias del Pueblo",
+      "giver": "Gryan Mantorrecio",
+      "zone": "Torre del Centinela",
+      "objectives": "Gryan Mantorrecio quiere que mates 15 tramperos Defias y 15 contrabandistas Defias. Cuando lo hayas hecho vuelve a verle en la Colina del Centinela.",
+      "original": "Las Milicias del Pueblo solo tienen un objetivo: defender las tierras de los Páramos de Poniente y traer la paz a nuestro entorno. Por desgracia, el precio de la paz suele pagarse en sangre.\n\nSegún el informe de uno de mis rastreadores, una banda de tramperos Defias ha sido vista cerca de la Mina de Jango al noreste de aquí, en La Granja de Molsen y en la Plantación de Calabazas de Cejade. Si quieres unirte a nuestras filas, acaba con 15 tramperos Defias y con 15 contrabandistas Defias y vuelve a verme.",
+      "heading": "El precio de la paz",
+      "text": "En lo alto de la Torre del Centinela, el viento de los Páramos de Poniente olía a tierra reseca. Gryan Mantorrecio no perdió tiempo en saludos.\n\n—Las Milicias del Pueblo solo tienen un objetivo: defender estas tierras y traer la paz. Por desgracia, la paz suele pagarse en sangre.\n\nLe habló del informe de uno de sus rastreadores. Habían visto tramperos y contrabandistas Defias cerca de la Mina de Jango, al noreste, en la Granja de Molsen y en la Plantación de Calabazas de Cejade.\n\n—Si quieres unirte a nuestras filas, acaba con ellos y vuelve a verme aquí, en la Colina del Centinela.\n\nNehonar bromeó con que en los muelles, al menos, te daban faena sin hacerte un examen. Gryan no sonrió. Nehonar tampoco sonrió cuando oyó la palabra «mina». Asintió y miró hacia el noreste.",
+      "acceptT": 1791278117,
+      "state": "activa",
+      "narrated": "2026-10-06T09:48:59Z"
+    },
+    {
       "id": 22,
       "title": "Pastel de hígado de dentosangre",
       "giver": "Salma Saldean",
@@ -171,7 +285,7 @@
       "heading": "Avena para la vieja Blanchy",
       "text": "Junto al carro roto, en la Finca de Jansen, Verna Cejade acariciaba el cuello de un animal que apenas se tenía en pie.\n\n—¡Pobre vieja Blanchy! —suspiró—. Está agotada después de todo el trabajo que le dimos. Comió antes de dejar la granja, pero no esperábamos que se rompiera el carro.\n\nNehonar reconoció aquel cansancio. Era el de las bestias de carga del muelle al final de la jornada.\n\n—Si pudieras traerle unos puñados de avena… Hay varias granjas al suroeste de aquí, si consigues librarte de esas horribles máquinas que las han invadido.\n\n—Máquinas, ¿eh? —Nehonar sonrió—. Bueno, peores capataces he tenido.\n\nAl darse la vuelta, sin embargo, ya no bromeaba. No era ninguna gesta, solo una bestia hambrienta. Y aun así, pensó, ella también estaba esperando a que alguien volviera.",
       "acceptT": 1791272668,
-      "state": "activa",
+      "state": "entregada",
       "narrated": "2026-10-06T07:56:28Z"
     },
     {
@@ -412,7 +526,8 @@
   ],
   "pending": {
     "loose": [
-      "La reliquia olvidada"
+      "La reliquia olvidada",
+      "La pobre y vieja Blanchy"
     ],
     "openChains": [
       [
@@ -431,14 +546,24 @@
       [
         "Estofado de los Páramos de Poniente",
         "Estofado de los Páramos de Poniente"
+      ],
+      [
+        "Habla con Gryan Mantorrecio",
+        "Las Milicias del Pueblo"
+      ],
+      [
+        "Mensajero a toda prisa",
+        "Prosigue hasta Ventormenta",
+        "Dungar Tragolargo",
+        "Regresa con Lewis"
       ]
     ]
   },
   "stats": {
-    "level": 13,
-    "played": 6803,
-    "questsDone": 17,
-    "deaths": 1,
+    "level": 14,
+    "played": 10628,
+    "questsDone": 22,
+    "deaths": 2,
     "zones": [
       "Lion's Pride Inn",
       "Bosque de Elwynn",
@@ -448,7 +573,9 @@
       "Bosque de Argénteos",
       "Dalaran",
       "Ciudad de Ventormenta",
-      "Páramos de Poniente"
+      "Páramos de Poniente",
+      "Torre del Centinela",
+      "Bosque del Ocaso"
     ],
     "levelUps": [
       {
@@ -470,9 +597,13 @@
       {
         "level": 5,
         "t": 1791264929
+      },
+      {
+        "level": 14,
+        "t": 1791278283
       }
     ],
     "firstSeen": 1791235713,
-    "lastSeen": 1791273278
+    "lastSeen": 1791279943
   }
 }
