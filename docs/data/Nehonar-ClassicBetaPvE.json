@@ -18,7 +18,7 @@
   },
   "level": 15,
   "realm": "Classic Beta PvE",
-  "updated": "2026-10-06T14:54:13Z",
+  "updated": "2026-10-06T15:18:40Z",
   "stories": [
     {
       "id": "sueltas-91777-91724-33-91741",
@@ -762,7 +762,7 @@
   },
   "stats": {
     "level": 15,
-    "played": 19059,
+    "played": 19072,
     "questsDone": 32,
     "deaths": 4,
     "zones": [
@@ -809,6 +809,6 @@
       }
     ],
     "firstSeen": 1791235713,
-    "lastSeen": 1791298433
+    "lastSeen": 1791299905
   }
 }
