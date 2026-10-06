@@ -16,25 +16,333 @@
     ],
     "motto": "Mientras quede alguien dentro, no he terminado."
   },
-  "level": 10,
+  "level": 5,
   "realm": "Classic Beta PvE",
-  "updated": "2026-10-06T04:08:37Z",
-  "stories": null,
+  "updated": "2026-10-06T05:46:21Z",
+  "stories": [
+    {
+      "id": "sueltas-91777-91724-33-91741",
+      "kind": "sueltas",
+      "zone": "Bosque de Elwynn",
+      "subzones": [
+        "Ala de la Biblioteca",
+        "Torre de Azora",
+        "Valle de Villanorte"
+      ],
+      "title": "Cada cosa en su estantería",
+      "text": "El libro apareció entre la hierba de Villanorte. Un kóbold lo había dejado caer y tenía el lomo lleno de dentelladas. Nehonar lo sacudió y soltó una risa: en el muelle había visto a estibadores comerse cosas peores. Aun así, lo llevó a la abadía.\n\n—¡Se supone que tiene que estar en su estantería! —se lamentó el hermano Paxton—. ¿Y qué hago con el resto de la colección?\n\nNehonar no contestó, pero la pregunta se le quedó dentro, como una piedra en la bota.\n\nPor la campiña rondaban los lobos Fauces de Madera, y Eagan, junto a la abadía, quería su carne dura para unos buenos filetes. Nehonar salió a por ella. En algún punto de aquellos prados acabó de bruces en el suelo. Se levantó, se sacudió el barro y siguió. Cuando volvió con el encargo, Eagan se frotó las manos y le dejó elegir el pago. Nehonar escogió sin ceremonia, porque ya pensaba en otra cosa.\n\nEn la Torre de Azora, Hamish Bergwort revisó su instrumental delicado y suspiró:\n\n—Ahora sí, todo marcha como es debido. Gracias, Nehonar.\n\nEn el Ala de la Biblioteca, Paxton lo llamó la salvación de su biblioteca y le puso en las manos un arma destinada a los milicianos.\n\n—Tú sabrás sacarle más partido.\n\nNehonar la sopesó y bromeó con que pesaba menos que un fardo del muelle. Luego, a solas, miró las estanterías. Aquellos días se había dedicado a devolver cosas a su sitio, y no le pareció gran hazaña. Ya estaba mirando el camino.",
+      "summary": "Nehonar devolvió libros, carne y calma a quienes se lo pidieron en Villanorte y en Azora, cayó una vez y se levantó, y siguió adelante sin detenerse a celebrar nada.",
+      "quests": [
+        {
+          "id": 91777,
+          "title": "Rarezas del bibliófilo"
+        },
+        {
+          "id": 91724,
+          "title": "Instrumental delicado"
+        },
+        {
+          "id": 33,
+          "title": "Los lobos cruzan la frontera",
+          "giver": "Eagan Desollapelambres"
+        },
+        {
+          "id": 91741,
+          "title": "El libro mordisqueado",
+          "giver": "Libro mordisqueado"
+        }
+      ],
+      "levelFrom": 10,
+      "levelTo": 3,
+      "deaths": 1,
+      "start": 1791258598,
+      "end": 1791263307,
+      "created": "2026-10-06T05:46:06Z"
+    },
+    {
+      "id": "cadena-91743-91745-91752",
+      "kind": "cadena",
+      "zone": "Bosque de Elwynn",
+      "subzones": [
+        "Ala de la Biblioteca",
+        "Mina del Eco"
+      ],
+      "title": "Imágenes para Narf",
+      "text": "Al hermano Paxton le temblaba la voz cuando habló de sus libros, como si le estuvieran arrancando páginas de la propia piel. Juraba que los kóbolds se los estaban comiendo. Nehonar no se rió, aunque tuvo que morderse el carrillo, y salió al Valle de Villanorte a buscarlos.\n\nVolvió con los brazos cargados, igual que en los muelles, solo que los fardos olían a pergamino y a cueva. Paxton los recibió con alivio y le regaló un libro de instrucciones que, según dijo, ya no necesitaba. Luego frunció el ceño. Faltaban muchísimos más, y aquello de que se los comieran no terminaba de cuadrar. ¿Para qué querían libros unos kóbolds?\n\nEl hermano lo mandó a la Mina del Eco a hablar con Kelsey Abisal, una aprendiz de minera que trabajaba a la entrada. Nehonar la encontró con el pico en la mano y polvo hasta las cejas, y por un momento se vio a sí mismo años atrás.\n\n—¿Kóbolds con libros? —dijo ella—. Sí, van y vienen con ellos bajo el brazo, gritándose unos a otros.\n\nAlgunos chillaban algo sobre imágenes para un tal Narf. Kelsey sospechaba que era uno de sus jefes, allá en lo hondo, sentado sobre un saco lleno de libros robados. Le advirtió que dentro los kóbolds eran más retorcidos y que buscara ayuda.\n\nNehonar asintió y miró la boca de la mina. Le pesó en el pecho el recuerdo de otra cueva, de otro techo demasiado bajo y de otros hombres atrapados. Respiró hondo y bajó.\n\nSalió con el buscabrillantes Narf vencido y el saco a cuestas. Lo llevó hasta las afueras de la abadía, donde el alguacil McBride lo recibió con una sonrisa franca.\n\n—Gracias, Nehonar. Se los llevaré al hermano Paxton de inmediato. Te estás convirtiendo en toda una celebridad local.\n\n—Celebridad, dice —bromeó él—. Si solo he hecho de mozo de biblioteca.\n\nSe dio la vuelta antes de que el alguacil viera que el cumplido le había llegado más adentro de lo que quería admitir. Ya estaba pensando en lo siguiente.",
+      "summary": "Nehonar siguió el rastro de los libros robados de Paxton hasta la Mina del Eco, venció a Narf, entregó el saco a McBride y, al oírse llamar celebridad, lo quitó de en medio con una broma.",
+      "quests": [
+        {
+          "id": 91743,
+          "title": "Roedores traviesos",
+          "giver": "Hermano Paxton"
+        },
+        {
+          "id": 91745,
+          "title": "Asesores de minería",
+          "giver": "Hermano Paxton"
+        },
+        {
+          "id": 91752,
+          "title": "La situación en su conjunto",
+          "giver": "Kelsey Abisal"
+        }
+      ],
+      "levelFrom": 3,
+      "levelTo": 5,
+      "start": 1791263317,
+      "end": 1791265371,
+      "created": "2026-10-06T05:46:21Z"
+    }
+  ],
+  "encargos": [
+    {
+      "id": 91772,
+      "title": "¡Shhh! Aquí se cazan kóbolds",
+      "giver": "Tordrin Hojadusta",
+      "zone": "Bosque de Elwynn",
+      "subzone": "Valle de Villanorte",
+      "objectives": "Sigue los rastros kóbold e informa al alguacil Dughan en Villadorada de lo que descubras, además de llevarle el equipo de rastreo de kóbolds.",
+      "original": "Muy bien. Coge este equipo de rastreo de kóbolds; te ayudará a encontrar al kóbold que tanto preocupa al alguacil McBride.\r\n\r\nSigue su rastro y devuelve lo que encuentres al alguacil Dughan de Villadorada.\r\n\r\nTengo la sensación de que estas alimañas están tramando algo a las afueras de Villanorte. Si es cierto, necesitarás la ayuda de Dughan.",
+      "heading": "Un rastro hacia Villadorada",
+      "text": "Tordrin Hojadusta me esperaba con un fardo en las manos y la frente arrugada, como quien lleva rato discutiendo con el bosque.\n\n—Coge este equipo de rastreo de kóbolds —me dijo, poniéndomelo contra el pecho—. Te ayudará a encontrar al kóbold que tanto preocupa al alguacil McBride.\n\nLo sopesé. Había cargado fardos peores en los muelles, aunque ninguno me había pedido que lo siguiera.\n\n—Sigue su rastro y lleva lo que encuentres al alguacil Dughan, en Villadorada. Esas alimañas traman algo a las afueras de Villanorte, y si es así, necesitarás su ayuda.\n\nLe solté que un kóbold tramando algo sería toda una novedad. No se rio. En el silencio pensé que, si tenía razón, alguien estaba en peligro sin saberlo. Me eché el equipo al hombro y fui a buscar el primer rastro.",
+      "acceptT": 1791265427,
+      "state": "activa",
+      "narrated": "2026-10-06T05:44:54Z"
+    },
+    {
+      "id": 96627,
+      "title": "El aventurero",
+      "giver": "Alguacil McBride",
+      "zone": "Bosque de Elwynn",
+      "subzone": "Valle de Villanorte",
+      "objectives": "Habla con Sam Zarzaparrilla cerca de Villadorada.",
+      "original": "Nehonar, hasta ahora has demostrado tu habilidad como protector. Por ese motivo, quiero encomendarte una misión un tanto inusual.\r\n\r\nHe oído que hay un nuevo aventurero en el camino, cerca de Villadorada. Ve a ver qué está haciendo.",
+      "heading": "Un encargo un tanto inusual",
+      "text": "El alguacil McBride le hizo un gesto, y Nehonar acudió como acudía siempre: sin preguntar para qué.\n\n—Hasta ahora has demostrado tu habilidad como protector —dijo el alguacil—. Por eso quiero encomendarte una misión un tanto inusual.\n\nNehonar se rascó la nuca. «Protector». La palabra le seguía quedando grande, como una armadura prestada por alguien más ancho de hombros.\n\n—He oído que hay un nuevo aventurero en el camino, cerca de Villadorada. Ve a ver qué está haciendo.\n\nSe le escapó media sonrisa. Hacía no tanto, el aventurero nuevo del que todos hablaban era él, y casi siempre para reírse. Ahora le tocaba ir a echarle un ojo a otro.\n\nNo pidió más detalles. Se ajustó el escudo y tomó el camino que salía del valle, rumbo a Villadorada, en busca de un tal Sam Zarzaparrilla.",
+      "acceptT": 1791265379,
+      "state": "activa",
+      "narrated": "2026-10-06T05:45:08Z"
+    },
+    {
+      "id": 54,
+      "title": "Informa en Villadorada",
+      "giver": "Alguacil McBride",
+      "zone": "Bosque de Elwynn",
+      "subzone": "Valle de Villanorte",
+      "objectives": "Lleva los documentos del alguacil McBride al alguacil Dughan a Villadorada.",
+      "original": "Nehonar, eres un mago que ciertamente ha demostrado que le preocupa la seguridad de Villanorte. Tu siguiente misión será proteger el Bosque de Elwynn.\n\nSi aceptas, te daré unos papeles para el alguacil Dughan, que está en Villadorada. Para ir a Villadorada, sigue el camino hacia el sur, pasada la frontera.",
+      "heading": "Papeles para Villadorada",
+      "text": "El alguacil McBride lo esperaba con un legajo de papeles bajo el brazo y el gesto serio de quien ha tomado una decisión.\n\n—Nehonar, has demostrado que te preocupa la seguridad de Villanorte. Tu siguiente tarea será proteger el Bosque de Elwynn.\n\nNehonar se rascó la nuca y sonrió, como si le hubieran pedido mover un par de fardos.\n\n—Mientras no haya que cargarlo a hombros, alguacil...\n\nMcBride no rió, pero le tendió los documentos.\n\n—Llévaselos al alguacil Dughan, en Villadorada. Sigue el camino hacia el sur, más allá de la frontera.\n\nNehonar guardó los papeles con cuidado. Pesaban poco, pero eran la primera vez que alguien lo enviaba más allá del valle. Miró el camino del sur y, antes de pensarlo demasiado, echó a andar.",
+      "acceptT": 1791265376,
+      "state": "activa",
+      "narrated": "2026-10-06T05:45:17Z"
+    },
+    {
+      "id": 91758,
+      "title": "¡Sigue a ese kóbold!",
+      "giver": "Alguacil McBride",
+      "zone": "Bosque de Elwynn",
+      "subzone": "Valle de Villanorte",
+      "objectives": "Habla con Tordrin Hojatallo junto al establo que hay detrás de la Abadía de Villanorte.",
+      "original": "Aún no has acabado con esos kóbolds. Kelsey nos acaba de informar de que uno de ellos ha salido de la mina cargando con un saco de libros enorme. Necesito que encuentres a ese kóbold para que podamos recuperar los libros del hermano Paxton.\r\n\r\nVe a hablar con Tordrin Hojatallo. Es el nuevo instructor de cazadores que acaba de llegar de Forjaz. Lo encontrarás detrás de la abadía, junto al establo. Él te ayudará a localizar a ese kóbold ladrón.",
+      "acceptT": 1791265373,
+      "state": "entregada"
+    },
+    {
+      "id": 91752,
+      "title": "La situación en su conjunto",
+      "giver": "Kelsey Abisal",
+      "zone": "Bosque de Elwynn",
+      "subzone": "Mina del Eco",
+      "objectives": "Acaba con el buscabrillantes Narf y recupera el saco de libros con \"imágenes\". Después, entrégaselo al alguacil McBride, justo a las afueras de la Abadía de Villanorte.",
+      "original": "De vez en cuando, aparece un kóbold gritando \"¡Imágenes para Narf!\". No sé quién es Narf. ¿Uno de sus jefes de las profundidades de la mina, quizás? Seguro que a estas alturas ya tiene un saco entero de libros.\r\n\r\nVe a por esos libros y llévaselos a la autoridad local, el alguacil McBride. Ah, y te recomiendo que busques ayuda. Los kóbolds que hay dentro de la mina son más retorcidos que los de fuera.",
+      "acceptT": 1791264931,
+      "state": "entregada"
+    },
+    {
+      "id": 3904,
+      "title": "La cosecha de Milly",
+      "giver": "Milly Osworth",
+      "zone": "Bosque de Elwynn",
+      "subzone": "Valle de Villanorte",
+      "objectives": "Lleva 8 cajas de uva recogida a Milly Osworth a la Abadía de Villanorte.",
+      "original": "¡Los Defias se instalaron en Viñedos de Villanorte mientras estaba vendimiando! Los denuncié a los guardias, que me dijeron que ya se encargarían, pero... ¡Temo por mis viñas! Si los ladrones no se comen la uva, los guardias la aplastarán cuando vengan a echarlos.\n\n¡Tienes que ayudarme! Ya tengo casi toda la uva recogida, pero dejé las cajas en los viñedos que hay al sureste.\n\n¡Tráemelas y salva mis uvas!",
+      "heading": "Uvas entre ladrones",
+      "text": "Milly Osworth salió al paso de Nehonar en la Abadía de Villanorte, sin aliento y con el ceño fruncido.\n\n—¡Los Defias se han instalado en los viñedos mientras vendimiaba! —soltó de corrido—. Los guardias dicen que ya se encargarán, pero si los ladrones no se comen la uva, ellos la aplastarán al echarlos.\n\nNehonar contuvo una sonrisa. Había soñado con cruzadas y le tocaba cargar fruta. Aunque, bien pensado, cargar fardos era lo suyo.\n\n—Ya tengo casi todo recogido —siguió ella—, pero dejé las cajas en los viñedos, al sureste. ¡Tráemelas y salva mis uvas!\n\nÉl asintió sin hacer bromas. Aquella cosecha era el trabajo de un año entero, y eso lo entendía mejor que cualquier sermón. Se ajustó el escudo y echó a andar hacia el sureste, rumbo a los Viñedos de Villanorte.",
+      "acceptT": 1791264716,
+      "state": "activa",
+      "narrated": "2026-10-06T05:45:30Z"
+    },
+    {
+      "id": 6,
+      "title": "La recompensa por Garrick Piesuaves",
+      "giver": "Ayudante del alguacil Willem",
+      "zone": "Bosque de Elwynn",
+      "subzone": "Valle de Villanorte",
+      "objectives": "Mata a Garrick Piesuaves y lleva su cabeza al ayudante Willem a la Abadía de Villanorte.",
+      "original": "Garrick Piesuaves es un maleante que lleva semanas acosando a granjeros y mercaderes. Ha sido visto en una choza cerca de los viñedos, cruzando el puente al este de la abadía. Tráeme la cabeza de ese villano y podrás quedarte con su botín.\n\nPero ve con cuidado, Nehonar. Garrick anda con una pandilla de matones. Puede que no te sea fácil llegar hasta él.",
+      "heading": "Una cabeza al otro lado del puente",
+      "text": "El ayudante Willem lo esperaba junto a la abadía, con el ceño de quien lleva semanas tragándose quejas.\n\n—Garrick Piesuaves —dijo—. Un maleante que acosa a granjeros y mercaderes. Lo han visto en una choza cerca de los viñedos, cruzando el puente al este de la abadía. Tráeme su cabeza y podrás quedarte con su botín.\n\nNehonar se rascó la nuca.\n\n—Con ese apellido, seguro que pisa blandito.\n\nWillem no sonrió.\n\n—Ve con cuidado, Nehonar. Garrick anda con una pandilla de matones. Puede que no te sea fácil llegar hasta él.\n\nEl paladín asintió, con la mirada puesta ya en el este. Pensó en los granjeros que llevaban semanas sin dormir tranquilos, y la siguiente broma se le quedó en la garganta. Alguien tenía que ir. Como de costumbre, fue él.",
+      "acceptT": 1791264649,
+      "state": "activa",
+      "narrated": "2026-10-06T05:45:44Z"
+    },
+    {
+      "id": 3903,
+      "title": "Milly Osworth",
+      "giver": "Ayudante del alguacil Willem",
+      "zone": "Bosque de Elwynn",
+      "subzone": "Valle de Villanorte",
+      "objectives": "Habla con Milly Osworth.",
+      "original": "Nehonar, has demostrado que se puede confiar en ti y que no temes al trabajo duro.\n\nMi amiga Milly Osworth está en apuros. Tiene la carreta al otro lado de la abadía, cerca del establo. Seguro que le va bien que le eches una mano.",
+      "acceptT": 1791264648,
+      "state": "entregada"
+    },
+    {
+      "id": 91745,
+      "title": "Asesores de minería",
+      "giver": "Hermano Paxton",
+      "zone": "Bosque de Elwynn",
+      "subzone": "Ala de la Biblioteca",
+      "objectives": "Habla con Kelsey Abisal a las afueras de la Mina del Eco del Valle de Villanorte.",
+      "original": "Ve a hablar con la nueva aprendiz de minera, Kelsey Abisal. Trabaja justo a la salida de la mina y seguramente haya visto lo que están tramando los kóbolds. Tal vez pueda enseñarte un par de cosas sobre la minería, ya de paso.",
+      "acceptT": 1791264034,
+      "state": "entregada"
+    },
+    {
+      "id": 21,
+      "title": "Escarmuza en la Mina del eco",
+      "giver": "Alguacil McBride",
+      "zone": "Bosque de Elwynn",
+      "subzone": "Valle de Villanorte",
+      "objectives": "Mata 12 peones kobold y ve a hablar con el alguacil McBride a la Abadía de Villanorte.",
+      "original": "Ha quedado demostrado que tenemos que purgar la Mina del Eco. Vuelve allí y ayuda a eliminar a los kobolds.\n\nDate prisa, Nehonar. Cuanto más tiempo dejemos a los kobolds en la mina, más nos costará expulsarlos de Villanorte.",
+      "acceptT": 1791264013,
+      "state": "entregada"
+    },
+    {
+      "id": 15,
+      "title": "Investigar la Mina del Eco",
+      "giver": "Alguacil McBride",
+      "zone": "Bosque de Elwynn",
+      "subzone": "Valle de Villanorte",
+      "objectives": "Mata 10 obreros kobold y ve a hablar con el alguacil McBride.",
+      "original": "Nehonar, los rastreadores dicen que hay más kobolds de lo que creíamos. Un grupo de obreros ha acampado cerca de la Mina del Eco, al norte de aquí.\n\nVe a la mina y liquídalos; sabemos que hay al menos diez. Comprueba que no quede ninguno más y vuelve.",
+      "acceptT": 1791263769,
+      "state": "entregada"
+    },
+    {
+      "id": 91743,
+      "title": "Roedores traviesos",
+      "giver": "Hermano Paxton",
+      "zone": "Bosque de Elwynn",
+      "subzone": "Ala de la Biblioteca",
+      "objectives": "Recupera 8 libros robados de los kóbolds en el Valle de Villanorte y devuélveselos al hermano Paxton.",
+      "original": "¡Esos malditos kóbolds se están comiendo mis libros! Tienes que recuperarlos antes de que devoren toda mi biblioteca.",
+      "acceptT": 1791263317,
+      "state": "entregada"
+    },
+    {
+      "id": 92124,
+      "title": "Inventario de libros",
+      "giver": "Hermano Paxton",
+      "zone": "Bosque de Elwynn",
+      "subzone": "Ala de la Biblioteca",
+      "objectives": "Habla con Daniel, el ayudante del hermano Paxton, en la biblioteca.",
+      "original": "¡Hay que hacer un recuento de cuántos libros faltan!\r\n\r\nVe a hablar con el inútil de mi ayudante, Daniel. Puede hacer un inventario rápido y decirnos cómo de grave es el problema.\r\n\r\nEstá obsesionado con las diferentes profesiones artesanales del Bosque de Elwynn. El chico no deja de distraerse con eso en lugar de centrarse en su trabajo, que es ayudarme.\r\n\r\n¡No dejes que te dé la cháchara y averigua qué ha pasado con mis libros!",
+      "acceptT": 1791263309,
+      "state": "entregada"
+    },
+    {
+      "id": 91741,
+      "title": "El libro mordisqueado",
+      "giver": "Libro mordisqueado",
+      "zone": "Bosque de Elwynn",
+      "subzone": "Valle de Villanorte",
+      "objectives": "Devuelve el libro al hermano Paxton.",
+      "original": "\u003cUno de los kóbolds ha dejado caer este libro. Parece que intentó comérselo.\r\n\r\nEl hermano Paxton está al cargo de una pequeña biblioteca en la abadía. Puede que el libro proceda de allí\u003e.",
+      "acceptT": 1791263276,
+      "state": "entregada"
+    },
+    {
+      "id": 18,
+      "title": "Hermandad de ladrones",
+      "giver": "Ayudante del alguacil Willem",
+      "zone": "Bosque de Elwynn",
+      "subzone": "Valle de Villanorte",
+      "objectives": "Lleva 12 pañuelos de tela de saco rojo al ayudante Willem cerca de la Abadía de Villanorte.",
+      "original": "Hace poco llegó una banda de maleantes a Villanorte. Se hacen llamar la Hermandad Defias; se les ha visto cruzando el río hacia el este.\n\nNo sé qué están haciendo, ¡pero seguro que no es nada bueno! Tráeme sus pañuelos y te daré un arma como recompensa.",
+      "acceptT": 1791263132,
+      "state": "entregada"
+    },
+    {
+      "id": 7,
+      "title": "La limpieza del campamento kóbold",
+      "giver": "Alguacil McBride",
+      "zone": "Bosque de Elwynn",
+      "subzone": "Valle de Villanorte",
+      "objectives": "Mata 10 alimañas kobold y ve a hablar con el alguacil McBride.",
+      "original": "Nehonar, lo primero que tienes que hacer es limpiar; un clan de kobolds ha invadido los bosques del norte. Ve y liquida a todos los kobolds que encuentres; si reducimos sus filas podremos echarlos de Villanorte.",
+      "acceptT": 1791263123,
+      "state": "entregada"
+    },
+    {
+      "id": 33,
+      "title": "Los lobos cruzan la frontera",
+      "giver": "Eagan Desollapelambres",
+      "zone": "Bosque de Elwynn",
+      "subzone": "Valle de Villanorte",
+      "objectives": "Lleva 8 piezas de carne dura de lobo a Eagan Desollapieles junto a la Abadía de Villanorte.",
+      "original": "¡Condenados lobos Fauces de Madera! Pero me gustan los filetes de lobo, la verdad. Tráeme carne dura de lobo y te la cambiaré por algo que te será útil.\n\nConseguirás la carne de los lobos y lobeznos Fauces de Madera que andan por la campiña de Villanorte.",
+      "acceptT": 1791262840,
+      "state": "entregada"
+    },
+    {
+      "id": 783,
+      "title": "Una amenaza del interior",
+      "giver": "Ayudante del alguacil Willem",
+      "zone": "Bosque de Elwynn",
+      "subzone": "Valle de Villanorte",
+      "objectives": "Habla con el alguacil McBride.",
+      "original": "Espero que vengas con ganas, mago, porque aquí en Villanorte hay mucho que hacer.\n\nY no me refiero a trabajar la tierra.\n\nLos guardias de Ventormenta no dan abasto, ahora que muchos de nosotros están lejos y hay tantas amenazas. Por eso estamos reclutando a quien esté dispuesto a defender su tierra. Y a su alianza.\n\nSi vienes a luchar, habla con mi superior, el mariscal McBride. Está ahí atrás, en la abadía.",
+      "acceptT": 1791262825,
+      "state": "entregada"
+    }
+  ],
   "pending": {
     "loose": [
-      "Rarezas del bibliófilo",
-      "Instrumental delicado"
+      "Inventario de libros"
     ],
-    "openChains": []
+    "openChains": [
+      [
+        "Una amenaza del interior",
+        "La limpieza del campamento kóbold",
+        "Investigar la Mina del Eco",
+        "Escarmuza en la Mina del eco",
+        "¡Sigue a ese kóbold!",
+        "¡Shhh! Aquí se cazan kóbolds"
+      ],
+      [
+        "Hermandad de ladrones",
+        "Milly Osworth",
+        "La cosecha de Milly"
+      ]
+    ]
   },
   "stats": {
-    "level": 10,
-    "played": 2777,
-    "questsDone": 2,
-    "deaths": 0,
+    "level": 5,
+    "played": 5838,
+    "questsDone": 15,
+    "deaths": 1,
     "zones": [
       "Lion's Pride Inn",
-      "Bosque de Elwynn"
+      "Bosque de Elwynn",
+      "Isla de Zephras",
+      "Laderas de Trabalomas",
+      "Montañas de Alterac",
+      "Bosque de Argénteos",
+      "Dalaran",
+      "Ciudad de Ventormenta"
     ],
     "levelUps": [
       {
@@ -44,9 +352,21 @@
       {
         "level": 11,
         "t": 1791259132
+      },
+      {
+        "level": 3,
+        "t": 1791263156
+      },
+      {
+        "level": 4,
+        "t": 1791263853
+      },
+      {
+        "level": 5,
+        "t": 1791264929
       }
     ],
     "firstSeen": 1791235713,
-    "lastSeen": 1791259132
+    "lastSeen": 1791265427
   }
 }
