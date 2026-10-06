@@ -16,9 +16,9 @@
     ],
     "motto": "Mientras quede alguien dentro, no he terminado."
   },
-  "level": 14,
+  "level": 15,
   "realm": "Classic Beta PvE",
-  "updated": "2026-10-06T12:44:38Z",
+  "updated": "2026-10-06T13:34:11Z",
   "stories": [
     {
       "id": "sueltas-91777-91724-33-91741",
@@ -218,6 +218,28 @@
       "start": 1791273278,
       "end": 1791286341,
       "created": "2026-10-06T11:48:43Z"
+    },
+    {
+      "id": "sueltas-399",
+      "kind": "sueltas",
+      "zone": "Ciudad de Ventormenta",
+      "subzones": [
+        "Plaza de la Catedral"
+      ],
+      "title": "Lo que no sirve de nada",
+      "text": "Nehonar cruzó la Plaza de la Catedral con el polvo de los Páramos de Poniente todavía en las botas. Las piedras del suelo estaban tan bien encajadas que se detuvo un momento a mirarlas. Se preguntó cuántas espaldas habrían hecho falta para colocarlas, y si alguna había sido parecida a la suya.\n\nBaros Alexston recibió el encargo con las manos abiertas, como quien recupera algo que daba por perdido.\n\n—¡Oh, muchas gracias, Nehonar! No me sirve de nada, pero el valor sentimental... —Se fijó en las magulladuras del paladín y en su cara de cansancio—. Ya veo que has sufrido algún que otro percance para conseguirlo, y eso sin contar el tiempo que has perdido yendo hasta allí. Tienes mi gratitud. Acepta esto como muestra de ello.\n\n—Perdido no —dijo Nehonar mientras aceptaba el regalo—. Allí lo único que he perdido es el equilibrio. Un par de veces, nada más.\n\nBaros se rio. Nehonar sonrió con él, como siempre, aunque en cuanto el hombre volvió a sus asuntos la sonrisa se le fue apagando.\n\n*No me sirve de nada, pero el valor sentimental.* Le dio vueltas a la frase mientras las campanas sonaban sobre la plaza. Pensó que él también guardaba algo así: las manos encallecidas de la cantera, los fardos del muelle y los días en que soñar con un escudo era motivo de burla. Nada de eso le servía ya para empuñar una espada, y aun así no lo habría cambiado por nada.\n\nIba a echar a andar en busca del siguiente encargo, pero se quedó un instante más en la plaza. Solo un instante.",
+      "summary": "Nehonar devolvió a Baros Alexston en la Plaza de la Catedral un objeto de valor sentimental traído de los Páramos de Poniente, recibió su regalo y se quedó pensando en sus propios comienzos humildes.",
+      "quests": [
+        {
+          "id": 399,
+          "title": "Principios humildes"
+        }
+      ],
+      "levelFrom": 14,
+      "levelTo": 14,
+      "start": 1791286653,
+      "end": 1791286653,
+      "created": "2026-10-06T13:34:11Z"
     }
   ],
   "encargos": [
@@ -309,7 +331,7 @@
       "heading": "Lo que esconde el agua",
       "text": "En la Colina del Centinela, Alba Lunajusta le tendió el equipo de muestras sin perder tiempo en saludos.\n\n—Debemos averiguar el origen y la naturaleza del veneno que corrompe estas tierras. Empezaremos por el agua subterránea de las granjas.\n\nNehonar sopesó el equipo como quien calcula un fardo en el muelle.\n\n—Frascos y cuerdas. Y yo que esperaba algo con más gloria.\n\nElla no le rio la gracia, y él tampoco insistió. Bajo la broma lo había entendido. Si el veneno estaba en los pozos, estaba en lo que bebía la gente de aquellas tierras, y eso no era poca cosa. Alguien tenía que bajar a mirar.\n\n—Ve a la Finca de Jansen y a la Granja de Molsen —añadió Alba—. Tráeme muestras de sus pozos.\n\nÉl asintió, guardó el equipo y echó a andar.",
       "acceptT": 1791278201,
-      "state": "activa",
+      "state": "entregada",
       "narrated": "2026-10-06T09:48:25Z"
     },
     {
@@ -346,7 +368,7 @@
       "heading": "Los que decidieron quedarse",
       "text": "En la Torre del Centinela, el capitán Danuvin fue directo al grano.\n\n—Ventormenta nos ha abandonado. Este era mi hogar, y no daré la espalda a quienes se quedaron.\n\nNehonar miró las praderas de los Páramos de Poniente. El viento traía algo rancio, y no era solo polvo.\n\n—Los antiguos granjeros resistiremos —siguió Danuvin—. Patrulla las praderas. Hay gnolls que colaboran con los ladrones de Las Minas de la Muerte. Acaba con ellos y tráeme sus zarpas.\n\n—Y yo que pensaba que lo de cargar fardos se había acabado —bromeó Nehonar.\n\nEl capitán no sonrió, y él no insistió. Gente que aguanta dentro de algo que se derrumba; eso lo conocía bien. Se ajustó el escudo y echó a andar hacia las praderas. Volvería a la Colina del Centinela con las zarpas.",
       "acceptT": 1791278121,
-      "state": "activa",
+      "state": "entregada",
       "narrated": "2026-10-06T09:48:47Z"
     },
     {
@@ -656,7 +678,7 @@
   ],
   "pending": {
     "loose": [
-      "Principios humildes"
+      "Probar los pozos"
     ],
     "openChains": [
       [
@@ -679,9 +701,9 @@
     ]
   },
   "stats": {
-    "level": 14,
-    "played": 13617,
-    "questsDone": 26,
+    "level": 15,
+    "played": 16565,
+    "questsDone": 28,
     "deaths": 3,
     "zones": [
       "Lion's Pride Inn",
@@ -720,9 +742,13 @@
       {
         "level": 14,
         "t": 1791278283
+      },
+      {
+        "level": 15,
+        "t": 1791291663
       }
     ],
     "firstSeen": 1791235713,
-    "lastSeen": 1791288491
+    "lastSeen": 1791293578
   }
 }
