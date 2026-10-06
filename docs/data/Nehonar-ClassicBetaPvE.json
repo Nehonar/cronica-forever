@@ -18,7 +18,7 @@
   },
   "level": 15,
   "realm": "Classic Beta PvE",
-  "updated": "2026-10-06T14:05:32Z",
+  "updated": "2026-10-06T14:54:13Z",
   "stories": [
     {
       "id": "sueltas-91777-91724-33-91741",
@@ -288,6 +288,19 @@
   ],
   "encargos": [
     {
+      "id": 13,
+      "title": "Las Milicias del Pueblo",
+      "giver": "Gryan Mantorrecio",
+      "zone": "Torre del Centinela",
+      "objectives": "Gryan Mantorrecio quiere que mates 15 saqueadores Defias y 15 despojadores Defias. Cuando lo hayas hecho vuelve a verle en la Colina del Centinela.",
+      "original": "Una banda de despiadados saqueadores Defias ha sido vista saqueando la Mina de la Costa de Oro, el Arroyo de la Luna y la Hacienda de Alexston. Las Milicias del Pueblo no tolerarán ese comportamiento. Avisa inmediatamente, Nehonar, y haz conocer la presencia de la Luz en los Páramos de Poniente. La Mina de la Costa de Oro está cerca de la costa, al oeste de la torre. El siguiente paso de tu instrucción consistirá en acabar con 15 de esos saqueadores Defias y con 15 despojadores Defias.",
+      "heading": "Saqueadores en la mina",
+      "text": "Gryan Mantorrecio no levantó la voz, pero no le hizo falta. En la Torre del Centinela, señaló hacia el oeste, hacia la costa.\n\n—Una banda de saqueadores Defias anda desvalijando la Mina de la Costa de Oro, el Arroyo de la Luna y la Hacienda de Alexston. Las Milicias del Pueblo no lo van a tolerar. Haz que se conozca la presencia de la Luz en los Páramos de Poniente, Nehonar.\n\n—Ladrones en una mina —respondió él, rascándose la nuca—. Por fin algo de mi oficio.\n\nGryan le explicó que aquel sería el siguiente paso de su instrucción. Tenía que acabar con los saqueadores y los despojadores Defias y después volver a la Colina del Centinela. La mina quedaba cerca de la costa, al oeste de la torre.\n\nNehonar sonrió, pero al darse la vuelta la sonrisa se le quedó atrás. Otra vez una mina.",
+      "acceptT": 1791297838,
+      "state": "activa",
+      "narrated": "2026-10-06T14:54:13Z"
+    },
+    {
       "id": 92909,
       "title": "Cosechar a los cosechadores",
       "giver": "Ozwin Ferropiñón",
@@ -389,7 +402,7 @@
       "heading": "Pañuelos rojos para el explorador",
       "text": "En la Colina del Centinela, el explorador Galiaan hablaba sin apartar la vista de los campos de los Páramos de Poniente, como si temiera perder algo de vista.\n\n—La tapadera de los Defias cambia constantemente —le dijo a Nehonar—. Llevo tiempo siguiendo sus movimientos. Pero he averiguado algo: muchos de ellos se identifican por sus pañuelos de cuero rojo.\n\nLe pidió que le trajera esos pañuelos y le prometió que procuraría que fuera recompensado.\n\nNehonar soltó una media sonrisa y comentó que, para variar, al menos esta vez no tendría que cargar fardos. Galiaan no se rio. Entonces Nehonar miró también hacia los campos y se quedó callado. Detrás de cada pañuelo había un hombre que alguien conocía. Se ajustó el escudo y bajó de la colina a buscarlos.",
       "acceptT": 1791278177,
-      "state": "activa",
+      "state": "entregada",
       "narrated": "2026-10-06T09:48:33Z"
     },
     {
@@ -425,7 +438,7 @@
       "heading": "El precio de la paz",
       "text": "En lo alto de la Torre del Centinela, el viento de los Páramos de Poniente olía a tierra reseca. Gryan Mantorrecio no perdió tiempo en saludos.\n\n—Las Milicias del Pueblo solo tienen un objetivo: defender estas tierras y traer la paz. Por desgracia, la paz suele pagarse en sangre.\n\nLe habló del informe de uno de sus rastreadores. Habían visto tramperos y contrabandistas Defias cerca de la Mina de Jango, al noreste, en la Granja de Molsen y en la Plantación de Calabazas de Cejade.\n\n—Si quieres unirte a nuestras filas, acaba con ellos y vuelve a verme aquí, en la Colina del Centinela.\n\nNehonar bromeó con que en los muelles, al menos, te daban faena sin hacerte un examen. Gryan no sonrió. Nehonar tampoco sonrió cuando oyó la palabra «mina». Asintió y miró hacia el noreste.",
       "acceptT": 1791278117,
-      "state": "activa",
+      "state": "entregada",
       "narrated": "2026-10-06T09:48:59Z"
     },
     {
@@ -722,7 +735,9 @@
   ],
   "pending": {
     "loose": [
-      "Campos de la muerte"
+      "Campos de la muerte",
+      "Cosechar a los cosechadores",
+      "Pañuelos rojos de cuero"
     ],
     "openChains": [
       [
@@ -740,15 +755,16 @@
       ],
       [
         "Habla con Gryan Mantorrecio",
+        "Las Milicias del Pueblo",
         "Las Milicias del Pueblo"
       ]
     ]
   },
   "stats": {
     "level": 15,
-    "played": 17543,
-    "questsDone": 30,
-    "deaths": 3,
+    "played": 19059,
+    "questsDone": 32,
+    "deaths": 4,
     "zones": [
       "Lion's Pride Inn",
       "Bosque de Elwynn",
@@ -793,6 +809,6 @@
       }
     ],
     "firstSeen": 1791235713,
-    "lastSeen": 1791295427
+    "lastSeen": 1791298433
   }
 }
