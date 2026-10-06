@@ -7,8 +7,8 @@
       "race": "Humano",
       "class": "Paladín",
       "level": 14,
-      "stories": 3,
-      "updated": "2026-10-06T09:48:59Z"
+      "stories": 6,
+      "updated": "2026-10-06T11:48:43Z"
     },
     {
       "key": "Nehonar-ClassicBetaPvP",
@@ -18,7 +18,7 @@
       "class": "Paladín",
       "level": 2,
       "stories": 1,
-      "updated": "2026-10-06T09:48:59Z"
+      "updated": "2026-10-06T11:48:43Z"
     },
     {
       "key": "Tobias-Demo",
@@ -31,5 +31,5 @@
       "updated": "2026-10-05T15:28:30Z"
     }
   ],
-  "updated": "2026-10-06T09:48:59Z"
+  "updated": "2026-10-06T11:48:43Z"
 }

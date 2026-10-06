@@ -18,7 +18,7 @@
   },
   "level": 14,
   "realm": "Classic Beta PvE",
-  "updated": "2026-10-06T09:48:59Z",
+  "updated": "2026-10-06T11:48:43Z",
   "stories": [
     {
       "id": "sueltas-91777-91724-33-91741",
@@ -115,9 +115,139 @@
       "start": 1791263317,
       "end": 1791265371,
       "created": "2026-10-06T05:46:21Z"
+    },
+    {
+      "id": "cadena-6181-6281-6261-6285",
+      "kind": "cadena",
+      "zone": "Torre del Centinela",
+      "subzones": [
+        "Colina del Centinela",
+        "Casco Antiguo",
+        "Distrito de Mercaderes"
+      ],
+      "title": "Un cajón vale lo que un fardo",
+      "text": "El intendente Lewis le tendió una nota doblada con la urgencia de quien cuenta hebillas que ya no tiene. Las armaduras se agotaban en la Colina del Centinela y el único hombre capaz de remediarlo, Osric Strang, estaba en Ventormenta, en una tienda llamada Inmunidad Limitada.\n\n—Thor te llevará en grifo —dijo Lewis—. Está justo bajo la colina.\n\nNehonar bajó la cuesta con la nota en el puño. Thor la leyó, sonrió y le cobró una pequeña tarifa con la seguridad de un tendero que sabe que su género no tiene rival.\n\n—Merece la pena, créeme.\n\nNehonar se agarró al cuello de la bestia y pensó que, en los muelles, nadie le había pagado jamás por cargar algo tan ligero como un papel. Luego el suelo se desprendió de sus botas y dejó de pensar en nada durante un buen rato.\n\nEn el Casco Antiguo, Osric leyó la nota sin sorpresa. Habló de la Colina del Centinela como de una tierra casi olvidada por la ciudad, y aquellas palabras se le quedaron a Nehonar clavadas en el pecho más de lo que dejó ver. Osric le dio unas monedas para cubrir el viaje y un cajón repleto de equipo.\n\n—No queremos que esos combatientes vayan mal equipados.\n\n—Tranquilo —respondió Nehonar, cargándolo al hombro—. Esto lo he hecho toda la vida. Solo que antes olía a pescado.\n\nEn el Distrito de Mercaderes, Dungar Tragolargo le explicó con paciencia de enano que los grifos siempre saben volver a la capital, pero solo llevan a otro maestro de grifos si el jinete ya ha estado con él. Nehonar asintió como quien aprende una ruta nueva de reparto.\n\nEl regreso le pesó menos que la ida, o quizá era él quien pesaba algo más. Notaba los brazos más firmes y el paso más seguro.\n\nLewis abrió el cajón como quien abre un regalo.\n\n—¡Has traído la armadura! Lo repartiremos entre quien lo necesite. Espero que vuelvas a menudo.\n\n—Si hay que cargar, cargo —dijo Nehonar, quitándole importancia.\n\nMientras Lewis repartía las piezas, Nehonar se quedó mirando el cielo por donde había llegado. Una tierra casi olvidada. Aquello le sonaba a una cueva con gente dentro, y ya estaba pensando en el siguiente encargo.",
+      "summary": "Nehonar llevó en grifo la nota de Lewis a Osric Strang en Ventormenta, volvió con un cajón de armaduras para la Colina del Centinela y, en lugar de celebrarlo, se quedó pensando en aquella tierra casi olvidada.",
+      "quests": [
+        {
+          "id": 6181,
+          "title": "Mensajero a toda prisa",
+          "giver": "Intendente Lewis"
+        },
+        {
+          "id": 6281,
+          "title": "Prosigue hasta Ventormenta",
+          "giver": "Thor"
+        },
+        {
+          "id": 6261,
+          "title": "Dungar Tragolargo",
+          "giver": "Osric Strang"
+        },
+        {
+          "id": 6285,
+          "title": "Regresa con Lewis",
+          "giver": "Dungar Tragolargo"
+        }
+      ],
+      "levelFrom": 13,
+      "levelTo": 14,
+      "start": 1791278128,
+      "end": 1791283223,
+      "created": "2026-10-06T11:48:12Z"
+    },
+    {
+      "id": "sueltas-64-36-151-38",
+      "kind": "sueltas",
+      "zone": "Páramos de Poniente",
+      "subzones": [
+        "La Finca de Jansen",
+        "Finca de Saldean"
+      ],
+      "title": "Lo que se queda en la granja",
+      "text": "Los Páramos de Poniente olían a tierra abandonada. En la Finca de Jansen, el granjero Cejade y su mujer, Verna, esperaban junto a un carro roto, con la vida entera metida en fardos.\n\nCejade le pidió su reloj de bolsillo, olvidado en el armario de la granja del campo de calabazas cuando huyeron de los ladrones. Era un regalo del padre de Verna el día de su boda. Nehonar lo encontró y se lo devolvió, y el granjero lo apretó en la mano como si sujetara algo más que un reloj.\n\nVerna le pidió dos favores. El primero fue avena para la Vieja Blanchy, agotada tras años de trabajo. Nehonar la buscó por las granjas del suroeste, entre máquinas que segaban sin dueño. Allí cayó dos veces y dos veces se levantó, sacudiéndose el polvo.\n\n—Peor era cargar sacos de sal en el muelle —murmuró.\n\nEl segundo favor fue llevar a Salma Saldean la receta del estofado de los Páramos. Salma habló de Verna con cariño y dijo que, siendo chica de ciudad, en Ventormenta estaría a gusto. Después lo mandó por buitre, dentosangre, ojos de múrloc y okra, y le entregó el primer cuenco.\n\nNehonar comió en silencio. Pensó que aquella gente se iba dejando atrás todo menos lo pequeño: un reloj, una receta, una mula vieja. A él le habían pedido justo eso, salvar lo pequeño. Notaba el brazo más firme que al llegar y, sin embargo, no tuvo la sensación de haber terminado. En aquellas tierras aún quedaba gente dentro.",
+      "summary": "Nehonar recuperó el reloj de Cejade, alimentó a la Vieja Blanchy, llevó la receta de Verna a Salma Saldean y, tras caer dos veces, comprendió que en los Páramos aún quedaba gente por la que seguir.",
+      "quests": [
+        {
+          "id": 64,
+          "title": "La reliquia olvidada",
+          "giver": "Granjero Cejade"
+        },
+        {
+          "id": 36,
+          "title": "Estofado de los Páramos de Poniente",
+          "giver": "Verna Cejade"
+        },
+        {
+          "id": 151,
+          "title": "La pobre y vieja Blanchy",
+          "giver": "Verna Cejade"
+        },
+        {
+          "id": 38,
+          "title": "Estofado de los Páramos de Poniente",
+          "giver": "Salma Saldean"
+        }
+      ],
+      "levelFrom": 13,
+      "levelTo": 14,
+      "deaths": 2,
+      "start": 1791272662,
+      "end": 1791285098,
+      "created": "2026-10-06T11:48:27Z"
+    },
+    {
+      "id": "sueltas-22",
+      "kind": "sueltas",
+      "zone": "Páramos de Poniente",
+      "subzones": [
+        "Finca de Saldean"
+      ],
+      "title": "Un plato que no sabía rechazar",
+      "text": "Salma Saldean lo tenía todo preparado cuando Nehonar cruzó el umbral de la cocina. Las cebollas estaban peladas, el ajo machacado, la corteza tostada y el eneldo picado. Solo le faltaban los hígados de dentosangre para su famosa empanada de carne.\n\n—Eso está hecho —dijo él—. Si en la cantera me hubieran pagado por cada bicho que me miró mal, hoy sería noble.\n\nSalió a los campos de los Páramos con el sol bajo y el viento oliendo a tierra seca. Notó algo distinto en los brazos. El escudo pesaba menos que antes y el golpe le salía más firme. No le dio importancia. Un fardo también pesa menos al tercer año de muelle, y nadie hace una fiesta por eso.\n\nVolvió con el encargo envuelto y las manos sucias. Salma lo recibió con una sonrisa que le ocupaba toda la cara.\n\n—¡Son perfectos, Nehonar! El granjero Saldean y yo vamos a darnos un gran festín.\n\nLe puso algo en las manos por el trabajo. No le dejó protestar.\n\n—No pensarías que iba a dejar que un paladín como tú se fuera con hambre, ¿eh?\n\nNehonar abrió la boca para soltar una broma y no le salió ninguna. Se quedó en el porche mientras dentro empezaba a oler a cebolla dorada. Pensó que aquella gente, con tan poco, todavía guardaba sitio en la mesa para un festín. Pensó también que él nunca se sentaba a ninguno.\n\nQuizá algún día aprendiera. Esa tarde, al menos, se tomó un momento antes de echar a andar.",
+      "summary": "Nehonar llevó a Salma Saldean los hígados de dentosangre para su empanada, aceptó su regalo sin saber qué decir y se paró un instante a pensar en su costumbre de no celebrar nunca nada.",
+      "quests": [
+        {
+          "id": 22,
+          "title": "Pastel de hígado de dentosangre",
+          "giver": "Salma Saldean"
+        }
+      ],
+      "levelFrom": 13,
+      "levelTo": 14,
+      "start": 1791273278,
+      "end": 1791286341,
+      "created": "2026-10-06T11:48:43Z"
     }
   ],
   "encargos": [
+    {
+      "id": 92909,
+      "title": "Cosechar a los cosechadores",
+      "giver": "Ozwin Ferropiñón",
+      "zone": "Páramos de Poniente",
+      "subzone": "Finca de Saldean",
+      "objectives": "Ozwin Ferropiñón, en la Granja de Saldean, quiere que le lleves 14 isomuelles de gólem y 5 giroestabilizadores de cosechador.",
+      "original": "Ay, no... ¡Estoy en un buen lío!\r\n\r\nMe enteré de que unos cosechadores estaban aterrorizando los campos de los Páramos de Poniente, así que viajé hacia allí desde Forjaz para ver si podía recalibrarlos. Pero eran más agresivos de lo que había anticipado con mis cálculos ¡y me persiguieron hasta este establo!\r\n\r\nSi tuviera unos cuantos isomuelles y giroestabilizadores de los cosechadores, podría construir un dispositivo para huir. ¿Te importaría conseguirme las piezas?",
+      "heading": "Un gnomo atrincherado en el establo",
+      "text": "Nehonar oyó el lamento antes de ver a nadie. Venía del establo de la Granja de Saldean. Dentro, entre la paja, un gnomo se retorcía las manos.\n\n—Ay, no... ¡Estoy en un buen lío!\n\nSe llamaba Ozwin Ferropiñón. Había venido desde Forjaz para recalibrar a los cosechadores que aterrorizaban los campos de los Páramos de Poniente, pero sus cálculos no contaban con tanta furia. Las máquinas lo habían perseguido hasta allí.\n\n—Con unos isomuelles de los gólems y unos giroestabilizadores de los cosechadores podría construir un dispositivo para huir. ¿Te importaría conseguirme las piezas?\n\nNehonar se rascó la nuca y sonrió.\n\n—Desmontar chatarra que muerde. Como la cantera, pero con menos polvo.\n\nLuego miró hacia los campos y la broma se le apagó en la boca. Quedaba alguien atrapado dentro, y eso le bastaba.",
+      "acceptT": 1791283587,
+      "state": "activa",
+      "narrated": "2026-10-06T11:47:42Z"
+    },
+    {
+      "id": 65,
+      "title": "La hermandad de los Defias",
+      "giver": "Gryan Mantorrecio",
+      "zone": "Torre del Centinela",
+      "objectives": "Gryan Mantorrecio quiere que hables con Wiley en Villa del Lago.",
+      "original": "La banda de desgraciados responsable de que las gentes de los Páramos de Poniente abandonaran sus tierras se llama a sí misma la Hermandad Defias. Necesito que te infiltres en este clan de matones. Debemos averiguar quién lidera el grupo y dónde se esconden. En Villa del Lago, en la posada, encontrarás a un pícaro que responde al nombre de Wiley; me debe un favor.\n\nViaja a Villa del Lago, en las Montañas Crestagrana, al este de Elwynn, y averigua todo lo que puedas.",
+      "heading": "Un favor pendiente en Villa del Lago",
+      "text": "En lo alto de la Torre del Centinela, Gryan Mantorrecio no perdió el tiempo en saludos. Le habló de los Páramos de Poniente, de las gentes que habían tenido que abandonar sus tierras y de la banda responsable: la Hermandad Defias.\n\n—Necesito que te infiltres entre esos matones. Hay que averiguar quién los lidera y dónde se esconden.\n\nNehonar se rascó la nuca.\n\n—¿Infiltrarme yo? Con estas manos de cargar fardos no engaño ni a una oveja.\n\nGryan no sonrió. Le dio un nombre: Wiley, un pícaro que le debía un favor y al que encontraría en la posada de Villa del Lago, en las Montañas Crestagrana, al este de Elwynn.\n\nNehonar asintió. Pensó en aquellas familias con la casa a la espalda y la broma se le quedó en la garganta. Tocaba ponerse en camino.",
+      "acceptT": 1791283214,
+      "state": "activa",
+      "narrated": "2026-10-06T11:47:54Z"
+    },
     {
       "id": 6285,
       "title": "Regresa con Lewis",
@@ -129,7 +259,7 @@
       "heading": "Un cajón y un par de alas",
       "text": "Nehonar llevaba el Cajón de Osric bajo el brazo cuando se plantó ante Dungar Tragolargo, en el Distrito de Mercaderes. El enano lo miró de arriba abajo, como quien calcula cuánto peso aguanta un grifo.\n\n—Los grifos siempre saben volver a su capital —le explicó—, pero solo te llevan a otro maestro si ya has estado con él. Tú ya hablaste con Thor, en los Páramos de Poniente. Cuando estés listo, te subo a uno.\n\nNehonar soltó una risa corta.\n\n—Toda la vida cargando fardos a pie, y ahora resulta que los míos vuelan.\n\nLuego miró el cajón y la broma se le quedó a medias. No era gran cosa, un encargo de recadero. Pero al otro lado lo esperaba el intendente Lewis, en la Colina del Centinela. Y a él, con eso, le bastaba.",
       "acceptT": 1791279884,
-      "state": "activa",
+      "state": "entregada",
       "narrated": "2026-10-06T09:47:55Z"
     },
     {
@@ -243,7 +373,7 @@
       "heading": "Hígados para la empanada de Salma",
       "text": "En la cocina de la Finca de Saldean olía a cebolla y a corteza tostada. Salma Saldean no levantó la vista de la tabla cuando Nehonar asomó por la puerta. Siguió repasando su lista en voz alta, como quien cuenta fardos en el muelle.\n\n—Las cebollas, peladas. El ajo, machacado. La corteza, tostada. El eneldo, picado —enumeró, y por fin lo miró—. Lo único que me falta para mi famosa empanada de carne son hígados de dentosangre.\n\nNehonar se rascó la nuca y sonrió.\n\n—Y yo que temía que me pidiera algo difícil.\n\nEn aquella casa todo estaba listo salvo lo que dependía de alguien de fuera. Ser útil, aunque fuera para una empanada, ya era algo. Salió a buscar dentosangres con el estómago rugiendo.",
       "acceptT": 1791273278,
-      "state": "activa",
+      "state": "entregada",
       "narrated": "2026-10-06T07:55:48Z"
     },
     {
@@ -257,7 +387,7 @@
       "heading": "Un estofado para la Finca Saldean",
       "text": "Salma Saldean salió al porche secándose las manos en el delantal y miró a Nehonar como quien calcula el peso de un fardo antes de cargarlo.\n\n—¡Ayúdame a preparar el estofado de los Páramos de Poniente! Tráeme carne fibrosa de buitre, morros de dentosangre, ojos de múrloc y unas okras.\n\nNehonar parpadeó.\n\n—¿Ojos de múrloc? Y yo que creía que lo peor del muelle era el pescado de tres días.\n\nElla no se rio, y él no insistió. En una tierra tan seca, un caldero lleno sobre el fuego era cosa seria. Asintió, se ajustó el escudo y recorrió con la mirada los campos resecos que rodeaban la finca. No era una gesta digna de cantares, pero alguien comería caliente gracias a él, y con eso le bastaba.",
       "acceptT": 1791273275,
-      "state": "activa",
+      "state": "entregada",
       "narrated": "2026-10-06T07:56:01Z"
     },
     {
@@ -526,8 +656,7 @@
   ],
   "pending": {
     "loose": [
-      "La reliquia olvidada",
-      "La pobre y vieja Blanchy"
+      "Principios humildes"
     ],
     "openChains": [
       [
@@ -544,26 +673,16 @@
         "La cosecha de Milly"
       ],
       [
-        "Estofado de los Páramos de Poniente",
-        "Estofado de los Páramos de Poniente"
-      ],
-      [
         "Habla con Gryan Mantorrecio",
         "Las Milicias del Pueblo"
-      ],
-      [
-        "Mensajero a toda prisa",
-        "Prosigue hasta Ventormenta",
-        "Dungar Tragolargo",
-        "Regresa con Lewis"
       ]
     ]
   },
   "stats": {
     "level": 14,
-    "played": 10628,
-    "questsDone": 22,
-    "deaths": 2,
+    "played": 11447,
+    "questsDone": 26,
+    "deaths": 3,
     "zones": [
       "Lion's Pride Inn",
       "Bosque de Elwynn",
@@ -604,6 +723,6 @@
       }
     ],
     "firstSeen": 1791235713,
-    "lastSeen": 1791279943
+    "lastSeen": 1791286979
   }
 }
