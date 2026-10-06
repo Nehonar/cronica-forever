@@ -18,7 +18,7 @@
   },
   "level": 15,
   "realm": "Classic Beta PvE",
-  "updated": "2026-10-06T13:34:11Z",
+  "updated": "2026-10-06T14:05:32Z",
   "stories": [
     {
       "id": "sueltas-91777-91724-33-91741",
@@ -240,6 +240,50 @@
       "start": 1791286653,
       "end": 1791286653,
       "created": "2026-10-06T13:34:11Z"
+    },
+    {
+      "id": "sueltas-92742",
+      "kind": "sueltas",
+      "zone": "Páramos de Poniente",
+      "subzones": [
+        "Colina del Centinela"
+      ],
+      "title": "Lo que corre bajo la tierra",
+      "text": "Alba Lunajusta no se anduvo con rodeos. Algo envenenaba los Páramos, y para saber qué era había que empezar por el agua de las granjas. Le tendió a Nehonar el equipo de muestras y le señaló el camino hacia la Finca de Jansen y la Granja de Molsen.\n\n—¿Agua de pozo? —dijo él, sopesando los frascos—. Y yo que pensaba que esto de la Luz iba de dragones.\n\nElla no sonrió, y él tampoco insistió.\n\nPor el camino, la tierra se le fue pegando a las botas, seca y cansada. En la cantera había aprendido que lo de abajo manda sobre lo de arriba: una grieta que nadie ve puede tumbar una galería entera. Se preguntó si con los Páramos pasaba lo mismo, si toda aquella miseria venía de algo que corría escondido bajo los campos.\n\nLlenó los frascos en ambos pozos. En algún punto del camino cayó derrotado y mordió el polvo, como tantas otras veces en aquella tierra. Se levantó, se sacudió la ropa y siguió adelante, más por terquedad que por orgullo. Notaba los brazos más firmes que al llegar a la Colina, aunque no le dio más vueltas.\n\nDe vuelta en la Colina del Centinela, entregó las muestras. Alba las tomó con cuidado.\n\n—Gracias. Veamos...\n\nNehonar se quedó un momento mirando cómo ella examinaba el agua. No preguntó nada. Si había gente bebiendo de esos pozos, aquello no había terminado, y él no pensaba moverse hasta saber qué venía después.",
+      "summary": "Nehonar llevó a Alba Lunajusta muestras de los pozos de Jansen y Molsen y, tras caer y levantarse, pensó que el mal de los Páramos quizá corría bajo tierra, como en la cantera.",
+      "quests": [
+        {
+          "id": 92742,
+          "title": "Probar los pozos",
+          "giver": "Alba Lunajusta"
+        }
+      ],
+      "levelFrom": 13,
+      "levelTo": 15,
+      "deaths": 1,
+      "start": 1791278201,
+      "end": 1791292726,
+      "created": "2026-10-06T14:05:19Z"
+    },
+    {
+      "id": "sueltas-102",
+      "kind": "sueltas",
+      "zone": "Torre del Centinela",
+      "title": "Los que decidieron quedarse",
+      "text": "El capitán Danuvin no habló como un soldado, sino como un granjero cansado. Ventormenta los había abandonado, dijo, y el aire de los Páramos olía a podrido. Aun así, aquel seguía siendo su hogar, y no pensaba dar la espalda a quienes habían decidido quedarse.\n\nNehonar lo escuchó con los brazos cruzados y una media sonrisa que no le llegó a los ojos. Conocía esa clase de terquedad. La había visto en la cantera, en hombres que no sabían rendirse porque nadie les había enseñado cómo.\n\n—Gnolls que trabajan para los ladrones de las minas —repitió—. Vaya, ni siquiera los bandidos cargan ya con sus propios fardos.\n\nPatrulló las praderas de sol a sol. Las bestias eran más fieras de lo que esperaba, pero él también lo era más que días atrás. El escudo pesaba menos en su brazo y los golpes le salían más firmes, como si la Luz hubiera encontrado al fin dónde apoyarse. Cuando volvió a la Colina con las zarpas en un saco, el capitán asintió despacio.\n\n—Con gente como tú junto a las Milicias del Pueblo, estos campos volverán a ser el granero que fueron.\n\nNehonar aceptó el reconocimiento con torpeza y soltó una broma sobre el olor del saco. Luego se quedó mirando las granjas vacías desde lo alto. Antiguos granjeros sosteniendo lanzas. Mientras quedara alguien dentro, pensó, aquello no estaba terminado. Y ya buscaba con la vista el siguiente camino.",
+      "summary": "Nehonar patrulló los Páramos cazando gnolls para el capitán Danuvin y se reconoció en la terquedad de los granjeros convertidos en milicia que se negaban a abandonar su tierra.",
+      "quests": [
+        {
+          "id": 102,
+          "title": "En patrulla por Páramos de Poniente",
+          "giver": "Capitán Danuvin"
+        }
+      ],
+      "levelFrom": 13,
+      "levelTo": 15,
+      "start": 1791278121,
+      "end": 1791293578,
+      "created": "2026-10-06T14:05:32Z"
     }
   ],
   "encargos": [
@@ -254,7 +298,7 @@
       "heading": "Un gnomo atrincherado en el establo",
       "text": "Nehonar oyó el lamento antes de ver a nadie. Venía del establo de la Granja de Saldean. Dentro, entre la paja, un gnomo se retorcía las manos.\n\n—Ay, no... ¡Estoy en un buen lío!\n\nSe llamaba Ozwin Ferropiñón. Había venido desde Forjaz para recalibrar a los cosechadores que aterrorizaban los campos de los Páramos de Poniente, pero sus cálculos no contaban con tanta furia. Las máquinas lo habían perseguido hasta allí.\n\n—Con unos isomuelles de los gólems y unos giroestabilizadores de los cosechadores podría construir un dispositivo para huir. ¿Te importaría conseguirme las piezas?\n\nNehonar se rascó la nuca y sonrió.\n\n—Desmontar chatarra que muerde. Como la cantera, pero con menos polvo.\n\nLuego miró hacia los campos y la broma se le apagó en la boca. Quedaba alguien atrapado dentro, y eso le bastaba.",
       "acceptT": 1791283587,
-      "state": "activa",
+      "state": "entregada",
       "narrated": "2026-10-06T11:47:42Z"
     },
     {
@@ -423,7 +467,7 @@
       "heading": "La terquedad de Saldean",
       "text": "El granjero Saldean recibió a Nehonar con el ceño fruncido y un brazo extendido hacia sus tierras.\n\n—¡Mira lo que le ha pasado a este lugar! Aquí había buenos granjeros, y esos condenados ladrones los han echado a todos. ¡Pero a mí no!\n\nNehonar recorrió con la vista los surcos descuidados y reconoció en aquel hombre una terquedad parecida a la suya. Le cayó bien enseguida, y eso le incomodó un poco.\n\nSaldean le explicó que unos Vigilantes de la cosecha habían invadido sus campos. Quería que acabara con ellos y volviera después a cobrar la paga. Si terminaba con los de la finca, también podía limpiar los campos vecinos.\n\n—Y yo que creía que lo mío era cargar fardos —bromeó Nehonar, mientras se ajustaba el escudo.\n\nYa caminaba hacia los sembrados. Quedaba trabajo por hacer.",
       "acceptT": 1791273262,
-      "state": "activa",
+      "state": "entregada",
       "narrated": "2026-10-06T07:56:13Z"
     },
     {
@@ -678,7 +722,7 @@
   ],
   "pending": {
     "loose": [
-      "Probar los pozos"
+      "Campos de la muerte"
     ],
     "openChains": [
       [
@@ -702,8 +746,8 @@
   },
   "stats": {
     "level": 15,
-    "played": 16565,
-    "questsDone": 28,
+    "played": 17543,
+    "questsDone": 30,
     "deaths": 3,
     "zones": [
       "Lion's Pride Inn",
@@ -749,6 +793,6 @@
       }
     ],
     "firstSeen": 1791235713,
-    "lastSeen": 1791293578
+    "lastSeen": 1791295427
   }
 }
