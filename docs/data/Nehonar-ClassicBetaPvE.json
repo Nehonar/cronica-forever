@@ -16,9 +16,9 @@
     ],
     "motto": "Mientras quede alguien dentro, no he terminado."
   },
-  "level": 1,
+  "level": 13,
   "realm": "Classic Beta PvE",
-  "updated": "2026-10-06T07:21:26Z",
+  "updated": "2026-10-06T07:56:43Z",
   "stories": [
     {
       "id": "sueltas-91777-91724-33-91741",
@@ -60,6 +60,29 @@
       "created": "2026-10-06T05:46:06Z"
     },
     {
+      "id": "sueltas-92124",
+      "kind": "sueltas",
+      "zone": "Bosque de Elwynn",
+      "subzones": [
+        "Ala de la Biblioteca"
+      ],
+      "title": "Estanterías vacías bajo la abadía",
+      "text": "El hermano Paxton no le dejó ni saludar. Agitó las manos entre los atriles, renegó de su ayudante y le mandó a buscarlo con una advertencia: que no se dejara enredar por la cháchara del muchacho. Nehonar asintió con la seriedad de quien recibe órdenes de un capataz con prisa.\n\n—Entendido, hermano. Contar libros. Cosas más pesadas he cargado.\n\nDaniel no necesitó que le preguntaran. Ya lo había oído, dijo, y por cómo lo dijo se notaba que llevaba tiempo esperando decirlo. Tres veces había avisado al hermano Paxton de que los kóbolds estaban cavando túneles bajo la abadía. Tres veces. Y ahora había estanterías enteras vacías.\n\nNehonar miró los huecos en la madera y luego el suelo, como si pudiera oír a través de la piedra. Él sabía lo que era trabajar bajo tierra, el polvo, el golpeteo sordo de las herramientas, la manera en que un túnel cambia de humor sin avisar. Pensó en lo que había debajo de sus botas y se le encogió algo en el pecho.\n\n—Que hay que preguntarle al hermano qué quiere hacer —repitió Daniel—. Pero ya que estás aquí… ¿hablamos de profesiones?\n\nEl muchacho se iluminó al nombrar oficios e instructores del bosque, y Nehonar le dejó hablar un rato más de lo que Paxton habría aprobado. Le cayó bien. Quizá demasiado rápido.\n\n—Otro día, chaval —dijo al fin, con una sonrisa—. Que tu jefe me ha prohibido distraerme, y yo obedezco a quien grita más.\n\nVolvió hacia Paxton sin pararse a pensar que ya había cumplido lo que le pidieron. Para él, aquello no había hecho más que empezar.",
+      "summary": "Nehonar habló con Daniel por encargo del hermano Paxton, supo que los kóbolds habían vaciado estanterías cavando bajo la abadía, sintió la llamada de los túneles y volvió a por órdenes sin detenerse.",
+      "quests": [
+        {
+          "id": 92124,
+          "title": "Inventario de libros",
+          "giver": "Hermano Paxton"
+        }
+      ],
+      "levelFrom": 3,
+      "levelTo": 3,
+      "start": 1791263309,
+      "end": 1791263313,
+      "created": "2026-10-06T07:56:43Z"
+    },
+    {
       "id": "cadena-91743-91745-91752",
       "kind": "cadena",
       "zone": "Bosque de Elwynn",
@@ -95,6 +118,84 @@
     }
   ],
   "encargos": [
+    {
+      "id": 22,
+      "title": "Pastel de hígado de dentosangre",
+      "giver": "Salma Saldean",
+      "zone": "Páramos de Poniente",
+      "subzone": "Finca de Saldean",
+      "objectives": "Salma Saldean necesita 8 hígados de dentosangre para hacer un pastel de hígado de dentosangre.",
+      "original": "Las cebollas están peladas. El ajo machacado. La corteza está tostada. Las hierbas de eneldo picadas. ¡Lo único que me falta para mi famosa empanada de carne son 8 hígados de dentosangre!",
+      "heading": "Hígados para la empanada de Salma",
+      "text": "En la cocina de la Finca de Saldean olía a cebolla y a corteza tostada. Salma Saldean no levantó la vista de la tabla cuando Nehonar asomó por la puerta. Siguió repasando su lista en voz alta, como quien cuenta fardos en el muelle.\n\n—Las cebollas, peladas. El ajo, machacado. La corteza, tostada. El eneldo, picado —enumeró, y por fin lo miró—. Lo único que me falta para mi famosa empanada de carne son hígados de dentosangre.\n\nNehonar se rascó la nuca y sonrió.\n\n—Y yo que temía que me pidiera algo difícil.\n\nEn aquella casa todo estaba listo salvo lo que dependía de alguien de fuera. Ser útil, aunque fuera para una empanada, ya era algo. Salió a buscar dentosangres con el estómago rugiendo.",
+      "acceptT": 1791273278,
+      "state": "activa",
+      "narrated": "2026-10-06T07:55:48Z"
+    },
+    {
+      "id": 38,
+      "title": "Estofado de los Páramos de Poniente",
+      "giver": "Salma Saldean",
+      "zone": "Páramos de Poniente",
+      "subzone": "Finca de Saldean",
+      "objectives": "Salma Saldean quiere 3 carnes fibrosas de buitre, 3 morros de dentosangre, 3 ojos de múrloc y 3 okras.",
+      "original": "¡Ayúdame a preparar el estofado de los Páramos de Poniente! Vuelve con estos ingredientes:\n\n3 piezas de carne fibrosa de buitre\n3 morros de dentosangre\n3 ojos de múrloc\n3 okras",
+      "heading": "Un estofado para la Finca Saldean",
+      "text": "Salma Saldean salió al porche secándose las manos en el delantal y miró a Nehonar como quien calcula el peso de un fardo antes de cargarlo.\n\n—¡Ayúdame a preparar el estofado de los Páramos de Poniente! Tráeme carne fibrosa de buitre, morros de dentosangre, ojos de múrloc y unas okras.\n\nNehonar parpadeó.\n\n—¿Ojos de múrloc? Y yo que creía que lo peor del muelle era el pescado de tres días.\n\nElla no se rio, y él no insistió. En una tierra tan seca, un caldero lleno sobre el fuego era cosa seria. Asintió, se ajustó el escudo y recorrió con la mirada los campos resecos que rodeaban la finca. No era una gesta digna de cantares, pero alguien comería caliente gracias a él, y con eso le bastaba.",
+      "acceptT": 1791273275,
+      "state": "activa",
+      "narrated": "2026-10-06T07:56:01Z"
+    },
+    {
+      "id": 9,
+      "title": "Campos de la muerte",
+      "giver": "Granjero Saldean",
+      "zone": "Páramos de Poniente",
+      "subzone": "Finca de Saldean",
+      "objectives": "El granjero Saldean quiere que mates 20 Vigilantes de la cosecha.",
+      "original": "¡Mira lo que le ha ocurrido a este lugar! Estas tierras estaban antes en manos de buenos granjeros. Pero los condenados ladrones les han ahuyentado a todos. ¡Pero no a mí! Eso sí, parece que algunos Vigilantes de la cosecha han invadido los campos.\n\nSi estás preparado me gustaría que fueras y mataras a 20 de ellos. Vuelve cuando hayas terminado y te pagaré. Si terminas con los de mi campo, puedes limpiar también los campos vecinos.",
+      "heading": "La terquedad de Saldean",
+      "text": "El granjero Saldean recibió a Nehonar con el ceño fruncido y un brazo extendido hacia sus tierras.\n\n—¡Mira lo que le ha pasado a este lugar! Aquí había buenos granjeros, y esos condenados ladrones los han echado a todos. ¡Pero a mí no!\n\nNehonar recorrió con la vista los surcos descuidados y reconoció en aquel hombre una terquedad parecida a la suya. Le cayó bien enseguida, y eso le incomodó un poco.\n\nSaldean le explicó que unos Vigilantes de la cosecha habían invadido sus campos. Quería que acabara con ellos y volviera después a cobrar la paga. Si terminaba con los de la finca, también podía limpiar los campos vecinos.\n\n—Y yo que creía que lo mío era cargar fardos —bromeó Nehonar, mientras se ajustaba el escudo.\n\nYa caminaba hacia los sembrados. Quedaba trabajo por hacer.",
+      "acceptT": 1791273262,
+      "state": "activa",
+      "narrated": "2026-10-06T07:56:13Z"
+    },
+    {
+      "id": 151,
+      "title": "La pobre y vieja Blanchy",
+      "giver": "Verna Cejade",
+      "zone": "Páramos de Poniente",
+      "subzone": "La Finca de Jansen",
+      "objectives": "Verna Furlbrow de los Páramos de Poniente quiere que le lleves 8 puñados de avena.",
+      "original": "¡Pobre Vieja Blanchy! La bestia está agotada después de todo el trabajo que le dimos. Le di de comer antes de dejar la granja, pero no esperábamos que se rompiera el carro. Si pudieras traerle algunos puñados de avena te estaría muy agradecida.\n\nSeguro que podrás encontrar algunos por las granjas de los Páramos de Poniente, si puedes librarte de esas horribles máquinas que los han invadido. Hay varias granjas al suroeste de aquí.",
+      "heading": "Avena para la vieja Blanchy",
+      "text": "Junto al carro roto, en la Finca de Jansen, Verna Cejade acariciaba el cuello de un animal que apenas se tenía en pie.\n\n—¡Pobre vieja Blanchy! —suspiró—. Está agotada después de todo el trabajo que le dimos. Comió antes de dejar la granja, pero no esperábamos que se rompiera el carro.\n\nNehonar reconoció aquel cansancio. Era el de las bestias de carga del muelle al final de la jornada.\n\n—Si pudieras traerle unos puñados de avena… Hay varias granjas al suroeste de aquí, si consigues librarte de esas horribles máquinas que las han invadido.\n\n—Máquinas, ¿eh? —Nehonar sonrió—. Bueno, peores capataces he tenido.\n\nAl darse la vuelta, sin embargo, ya no bromeaba. No era ninguna gesta, solo una bestia hambrienta. Y aun así, pensó, ella también estaba esperando a que alguien volviera.",
+      "acceptT": 1791272668,
+      "state": "activa",
+      "narrated": "2026-10-06T07:56:28Z"
+    },
+    {
+      "id": 36,
+      "title": "Estofado de los Páramos de Poniente",
+      "giver": "Verna Cejade",
+      "zone": "Páramos de Poniente",
+      "subzone": "La Finca de Jansen",
+      "objectives": "Verna Furlbrow quiere que le entregues su receta del estofado de los Páramos de Poniente a Salma Saldean.",
+      "original": "Nunca pensé que llegaría el día en el que tuviera que dejar la granja. Pero los campos están llenos de ladrones y es demasiado peligroso que sigamos aquí. En cuanto el granjero Furlbrow consiga arreglar el carro nos pondremos en marcha.\n\n¿Podrías hacerme un favor? Deja que te escriba mi receta del estofado de los Páramos de Poniente. Por favor, llévasela a Salma Saldean, estará en su granja, nada más pasar la bifurcación del camino.",
+      "acceptT": 1791272666,
+      "state": "entregada"
+    },
+    {
+      "id": 64,
+      "title": "La reliquia olvidada",
+      "giver": "Granjero Cejade",
+      "zone": "Páramos de Poniente",
+      "subzone": "La Finca de Jansen",
+      "objectives": "El granjero Furlbrow quiere que recuperes el reloj de bolsillo que dejó olvidado en el armario de su granja en la plantación de calabazas del Oeste.",
+      "original": "¡Fue horrible! Verna me despertó cuando oyó jaleo en los campos. Estaban llenos de gamberros. Nos fuimos corriendo y olvidé recoger mi reloj de bolsillo. Me lo dio el padre de Verna el día de nuestra boda y es horrible saber que está en manos de esos ladrones. Dejé el reloj de bolsillo en el armario de la granja. Busca el campo de calabazas que está al Oeste... no tiene pérdida. ¡Si me lo devuelves te estaré muy agradecido!",
+      "acceptT": 1791272662,
+      "state": "entregada"
+    },
     {
       "id": 91772,
       "title": "¡Shhh! Aquí se cazan kóbolds",
@@ -311,7 +412,7 @@
   ],
   "pending": {
     "loose": [
-      "Inventario de libros"
+      "La reliquia olvidada"
     ],
     "openChains": [
       [
@@ -326,13 +427,17 @@
         "Hermandad de ladrones",
         "Milly Osworth",
         "La cosecha de Milly"
+      ],
+      [
+        "Estofado de los Páramos de Poniente",
+        "Estofado de los Páramos de Poniente"
       ]
     ]
   },
   "stats": {
-    "level": 1,
-    "played": 5861,
-    "questsDone": 15,
+    "level": 13,
+    "played": 6803,
+    "questsDone": 17,
     "deaths": 1,
     "zones": [
       "Lion's Pride Inn",
@@ -342,7 +447,8 @@
       "Montañas de Alterac",
       "Bosque de Argénteos",
       "Dalaran",
-      "Ciudad de Ventormenta"
+      "Ciudad de Ventormenta",
+      "Páramos de Poniente"
     ],
     "levelUps": [
       {
@@ -367,6 +473,6 @@
       }
     ],
     "firstSeen": 1791235713,
-    "lastSeen": 1791271270
+    "lastSeen": 1791273278
   }
 }
