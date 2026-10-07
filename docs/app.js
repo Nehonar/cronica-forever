@@ -9,7 +9,6 @@
     cadena: { mark: "⚜", label: "Cadena" },
     sueltas: { mark: "✎", label: "Encargos" },
     equipo: { mark: "⚔", label: "Hito" },
-    reputacion: { mark: "⚑", label: "Reputación" },
   };
   const GLYPH = {
     weapon: "M18.5 2.5 21.5 5.5 11 16 8 13zM7 14l3 3-1.6 1.6-1-1-2.6 2.6L3.4 19l2.6-2.6-1-1z",
@@ -62,6 +61,9 @@
   }
   function banner(msg) { const b = $("banner"); b.textContent = msg || ""; b.hidden = !msg; }
 
+  function fmtDate(t) {
+    return t ? new Date(t * 1000).toLocaleDateString("es-ES", { day: "numeric", month: "long", year: "numeric" }) : "";
+  }
   function fmtDur(sec) {
     sec = Math.max(0, Math.round(sec || 0));
     const h = Math.floor(sec / 3600), m = Math.floor((sec % 3600) / 60);
@@ -264,7 +266,7 @@
     if (s.subzones && s.subzones.length) facts.append(el("span", { text: s.subzones.join(" · ") }));
     else if (s.zone) facts.append(el("span", { text: s.zone }));
     if (s.levelTo && s.levelFrom && s.levelTo > s.levelFrom) facts.append(el("span", { class: "lvlup", text: "Nivel " + s.levelFrom + " → " + s.levelTo }));
-    if (s.faction) facts.append(el("span", { class: "lvlup", text: (s.standing ? s.standing + " con " : "") + s.faction }));
+    if (s.end) facts.append(el("span", { text: fmtDate(s.end) }));
 
     const kids = [el("div", { class: "rubric", text: k.label.toUpperCase() }), el("h2", { text: s.title }), flourish(), facts];
     if (s.quests && s.quests.length) kids.push(el("ul", { class: "quests", "aria-label": "Misiones" }, s.quests.map((q) => el("li", { text: q.title }))));
@@ -311,33 +313,23 @@
           tile((doc.stories || []).length, "Relatos"),
           tile((st.zones || []).length, "Zonas")),
         levelTable(st),
-        st.reputation && st.reputation.length ? [el("h3", { text: "Reputación" }),
-          el("table", { class: "levels" }, el("tbody", null, st.reputation.map((r) =>
-            el("tr", null, el("td", { text: r.faction }), el("td", { class: "num", text: r.standing })))))] : null,
         st.zones && st.zones.length ? [el("h3", { text: "Zonas pisadas" }), el("ul", { class: "zones" }, st.zones.map((z) => el("li", { text: z })))] : null,
         el("p", { class: "page-note", text: "Más adelante, con el registro de combate: enemigos derrotados, daño, DPS y tu rotación." }))];
     $("reader").replaceChildren(...kids.flat().filter(Boolean));
   }
 
-  // Tiempo jugado en cada nivel (sin fechas: nadie debe poder saber cuándo juegas).
   function levelTable(st) {
     const ups = st.levelUps || [];
     if (!ups.length) return null;
     const rows = [];
-    let prev = null; // tiempo jugado al llegar al nivel anterior
+    let prevT = st.firstSeen || ups[0].t;
     for (const u of ups) {
-      let spent = null;
-      if (u.played) {
-        if (prev !== null) spent = u.played - prev;
-        else if (u.level === 2) spent = u.played; // desde que se creó el personaje
-      }
-      rows.push(el("tr", null, el("td", { text: "Nivel " + (u.level - 1) + " → " + u.level }),
-        el("td", { class: "num", text: spent !== null && spent >= 0 ? fmtDur(spent) : "–" })));
-      prev = u.played || null;
+      rows.push(el("tr", null, el("td", { text: "Nivel " + u.level }), el("td", { text: fmtDate(u.t) }), el("td", { class: "num", text: fmtDur(u.t - prevT) })));
+      prevT = u.t;
     }
-    return [el("h3", { text: "Tiempo jugado en cada nivel" }),
+    return [el("h3", { text: "Subidas de nivel" }),
       el("table", { class: "levels" },
-        el("thead", null, el("tr", null, el("th", { text: "NIVEL" }), el("th", { class: "num", text: "TIEMPO JUGADO" }))),
+        el("thead", null, el("tr", null, el("th", { text: "NIVEL" }), el("th", { text: "FECHA" }), el("th", { class: "num", text: "DESDE EL ANTERIOR" }))),
         el("tbody", null, rows))];
   }
 
