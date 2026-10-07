@@ -172,6 +172,7 @@ func (s *Server) Handler() http.Handler {
 	mux.HandleFunc("/api/preparar/github", s.apiSetupGitHub)
 	mux.HandleFunc("/api/preparar/arranque", s.apiSetupAutostart)
 	mux.HandleFunc("/api/preparar/publicar", s.apiSetupPublish)
+	mux.HandleFunc("/api/preparar/borrar-todo", s.apiDeleteAll)
 	mux.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
 		http.FileServer(http.Dir(filepath.Join(s.Runner.Config().Repo, "docs"))).ServeHTTP(w, r)
 	})

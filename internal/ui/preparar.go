@@ -19,6 +19,7 @@ import (
 
 	"github.com/Nehonar/cronica-forever/internal/app"
 	"github.com/Nehonar/cronica-forever/internal/narrate"
+	"github.com/Nehonar/cronica-forever/internal/store"
 	"github.com/Nehonar/cronica-forever/internal/system"
 	"github.com/Nehonar/cronica-forever/internal/wow"
 )
@@ -571,4 +572,35 @@ func (s *Server) apiSetupPublish(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	writeJSON(w, s.setupState(r.Context()))
+}
+
+// apiDeleteAll borra la crónica entera (todos los personajes) y lo publica.
+func (s *Server) apiDeleteAll(w http.ResponseWriter, r *http.Request) {
+	if r.Method != http.MethodPost {
+		writeErr(w, http.StatusMethodNotAllowed, "usa POST")
+		return
+	}
+	var req struct {
+		Confirm string `json:"confirmar"`
+	}
+	if err := readBody(r, &req); err != nil || req.Confirm != "BORRAR" {
+		writeErr(w, http.StatusBadRequest, "Falta la confirmación.")
+		return
+	}
+	paths := store.Paths{Repo: s.Runner.Config().Repo}
+	var n int
+	err := s.Runner.Exclusive(func() error {
+		var err error
+		n, err = paths.DeleteAll(time.Now().Unix())
+		return err
+	})
+	if err != nil {
+		writeErr(w, http.StatusInternalServerError, "No he podido borrarla: "+err.Error())
+		return
+	}
+	go func() {
+		s.Runner.PublishNow("Crónica: empezar de cero", nil)
+		s.Runner.Process(context.Background())
+	}()
+	writeJSON(w, map[string]any{"ok": true, "personajes": n})
 }

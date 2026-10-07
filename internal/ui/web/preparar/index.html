@@ -59,6 +59,8 @@
   .finale ol { margin: 8px 0 16px; padding-left: 1.3em; font-family: var(--font-body); font-size: 1.1rem; line-height: 1.6; }
   .finale li::marker { color: var(--gold); font-family: var(--font-display); }
   kbd { font-family: var(--font-ui); font-size: .9em; padding: 0 5px; border: 1px solid var(--line); border-bottom-width: 2px; border-radius: 3px; background: rgba(255,255,255,.25); }
+  .danger { margin-top: 26px; padding: 18px 20px; border: 1px dashed var(--rubric); border-radius: 6px; background: rgba(143,29,22,.05); display: flex; flex-direction: column; gap: 10px; font-family: var(--font-body); font-size: 1.05rem; }
+  .danger p { margin: 0; }
   .ver { font-family: var(--font-ui); font-size: .8rem; color: var(--frame-muted); }
   @media (max-width: 520px) { .step { grid-template-columns: 40px minmax(0, 1fr); gap: 4px 12px; } .num { width: 36px; height: 36px; font-size: 1.05rem; } }
   @media (prefers-reduced-motion: reduce) { .working::after { animation: none; } .toggle .track, .toggle .track::after { transition: none; } }
@@ -90,6 +92,12 @@
       <li class="step" id="s-arranque"></li>
     </ol>
     <section class="finale" id="finale" hidden></section>
+    <section class="danger" id="reset" aria-labelledby="reset-h">
+      <div class="rubric" id="reset-h">EMPEZAR DE CERO</div>
+      <p>Borra la crónica de <b>todos</b> tus personajes: relatos, misiones, historias y frases, aquí y en tu web de GitHub. Lo jugado hasta ahora no se vuelve a contar; si sigues jugando, el cronista empieza desde ese momento. Útil cuando salga el juego oficial.</p>
+      <p class="hint">Para reiniciar un solo personaje: <a href="/personaje/">Personajes</a> → elígelo → «Borrar su crónica…».</p>
+      <div class="row" id="reset-row"></div>
+    </section>
   </main>
 </div>
 <script src="preparar.js"></script>

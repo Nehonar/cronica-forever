@@ -607,3 +607,26 @@ func (p Paths) RemoveStory(key, id string) error {
 	}
 	return fmt.Errorf("no encuentro ese relato")
 }
+
+// DeleteAll borra la crónica de todos los personajes (por ejemplo, para empezar
+// de cero cuando salga el juego). Lo jugado hasta ahora no se vuelve a narrar.
+func (p Paths) DeleteAll(now int64) (int, error) {
+	keys := map[string]bool{}
+	for _, dir := range []string{p.DataDir(), p.PrivateDir(), p.SheetsDir()} {
+		entries, _ := os.ReadDir(dir)
+		for _, e := range entries {
+			n := e.Name()
+			if e.IsDir() || !strings.HasSuffix(n, ".json") || n == "index.json" || n == "borrados.json" || n == "fusionados.json" {
+				continue
+			}
+			n = strings.TrimSuffix(strings.TrimSuffix(n, ".json"), ".frases")
+			keys[n] = true
+		}
+	}
+	for k := range keys {
+		if err := p.DeleteCharacter(k, true, now); err != nil {
+			return 0, err
+		}
+	}
+	return len(keys), p.SaveIndex()
+}

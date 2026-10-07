@@ -280,6 +280,30 @@
     renderTask();
   }
 
+  // Empezar de cero: dos pasos y escribir BORRAR, para que no se haga sin querer.
+  function renderReset() {
+    const row = $("reset-row");
+    if (!row || row.childElementCount) return;
+    const go = el("button", { class: "btn dark", type: "button" }, "Borrar toda la crónica…");
+    go.addEventListener("click", () => {
+      const input = el("input", { class: "field", placeholder: "Escribe BORRAR", "aria-label": "Escribe BORRAR para confirmar", autocomplete: "off" });
+      const ok = el("button", { class: "btn", type: "button" }, "Borrar todo");
+      const msg = el("p", { class: "err", role: "alert" });
+      ok.addEventListener("click", async () => {
+        if (input.value.trim().toUpperCase() !== "BORRAR") { msg.textContent = "Escribe BORRAR para confirmar."; return; }
+        ok.disabled = true;
+        try {
+          const r = await api("/api/preparar/borrar-todo", { confirmar: "BORRAR" });
+          row.replaceChildren(el("p", { class: "state", text: "Hecho: borrada la crónica de " + r.personajes + " personaje(s). Se publicará en GitHub en unos segundos." }));
+        } catch (e) { ok.disabled = false; msg.textContent = e.message; }
+      });
+      row.replaceChildren(input, ok, el("button", { class: "link-btn", type: "button", onclick: () => { row.replaceChildren(); renderReset(); } }, "Cancelar"), msg);
+      input.focus();
+    });
+    row.append(go);
+  }
+  renderReset();
+
   // Al volver del navegador (inicio de sesión, GitHub), comprobar de nuevo.
   window.addEventListener("focus", () => { if (!busy && !polling) { lastJSON = ""; load(); } });
   load();

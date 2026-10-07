@@ -60,3 +60,24 @@ func TestLegacyCharacterMerges(t *testing.T) {
 		t.Fatalf("relatos=%d quitadas=%v", len(got.Stories), got.Removed)
 	}
 }
+
+func TestDeleteAllStartsFromScratch(t *testing.T) {
+	repo := t.TempDir()
+	withDemoSheet(t, repo)
+	r := &Runner{Cfg: Config{SavedVariables: "../../samples/Cronica.lua", Repo: repo}, Narrator: narrate.Fake{}, Out: io.Discard}
+	if res, err := r.Process(context.Background()); err != nil || res.NewStories == 0 {
+		t.Fatalf("%+v %v", res, err)
+	}
+	paths := store.Paths{Repo: repo}
+	if n, err := paths.DeleteAll(4102444800); err != nil || n == 0 { // «ahora» en el futuro
+		t.Fatalf("n=%d err=%v", n, err)
+	}
+	res, err := r.Process(context.Background())
+	if err != nil || res.NewStories != 0 {
+		t.Fatalf("tras borrar todo no se vuelve a narrar lo anterior: %+v %v", res, err)
+	}
+	d, _ := paths.LoadDoc("Tobias-Demo")
+	if len(d.Stories) != 0 || d.Character.Backstory != "" {
+		t.Fatalf("debe quedar vacío y sin historia: %+v", d)
+	}
+}

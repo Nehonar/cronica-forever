@@ -136,6 +136,8 @@ En *Personajes*, elige el personaje → **Borrar su crónica…**:
 - **Solo los relatos**: se quedan su historia y sus frases; lo jugado hasta ahora no se vuelve a contar y el cronista sigue desde ese momento.
 - **El personaje entero**: relatos, misiones, historia y frases. Si vuelves a jugarlo, aparece como personaje nuevo.
 
+Para borrarlo **todo** (todos los personajes, por ejemplo cuando salga el juego oficial): *Configuración → Empezar de cero*.
+
 El borrado se publica en GitHub como cualquier otro cambio (lo anterior queda en el historial del repositorio).
 
 ## Cómo agrupa
