@@ -48,10 +48,19 @@ local loginGrace = 0           -- durante unos segundos tras entrar no se regist
 local detailCache, completeCache = {}, {}
 local acceptedNow, turnedIn = {}, {}
 
+-- En Forever los personajes tienen nombre y apellido, y solo el nombre completo es
+-- único: UnitName("player") devuelve los dos (en otros clientes, el segundo es nil).
+local function playerNames()
+	local first, surname = UnitName("player")
+	if surname == "" then surname = nil end
+	return first or "?", surname
+end
+
 local function charKey()
-	local name = UnitName("player") or "?"
+	local first, surname = playerNames()
 	local realm = (GetNormalizedRealmName and GetNormalizedRealmName()) or (GetRealmName and GetRealmName()) or "Reino"
 	realm = tostring(realm):gsub("[^%w]", "")
+	local name = (first .. (surname or "")):gsub("[%s%-]", "")
 	return name .. "-" .. realm
 end
 
@@ -72,6 +81,7 @@ local function add(ev)
 	ev.level = ev.level or UnitLevel("player")
 	table.insert(char.events, ev)
 	char.level = UnitLevel("player")
+	return ev
 end
 
 local function setupCharacter()
@@ -82,7 +92,7 @@ local function setupCharacter()
 	char.events = char.events or {}
 	char.seenItems = char.seenItems or {}
 	char.played = char.played or 0
-	char.name = UnitName("player")
+	char.name, char.surname = playerNames()
 	char.realm = (GetRealmName and GetRealmName()) or ""
 	local race = UnitRace("player")
 	local class, classFile = UnitClass("player")
@@ -301,6 +311,42 @@ local f = CreateFrame("Frame")
 local function on(event, fn) f:RegisterEvent(event); f[event] = fn end
 f:SetScript("OnEvent", function(self, event, ...) if self[event] then self[event](...) end end)
 
+-- Tiempo jugado: el del propio juego (/played), pedido en silencio.
+local playedBase, playedAt, silentPlayed, pendingLevel = nil, 0, 0, nil
+
+local function currentPlayed()
+	if playedBase then return playedBase + math.floor(GetTime() - playedAt) end
+	if char then return (char.played or 0) + math.floor(GetTime() - sessionStart) end
+end
+
+local function requestPlayed()
+	if not RequestTimePlayed then return end
+	silentPlayed = silentPlayed + 1
+	RequestTimePlayed()
+	-- Si el juego no llega a mostrarlo, que tu propio /played no se quede sin salir.
+	C_Timer.After(5, function() silentPlayed = 0 end)
+end
+
+-- Que la respuesta no salga en el chat cuando la pedimos nosotros.
+if ChatFrame_DisplayTimePlayed then
+	local original = ChatFrame_DisplayTimePlayed
+	ChatFrame_DisplayTimePlayed = function(...)
+		if silentPlayed > 0 then silentPlayed = silentPlayed - 1; return end
+		return original(...)
+	end
+end
+
+on("TIME_PLAYED_MSG", function(total, thisLevel)
+	if not total then return end
+	playedBase, playedAt = total, GetTime()
+	if char then char.played = total end
+	if pendingLevel and thisLevel then
+		pendingLevel.played = total - thisLevel
+		pendingLevel = nil
+	end
+end)
+
+
 on("ADDON_LOADED", function(name)
 	if name ~= ADDON then return end
 	CronicaDB = CronicaDB or {}
@@ -319,6 +365,7 @@ end)
 on("PLAYER_ENTERING_WORLD", function(isInitialLogin, isReloadingUi)
 	sessionStart = GetTime()
 	loginGrace = GetTime() + 8
+	C_Timer.After(3, requestPlayed)
 	if isInitialLogin or (isInitialLogin == nil and not isReloadingUi) then
 		add({ type = "login" })
 	end
@@ -343,14 +390,14 @@ end)
 
 on("PLAYER_LOGOUT", function()
 	if char then
-		char.played = (char.played or 0) + math.floor(GetTime() - sessionStart)
+		char.played = currentPlayed() or char.played or 0
 	end
 end)
 
 on("PLAYER_LEVEL_UP", function(level)
 	-- Tiempo jugado al subir (para «tiempo en cada nivel»); sin fecha ni hora.
-	local played = char and ((char.played or 0) + math.floor(GetTime() - sessionStart)) or nil
-	add({ type = "level", level = level, played = played })
+	pendingLevel = add({ type = "level", level = level, played = currentPlayed() })
+	C_Timer.After(1, requestPlayed)
 	Cronica_Frase("nivel")
 end)
 

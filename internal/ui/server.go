@@ -161,6 +161,8 @@ func (s *Server) Handler() http.Handler {
 	mux.HandleFunc("/api/entrevista", s.apiInterview)
 	mux.HandleFunc("/api/guardar", s.apiSave)
 	mux.HandleFunc("/api/borrar", s.apiDelete)
+	mux.HandleFunc("/api/relatos", s.apiStories)
+	mux.HandleFunc("/api/relatos/quitar", s.apiRemoveStory)
 	mux.HandleFunc("/api/hola", s.apiHello)
 	mux.HandleFunc("/api/preparar/estado", s.apiSetupState)
 	mux.HandleFunc("/api/preparar/juego", s.apiSetupGame)
@@ -236,13 +238,16 @@ func (s *Server) characters() ([]CharacterView, map[string]model.Character, erro
 	var out []CharacterView
 	for _, c := range chars {
 		byKey[c.Key] = c
-		sheet, _, err := paths.LoadSheet(c.Key, c.Name, c.Race, c.Class)
+		if paths.MergedInto(c.Key) != "" {
+			continue
+		}
+		sheet, _, err := paths.LoadSheet(c.Key, c.FullName(), c.Race, c.Class)
 		if err != nil {
 			return nil, nil, err
 		}
 		doc, _ := paths.LoadDoc(c.Key)
 		v := CharacterView{
-			CharacterInfo: app.CharacterInfo{Key: c.Key, Name: c.Name, Race: c.Race, Class: c.Class, Level: c.Level},
+			CharacterInfo: app.CharacterInfo{Key: c.Key, Name: c.FullName(), Race: c.Race, Class: c.Class, Level: c.Level},
 			New:           sheet.Backstory == "",
 			Title:         sheet.Name,
 		}
@@ -299,7 +304,7 @@ func (s *Server) facts(key string) (interview.Facts, bool) {
 	if !ok {
 		return interview.Facts{}, false
 	}
-	f := interview.Facts{Key: key, Name: c.Name, Race: c.Race, Class: c.Class, Level: c.Level}
+	f := interview.Facts{Key: key, Name: c.FullName(), Race: c.Race, Class: c.Class, Level: c.Level}
 	seenZone := map[string]bool{}
 	for _, e := range c.Events {
 		if e.Zone != "" && !seenZone[e.Zone] {
@@ -465,4 +470,50 @@ func (s *Server) apiDelete(w http.ResponseWriter, r *http.Request) {
 		s.Runner.PublishNow("Crónica: borrada la crónica de "+req.Key, nil)
 	}()
 	writeJSON(w, map[string]any{"ok": true})
+}
+
+// StoryView es un relato en la lista de Personajes.
+type StoryView struct {
+	ID        string `json:"id"`
+	Title     string `json:"title"`
+	Kind      string `json:"kind"`
+	Zone      string `json:"zone,omitempty"`
+	LevelFrom int    `json:"levelFrom,omitempty"`
+	LevelTo   int    `json:"levelTo,omitempty"`
+}
+
+func (s *Server) apiStories(w http.ResponseWriter, r *http.Request) {
+	key := r.URL.Query().Get("p")
+	doc, err := (store.Paths{Repo: s.Runner.Config().Repo}).LoadDoc(key)
+	if err != nil {
+		writeErr(w, http.StatusInternalServerError, err.Error())
+		return
+	}
+	out := []StoryView{}
+	for _, st := range doc.Stories {
+		out = append(out, StoryView{ID: st.ID, Title: st.Title, Kind: string(st.Kind), Zone: st.Zone, LevelFrom: st.LevelFrom, LevelTo: st.LevelTo})
+	}
+	writeJSON(w, map[string]any{"stories": out})
+}
+
+func (s *Server) apiRemoveStory(w http.ResponseWriter, r *http.Request) {
+	if r.Method != http.MethodPost {
+		writeErr(w, http.StatusMethodNotAllowed, "usa POST")
+		return
+	}
+	var req struct {
+		Key string `json:"key"`
+		ID  string `json:"id"`
+	}
+	if err := json.NewDecoder(http.MaxBytesReader(w, r.Body, 4<<10)).Decode(&req); err != nil || req.Key == "" || req.ID == "" {
+		writeErr(w, http.StatusBadRequest, "petición no válida")
+		return
+	}
+	paths := store.Paths{Repo: s.Runner.Config().Repo}
+	if err := s.Runner.Exclusive(func() error { return paths.RemoveStory(req.Key, req.ID) }); err != nil {
+		writeErr(w, http.StatusBadRequest, err.Error())
+		return
+	}
+	go s.Runner.PublishNow("Crónica: relato quitado", nil)
+	writeJSON(w, map[string]bool{"ok": true})
 }

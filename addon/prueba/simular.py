@@ -50,8 +50,8 @@ function ADVANCE(sec)
     end
   end
 end
-PLAYER = { name = "Tobias", level = 7, zone = "Bosque de Elwynn", sub = "Villadorada", combat = false }
-function UnitName(u) if u == "player" then return PLAYER.name end if u == "npc" or u == "questnpc" then return NPC end end
+PLAYER = { name = "Tobias", surname = "Brenn", level = 7, zone = "Bosque de Elwynn", sub = "Villadorada", combat = false }
+function UnitName(u) if u == "player" then return PLAYER.name, PLAYER.surname end if u == "npc" or u == "questnpc" then return NPC end end
 function UnitLevel() return PLAYER.level end
 function UnitRace() return "Humano", "Human" end
 function UnitClass() return "Guerrero", "WARRIOR" end
@@ -84,6 +84,9 @@ function GetInventoryItemLink(u, slot) return EQUIP[slot] end
 function GetItemInfo(link) local it = ITEMS[link]; if not it then return nil end; return it.name, link, it.quality, 10, 1, it.type, it.sub end
 C_Item = { GetItemStats = function(link) return ITEMS[link] and ITEMS[link].stats or {} end }
 SlashCmdList = {}
+PLAYED_REQ = 0
+function RequestTimePlayed() PLAYED_REQ = PLAYED_REQ + 1 end
+function ChatFrame_DisplayTimePlayed() SHOWN_PLAYED = true end
 FACTION_STANDING_INCREASED = "Tu reputación con %s ha aumentado en %d."
 FACTION_STANDING_LABEL4 = "Neutral"
 FACTION_STANDING_LABEL5 = "Amistoso"
@@ -162,6 +165,11 @@ def main(out_path):
     ev("QUEST_ACCEPTED", 111)
     lua.execute("PLAYER.level = 8")
     ev("PLAYER_LEVEL_UP", 8)
+    adv(2)
+    assert G.PLAYED_REQ >= 1, "al subir de nivel se pide el tiempo jugado"
+    ev("TIME_PLAYED_MSG", 5000, 2)
+    G.ChatFrame_DisplayTimePlayed()
+    assert not G.SHOWN_PLAYED, "la respuesta pedida por el addon no sale en el chat"
     adv(400)
 
     # 3) Equipo azul con atributos, y caída en combate (la frase espera al final del combate).
@@ -211,7 +219,10 @@ def main(out_path):
     ev("PLAYER_LOGOUT")
 
     db = G.CronicaDB
-    ch = db.characters["Tobias-ForeverBeta"]
+    ch = db.characters["TobiasBrenn-ForeverBeta"]
+    assert ch.name == "Tobias" and ch.surname == "Brenn"
+    lv = [ch.events[i] for i in range(1, len(ch.events) + 1) if ch.events[i].type == "level"][0]
+    assert lv.played == 4998, lv.played
     types = [ch.events[i].type for i in range(1, len(ch.events) + 1)]
     print("eventos:", types)
     print("chat:", [G.CHAT.lines[i] for i in range(1, len(G.CHAT.lines) + 1)])

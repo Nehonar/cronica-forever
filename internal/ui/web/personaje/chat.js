@@ -215,7 +215,41 @@
       tools = el("div", { id: "c-tools", class: "c-tools" });
       $("c-facts").after(tools);
     }
-    tools.replaceChildren(el("button", { class: "link-btn", type: "button", onclick: () => renderDelete(c) }, "Borrar su crónica…"));
+    tools.replaceChildren(
+      c.new && !c.solo_cronica ? null : el("button", { class: "link-btn", type: "button", onclick: () => renderStories(c) }, "Sus relatos…"),
+      el("button", { class: "link-btn", type: "button", onclick: () => renderDelete(c) }, "Borrar su crónica…"));
+  }
+
+  // Lista de relatos, para quitar alguno suelto (por ejemplo, uno que no es suyo).
+  async function renderStories(c) {
+    const old = $("stories-panel");
+    if (old) { old.remove(); return; }
+    const panel = el("section", { id: "stories-panel", class: "del-panel stories-panel", "aria-label": "Sus relatos" },
+      el("div", { class: "rubric", text: "SUS RELATOS" }),
+      el("p", { class: "typing", text: "Cargando" }));
+    $("thread").prepend(panel);
+    let list = [];
+    try { list = (await api("/api/relatos?p=" + encodeURIComponent(c.key))).stories || []; }
+    catch (e) { panel.replaceChildren(el("p", { class: "err", text: e.message })); return; }
+    const rows = list.map((st) => {
+      const b = el("button", { class: "link-btn", type: "button" }, "Quitar");
+      const row = el("li", { class: "story-row" },
+        el("span", { class: "story-title", text: st.title }),
+        el("span", { class: "hint", text: [st.zone, st.levelFrom ? "nivel " + st.levelFrom + (st.levelTo && st.levelTo !== st.levelFrom ? "–" + st.levelTo : "") : ""].filter(Boolean).join(" · ") }),
+        b);
+      b.addEventListener("click", async () => {
+        if (!b.dataset.sure) { b.dataset.sure = "1"; b.textContent = "¿Seguro? Quitar"; return; }
+        b.disabled = true;
+        try { await api("/api/relatos/quitar", { key: c.key, id: st.id }); row.remove(); }
+        catch (e) { b.disabled = false; addError(e.message); }
+      });
+      return row;
+    });
+    panel.replaceChildren(
+      el("div", { class: "rubric", text: "SUS RELATOS" }),
+      el("p", null, list.length ? "Si alguno no es suyo, quítalo: sus misiones no se volverán a contar." : "Todavía no tiene relatos."),
+      el("ul", { class: "story-list" }, rows),
+      el("button", { class: "link-btn", type: "button", onclick: () => panel.remove() }, "Cerrar"));
   }
 
   function renderDelete(c) {

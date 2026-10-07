@@ -1,14 +1,14 @@
 
 CronicaDB = {
 	["characters"] = {
-		["Tobias-ForeverBeta"] = {
+		["TobiasBrenn-ForeverBeta"] = {
 			["class"] = "Guerrero",
 			["classFile"] = "WARRIOR",
 			["events"] = {
 				{
 					["level"] = 7,
 					["subzone"] = "Villadorada",
-					["t"] = 1791276149,
+					["t"] = 1791353880,
 					["type"] = "login",
 					["zone"] = "Bosque de Elwynn",
 				}, -- [1]
@@ -18,7 +18,7 @@ CronicaDB = {
 					["npc"] = "Maybell Maclure",
 					["objectives"] = "Lleva la carta de Maybell a Tommy Joe Stonefield.",
 					["subzone"] = "Villadorada",
-					["t"] = 1791276159,
+					["t"] = 1791353890,
 					["text"] = "Mi familia y los Stonefield no se hablan, pero yo quiero a Tommy Joe Stonefield. ¿Le llevarías esta carta? Está junto al río, al sur de la granja de su familia.",
 					["title"] = "La joven enamorada",
 					["type"] = "quest_accept",
@@ -30,7 +30,7 @@ CronicaDB = {
 					["npc"] = "Tommy Joe Stonefield",
 					["reward"] = "¿Una carta de Maybell? ¡Cielos! Gracias, de verdad.",
 					["subzone"] = "Villadorada",
-					["t"] = 1791276459,
+					["t"] = 1791354190,
 					["title"] = "La joven enamorada",
 					["type"] = "quest_turnin",
 					["zone"] = "Bosque de Elwynn",
@@ -41,7 +41,7 @@ CronicaDB = {
 					["npc"] = "Tommy Joe Stonefield",
 					["objectives"] = "Lleva el colgante de Tommy Joe a Maybell Maclure.",
 					["subzone"] = "Villadorada",
-					["t"] = 1791276479,
+					["t"] = 1791354210,
 					["text"] = "Tengo que darle una respuesta a Maybell, pero si su familia me ve, se acabó. Llévale mi colgante, ella sabrá lo que significa.",
 					["title"] = "Hablar con Maybell",
 					["type"] = "quest_accept",
@@ -49,9 +49,9 @@ CronicaDB = {
 				}, -- [4]
 				{
 					["level"] = 8,
-					["played"] = 330,
+					["played"] = 4998,
 					["subzone"] = "Villadorada",
-					["t"] = 1791276479,
+					["t"] = 1791354210,
 					["type"] = "level",
 					["zone"] = "Bosque de Elwynn",
 				}, -- [5]
@@ -68,14 +68,14 @@ CronicaDB = {
 						["ITEM_MOD_STRENGTH_SHORT"] = 4,
 					},
 					["subzone"] = "Villadorada",
-					["t"] = 1791276879,
+					["t"] = 1791354612,
 					["type"] = "equip",
 					["zone"] = "Bosque de Elwynn",
 				}, -- [6]
 				{
 					["level"] = 8,
 					["subzone"] = "Villadorada",
-					["t"] = 1791276884,
+					["t"] = 1791354617,
 					["type"] = "death",
 					["zone"] = "Bosque de Elwynn",
 				}, -- [7]
@@ -85,7 +85,7 @@ CronicaDB = {
 					["npc"] = "Alguacil Dughan",
 					["objectives"] = "y",
 					["subzone"] = "Villadorada",
-					["t"] = 1791276885,
+					["t"] = 1791354618,
 					["text"] = "x",
 					["title"] = "Pañuelos rojos",
 					["type"] = "quest_accept",
@@ -95,7 +95,7 @@ CronicaDB = {
 					["id"] = 120,
 					["level"] = 8,
 					["subzone"] = "Villadorada",
-					["t"] = 1791276887,
+					["t"] = 1791354620,
 					["title"] = "Pañuelos rojos",
 					["type"] = "quest_abandon",
 					["zone"] = "Bosque de Elwynn",
@@ -106,7 +106,7 @@ CronicaDB = {
 					["npc"] = "Maybell Maclure",
 					["reward"] = "¡Su colgante! Gracias… nadie debe saberlo.",
 					["subzone"] = "Villadorada",
-					["t"] = 1791277487,
+					["t"] = 1791355220,
 					["title"] = "Hablar con Maybell",
 					["type"] = "quest_turnin",
 					["zone"] = "Bosque de Elwynn",
@@ -117,7 +117,7 @@ CronicaDB = {
 					["npc"] = "Cartel de «Se busca»",
 					["objectives"] = "Trae la garra de Hogger al alguacil Dughan, en Villadorada.",
 					["subzone"] = "Villadorada",
-					["t"] = 1791277687,
+					["t"] = 1791355420,
 					["text"] = "SE BUSCA: un gnoll enorme llamado Hogger aterroriza el oeste del Bosque de Elwynn. La guardia de Ventormenta paga una recompensa por su cabeza. Se le ha visto cerca del Bosque Brumoso, al suroeste. Entregad la prueba al alguacil Dughan en Villadorada.",
 					["title"] = "Se busca: Hogger",
 					["type"] = "quest_accept",
@@ -128,7 +128,7 @@ CronicaDB = {
 					["faction"] = "Ventormenta",
 					["level"] = 8,
 					["subzone"] = "Villadorada",
-					["t"] = 1791277690,
+					["t"] = 1791355423,
 					["type"] = "rep",
 					["zone"] = "Bosque de Elwynn",
 				}, -- [12]
@@ -138,7 +138,7 @@ CronicaDB = {
 					["standing"] = "Amistoso",
 					["standingID"] = 5,
 					["subzone"] = "Villadorada",
-					["t"] = 1791277692,
+					["t"] = 1791355425,
 					["text"] = "La capital de los humanos en Azeroth.",
 					["type"] = "standing",
 					["zone"] = "Bosque de Elwynn",
@@ -146,7 +146,7 @@ CronicaDB = {
 			},
 			["level"] = 8,
 			["name"] = "Tobias",
-			["played"] = 1545,
+			["played"] = 6215,
 			["race"] = "Humano",
 			["realm"] = "Forever Beta",
 			["seenItems"] = {
@@ -155,6 +155,7 @@ CronicaDB = {
 			["standings"] = {
 				["Ventormenta"] = 5,
 			},
+			["surname"] = "Brenn",
 		},
 	},
 	["config"] = {

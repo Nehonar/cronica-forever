@@ -260,8 +260,14 @@ func (r *Runner) process(ctx context.Context) (Result, error) {
 		now = r.Now
 	}
 
+	r.mergeLegacy(paths, chars)
+
 	var docs []*store.Doc
 	for _, c := range chars {
+		// Claves antiguas («Nombre-Reino») cuya crónica ya pasó al personaje con apellido.
+		if paths.MergedInto(c.Key) != "" {
+			continue
+		}
 		// Si borraste su crónica, lo anterior a ese momento no se vuelve a contar.
 		if since := paths.DeletedAt(c.Key); since > 0 {
 			var evs []model.Event
@@ -272,7 +278,7 @@ func (r *Runner) process(ctx context.Context) (Result, error) {
 			}
 			c.Events = evs
 		}
-		sheet, created, err := paths.LoadSheet(c.Key, c.Name, c.Race, c.Class)
+		sheet, created, err := paths.LoadSheet(c.Key, c.FullName(), c.Race, c.Class)
 		if err != nil {
 			return res, err
 		}
@@ -339,6 +345,9 @@ func (r *Runner) process(ctx context.Context) (Result, error) {
 				copt.Narrated[q.ID] = true
 			}
 		}
+		for _, id := range doc.Removed {
+			copt.Narrated[id] = true
+		}
 		built := group.Build(c.Events, now().Unix(), copt)
 		if sheet.Backstory == "" {
 			// Sin trasfondo no se narra: se guarda el progreso y se espera a que lo crees.
@@ -348,7 +357,7 @@ func (r *Runner) process(ctx context.Context) (Result, error) {
 					waiting++
 				}
 			}
-			res.NeedsBackstory = append(res.NeedsBackstory, CharacterInfo{Key: c.Key, Name: c.Name, Race: c.Race, Class: c.Class, Level: c.Level, Waiting: waiting})
+			res.NeedsBackstory = append(res.NeedsBackstory, CharacterInfo{Key: c.Key, Name: c.FullName(), Race: c.Race, Class: c.Class, Level: c.Level, Waiting: waiting})
 			if r.announced == nil {
 				r.announced = map[string]bool{}
 			}
@@ -664,4 +673,46 @@ func questMaps(events []model.Event) (accepts, turnins, abandons map[int64]store
 		}
 	}
 	return
+}
+
+// mergeLegacy: hasta ahora el addon identificaba a los personajes solo por nombre
+// y reino, y en Forever varios pueden llamarse igual con distinto apellido. Cuando
+// aparece un personaje con apellido, la crónica de su clave antigua («Nombre-Reino»)
+// pasa a él si encaja (misma raza y clase; si hay varios, el de más nivel).
+func (r *Runner) mergeLegacy(paths store.Paths, chars []model.Character) {
+	best := map[string]model.Character{} // clave antigua -> candidato
+	for _, c := range chars {
+		if c.Surname == "" {
+			continue
+		}
+		i := strings.LastIndex(c.Key, "-")
+		if i < 0 {
+			continue
+		}
+		legacy := c.Name + "-" + c.Key[i+1:]
+		if legacy == c.Key || paths.MergedInto(legacy) != "" {
+			continue
+		}
+		if _, ok := paths.ReadSheet(c.Key); ok {
+			continue // ya tiene su propia ficha
+		}
+		old, ok := paths.ReadSheet(legacy)
+		if !ok || old.Backstory == "" {
+			continue
+		}
+		if !strings.EqualFold(old.Race, c.Race) || !strings.EqualFold(old.Class, c.Class) {
+			continue
+		}
+		if b, ok := best[legacy]; !ok || c.Level > b.Level {
+			best[legacy] = c
+		}
+	}
+	for legacy, c := range best {
+		kept, dropped, err := paths.MergeLegacy(legacy, c.Key)
+		if err != nil {
+			r.logf("No he podido pasar la crónica de %s a %s: %v", legacy, c.FullName(), err)
+			continue
+		}
+		r.logf("La crónica de %s pasa a %s (%d relato(s); %d quitado(s) por mezclar personajes).", legacy, c.FullName(), kept, dropped)
+	}
 }

@@ -126,6 +126,10 @@ cronica procesar -sv samples/Cronica.lua -repo /tmp/prueba          # con Claude
 cronica procesar -sv samples/Cronica.lua -repo /tmp/prueba -prueba  # sin llamar a Claude
 ```
 
+## Nombre y apellido
+
+En Forever varios personajes pueden llamarse igual con distinto apellido, así que el addon identifica a cada uno por nombre, apellido y reino. Las crónicas de versiones anteriores (que solo usaban el nombre) pasan solas al personaje con apellido que encaja (misma raza y clase; si hay varios, el de más nivel); los relatos que mezclaban dos personajes se quitan. En *Personajes → Sus relatos…* puedes quitar cualquier relato suelto.
+
 ## Borrar la crónica de un personaje
 
 En *Personajes*, elige el personaje → **Borrar su crónica…**:

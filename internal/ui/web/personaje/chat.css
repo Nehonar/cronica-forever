@@ -67,3 +67,11 @@ a.btn { text-decoration: none; display: inline-flex; align-items: center; }
 .del-choice { display: flex; flex-wrap: wrap; gap: 6px 14px; align-items: center; }
 .del-choice .hint { flex: 1 1 260px; font-style: italic; color: var(--ink-soft); font-size: 1rem; }
 .del-panel > .link-btn { align-self: flex-start; }
+
+.stories-panel { border-color: var(--gold); background: rgba(0,0,0,.035); }
+.story-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; }
+.story-row { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 0 12px; align-items: center; padding: 6px 0; border-bottom: 1px dashed var(--line); }
+.story-row:last-child { border-bottom: 0; }
+.story-title { font-family: var(--font-body); font-size: 1.08rem; }
+.story-row .hint { grid-column: 1; font-style: italic; color: var(--ink-soft); font-size: .95rem; }
+.story-row .link-btn { grid-column: 2; grid-row: 1 / span 2; }

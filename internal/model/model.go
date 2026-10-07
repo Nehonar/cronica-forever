@@ -58,6 +58,7 @@ type Event struct {
 type Character struct {
 	Key       string  `json:"key"`
 	Name      string  `json:"name"`
+	Surname   string  `json:"surname,omitempty"` // apellido (WoW Forever)
 	Realm     string  `json:"realm"`
 	Race      string  `json:"race"`
 	Class     string  `json:"class"`
@@ -104,6 +105,7 @@ func ParseSavedVariables(src string) ([]Character, error) {
 		c := Character{
 			Key:       k,
 			Name:      ct.String("name"),
+			Surname:   ct.String("surname"),
 			Realm:     ct.String("realm"),
 			Race:      ct.String("race"),
 			Class:     ct.String("class"),
@@ -161,4 +163,12 @@ func statsOf(t *luasv.Table) map[string]int {
 		}
 	}
 	return out
+}
+
+// FullName es el nombre con apellido (en Forever, lo único que es único).
+func (c Character) FullName() string {
+	if c.Surname == "" {
+		return c.Name
+	}
+	return c.Name + " " + c.Surname
 }

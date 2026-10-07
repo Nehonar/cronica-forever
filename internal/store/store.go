@@ -118,8 +118,10 @@ type Doc struct {
 	Updated   string        `json:"updated,omitempty"`
 	Stories   []Story       `json:"stories"`
 	Encargos  []Encargo     `json:"encargos,omitempty"`
-	Pending   Pending       `json:"pending"`
-	Stats     Stats         `json:"stats"`
+	// Misiones de relatos quitados a mano: no se vuelven a narrar.
+	Removed []int64 `json:"removed,omitempty"`
+	Pending Pending `json:"pending"`
+	Stats   Stats   `json:"stats"`
 }
 
 // Has indica si ya existe un relato con ese id.
@@ -228,6 +230,7 @@ func Public(d *Doc) *Doc {
 		c.Encargos[i] = e
 	}
 	c.Stats.FirstSeen, c.Stats.LastSeen = 0, 0
+	c.Removed = nil
 	c.Stats.LevelUps = make([]LevelUp, len(d.Stats.LevelUps))
 	for i, u := range d.Stats.LevelUps {
 		u.T = 0
@@ -513,4 +516,94 @@ func (p Paths) DeleteCharacter(key string, all bool, now int64) error {
 		return err
 	}
 	return p.SaveIndex()
+}
+
+// ---------- Personajes de antes del apellido ----------
+
+func (p Paths) mergedFile() string { return filepath.Join(p.PrivateDir(), "fusionados.json") }
+
+// MergedInto dice a qué personaje se pasó la crónica de una clave antigua
+// («Nombre-Reino», de antes de que el addon usara el apellido). "" = a ninguno.
+func (p Paths) MergedInto(key string) string {
+	var m map[string]string
+	if b, err := os.ReadFile(p.mergedFile()); err == nil {
+		json.Unmarshal(b, &m)
+	}
+	return m[key]
+}
+
+// ReadSheet lee una ficha sin crearla.
+func (p Paths) ReadSheet(key string) (narrate.Sheet, bool) {
+	var s narrate.Sheet
+	b, err := os.ReadFile(filepath.Join(p.SheetsDir(), key+".json"))
+	if err != nil || json.Unmarshal(b, &s) != nil {
+		return s, false
+	}
+	return s, true
+}
+
+// MergeLegacy pasa la crónica de la clave antigua «from» al personaje «to»:
+// historia, frases y relatos (salvo los imposibles, que empiezan en un nivel
+// más alto del que acaban y por tanto mezclan dos personajes).
+func (p Paths) MergeLegacy(from, to string) (kept, dropped int, err error) {
+	sheet, ok := p.ReadSheet(from)
+	if !ok {
+		return 0, 0, fmt.Errorf("no hay ficha de %s", from)
+	}
+	sheet.Key = to
+	if err := writeJSON(filepath.Join(p.SheetsDir(), to+".json"), sheet); err != nil {
+		return 0, 0, err
+	}
+	if b, err := os.ReadFile(filepath.Join(p.SheetsDir(), from+".frases.json")); err == nil {
+		os.WriteFile(filepath.Join(p.SheetsDir(), to+".frases.json"), b, 0o644)
+	}
+	doc, err := p.LoadDoc(from)
+	if err != nil {
+		return 0, 0, err
+	}
+	nd := &Doc{Key: to, Character: sheet, Level: doc.Level, Realm: doc.Realm, Removed: doc.Removed}
+	for _, s := range doc.Stories {
+		if s.LevelFrom > 0 && s.LevelTo > 0 && s.LevelFrom > s.LevelTo {
+			dropped++
+			for _, q := range s.Quests {
+				nd.Removed = append(nd.Removed, q.ID)
+			}
+			continue
+		}
+		nd.Stories = append(nd.Stories, s)
+		kept++
+	}
+	if err := p.SaveDoc(nd); err != nil {
+		return 0, 0, err
+	}
+	m := map[string]string{}
+	if b, err := os.ReadFile(p.mergedFile()); err == nil {
+		json.Unmarshal(b, &m)
+	}
+	m[from] = to
+	if err := writeJSON(p.mergedFile(), m); err != nil {
+		return 0, 0, err
+	}
+	return kept, dropped, p.DeleteCharacter(from, true, time.Now().Unix())
+}
+
+// RemoveStory quita un relato; sus misiones no se vuelven a narrar.
+func (p Paths) RemoveStory(key, id string) error {
+	doc, err := p.LoadDoc(key)
+	if err != nil {
+		return err
+	}
+	for i, s := range doc.Stories {
+		if s.ID == id || publicID(s.ID) == id {
+			for _, q := range s.Quests {
+				doc.Removed = append(doc.Removed, q.ID)
+			}
+			doc.Stories = append(doc.Stories[:i], doc.Stories[i+1:]...)
+			if err := p.SaveDoc(doc); err != nil {
+				return err
+			}
+			return p.SaveIndex()
+		}
+	}
+	return fmt.Errorf("no encuentro ese relato")
 }
