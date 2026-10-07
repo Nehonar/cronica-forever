@@ -16,9 +16,9 @@
     ],
     "motto": "Mientras quede alguien dentro, no he terminado."
   },
-  "level": 15,
+  "level": 16,
   "realm": "Classic Beta PvE",
-  "updated": "2026-10-07T03:19:10Z",
+  "updated": "2026-10-07T05:49:17Z",
   "stories": [
     {
       "id": "sueltas-91777-91724-33-91741",
@@ -284,9 +284,166 @@
       "start": 1791278121,
       "end": 1791293578,
       "created": "2026-10-06T14:05:32Z"
+    },
+    {
+      "id": "sueltas-9-92909-153",
+      "kind": "sueltas",
+      "zone": "Páramos de Poniente",
+      "subzones": [
+        "Finca de Saldean",
+        "Colina del Centinela"
+      ],
+      "title": "Alguien dentro del establo",
+      "text": "El granjero Saldean no se había ido. Lo dijo plantado entre surcos invadidos por los Vigilantes de la cosecha, con la barbilla alta, como quien enseña lo único que le queda. Nehonar se arremangó y salió a los campos. Le costó más de lo que habría admitido: dos veces acabó con la cara en la tierra, y dos veces se levantó escupiendo polvo y una broma que no oyó nadie.\n\n—Quién sabe, quizás los Páramos vuelvan a ser prósperos —dijo Saldean al pagarle.\n\nNehonar no supo si creerlo, pero le gustó que alguien siguiera diciéndolo.\n\nEn el establo de la finca le esperaba otro apuro. Ozwin Ferropiñón, un gnomo venido de Forjaz para recalibrar a los cosechadores, había acabado acorralado allí por ellos. Pedía isomuelles y giroestabilizadores para fabricarse una forma de huir.\n\n—O sea, que estás atrapado dentro —resumió Nehonar.\n\n—¡Temporalmente!\n\nEsta vez Nehonar no se rió. Reunió las piezas y se las dejó en las manos. Ozwin le dio las gracias y un regalo, y se puso a trazar su plan. El paladín se quedó un momento en la puerta, mirando la penumbra. Ya conocía otras oscuridades con gente dentro.\n\nEn la Colina del Centinela, el explorador Galiaan le habló de los Defias: cambiaban de tapadera sin descanso, pero muchos seguían llevando el mismo pañuelo de cuero rojo. Nehonar le llevó los que pedía y aceptó el pago encogiéndose de hombros.\n\nDe vuelta, pensó que en aquella tierra todos se aferraban a algo: un granjero a sus surcos, unos bandidos a un trapo rojo. Él también. Lo suyo no se veía, pero pesaba más.",
+      "summary": "Nehonar limpió los campos de Saldean, consiguió piezas para que Ozwin Ferropiñón escapara del establo donde estaba atrapado, entregó pañuelos Defias a Galiaan y pensó en aquello a lo que cada cual se aferra.",
+      "quests": [
+        {
+          "id": 9,
+          "title": "Campos de la muerte",
+          "giver": "Granjero Saldean"
+        },
+        {
+          "id": 92909,
+          "title": "Cosechar a los cosechadores",
+          "giver": "Ozwin Ferropiñón"
+        },
+        {
+          "id": 153,
+          "title": "Pañuelos rojos de cuero",
+          "giver": "Explorador Galiaan"
+        }
+      ],
+      "levelFrom": 13,
+      "levelTo": 15,
+      "deaths": 2,
+      "start": 1791273262,
+      "end": 1791297873,
+      "created": "2026-10-07T05:49:17Z"
     }
   ],
   "encargos": [
+    {
+      "id": 92745,
+      "title": "El estado de las minas",
+      "giver": "Alba Lunajusta",
+      "zone": "Páramos de Poniente",
+      "subzone": "Colina del Centinela",
+      "objectives": "Acaba con 4 cavadores kóbolds en la Mina de Jango y con 6 mineros Zarparrío en la Mina de la Costa del Oro.",
+      "original": "¡Las muestras de los pozos que has recolectado contienen metales tóxicos! Si no ponemos fin a esta corrupción pronto, pasarán décadas hasta que se pueda volver a cultivar en estas tierras.\r\nLos Defias han tomado las minas de los Páramos de Poniente y están usando criaturas como mano de obra para adueñarse de sus recursos. Para frustrar sus planes, acaba con sus mineros en la Mina de Jango, al norte, y en la Mina de la Costa del Oro, al oeste.",
+      "heading": "Otra vez bajo tierra",
+      "text": "Alba Lunajusta dejó las muestras de los pozos sobre la mesa como quien deja una mala noticia.\n\n—Metales tóxicos —dijo—. Si no frenamos esta corrupción pronto, pasarán décadas antes de que esta tierra vuelva a dar cosecha.\n\nLe explicó que los Defias se habían hecho con las minas de los Páramos de Poniente y usaban criaturas como mano de obra para quedarse con sus recursos. Para frustrar sus planes había que acabar con sus mineros: los cavadores kóbolds de la Mina de Jango, al norte, y los mineros Zarparrío de la Mina de la Costa del Oro, al oeste.\n\nNehonar soltó una risa corta.\n\n—Minas. Justo lo que echaba de menos.\n\nPero ya no sonreía cuando miró hacia los campos yermos de la Colina del Centinela. Se ajustó el escudo y se dispuso a partir.",
+      "acceptT": 1791350732,
+      "state": "activa",
+      "narrated": "2026-10-07T05:47:28Z"
+    },
+    {
+      "id": 1338,
+      "title": "Un pedido de Pico Tormenta",
+      "giver": "Montaraz Pico Tormenta",
+      "zone": "Loch Modan",
+      "subzone": "Estación de Algaz",
+      "objectives": "Lleva el pedido de Pico Tormenta a Furen Barbalarga a Ventormenta.",
+      "original": "Hay un forjador de armaduras enano cuyo trabajo me gusta mucho. Se llama Furen Barbalarga y es el mejor de su gremio. Necesito un escudo nuevo, y quiero que me lo haga él.\n\nSolo hay un problema... Furen vive muy al sur, en el Distrito de los Enanos de Ventormenta. ¡En tierra humana! No entiendo por qué vive ahí, tan lejos de Forjaz. ¡Será que los humanos le pagan una fortuna!\n\nSi te apetece viajar y ganar algo de dinero, ve a ver a Furen para hacer mi pedido de un escudo.",
+      "heading": "Un escudo hecho en Ventormenta",
+      "text": "En la Estación de Algaz, el montaraz Pico Tormenta le hizo un gesto para que se acercara. Necesitaba un escudo nuevo, y no le valía cualquiera: lo quería de manos de Furen Barbalarga, el mejor forjador de armaduras de su gremio.\n\n—El problema es que vive muy al sur, en el Distrito de los Enanos de Ventormenta. ¡En tierra humana! —gruñó—. Seguro que allí le pagan una fortuna.\n\nNehonar se rio por lo bajo. Ventormenta: los muelles, los fardos, el polvo de la cantera. Tenía gracia que un enano hubiera echado raíces en la ciudad de la que él tanto había soñado salir.\n\n—Si te apetece viajar y ganar algo, llévale mi pedido.\n\nAceptó sin pensarlo dos veces. Era un recado sencillo, se dijo. Pero alguien lo necesitaba, y con eso le bastaba para echar a andar hacia el sur.",
+      "acceptT": 1791347602,
+      "state": "activa",
+      "narrated": "2026-10-07T05:47:42Z"
+    },
+    {
+      "id": 307,
+      "title": "Zarpas asquerosas",
+      "giver": "Montaraz Pico Tormenta",
+      "zone": "Loch Modan",
+      "subzone": "Estación de Algaz",
+      "objectives": "Ve a la Mina de Fuenteplata y recoge 4 cargas de equipamiento de minero. \n\nLuego ve a ver al montaraz Pico Tormenta.",
+      "original": "La Mina de Fuenteplata, que cae al este, se agotó hace tiempo. La Liga de Mineros la usaba como almacén, pero ahora se han instalado unos kobolds allí, ¡con esas magníficas herramientas enanas a su alcance!\n\nLos expulsaremos, pero la Liga quiere que vaya alguien a recoger el material antes de que lleguemos los soldados a romperlo todo. Es muy arriesgado; será mejor que lleves compañía.\n\nEl material está en unas cajas con la marca de la Liga de Mineros. Suerte.",
+      "acceptT": 1791347598,
+      "state": "entregada"
+    },
+    {
+      "id": 96394,
+      "title": "Los muertos sin descanso",
+      "giver": "Afadra Murocre",
+      "zone": "Forjaz",
+      "objectives": "Mata a 15 apariciones iracundas y 10 almas atormentadas, antes de acabar con el espíritu de Yunquemar.",
+      "original": "Algo ha perturbado las tumbas del Salón de los Feudales, y hay quien dice haber oído ruidos extraños procedentes de lo más hondo del mausoleo. Los espíritus de los difuntos tienen el sueño muy ligero, y se conoce que los habrá alterado lo que quiera que se esté removiendo allí abajo.\r\n\r\nPonte en camino, a ver qué remedio le ves al asunto. Y, si algún muerto anda deambulando..., ¡se le manda a dormir otra vez!",
+      "heading": "Un sueño muy ligero",
+      "text": "Afadra Murocre lo detuvo entre el estruendo de las fraguas de Forjaz, con el ceño fruncido y la voz baja.\n\n—Algo ha perturbado las tumbas del Salón de los Feudales —le dijo—. Hay quien jura haber oído ruidos extraños en lo más hondo del mausoleo.\n\nLe explicó que los espíritus de los difuntos tenían el sueño muy ligero y que lo que se estuviera removiendo allí abajo los había alterado.\n\nNehonar se rascó la nuca y sonrió.\n\n—¿Y quiere que baje a preguntarles si han dormido bien?\n\n—Quiero que bajes a ver qué remedio le encuentras. Y si algún muerto anda deambulando, ¡se le manda a dormir otra vez!\n\nLa broma se le quedó a medias. Una cripta honda, ruidos en la oscuridad... Conocía bien ese silencio de piedra. Asintió y se puso en camino.",
+      "acceptT": 1791346641,
+      "state": "activa",
+      "narrated": "2026-10-07T05:47:54Z"
+    },
+    {
+      "id": 1618,
+      "title": "Equipar a los Crestagrana",
+      "giver": "Tormus Forjahonda",
+      "zone": "Forjaz",
+      "subzone": "La Gran Fundición",
+      "objectives": "Tormus Forjahonda quiere que le lleves 4 cinturones de cobre con runas y 4 almádenas pesadas de cobre a Verner Osgood a Crestagrana.",
+      "original": "Los enanos no somos los únicos que luchamos. ¡Nuestros aliados humanos también están muy ocupados!\n\nCrestagrana sufre ataques constantes de los orcos Roca Negra y siempre anda mal de equipamiento. Si decides ayudarles, seguro que su herrero, Verner Osgood, te enseñará lo que sepa.",
+      "heading": "Cobre para los Crestagrana",
+      "text": "El calor de la Gran Fundición le pegaba la camisa a la espalda, y Nehonar casi lo agradecía: olía a trabajo honrado, como la cantera. Tormus Forjahonda apartó la vista del yunque y lo miró de arriba abajo.\n\n—Los enanos no somos los únicos que luchamos, muchacho. Tu gente en Crestagrana sufre ataques constantes de los orcos Roca Negra, y siempre anda mal de equipamiento.\n\nLe encargó cinturones de cobre con runas y almádenas pesadas de cobre para Verner Osgood, el herrero de Crestagrana.\n\n—Si les echas una mano, seguro que Osgood te enseña lo que sepa.\n\nNehonar soltó que, por fin, le tocaba cargar fardos que merecían la pena. Luego se quedó callado. Había gente resistiendo sin con qué defenderse, y eso no pensaba dejarlo a medias.",
+      "acceptT": 1791346159,
+      "state": "activa",
+      "narrated": "2026-10-07T05:48:07Z"
+    },
+    {
+      "id": 1578,
+      "title": "Abastecer al frente",
+      "giver": "Tormus Forjahonda",
+      "zone": "Forjaz",
+      "subzone": "La Gran Fundición",
+      "objectives": "Lleva 6 hachas y 6 cinturones de malla de cobre a Thorvald a la torre de vigilancia sur de Loch Modan",
+      "original": "Los montaraces de Loch Modan están luchando denodadamente contra los trogg. Necesitan un suministro constante de armaduras y armas.\n\nPor eso está allí mi colega Thorvald, encargándose del equipamiento de los montaraces. Seguro que te agradecerá que le fabriques unas hachas y unos cinturones de cobre. Puede incluso que comparta su sabiduría contigo.\n\nThorvald está en la torre sur de Loch Modan.",
+      "heading": "Hachas y cobre para el frente",
+      "text": "El calor de la Gran Fundición le recordó a Nehonar los veranos en la cantera, aunque allí los martillos sonaban más fuerte. Tormus Forjahonda se limpió las manos en el mandil y lo miró de arriba abajo.\n\n—Los montaraces de Loch Modan luchan sin descanso contra los trogg —le dijo—. Necesitan armas y armaduras sin parar, y mi colega Thorvald se encarga de equiparlos.\n\nLe pidió que forjara hachas y cinturones de malla de cobre y se los llevara a Thorvald, a la torre de vigilancia sur de Loch Modan.\n\n—Seguro que te lo agradecerá. Puede que hasta comparta su sabiduría contigo.\n\nNehonar soltó una broma sobre cambiar los fardos por el yunque. Luego pensó en aquellos montaraces aguantando la línea, y el encargo dejó de parecerle pequeño.",
+      "acceptT": 1791346146,
+      "state": "activa",
+      "narrated": "2026-10-07T05:48:19Z"
+    },
+    {
+      "id": 167,
+      "title": "Oh, hermano...",
+      "giver": "Wilder Cardortiga",
+      "zone": "Ciudad de Ventormenta",
+      "subzone": "Distrito de los Enanos",
+      "objectives": "Lleva la insignia de la Liga de Exploradores del supervisor Cardortiga a Wilder Cardortiga, en Ventormenta.",
+      "original": "Estábamos en las profundidades de una gran mina en Páramos de Poniente, oculta tras un granero en el Arroyo de la Luna. No tenemos ni idea de dónde salieron esos ladrones. En fin, el túnel se derrumbó sobre nosotros. Conseguí salir, pero los otros... bueno... de los otros no sé nada.\n\nCreo que tú podrías tener más suerte ahí abajo. Si pudieras buscar a mi hermano, te lo agradecería mucho. Siempre llevaba su insignia de la Liga de Exploradores. Si no puedes encontrarle, al menos la insignia me daría algo de paz mental.",
+      "heading": "Otro túnel que se derrumba",
+      "text": "Wilder Cardortiga hablaba con la mirada perdida, como quien repite algo que aún no se cree. Nehonar lo escuchó en silencio en el Distrito de los Enanos.\n\n—Estábamos en lo más hondo de una mina en los Páramos de Poniente, escondida tras un granero en el Arroyo de la Luna. Aparecieron unos ladrones y el túnel se nos vino encima. Yo salí. Los otros... no sé.\n\nNehonar buscó una broma para aliviar el momento y no la encontró. Conocía ese silencio. Lo había oído antes, con polvo en la garganta.\n\n—Busca a mi hermano. Siempre llevaba su insignia de la Liga de Exploradores. Si no lo encuentras, tráemela. Al menos tendré algo de paz.\n\n—Bajaré —dijo Nehonar—. Mientras quede alguien dentro...\n\nNo terminó la frase. No hacía falta.",
+      "acceptT": 1791344616,
+      "state": "activa",
+      "narrated": "2026-10-07T05:48:31Z"
+    },
+    {
+      "id": 168,
+      "title": "La recolección de Tarjetas del Sindicato Minero",
+      "giver": "Wilder Cardortiga",
+      "zone": "Ciudad de Ventormenta",
+      "subzone": "Distrito de los Enanos",
+      "objectives": "Recupera 4 Tarjetas del Sindicato Minero y llévaselas a Wilder Cardortiga, en Ventormenta.",
+      "original": "Muchos de mis amigos murieron ese horrible día cuando se derrumbó el túnel de la mina. Si tus aventuras te llevan de casualidad a esa parte de la mina en el Arroyo de la Luna, por favor, busca alguna señal que pueda identificarles. Si te encuentras con alguna de sus Tarjetas del Sindicato Minero, tráemelas y me aseguraré de que sus familias reciban la resolución de este horrible accidente.",
+      "heading": "Los que no salieron",
+      "text": "En el Distrito de los Enanos, entre el humo de las fraguas, Wilder Cardortiga habló a Nehonar sin apartar la vista de sus propias manos.\n\n—Muchos de mis amigos murieron el día que se derrumbó el túnel de la mina —dijo—. Si alguna vez pasas por esa parte, en el Arroyo de la Luna, busca algo que sirva para identificarlos.\n\nLe explicó que buscaba sus Tarjetas del Sindicato Minero. Si encontraba alguna, debía traérsela a Ventormenta, y él se encargaría de que las familias recibieran por fin una resolución.\n\nNehonar se rascó la nuca y soltó una broma floja sobre el polvo de las minas. Nadie se rio, ni siquiera él. Conocía demasiado bien el silencio de un túnel caído. Asintió despacio. Si quedaba alguien dentro, aunque solo fuera un nombre, todavía no había terminado.",
+      "acceptT": 1791344600,
+      "state": "activa",
+      "narrated": "2026-10-07T05:48:42Z"
+    },
+    {
+      "id": 2040,
+      "title": "Asalto subterráneo",
+      "giver": "Shoni el Shilenshioso",
+      "zone": "Ciudad de Ventormenta",
+      "subzone": "Distrito de los Enanos",
+      "objectives": "Recupera la Trituradora Piñonera de Las Minas de la Muerte y devuélveselo a Shoni el Shilenshioso, en Ventormenta.",
+      "original": "¡Esos malditos troggs han tomado Gnomeregan! La situación es grave, pero quizás puedas ayudar, Nehonar.\n\nEn las profundidades de Las Minas de la Muerte hay una trituradora goblin operativa. Encuentra la trituradora y trae su batería intacta. Con la batería de la trituradora, podemos dar a nuestras excavadoras gyroagujereamáticas la energía necesaria para atravesar los rocosos límites subterráneos de Gnomeregan, ¡y nos abrirán el camino para el asalto gnomo!",
+      "heading": "Una batería bajo la roca",
+      "text": "En el Distrito de los Enanos, entre el humo de las fraguas, Shoni el Shilenshioso salió al paso de Nehonar con las manos manchadas de grasa y la voz atropellada.\n\n—¡Esos malditos troggs han tomado Gnomeregan! La situación es grave, pero quizás puedas ayudar.\n\nLe habló de una trituradora goblin que aún funcionaba en las profundidades de Las Minas de la Muerte. Necesitaba su batería intacta para dar energía a unas excavadoras gyroagujereamáticas capaces de atravesar la roca que rodeaba Gnomeregan y abrir camino al asalto gnomo.\n\n—Excavadoras gyro… ¿qué? —bromeó Nehonar—. Tú dime dónde está, que yo te la traigo.\n\nPero en cuanto el gnomo se dio la vuelta, la sonrisa se le borró. Todo un pueblo se había quedado sin casa bajo tierra. Él sabía bien lo que era mirar una pared de piedra y pensar en quienes estaban al otro lado.",
+      "acceptT": 1791343699,
+      "state": "activa",
+      "narrated": "2026-10-07T05:48:56Z"
+    },
     {
       "id": 13,
       "title": "Las Milicias del Pueblo",
@@ -374,7 +531,7 @@
       "heading": "Branquias para un mar enfermo",
       "text": "En la Colina del Centinela, Alba Lunajusta lo esperaba con el ceño de quien lleva días sin dormir bien. Le habló de la corrupción que pudría los cultivos de los Páramos de Poniente y de su temor a que se hubiera filtrado al océano.\n\n—Si los peces enferman, Ventormenta pasará hambre —dijo—. Necesito branquias de los múrlocs de Playa Larga. Son duros, pero sus cuerpos absorben cualquier toxina que haya en el agua.\n\nNehonar se rascó la nuca y sonrió de medio lado.\n\n—O sea, que me toca hacer de pescadero. Para eso no hacía falta la Luz.\n\nElla no rio, y él no insistió. Había cargado suficientes cajas de pescado en los muelles como para saber cuántas bocas dependían de aquellas redes. Se ajustó el escudo y miró hacia la costa.",
       "acceptT": 1791278204,
-      "state": "activa",
+      "state": "entregada",
       "narrated": "2026-10-06T09:48:09Z"
     },
     {
@@ -735,9 +892,8 @@
   ],
   "pending": {
     "loose": [
-      "Campos de la muerte",
-      "Cosechar a los cosechadores",
-      "Pañuelos rojos de cuero"
+      "Una entrega a Pico Tormenta",
+      "Zarpas asquerosas"
     ],
     "openChains": [
       [
@@ -757,13 +913,17 @@
         "Habla con Gryan Mantorrecio",
         "Las Milicias del Pueblo",
         "Las Milicias del Pueblo"
+      ],
+      [
+        "Branquias de múrloc",
+        "El estado de las minas"
       ]
     ]
   },
   "stats": {
-    "level": 15,
-    "played": 19072,
-    "questsDone": 32,
+    "level": 16,
+    "played": 22799,
+    "questsDone": 35,
     "deaths": 4,
     "zones": [
       "Lion's Pride Inn",
@@ -776,7 +936,11 @@
       "Ciudad de Ventormenta",
       "Páramos de Poniente",
       "Torre del Centinela",
-      "Bosque del Ocaso"
+      "Bosque del Ocaso",
+      "Tren subterráneo",
+      "Forjaz",
+      "Dun Morogh",
+      "Loch Modan"
     ],
     "levelUps": [
       {
@@ -806,9 +970,13 @@
       {
         "level": 15,
         "t": 1791291663
+      },
+      {
+        "level": 16,
+        "t": 1791347895
       }
     ],
     "firstSeen": 1791235713,
-    "lastSeen": 1791299905
+    "lastSeen": 1791350732
   }
 }

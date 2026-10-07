@@ -6,9 +6,9 @@
       "epithet": "el de la Cantera",
       "race": "Humano",
       "class": "Paladín",
-      "level": 15,
-      "stories": 9,
-      "updated": "2026-10-07T03:19:10Z"
+      "level": 16,
+      "stories": 10,
+      "updated": "2026-10-07T05:49:17Z"
     },
     {
       "key": "Nehonar-ClassicBetaPvP",
@@ -18,7 +18,7 @@
       "class": "Paladín",
       "level": 2,
       "stories": 1,
-      "updated": "2026-10-07T03:19:10Z"
+      "updated": "2026-10-07T05:49:17Z"
     },
     {
       "key": "Tobias-Demo",
@@ -31,5 +31,5 @@
       "updated": "2026-10-05T15:28:30Z"
     }
   ],
-  "updated": "2026-10-07T03:19:10Z"
+  "updated": "2026-10-07T05:49:17Z"
 }
