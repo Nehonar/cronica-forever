@@ -169,11 +169,24 @@ local function itemStats(link)
 	return out, armor
 end
 
+-- Datos del objeto. Forever puede tener GetItemInfo, C_Item.GetItemInfo o ambas, y alguna
+-- puede fallar: se prueban las dos y nunca se deja que salte un error.
+local function itemInfo(link)
+	local fns = {}
+	if C_Item and C_Item.GetItemInfo then fns[#fns + 1] = C_Item.GetItemInfo end
+	if GetItemInfo then fns[#fns + 1] = GetItemInfo end
+	for _, fn in ipairs(fns) do
+		local r = { pcall(fn, link) }
+		if r[1] and r[2] then return (unpack or table.unpack)(r, 2) end
+	end
+	return nil
+end
+
 local function onEquip(slot, tries)
 	if not char or GetTime() < loginGrace then return end
 	local link = GetInventoryItemLink("player", slot)
 	if not link then return end
-	local name, _, quality, _, _, itemType, itemSubType = GetItemInfo(link)
+	local name, _, quality, _, _, itemType, itemSubType = itemInfo(link)
 	if not name then
 		-- La información del objeto aún no está en caché: reintentar.
 		if (tries or 0) < 5 and C_Timer then C_Timer.After(1, function() onEquip(slot, (tries or 0) + 1) end) end
