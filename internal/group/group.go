@@ -18,6 +18,8 @@ const (
 	Loose Kind = "sueltas"
 	Equip Kind = "equipo"
 	Rep   Kind = "reputacion"
+	// Arrival: primera llegada a una zona donde el personaje hace algo.
+	Arrival Kind = "llegada"
 )
 
 // Options controla la agrupación.
@@ -276,8 +278,52 @@ func Build(events []model.Event, now int64, opt Options) Result {
 		res.Groups = append(res.Groups, g)
 	}
 
+	res.Groups = append(res.Groups, arrivals(events)...)
+
 	sort.SliceStable(res.Groups, func(i, j int) bool { return res.Groups[i].End < res.Groups[j].End })
 	return res
+}
+
+// arrivals crea una pieza por cada zona nueva a la que llega el personaje, situada
+// justo antes de lo que hizo allí. Solo cuenta si hizo algo en la zona (no basta con
+// cruzarla volando) y no se cuenta la zona donde empezó, que ya cubre su trasfondo.
+func arrivals(events []model.Event) []Group {
+	first := map[string]int64{}
+	firstSub := map[string]string{}
+	level := map[string]int{}
+	active := map[string]bool{}
+	var order []string
+	start := ""
+	for _, e := range events {
+		if e.Zone == "" {
+			continue
+		}
+		if start == "" {
+			start = e.Zone
+		}
+		if _, ok := first[e.Zone]; !ok {
+			first[e.Zone] = e.T
+			firstSub[e.Zone] = e.Subzone
+			level[e.Zone] = e.Level
+			order = append(order, e.Zone)
+		}
+		if e.Type != model.EvZone {
+			active[e.Zone] = true
+		}
+	}
+	var out []Group
+	for _, z := range order {
+		if z == start || !active[z] {
+			continue
+		}
+		t := first[z] - 1
+		g := Group{ID: "llegada-" + slug(z), Kind: Arrival, Zone: z, Start: t, End: t, LevelFrom: level[z], LevelTo: level[z]}
+		if firstSub[z] != "" {
+			g.Subzones = []string{firstSub[z]}
+		}
+		out = append(out, g)
+	}
+	return out
 }
 
 func makeGroup(kind Kind, qs []Quest, events []model.Event) Group {

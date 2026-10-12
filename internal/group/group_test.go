@@ -86,7 +86,13 @@ func TestLooseFlushOnZoneChange(t *testing.T) {
 	evs = append(evs, mk(2, 2000, "Elwynn")...)
 	evs = append(evs, mk(3, 3000, "Páramos")...)
 	res := Build(evs, 10000, DefaultOptions())
-	if len(res.Groups) != 1 || len(res.Groups[0].Quests) != 2 {
+	var qg []Group
+	for _, g := range res.Groups {
+		if g.Kind != Arrival { // la llegada a Páramos va aparte
+			qg = append(qg, g)
+		}
+	}
+	if len(qg) != 1 || len(qg[0].Quests) != 2 {
 		t.Fatalf("al cambiar de zona se cierra el grupo de Elwynn: %+v", res.Groups)
 	}
 	if len(res.PendingLoose) != 1 || res.PendingLoose[0].ID != 3 {
@@ -123,5 +129,25 @@ func TestShortChainGoesWithLoose(t *testing.T) {
 	res = Build(evs, 10000, opt)
 	if len(res.PendingLoose) != 1 || res.PendingLoose[0].ID != 3 {
 		t.Fatalf("solo debe quedar la 3: %+v", res.PendingLoose)
+	}
+}
+
+func TestArrivals(t *testing.T) {
+	ev := []model.Event{
+		{T: 1, Type: model.EvLogin, Zone: "Bosque de Elwynn", Level: 1},
+		{T: 2, Type: model.EvQuestAccept, ID: 1, Title: "A", Zone: "Bosque de Elwynn"},
+		{T: 10, Type: model.EvZone, Zone: "Páramos de Poniente", Level: 10},
+		{T: 12, Type: model.EvQuestAccept, ID: 2, Title: "B", Zone: "Páramos de Poniente"},
+		{T: 20, Type: model.EvZone, Zone: "Montañas Crestagrana"}, // solo de paso
+		{T: 21, Type: model.EvZone, Zone: "Páramos de Poniente"},
+	}
+	var got []Group
+	for _, g := range Build(ev, 100, DefaultOptions()).Groups {
+		if g.Kind == Arrival {
+			got = append(got, g)
+		}
+	}
+	if len(got) != 1 || got[0].Zone != "Páramos de Poniente" || got[0].End != 9 {
+		t.Fatalf("llegadas = %+v", got)
 	}
 }

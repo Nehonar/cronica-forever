@@ -9,6 +9,7 @@
     cadena: { mark: "⚜", label: "Cadena" },
     sueltas: { mark: "✎", label: "Encargos" },
     equipo: { mark: "⚔", label: "Hito" },
+    llegada: { mark: "⛰", label: "Llegada" },
   };
   const GLYPH = {
     weapon: "M18.5 2.5 21.5 5.5 11 16 8 13zM7 14l3 3-1.6 1.6-1-1-2.6 2.6L3.4 19l2.6-2.6-1-1z",

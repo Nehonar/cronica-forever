@@ -59,6 +59,8 @@ func BuildPrompt(sheet Sheet, g group.Group, prev []Previous) (string, string) {
 	case group.Equip:
 		it := g.Items[0]
 		fmt.Fprintf(&b, "TAREA: el personaje se acaba de poner por primera vez esta pieza de equipo. Escribe un momento breve e íntimo sobre ello: qué significa para él y, sobre todo, cómo la siente en el cuerpo al llevarla. Entre 50 y 90 palabras. No inventes cómo la consiguió.\n%s\n%s", ctx, itemLine(it))
+	case group.Arrival:
+		fmt.Fprintf(&b, "TAREA: el personaje llega por primera vez a esta tierra. Escribe una apertura que le ponga en contexto, entre 140 y 220 palabras: lo que ha oído contar de este lugar antes de llegar (en una taberna, a un viajero, a un soldado), quién vive allí, qué peligros hay, qué está pasando y por qué, según el lore de Warcraft; y su primera impresión al llegar (el paisaje, el aire, la gente). Nada de lo que hará después: no menciones misiones, encargos ni personajes con nombre que aún no conoce, ni desveles giros. Si no conoces bien la historia de esta zona (por ejemplo, porque es nueva de WoW: Forever), céntrate en el paisaje y en lo que se intuye, sin inventar historia.\n%s", ctx)
 	case group.Rep:
 		st := g.Standing
 		fmt.Fprintf(&b, "TAREA: el personaje acaba de ganarse un nuevo grado de confianza con una facción de Azeroth. Escribe un momento breve sobre ello, entre 90 y 150 palabras: quién es esa gente (usa el lore de Warcraft y la descripción oficial, sin inventar hechos que contradigan el canon), qué significa para él que ahora le vean así y cómo se lo hacen notar (un saludo distinto, una puerta que se abre, una mirada). No digas «reputación» ni nombres de rangos como si fueran números; tradúcelo a cómo le tratan.\n%s\nFACCIÓN: %s\nAHORA LE CONSIDERAN: %s (%s)\n", ctx, st.Faction, strings.ToLower(st.Standing), standingFeel(st.StandingID))
@@ -88,7 +90,7 @@ func groupContext(g group.Group) string {
 		}
 		parts = append(parts, z)
 	}
-	if g.LevelTo > g.LevelFrom && g.Kind != group.Equip && g.Kind != group.Rep {
+	if g.LevelTo > g.LevelFrom && g.Kind != group.Equip && g.Kind != group.Rep && g.Kind != group.Arrival {
 		parts = append(parts, "Durante este tramo el personaje creció y se hizo más fuerte (no lo cuentes como niveles).")
 	}
 	if g.Deaths == 1 {

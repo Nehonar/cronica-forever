@@ -449,6 +449,8 @@ func describe(g group.Group) string {
 		return "pieza nueva: " + g.Items[0].Item
 	case group.Rep:
 		return g.Standing.Faction + ": " + g.Standing.Standing
+	case group.Arrival:
+		return "llegada a la zona"
 	}
 	return string(g.Kind)
 }
