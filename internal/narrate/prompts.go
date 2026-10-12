@@ -15,7 +15,8 @@ Reglas que nunca rompes:
 - Español de España. Tercera persona y tiempo pasado. Prosa clara, con ritmo, sin adornos vacíos.
 - Fidelidad: los hechos (qué encargo, quién lo dio, dónde, qué se consiguió) salen SOLO de los datos que te dan. Los textos de las misiones son la fuente de la verdad. No inventes personajes con nombre, combates concretos, muertes ni giros que no estén en los datos. Sí puedes añadir ambiente, sensaciones, pensamientos del personaje y algún diálogo breve con los PNJ que aparecen.
 - Sin mecánicas de juego: nada de niveles, experiencia, puntos, talentos, objetivos numéricos ni interfaz. Subir de nivel es crecer; una muerte es una derrota de la que se levanta; una pieza de equipo es un objeto con peso en la historia.
-- Sin destripes: no adelantes nada que no esté en los datos ni insinúes lo que vendrá en misiones futuras.
+- Lore de Warcraft: sitúa el relato en la historia real del mundo. Usa el trasfondo canónico de Warcraft de la época de WoW Classic (antes de las expansiones) que conozcas con seguridad: quiénes son las facciones y los pueblos de la zona, de dónde vienen sus conflictos, qué pasó allí en las guerras. Por ejemplo, los Defias son los canteros que reconstruyeron Ventormenta y a los que la nobleza no pagó. Úsalo como ambiente y motivo, nunca para cambiar los hechos de las misiones. Si no estás seguro de un dato del lore, no lo afirmes. WoW: Forever añade zonas, mazmorras y misiones nuevas: en esas, cíñete a sus textos.
+- Sin destripes: no adelantes nada que no esté en los datos ni insinúes lo que vendrá en misiones futuras (tampoco giros del lore que el personaje aún no puede saber, como identidades secretas).
 - Respeta la voz y el trasfondo del personaje.
 - Responde exactamente en el formato pedido, sin nada antes ni después.`
 
@@ -77,6 +78,9 @@ RESUMEN: <una frase que resuma el relato para recordarlo más adelante>`)
 
 func groupContext(g group.Group) string {
 	var parts []string
+	if l := LoreFor(g.Zone, g.Subzones); l != "" && g.Kind != group.Equip {
+		parts = append(parts, "Trasfondo de la zona (lore canónico; úsalo como ambiente): "+l)
+	}
 	if g.Zone != "" {
 		z := "Zona: " + g.Zone
 		if len(g.Subzones) > 0 {

@@ -59,3 +59,17 @@ func TestItemFeelUsesStatsWithoutNumbers(t *testing.T) {
 		t.Errorf("no debe pasar cifras ni claves de la API: %q", line)
 	}
 }
+
+func TestPromptIncludesZoneLore(t *testing.T) {
+	g := group.Group{Kind: group.Loose, Zone: "Páramos de Poniente", Quests: []group.Quest{{ID: 1, Title: "A"}}}
+	_, p := BuildPrompt(Sheet{Name: "N"}, g, nil)
+	if !strings.Contains(p, "canteros") {
+		t.Error("falta el trasfondo de los Defias en Páramos de Poniente")
+	}
+	if LoreFor("Zona inventada", nil) != "" {
+		t.Error("una zona desconocida no debe tener trasfondo")
+	}
+	if LoreFor("Forjaz", []string{"Salón de los Feudales"}) == "" {
+		t.Error("Forjaz debe tener trasfondo")
+	}
+}
