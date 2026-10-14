@@ -36,7 +36,7 @@ func TestNewCharacterWaitsForBackstory(t *testing.T) {
 	if err != nil {
 		t.Fatal(err)
 	}
-	if res.NewStories != 0 || len(res.NeedsBackstory) != 1 || res.NeedsBackstory[0].Waiting != 3 {
+	if res.NewStories != 0 || len(res.NeedsBackstory) != 1 || res.NeedsBackstory[0].Waiting != 1 {
 		t.Fatalf("sin trasfondo no se narra: %+v", res)
 	}
 	r.Process(context.Background())
@@ -44,13 +44,13 @@ func TestNewCharacterWaitsForBackstory(t *testing.T) {
 		t.Fatalf("debe avisar una sola vez, no %d", notices)
 	}
 	doc, _ := store.Paths{Repo: repo}.LoadDoc("Tobias-Demo")
-	if doc.Pending.AwaitingBackstory != 3 || doc.Stats.QuestsDone == 0 {
+	if doc.Pending.AwaitingBackstory != 1 || doc.Stats.QuestsDone == 0 {
 		t.Fatalf("el progreso debe guardarse: %+v", doc.Pending)
 	}
 	// Al crear la historia, se narra todo lo pendiente.
 	withDemoSheet(t, repo)
 	res, _ = r.Process(context.Background())
-	if res.NewStories != 3 {
+	if res.NewStories != 1 {
 		t.Fatalf("con trasfondo se narra lo pendiente: %+v", res)
 	}
 }
@@ -68,7 +68,7 @@ func TestProcessIsIncremental(t *testing.T) {
 	if err != nil {
 		t.Fatal(err)
 	}
-	if res.NewStories != 3 {
+	if res.NewStories != 1 {
 		t.Fatalf("primera pasada: %d relatos", res.NewStories)
 	}
 	res, err = r.Process(context.Background())
@@ -76,7 +76,7 @@ func TestProcessIsIncremental(t *testing.T) {
 		t.Fatalf("segunda pasada no debería narrar nada: %+v %v", res, err)
 	}
 	doc, err := store.Paths{Repo: repo}.LoadDoc("Tobias-Demo")
-	if err != nil || len(doc.Stories) != 3 || doc.Stats.QuestsDone != 9 || doc.Stats.Deaths != 1 {
+	if err != nil || len(doc.Chapters) != 1 || doc.Current == nil || doc.Current.Quests != 3 || doc.Stats.QuestsDone != 12 || doc.Stats.Deaths != 1 {
 		t.Fatalf("documento: %+v %v", doc.Stats, err)
 	}
 	b, err := os.ReadFile(addon)
@@ -129,7 +129,7 @@ func TestWarnsWhenClaudeIsLoggedOut(t *testing.T) {
 	}
 	// Lo no narrado queda para la próxima pasada.
 	doc, _ := store.Paths{Repo: dir}.LoadDoc("Tobias-Demo")
-	if len(doc.Stories) != 0 {
-		t.Fatal("no debe guardar relatos fallidos")
+	if len(doc.Chapters) != 0 {
+		t.Fatal("no debe guardar capítulos fallidos")
 	}
 }

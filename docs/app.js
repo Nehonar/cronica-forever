@@ -71,6 +71,14 @@
     if (h >= 24) return Math.floor(h / 24) + " d " + (h % 24) + " h";
     return h ? h + " h " + m + " min" : m + " min";
   }
+  function roman(n) {
+    const t = [[10, "X"], [9, "IX"], [5, "V"], [4, "IV"], [1, "I"]];
+    let out = "";
+    if (n >= 40) return String(n);
+    for (const [v, r] of t) while (n >= v) { out += r; n -= v; }
+    return out;
+  }
+  const chaptered = (doc) => (doc.chapters && doc.chapters.length > 0) || !!doc.current;
   function initials(name) {
     return String(name || "·").split(/\s+/).filter(Boolean).slice(0, 2).map((w) => w[0].toUpperCase()).join("");
   }
@@ -137,8 +145,9 @@
     try { doc = await loadDoc(key); } catch (e) { banner("No he podido cargar la crónica de este personaje."); return; }
     state.key = key;
     state.tab = h.view === "diario" ? "diario" : "cronica";
-    const stories = doc.stories || [];
-    state.view = h.view && h.view !== "diario" ? h.view : (stories.length ? stories[stories.length - 1].id : "trasfondo");
+    const list = chaptered(doc) ? (doc.chapters || []) : (doc.stories || []);
+    state.view = h.view && h.view !== "diario" ? h.view
+      : (list.length ? list[list.length - 1].id : (chaptered(doc) ? "en-curso" : "trasfondo"));
     render(doc);
   }
 
@@ -150,7 +159,12 @@
     renderIndex(doc);
     if (state.tab === "diario") renderLedger(doc);
     else if (state.view === "trasfondo") renderBackstory(doc);
-    else {
+    else if (chaptered(doc)) {
+      const i = (doc.chapters || []).findIndex((x) => x.id === state.view);
+      if (i >= 0) renderChapter(doc, i);
+      else if (state.view === "en-curso" && doc.current) renderCurrent(doc);
+      else renderBackstory(doc);
+    } else {
       const s = (doc.stories || []).find((x) => x.id === state.view);
       if (s) renderStory(doc, s); else renderBackstory(doc);
     }
@@ -176,7 +190,10 @@
 
   function renderRoute(doc) {
     const stops = [], seen = new Set();
-    for (const s of doc.stories || []) {
+    const pieces = chaptered(doc)
+      ? (doc.chapters || []).concat(doc.current ? [{ zone: doc.current.zone, subzones: [] }] : [])
+      : (doc.stories || []);
+    for (const s of pieces) {
       const places = s.subzones && s.subzones.length ? s.subzones : [s.zone];
       for (const p of places) {
         const k = String(p || "").trim();
@@ -210,7 +227,7 @@
       }
     });
     box.replaceChildren(s);
-    $("route-hint").textContent = (doc.stories || []).length ? seen.size + " lugares en la crónica" : "";
+    $("route-hint").textContent = pieces.length ? seen.size + " lugares en la crónica" : "";
     requestAnimationFrame(() => { box.scrollLeft = box.scrollWidth; });
   }
 
@@ -229,7 +246,23 @@
     }, el("span", { class: "log-mark", "aria-hidden": "true", text: mark }), el("span", { class: "log-title", text: title }),
        sub ? el("span", { class: "log-sub", text: sub }) : null);
 
+    const head = document.querySelector(".log h2");
+    if (head) head.textContent = chaptered(doc) ? "Capítulos" : "Relatos";
     nav.append(item("trasfondo", "✦", "Trasfondo", doc.character && doc.character.backstory ? "Quién es" : "Por escribir"));
+    if (chaptered(doc)) {
+      const chs = doc.chapters || [];
+      chs.forEach((c, i) => {
+        const sub = "Capítulo " + roman(i + 1) + " · " + c.zone + (c.part > 1 ? " (" + roman(c.part) + ")" : "");
+        nav.append(item(c.id, roman(i + 1), c.title, sub));
+      });
+      if (doc.current) {
+        const b = item("en-curso", "…", doc.current.zone, "Capítulo " + roman(chs.length + 1) + " · en curso");
+        b.classList.add("current");
+        nav.append(b);
+      }
+      $("pending").hidden = true;
+      return;
+    }
     let zone = null;
     for (const s of doc.stories || []) {
       if (s.zone !== zone) { zone = s.zone; nav.append(el("div", { class: "arc", text: zone || "Sin zona" })); }
@@ -247,6 +280,73 @@
     pend.hidden = !parts.length;
   }
 
+  function lootList(items, zone, src) {
+    return el("ul", { class: "loot", "aria-label": "Equipo" }, items.map((it) => {
+      const g = svg("svg", { viewBox: "0 0 24 24", "aria-hidden": "true" });
+      g.append(svg("path", { d: GLYPH[glyphFor(it)] }));
+      return el("li", { class: QCLASS[it.quality] || "q-rare", tabindex: "0" },
+        el("span", { class: "slot" }, g), el("span", { class: "nm", text: it.name }),
+        el("span", { class: "tip", role: "tooltip" },
+          el("div", { class: "t-name", text: it.name }),
+          el("div", { class: "t-q", text: [QNAME[it.quality], it.subType].filter(Boolean).join(" · ") }),
+          statLines(it),
+          zone ? el("div", { text: "Se lo puso en " + zone }) : null,
+          src ? el("div", { class: "t-src", text: src }) : null));
+    }));
+  }
+
+  const SCENE = { cadena: "Historia completa", nivel: "Crece", reputacion: "Le aprecian" };
+  function renderChapter(doc, i) {
+    const c = doc.chapters[i];
+    const facts = el("div", { class: "facts" });
+    facts.append(el("span", { text: c.zone + (c.subzones && c.subzones.length ? " · " + c.subzones.slice(0, 4).join(", ") : "") }));
+    if (c.levelTo && c.levelFrom && c.levelTo > c.levelFrom) facts.append(el("span", { class: "lvlup", text: "Nivel " + c.levelFrom + " → " + c.levelTo }));
+    const nq = (c.quests || []).length;
+    if (nq) facts.append(el("span", { text: nq + (nq === 1 ? " misión" : " misiones") }));
+
+    const kids = [el("div", { class: "rubric", text: "CAPÍTULO " + roman(i + 1) + (c.part > 1 ? " · " + c.zone.toUpperCase() + " (" + roman(c.part) + ")" : "") }),
+      el("h2", { text: c.title }), flourish(), facts, prose(c.text)];
+    const scenes = (c.scenes || []).map((sc) => el("li", { class: "scene" },
+      el("span", { class: "scene-k", text: (SCENE[sc.kind] || sc.kind).toUpperCase() }),
+      el("span", { class: "scene-t", text: sc.title }),
+      sc.detail ? el("span", { class: "scene-d", text: sc.detail }) : null));
+    if (scenes.length || (c.items && c.items.length)) {
+      kids.push(el("div", { class: "rubric small", text: "MOMENTOS DEL CAPÍTULO" }));
+      if (scenes.length) kids.push(el("ul", { class: "scenes" }, scenes));
+      if (c.items && c.items.length) kids.push(lootList(c.items, c.zone, c.title));
+    }
+    if (nq) {
+      kids.push(el("details", { class: "fold" },
+        el("summary", { text: "Las " + nq + " misiones de este capítulo" }),
+        el("ul", { class: "quests" }, c.quests.map((q) => el("li", { text: q.title })))));
+    }
+    kids.push(seal(initials((doc.character || {}).name || doc.key)));
+    kids.push(chapterPager(doc, i));
+    $("reader").replaceChildren(...kids.filter(Boolean));
+  }
+
+  function renderCurrent(doc) {
+    const cur = doc.current, n = (doc.chapters || []).length + 1;
+    const lv = cur.levelFrom && cur.levelTo && cur.levelTo > cur.levelFrom ? " Ha pasado del nivel " + cur.levelFrom + " al " + cur.levelTo + "." : "";
+    $("reader").replaceChildren(
+      el("div", { class: "rubric", text: "CAPÍTULO " + roman(n) + " · EN CURSO" }),
+      el("h2", { text: cur.zone }), flourish(),
+      el("p", { class: "page-note", text: "Este capítulo se está viviendo ahora. Se escribirá de una vez cuando " + ((doc.character || {}).name || "el personaje") + " deje esta tierra." }),
+      el("p", { class: "facts", text: cur.quests + (cur.quests === 1 ? " misión" : " misiones") + " hasta ahora." + lv }),
+      chapterPager(doc, n - 1));
+  }
+
+  function chapterPager(doc, i) {
+    const list = (doc.chapters || []).map((c) => ({ id: c.id, title: c.title }));
+    if (doc.current) list.push({ id: "en-curso", title: doc.current.zone + " (en curso)" });
+    const prev = i > 0 ? list[i - 1] : (i === 0 ? { id: "trasfondo", title: "Trasfondo" } : null);
+    const next = i + 1 < list.length ? list[i + 1] : null;
+    if (!prev && !next) return null;
+    return el("nav", { class: "pager", "aria-label": "Capítulos vecinos" },
+      prev ? el("a", { href: "#" + encodeURIComponent(doc.key) + "/" + encodeURIComponent(prev.id), text: "← " + prev.title }) : null,
+      next ? el("a", { class: "next", href: "#" + encodeURIComponent(doc.key) + "/" + encodeURIComponent(next.id), text: next.title + " →" }) : null);
+  }
+
   function renderBackstory(doc) {
     const ch = doc.character || {};
     const kids = [el("div", { class: "rubric", text: "TRASFONDO" }), el("h2", { text: ch.name || doc.key }), flourish()];
@@ -257,7 +357,7 @@
       kids.push(el("ul", { class: "threads" }, ch.threads.map((t) => el("li", { text: t }))));
     }
     if (ch.motto) kids.push(seal(initials(ch.name)));
-    kids.push(pager(doc, -1));
+    kids.push(chaptered(doc) ? chapterPager(doc, -1) : pager(doc, -1));
     $("reader").replaceChildren(...kids.filter(Boolean));
   }
 
@@ -311,7 +411,7 @@
           tile(st.played ? fmtDur(st.played) : "–", "Tiempo jugado"),
           tile(st.questsDone || 0, "Misiones entregadas"),
           tile(st.deaths || 0, "Caídas"),
-          tile((doc.stories || []).length, "Relatos"),
+          chaptered(doc) ? tile((doc.chapters || []).length, "Capítulos") : tile((doc.stories || []).length, "Relatos"),
           tile((st.zones || []).length, "Zonas")),
         levelTable(st),
         st.zones && st.zones.length ? [el("h3", { text: "Zonas pisadas" }), el("ul", { class: "zones" }, st.zones.map((z) => el("li", { text: z })))] : null,

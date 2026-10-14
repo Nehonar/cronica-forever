@@ -255,11 +255,6 @@ func (r *Runner) process(ctx context.Context) (Result, error) {
 	if max <= 0 {
 		max = 12
 	}
-	now := time.Now
-	if r.Now != nil {
-		now = r.Now
-	}
-
 	r.mergeLegacy(paths, chars)
 
 	var docs []*store.Doc
@@ -338,22 +333,25 @@ func (r *Runner) process(ctx context.Context) (Result, error) {
 			}
 		}
 
-		copt := opt
-		copt.Narrated = map[int64]bool{}
-		for _, st := range doc.Stories {
-			for _, q := range st.Quests {
-				copt.Narrated[q.ID] = true
-			}
-		}
+		// La crónica se cuenta por capítulos: uno por zona, al dejarla.
+		copt := group.DefaultChapterOptions()
+		copt.ChainWindow = opt.ChainWindow
+		copt.Removed = map[int64]bool{}
 		for _, id := range doc.Removed {
-			copt.Narrated[id] = true
+			copt.Removed[id] = true
 		}
-		built := group.Build(c.Events, now().Unix(), copt)
+		chs := group.Chapters(c.Events, copt)
+		doc.Current = nil
+		if chs.Open != nil {
+			doc.Current = &store.CurrentChapter{Zone: chs.Open.Zone, Quests: len(chs.Open.Quests), LevelFrom: chs.Open.LevelFrom, LevelTo: chs.Open.LevelTo}
+		}
+		doc.Pending = store.Pending{Loose: []string{}, OpenChains: [][]string{}}
+		doc.Stats = stats(c)
 		if sheet.Backstory == "" {
 			// Sin trasfondo no se narra: se guarda el progreso y se espera a que lo crees.
 			waiting := 0
-			for _, g := range built.Groups {
-				if !doc.Has(g.ID) {
+			for _, g := range chs.Closed {
+				if !doc.HasChapter(g.ID) {
 					waiting++
 				}
 			}
@@ -363,30 +361,28 @@ func (r *Runner) process(ctx context.Context) (Result, error) {
 			}
 			if !r.announced[c.Key] {
 				r.announced[c.Key] = true
-				r.logf("%s aún no tiene trasfondo: guardo su progreso (%d relato(s) en espera) hasta que crees su historia.", c.Name, waiting)
+				r.logf("%s aún no tiene trasfondo: guardo su progreso (%d capítulo(s) en espera) hasta que crees su historia.", c.Name, waiting)
 				if r.Notify != nil {
 					r.Notify("Crónica: personaje nuevo", c.Name+" ("+strings.ToLower(c.Race)+" "+strings.ToLower(c.Class)+") aún no tiene historia. Ábrela desde el icono de Crónica para crearla.")
 				}
 			}
-			doc.Pending = pending(built)
 			doc.Pending.AwaitingBackstory = waiting
-			doc.Stats = stats(c)
 			if err := paths.SaveDoc(doc); err != nil {
 				return res, err
 			}
 			docs = append(docs, doc)
 			continue
 		}
-		for _, g := range built.Groups {
-			if doc.Has(g.ID) {
+		for _, g := range chs.Closed {
+			if doc.HasChapter(g.ID) {
 				continue
 			}
 			if res.NewStories >= max {
 				res.Pending++
 				continue
 			}
-			r.logf("%s · narrando %s (%s)…", c.Name, describe(g), g.Zone)
-			st, err := narrate.Narrate(ctx, r.Narrator, sheet, g, doc.Previous(5))
+			r.logf("%s · narrando el capítulo de %s (%d misiones)…", c.Name, g.Zone, len(g.Quests))
+			st, err := narrate.Narrate(ctx, r.Narrator, sheet, g, doc.Previous(3))
 			if err != nil {
 				res.Failed++
 				r.logf("  ✗ %v", err)
@@ -394,24 +390,20 @@ func (r *Runner) process(ctx context.Context) (Result, error) {
 					r.warn("El cronista no puede escribir: " + err.Error())
 					return res, err
 				}
-				// Si falla por la sesión, se avisa; lo no narrado se reintenta en la próxima pasada.
 				if r.CheckClaude(ctx) != nil {
 					break
 				}
 				continue
 			}
 			r.status = store.Status{OK: true, T: time.Now().Unix()}
-			doc.Add(g, st)
+			doc.AddChapter(g, st)
 			res.NewStories++
 			r.logf("  ✓ «%s»", st.Title)
 			res.LastTitle = st.Title
-			if err := paths.SaveDoc(doc); err != nil { // guardar tras cada relato
+			if err := paths.SaveDoc(doc); err != nil { // guardar tras cada capítulo
 				return res, err
 			}
 		}
-		doc.Pending = pending(built)
-		doc.Stats = stats(c)
-		res.Pending += len(built.PendingLoose) + len(built.OpenChains)
 		if err := paths.SaveDoc(doc); err != nil {
 			return res, err
 		}
@@ -433,7 +425,7 @@ func (r *Runner) process(ctx context.Context) (Result, error) {
 	}
 	msg := "Crónica: misiones y personajes al día"
 	if res.NewStories > 0 {
-		msg = fmt.Sprintf("Crónica: %d relato(s) nuevo(s)", res.NewStories)
+		msg = fmt.Sprintf("Crónica: %d capítulo(s) nuevo(s)", res.NewStories)
 	}
 	r.PublishNow(msg, nil)
 	return res, nil
@@ -451,6 +443,8 @@ func describe(g group.Group) string {
 		return g.Standing.Faction + ": " + g.Standing.Standing
 	case group.Arrival:
 		return "llegada a la zona"
+	case group.Chapter:
+		return fmt.Sprintf("capítulo de %d misiones", len(g.Quests))
 	}
 	return string(g.Kind)
 }

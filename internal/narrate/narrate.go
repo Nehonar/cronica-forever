@@ -162,6 +162,8 @@ func defaultTitle(g group.Group) string {
 		return g.Quests[len(g.Quests)-1].Title
 	case group.Arrival:
 		return "Llegada a " + g.Zone
+	case group.Chapter:
+		return g.Zone
 	}
 	return "Encargos en " + g.Zone
 }

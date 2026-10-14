@@ -61,6 +61,31 @@ func BuildPrompt(sheet Sheet, g group.Group, prev []Previous) (string, string) {
 		fmt.Fprintf(&b, "TAREA: el personaje se acaba de poner por primera vez esta pieza de equipo. Escribe un momento breve e íntimo sobre ello: qué significa para él y, sobre todo, cómo la siente en el cuerpo al llevarla. Entre 50 y 90 palabras. No inventes cómo la consiguió.\n%s\n%s", ctx, itemLine(it))
 	case group.Arrival:
 		fmt.Fprintf(&b, "TAREA: el personaje llega por primera vez a esta tierra. Escribe una apertura que le ponga en contexto, entre 140 y 220 palabras: lo que ha oído contar de este lugar antes de llegar (en una taberna, a un viajero, a un soldado), quién vive allí, qué peligros hay, qué está pasando y por qué, según el lore de Warcraft; y su primera impresión al llegar (el paisaje, el aire, la gente). Nada de lo que hará después: no menciones misiones, encargos ni personajes con nombre que aún no conoce, ni desveles giros. Si no conoces bien la historia de esta zona (por ejemplo, porque es nueva de WoW: Forever), céntrate en el paisaje y en lo que se intuye, sin inventar historia.\n%s", ctx)
+	case group.Chapter:
+		fmt.Fprintf(&b, "TAREA: escribe un capítulo de la crónica: todo lo que vivió el personaje en esta zona, de que llegó a que se marchó. NO es una lista de misiones: elige lo que tenga más peso (las cadenas largas, lo que se repite, lo que revela algo de la zona o de él) y únelo en una sola historia con principio, nudo y salida. Las misiones pequeñas pueden quedar en una frase o en el ambiente, o no aparecer. Entre 320 y 480 palabras, en 3 a 5 párrafos. Que el final deje al personaje distinto de como llegó y mirando hacia lo siguiente, sin adelantar nada.\n")
+		if g.FirstVisit {
+			b.WriteString("Es la primera vez que pisa esta tierra: abre con su llegada (lo que había oído de ella, su primera impresión del paisaje y la gente, según el lore), sin desvelar nada de lo que hará.\n")
+		} else if g.Part > 1 {
+			fmt.Fprintf(&b, "Ya llevaba tiempo en esta tierra (esta es la parte %d de su estancia): no vuelvas a presentar la zona, sigue desde donde lo dejaron los relatos anteriores.\n", g.Part)
+		} else {
+			b.WriteString("Vuelve a una tierra que ya conocía: puede notarse en cómo la mira.\n")
+		}
+		fmt.Fprintf(&b, "%s", ctx)
+		if len(g.Scenes) > 0 {
+			b.WriteString("MOMENTOS DESTACADOS (deben notarse en el relato, sin cifras ni mecánicas):\n")
+			for _, sc := range g.Scenes {
+				switch sc.Kind {
+				case "cadena":
+					fmt.Fprintf(&b, "- Una historia larga que terminó con «%s».\n", sc.Title)
+				case "nivel":
+					b.WriteString("- Un salto claro en su crecimiento como luchador.\n")
+				case "reputacion":
+					fmt.Fprintf(&b, "- %s empezó a tratarle de otra manera (%s).\n", sc.Title, strings.ToLower(sc.Detail))
+				}
+			}
+		}
+		b.WriteString("\nMISIONES DEL CAPÍTULO, EN ORDEN:\n")
+		writeQuestsBrief(&b, g.Quests)
 	case group.Rep:
 		st := g.Standing
 		fmt.Fprintf(&b, "TAREA: el personaje acaba de ganarse un nuevo grado de confianza con una facción de Azeroth. Escribe un momento breve sobre ello, entre 90 y 150 palabras: quién es esa gente (usa el lore de Warcraft y la descripción oficial, sin inventar hechos que contradigan el canon), qué significa para él que ahora le vean así y cómo se lo hacen notar (un saludo distinto, una puerta que se abre, una mirada). No digas «reputación» ni nombres de rangos como si fueran números; tradúcelo a cómo le tratan.\n%s\nFACCIÓN: %s\nAHORA LE CONSIDERAN: %s (%s)\n", ctx, st.Faction, strings.ToLower(st.Standing), standingFeel(st.StandingID))
@@ -139,6 +164,35 @@ func writeQuests(b *strings.Builder, qs []group.Quest) {
 			fmt.Fprintf(b, "   Al entregarla le dicen: %s\n", oneLine(q.Reward))
 		}
 	}
+}
+
+// writeQuestsBrief escribe las misiones de un capítulo de forma compacta: son
+// muchas y el modelo solo necesita lo esencial de cada una.
+func writeQuestsBrief(b *strings.Builder, qs []group.Quest) {
+	for i, q := range qs {
+		fmt.Fprintf(b, "%d. «%s»", i+1, q.Title)
+		if q.Giver != "" {
+			fmt.Fprintf(b, " — la da %s", q.Giver)
+		}
+		if q.Subzone != "" {
+			fmt.Fprintf(b, " (%s)", q.Subzone)
+		}
+		b.WriteString("\n")
+		if q.Objectives != "" {
+			fmt.Fprintf(b, "   Encargo: %s\n", clip(oneLine(q.Objectives), 200))
+		}
+		if q.Text != "" {
+			fmt.Fprintf(b, "   Contexto: %s\n", clip(oneLine(q.Text), 320))
+		}
+	}
+}
+
+func clip(s string, n int) string {
+	r := []rune(s)
+	if len(r) <= n {
+		return s
+	}
+	return string(r[:n]) + "…"
 }
 
 func oneLine(s string) string {

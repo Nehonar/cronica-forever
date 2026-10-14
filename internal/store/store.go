@@ -57,6 +57,35 @@ type Story struct {
 	Created   string     `json:"created,omitempty"`
 }
 
+// Chapter es un capítulo de la crónica: lo vivido en una zona.
+type Chapter struct {
+	ID         string        `json:"id"`
+	Zone       string        `json:"zone"`
+	Subzones   []string      `json:"subzones,omitempty"`
+	Part       int           `json:"part,omitempty"`
+	FirstVisit bool          `json:"firstVisit,omitempty"`
+	Title      string        `json:"title"`
+	Text       string        `json:"text"`
+	Summary    string        `json:"summary"`
+	Quests     []QuestRef    `json:"quests,omitempty"`
+	Items      []ItemRef     `json:"items,omitempty"`
+	Scenes     []group.Scene `json:"scenes,omitempty"`
+	LevelFrom  int           `json:"levelFrom,omitempty"`
+	LevelTo    int           `json:"levelTo,omitempty"`
+	Deaths     int           `json:"deaths,omitempty"`
+	Start      int64         `json:"start,omitempty"`
+	End        int64         `json:"end,omitempty"`
+	Created    string        `json:"created,omitempty"`
+}
+
+// CurrentChapter es el capítulo que el personaje está viviendo: aún no se narra.
+type CurrentChapter struct {
+	Zone      string `json:"zone"`
+	Quests    int    `json:"quests"`
+	LevelFrom int    `json:"levelFrom,omitempty"`
+	LevelTo   int    `json:"levelTo,omitempty"`
+}
+
 // LevelUp marca cuándo se alcanzó un nivel.
 type LevelUp struct {
 	Level  int   `json:"level"`
@@ -117,7 +146,11 @@ type Doc struct {
 	Realm     string        `json:"realm,omitempty"`
 	Updated   string        `json:"updated,omitempty"`
 	Stories   []Story       `json:"stories"`
-	Encargos  []Encargo     `json:"encargos,omitempty"`
+	// Desde la 0.5: la crónica se cuenta por capítulos (uno por zona). Si hay
+	// capítulos, la web muestra estos y no los relatos sueltos de antes.
+	Chapters []Chapter       `json:"chapters,omitempty"`
+	Current  *CurrentChapter `json:"current,omitempty"`
+	Encargos []Encargo       `json:"encargos,omitempty"`
 	// Misiones de relatos quitados a mano: no se vuelven a narrar.
 	Removed []int64 `json:"removed,omitempty"`
 	Pending Pending `json:"pending"`
@@ -134,9 +167,48 @@ func (d *Doc) Has(id string) bool {
 	return false
 }
 
+// HasChapter indica si ya existe un capítulo con ese id.
+func (d *Doc) HasChapter(id string) bool {
+	for _, c := range d.Chapters {
+		if c.ID == id {
+			return true
+		}
+	}
+	return false
+}
+
+// AddChapter añade un capítulo narrado, manteniendo el orden temporal.
+func (d *Doc) AddChapter(g group.Group, st narrate.Story) {
+	c := Chapter{
+		ID: g.ID, Zone: g.Zone, Subzones: g.Subzones, Part: g.Part, FirstVisit: g.FirstVisit,
+		Title: st.Title, Text: st.Text, Summary: st.Summary, Scenes: g.Scenes,
+		LevelFrom: g.LevelFrom, LevelTo: g.LevelTo, Deaths: g.Deaths,
+		Start: g.Start, End: g.End, Created: time.Now().UTC().Format(time.RFC3339),
+	}
+	for _, q := range g.Quests {
+		c.Quests = append(c.Quests, QuestRef{ID: q.ID, Title: q.Title, Giver: q.Giver})
+	}
+	for _, it := range g.Items {
+		c.Items = append(c.Items, ItemRef{Name: it.Item, Quality: it.Quality, Slot: it.Slot, SubType: it.ItemSubType, Armor: it.Armor, Stats: it.Stats})
+	}
+	d.Chapters = append(d.Chapters, c)
+	sort.SliceStable(d.Chapters, func(i, j int) bool { return d.Chapters[i].End < d.Chapters[j].End })
+}
+
 // Previous devuelve los n últimos relatos resumidos, para continuidad.
+// Con capítulos, son los capítulos anteriores.
 func (d *Doc) Previous(n int) []narrate.Previous {
 	var out []narrate.Previous
+	if len(d.Chapters) > 0 {
+		start := len(d.Chapters) - n
+		if start < 0 {
+			start = 0
+		}
+		for _, c := range d.Chapters[start:] {
+			out = append(out, narrate.Previous{Title: c.Title, Summary: c.Summary})
+		}
+		return out
+	}
 	start := len(d.Stories) - n
 	if start < 0 {
 		start = 0
@@ -223,6 +295,14 @@ func Public(d *Doc) *Doc {
 		s.Start, s.End, s.Created = 0, 0, ""
 		s.ID = publicID(s.ID)
 		c.Stories[i] = s
+	}
+	c.Chapters = make([]Chapter, len(d.Chapters))
+	for i, ch := range d.Chapters {
+		ch.Start, ch.End, ch.Created = 0, 0, ""
+		c.Chapters[i] = ch
+	}
+	if len(d.Chapters) > 0 {
+		c.Stories = []Story{} // la web ya cuenta por capítulos
 	}
 	c.Encargos = make([]Encargo, len(d.Encargos))
 	for i, e := range d.Encargos {
@@ -323,6 +403,9 @@ func (p Paths) SaveIndex() error {
 			Race: d.Character.Race, Class: d.Character.Class, Level: d.Level,
 			Stories: len(d.Stories), Updated: d.Updated, New: d.Character.Backstory == "",
 		})
+		if len(d.Chapters) > 0 {
+			idx[len(idx)-1].Stories = len(d.Chapters)
+		}
 	}
 	sort.Slice(idx, func(i, j int) bool { return idx[i].Updated > idx[j].Updated })
 	// «updated» no es una hora: es una huella del contenido, para que la web sepa
@@ -355,6 +438,20 @@ func WriteAddonTexts(path string, docs []*Doc, limit int, st Status, phrases map
 			start = 0
 		}
 		var list []any
+		if len(d.Chapters) > 0 {
+			cs := len(d.Chapters) - limit
+			if cs < 0 {
+				cs = 0
+			}
+			for _, c := range d.Chapters[cs:] {
+				list = append(list, map[string]any{
+					"id": c.ID, "kind": string(group.Chapter), "zone": c.Zone,
+					"title": c.Title, "text": c.Text, "t": c.End,
+				})
+			}
+			all[d.Key] = list
+			continue
+		}
 		for _, s := range d.Stories[start:] {
 			list = append(list, map[string]any{
 				"id": s.ID, "kind": string(s.Kind), "zone": s.Zone,
@@ -561,7 +658,7 @@ func (p Paths) MergeLegacy(from, to string) (kept, dropped int, err error) {
 	if err != nil {
 		return 0, 0, err
 	}
-	nd := &Doc{Key: to, Character: sheet, Level: doc.Level, Realm: doc.Realm, Removed: doc.Removed}
+	nd := &Doc{Key: to, Character: sheet, Level: doc.Level, Realm: doc.Realm, Removed: doc.Removed, Chapters: doc.Chapters}
 	for _, s := range doc.Stories {
 		if s.LevelFrom > 0 && s.LevelTo > 0 && s.LevelFrom > s.LevelTo {
 			dropped++
@@ -592,6 +689,18 @@ func (p Paths) RemoveStory(key, id string) error {
 	doc, err := p.LoadDoc(key)
 	if err != nil {
 		return err
+	}
+	for i, c := range doc.Chapters {
+		if c.ID == id {
+			for _, q := range c.Quests {
+				doc.Removed = append(doc.Removed, q.ID)
+			}
+			doc.Chapters = append(doc.Chapters[:i], doc.Chapters[i+1:]...)
+			if err := p.SaveDoc(doc); err != nil {
+				return err
+			}
+			return p.SaveIndex()
+		}
 	}
 	for i, s := range doc.Stories {
 		if s.ID == id || publicID(s.ID) == id {

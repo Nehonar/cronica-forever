@@ -75,6 +75,11 @@ type Group struct {
 	RepGains map[string]int `json:"repGains,omitempty"`
 	// En los hitos de reputación: el rango alcanzado (evento «standing»).
 	Standing *model.Event `json:"standing,omitempty"`
+	// Capítulos: momentos destacados, parte (1, 2... si una zona da para varios)
+	// y si es la primera vez que pisa la zona.
+	Scenes     []Scene `json:"scenes,omitempty"`
+	Part       int     `json:"part,omitempty"`
+	FirstVisit bool    `json:"firstVisit,omitempty"`
 }
 
 // Result es la salida de Build.

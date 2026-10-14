@@ -491,7 +491,13 @@ func (s *Server) apiStories(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	out := []StoryView{}
+	for _, c := range doc.Chapters {
+		out = append(out, StoryView{ID: c.ID, Title: c.Title, Kind: "capitulo", Zone: c.Zone, LevelFrom: c.LevelFrom, LevelTo: c.LevelTo})
+	}
 	for _, st := range doc.Stories {
+		if len(doc.Chapters) > 0 {
+			break
+		}
 		out = append(out, StoryView{ID: st.ID, Title: st.Title, Kind: string(st.Kind), Zone: st.Zone, LevelFrom: st.LevelFrom, LevelTo: st.LevelTo})
 	}
 	writeJSON(w, map[string]any{"stories": out})

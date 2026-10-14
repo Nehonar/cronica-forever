@@ -59,7 +59,7 @@ func TestParseSample(t *testing.T) {
 	}
 	db := vars["CronicaDB"].(*Table)
 	ch := db.Table("characters").Table("Tobias-Demo")
-	if ch == nil || len(ch.Table("events").Array) != 28 {
+	if ch == nil || len(ch.Table("events").Array) != 35 {
 		t.Fatalf("muestra mal leída")
 	}
 }

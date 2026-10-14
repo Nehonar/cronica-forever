@@ -48,8 +48,9 @@ func TestSampleGroups(t *testing.T) {
 	if len(equip) != 1 || equip[0].Items[0].Item != "Espada corta del vigía" {
 		t.Fatalf("equipo = %+v", equip)
 	}
-	if len(res.PendingLoose) != 0 || len(res.OpenChains) != 0 {
-		t.Errorf("no debería quedar nada pendiente")
+	// Las 3 de Páramos de Poniente esperan compañía (agrupación antigua).
+	if len(res.PendingLoose) != 3 || len(res.OpenChains) != 0 {
+		t.Errorf("pendientes: %d sueltas, %d cadenas", len(res.PendingLoose), len(res.OpenChains))
 	}
 }
 
