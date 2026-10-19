@@ -175,7 +175,7 @@ func Names(db *luasv.Table) (map[string]string, map[string]int) {
 
 // Index es la lista de personajes con datos de banco y oficios.
 type Index struct {
-	Characters []IndexEntry       `json:"personajes"`
+	Characters []IndexEntry      `json:"personajes"`
 	Names      map[string]string `json:"nombres"`
 	Quality    map[string]int    `json:"calidad"`
 }
