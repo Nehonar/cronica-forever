@@ -3,7 +3,7 @@
 -- que el juego escribe al salir o al hacer /reload.
 
 local ADDON = ...
-local VERSION = "0.1.0"
+local VERSION = "0.2.0"
 
 -- Valores por defecto de la configuración (por cuenta).
 local DEFAULTS = {
@@ -145,11 +145,76 @@ local function onQuestComplete()
 	end
 end
 
+-- ---------------------------------------------------------------------------
+-- Capítulos: el programa escribe un capítulo cuando dejas una zona (3 misiones
+-- seguidas entregadas en otra) o cuando una zona pasa de 25 misiones. Aquí se
+-- sigue la misma cuenta para avisarte de que ya hay uno listo y hagas /reload.
+-- ---------------------------------------------------------------------------
+local CAP_SWITCH, CAP_MAX = 3, 25
+local cap -- { zone, n, awayZone, awayRun }
+
+local function capStep(zone)
+	if not cap then
+		cap = { zone = zone, n = 0, awayRun = 0 }
+	end
+	if zone == "" or zone == cap.zone then
+		cap.n = cap.n + cap.awayRun + 1
+		cap.awayZone, cap.awayRun = nil, 0
+	else
+		if zone == cap.awayZone then cap.awayRun = cap.awayRun + 1 else cap.awayZone, cap.awayRun = zone, 1 end
+		if cap.awayRun >= CAP_SWITCH then
+			local closed = cap.zone
+			cap = { zone = zone, n = cap.awayRun, awayRun = 0 }
+			return closed, "zona"
+		end
+	end
+	if cap.n > CAP_MAX and cap.awayRun == 0 then
+		local closed = cap.zone
+		cap = { zone = cap.zone, n = 1, awayRun = 0 }
+		return closed, "largo"
+	end
+end
+
+-- Zona donde se aceptó una misión (el capítulo cuenta por ahí, como el programa).
+local function acceptZone(id, fallback)
+	local evs = char and char.events or {}
+	for i = #evs, 1, -1 do
+		local e = evs[i]
+		if e.type == "quest_accept" and e.id == id then return e.zone or fallback end
+	end
+	return fallback
+end
+
+-- Al entrar: se repasa todo lo jugado para saber en qué capítulo estás.
+local function capRebuild()
+	cap = nil
+	local evs = char and char.events or {}
+	local zoneOf = {}
+	for _, e in ipairs(evs) do
+		if e.type == "quest_accept" then zoneOf[e.id] = e.zone or "" end
+		if e.type == "quest_turnin" then capStep(zoneOf[e.id] or e.zone or "") end
+	end
+end
+
+local function capAlert(zone, why)
+	local msg
+	if why == "largo" then
+		msg = ("Llevas mucho vivido en %s: hay un capítulo listo para escribirse. Haz /reload cuando puedas."):format(zone)
+	else
+		msg = ("Has dejado %s: su capítulo está listo para escribirse. Haz /reload cuando puedas."):format(zone)
+	end
+	say(msg)
+	if UIErrorsFrame and UIErrorsFrame.AddMessage then UIErrorsFrame:AddMessage("Crónica: capítulo listo. Haz /reload.", 1, 0.82, 0.3) end
+	if PlaySound then pcall(PlaySound, (SOUNDKIT and SOUNDKIT.READY_CHECK) or 8960) end
+end
+
 local function onTurnedIn(id)
 	if not id or turnedIn[id] then return end
 	turnedIn[id] = true
 	local c = completeCache[id] or {}
-	add({ type = "quest_turnin", id = id, title = titleFor(id), npc = c.npc or npcName(), reward = c.reward or "" })
+	local ev = add({ type = "quest_turnin", id = id, title = titleFor(id), npc = c.npc or npcName(), reward = c.reward or "" })
+	local closed, why = capStep(acceptZone(id, ev and ev.zone or ""))
+	if closed then capAlert(closed, why) end
 end
 
 -- ---------------------------------------------------------------------------
@@ -373,6 +438,7 @@ end)
 
 on("PLAYER_LOGIN", function()
 	setupCharacter()
+	capRebuild()
 end)
 
 on("PLAYER_ENTERING_WORLD", function(isInitialLogin, isReloadingUi)
