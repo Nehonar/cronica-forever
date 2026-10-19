@@ -57,10 +57,13 @@ type Story struct {
 	Created   string     `json:"created,omitempty"`
 }
 
-// Chapter es un capítulo de la crónica: lo vivido en una zona.
+// Chapter es un capítulo de la crónica: lo vivido en una zona (hasta la 0.5) o,
+// desde la 0.6, una historia corta escrita al reunir momentos clave (Kind «historia»).
 type Chapter struct {
 	ID         string        `json:"id"`
+	Kind       group.Kind    `json:"kind,omitempty"` // vacío = capítulo por zona
 	Zone       string        `json:"zone"`
+	Zones      []string      `json:"zones,omitempty"`
 	Subzones   []string      `json:"subzones,omitempty"`
 	Part       int           `json:"part,omitempty"`
 	FirstVisit bool          `json:"firstVisit,omitempty"`
@@ -73,17 +76,24 @@ type Chapter struct {
 	LevelFrom  int           `json:"levelFrom,omitempty"`
 	LevelTo    int           `json:"levelTo,omitempty"`
 	Deaths     int           `json:"deaths,omitempty"`
-	Start      int64         `json:"start,omitempty"`
-	End        int64         `json:"end,omitempty"`
-	Created    string        `json:"created,omitempty"`
+	// Audio narrado (ruta relativa a docs/, p. ej. «audio/Clave/historia-3.mp3») y voz usada.
+	Audio      string `json:"audio,omitempty"`
+	AudioVoice string `json:"audioVoice,omitempty"`
+	Start      int64  `json:"start,omitempty"`
+	End        int64  `json:"end,omitempty"`
+	Created    string `json:"created,omitempty"`
 }
 
-// CurrentChapter es el capítulo que el personaje está viviendo: aún no se narra.
+// CurrentChapter es lo que el personaje está viviendo y aún no se ha escrito.
 type CurrentChapter struct {
 	Zone      string `json:"zone"`
 	Quests    int    `json:"quests"`
 	LevelFrom int    `json:"levelFrom,omitempty"`
 	LevelTo   int    `json:"levelTo,omitempty"`
+	// Historias: puntos reunidos, los que hacen falta y los momentos de momento.
+	Points    int           `json:"points,omitempty"`
+	Threshold int           `json:"threshold,omitempty"`
+	Scenes    []group.Scene `json:"scenes,omitempty"`
 }
 
 // LevelUp marca cuándo se alcanzó un nivel.
@@ -153,8 +163,12 @@ type Doc struct {
 	Encargos []Encargo       `json:"encargos,omitempty"`
 	// Misiones de relatos quitados a mano: no se vuelven a narrar.
 	Removed []int64 `json:"removed,omitempty"`
-	Pending Pending `json:"pending"`
-	Stats   Stats   `json:"stats"`
+	// Historias: hasta dónde está ya escrito (aunque luego borres alguna, no se
+	// vuelve a escribir) y el número de la última.
+	WrittenTo int64   `json:"writtenTo,omitempty"`
+	StorySeq  int     `json:"storySeq,omitempty"`
+	Pending   Pending `json:"pending"`
+	Stats     Stats   `json:"stats"`
 }
 
 // Has indica si ya existe un relato con ese id.
@@ -180,7 +194,7 @@ func (d *Doc) HasChapter(id string) bool {
 // AddChapter añade un capítulo narrado, manteniendo el orden temporal.
 func (d *Doc) AddChapter(g group.Group, st narrate.Story) {
 	c := Chapter{
-		ID: g.ID, Zone: g.Zone, Subzones: g.Subzones, Part: g.Part, FirstVisit: g.FirstVisit,
+		ID: g.ID, Zone: g.Zone, Zones: g.Zones, Subzones: g.Subzones, Part: g.Part, FirstVisit: g.FirstVisit,
 		Title: st.Title, Text: st.Text, Summary: st.Summary, Scenes: g.Scenes,
 		LevelFrom: g.LevelFrom, LevelTo: g.LevelTo, Deaths: g.Deaths,
 		Start: g.Start, End: g.End, Created: time.Now().UTC().Format(time.RFC3339),
@@ -191,8 +205,45 @@ func (d *Doc) AddChapter(g group.Group, st narrate.Story) {
 	for _, it := range g.Items {
 		c.Items = append(c.Items, ItemRef{Name: it.Item, Quality: it.Quality, Slot: it.Slot, SubType: it.ItemSubType, Armor: it.Armor, Stats: it.Stats})
 	}
+	if g.Kind == group.Story {
+		c.Kind = group.Story
+	}
+	if c.End > d.WrittenTo {
+		d.WrittenTo = c.End
+	}
 	d.Chapters = append(d.Chapters, c)
 	sort.SliceStable(d.Chapters, func(i, j int) bool { return d.Chapters[i].End < d.Chapters[j].End })
+}
+
+// WrittenUntil es la hora de lo último que ya está escrito (capítulos, historias
+// o relatos antiguos): las historias nuevas se cuentan a partir de ahí.
+func (d *Doc) WrittenUntil() int64 {
+	t := d.WrittenTo
+	for _, c := range d.Chapters {
+		if c.End > t {
+			t = c.End
+		}
+	}
+	for _, s := range d.Stories {
+		if s.End > t {
+			t = s.End
+		}
+	}
+	return t
+}
+
+// NextStoryID reserva el identificador de la siguiente historia («historia-N»).
+// No lleva la hora dentro, para que la web no diga cuándo juegas.
+func (d *Doc) NextStoryID() string {
+	d.StorySeq++
+	return fmt.Sprintf("historia-%d", d.StorySeq)
+}
+
+// AudioPath es dónde va el audio de una historia: la ruta en disco y la que
+// usa la web (relativa a docs/).
+func (p Paths) AudioPath(key, id string) (abs, rel string) {
+	rel = "audio/" + key + "/" + id + ".mp3"
+	return filepath.Join(p.Repo, "docs", "audio", key, id+".mp3"), rel
 }
 
 // Previous devuelve los n últimos relatos resumidos, para continuidad.
@@ -311,6 +362,7 @@ func Public(d *Doc) *Doc {
 	}
 	c.Stats.FirstSeen, c.Stats.LastSeen = 0, 0
 	c.Removed = nil
+	c.WrittenTo = 0
 	c.Stats.LevelUps = make([]LevelUp, len(d.Stats.LevelUps))
 	for i, u := range d.Stats.LevelUps {
 		u.T = 0
@@ -432,7 +484,10 @@ type Status struct {
 
 func WriteAddonTexts(path string, docs []*Doc, limit int, st Status, phrases map[string]Phrases) error {
 	all := map[string]any{}
+	hist := map[string]any{}
 	for _, d := range docs {
+		// Desde dónde cuenta el addon los puntos de la siguiente historia.
+		hist[d.Key] = map[string]any{"desde": d.WrittenUntil()}
 		start := len(d.Stories) - limit
 		if start < 0 {
 			start = 0
@@ -444,8 +499,12 @@ func WriteAddonTexts(path string, docs []*Doc, limit int, st Status, phrases map
 				cs = 0
 			}
 			for _, c := range d.Chapters[cs:] {
+				kind := group.Chapter
+				if c.Kind != "" {
+					kind = c.Kind
+				}
 				list = append(list, map[string]any{
-					"id": c.ID, "kind": string(group.Chapter), "zone": c.Zone,
+					"id": c.ID, "kind": string(kind), "zone": c.Zone,
 					"title": c.Title, "text": c.Text, "t": c.End,
 				})
 			}
@@ -475,7 +534,8 @@ func WriteAddonTexts(path string, docs []*Doc, limit int, st Status, phrases map
 	estado := map[string]any{"ok": st.OK, "mensaje": st.Message, "t": st.T}
 	src := "-- Generado por Crónica. No editar a mano.\nCronicaTextos = " + luasv.Encode(all, 0) + "\n" +
 		"CronicaFrases = " + luasv.Encode(frases, 0) + "\n" +
-		"CronicaEstado = " + luasv.Encode(estado, 0) + "\n"
+		"CronicaEstado = " + luasv.Encode(estado, 0) + "\n" +
+		"CronicaHistoria = " + luasv.Encode(hist, 0) + "\n"
 	if err := os.MkdirAll(filepath.Dir(path), 0o755); err != nil {
 		return err
 	}
@@ -604,6 +664,7 @@ func (p Paths) DeleteCharacter(key string, all bool, now int64) error {
 			return err
 		}
 	}
+	os.RemoveAll(filepath.Join(p.Repo, "docs", "audio", key))
 	m := map[string]int64{}
 	if b, err := os.ReadFile(p.deletedFile()); err == nil {
 		json.Unmarshal(b, &m)
@@ -658,7 +719,8 @@ func (p Paths) MergeLegacy(from, to string) (kept, dropped int, err error) {
 	if err != nil {
 		return 0, 0, err
 	}
-	nd := &Doc{Key: to, Character: sheet, Level: doc.Level, Realm: doc.Realm, Removed: doc.Removed, Chapters: doc.Chapters}
+	nd := &Doc{Key: to, Character: sheet, Level: doc.Level, Realm: doc.Realm, Removed: doc.Removed, Chapters: doc.Chapters,
+		WrittenTo: doc.WrittenTo, StorySeq: doc.StorySeq}
 	for _, s := range doc.Stories {
 		if s.LevelFrom > 0 && s.LevelTo > 0 && s.LevelFrom > s.LevelTo {
 			dropped++
@@ -694,6 +756,10 @@ func (p Paths) RemoveStory(key, id string) error {
 		if c.ID == id {
 			for _, q := range c.Quests {
 				doc.Removed = append(doc.Removed, q.ID)
+			}
+			if c.Audio != "" {
+				abs, _ := p.AudioPath(key, c.ID)
+				os.Remove(abs)
 			}
 			doc.Chapters = append(doc.Chapters[:i], doc.Chapters[i+1:]...)
 			if err := p.SaveDoc(doc); err != nil {

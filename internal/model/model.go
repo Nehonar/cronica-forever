@@ -22,6 +22,8 @@ const (
 	EvEquip        = "equip"
 	EvDeath        = "death"
 	EvQuestAbandon = "quest_abandon"
+	// Mazmorra: se apunta al salir de una en la que has matado al menos un jefe.
+	EvDungeon = "dungeon"
 )
 
 // Event es una cosa que ha pasado en el juego.
@@ -52,6 +54,11 @@ type Event struct {
 	Amount     int    `json:"amount,omitempty"`     // reputación ganada
 	Standing   string `json:"standing,omitempty"`   // rango alcanzado: «Amistoso»…
 	StandingID int    `json:"standingID,omitempty"` // 5 Amistoso, 6 Honorable, 7 Venerado, 8 Exaltado
+	// Mazmorra (eventos «dungeon»): nombre, jefes derrotados (el último en Title)
+	// y si se mató al último jefe.
+	Instance string `json:"instance,omitempty"`
+	Bosses   int    `json:"bosses,omitempty"`
+	Final    bool   `json:"final,omitempty"`
 }
 
 // Character es un personaje tal como lo guarda el addon.
@@ -143,6 +150,9 @@ func ParseSavedVariables(src string) ([]Character, error) {
 					Amount:      int(et.Int("amount")),
 					Standing:    et.String("standing"),
 					StandingID:  int(et.Int("standingID")),
+					Instance:    et.String("instance"),
+					Bosses:      int(et.Int("bosses")),
+					Final:       et.Bool("final"),
 				})
 			}
 		}

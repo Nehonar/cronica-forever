@@ -242,3 +242,25 @@ button:focus-visible, select:focus-visible, a:focus-visible, .loot li:focus-visi
 }
 @media (max-width: 420px) { .wrap { padding-inline: 16px; } .tab { padding-inline: 12px; } }
 @media (prefers-reduced-motion: reduce) { .route .ring { animation: none; } .xp-fill, .tip { transition: none; } }
+
+/* Narración: reproductor de la historia */
+.listen { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; margin: 4px 0 22px; padding: 10px 14px 10px 10px;
+  border: 1px solid var(--line); border-left: 3px solid var(--gold); border-radius: 4px; background: rgba(0,0,0,.04); }
+.listen-btn { display: inline-flex; align-items: center; gap: 10px; min-height: 44px; padding: 6px 16px 6px 8px; cursor: pointer;
+  font-family: var(--font-display); font-size: 1.05rem; letter-spacing: .03em; color: inherit; background: none; border: 0; border-radius: 4px; }
+.listen-btn:hover { color: var(--rubric); }
+.listen-btn:focus-visible, .listen-bar:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
+.listen-btn:disabled { opacity: .6; cursor: default; }
+.listen-icon { width: 36px; height: 36px; border-radius: 50%; display: grid; place-items: center; flex: none; font-size: .85rem;
+  color: var(--parch, #f4ead2); background: var(--gold); box-shadow: inset 0 0 0 2px rgba(255,255,255,.25); }
+.listen.on .listen-icon { background: var(--rubric); }
+.listen-track { flex: 1 1 200px; display: flex; align-items: center; gap: 12px; min-width: 0; }
+.listen-bar { position: relative; flex: 1; height: 8px; border-radius: 4px; background: var(--line); cursor: pointer; overflow: hidden; }
+.listen-fill { position: absolute; inset: 0 auto 0 0; width: 0; background: var(--gold); transition: width .25s linear; }
+.listen-time { font-variant-numeric: tabular-nums; font-size: .9rem; color: var(--ink-soft); white-space: nowrap; }
+
+/* Historia en curso: momentos reunidos */
+.meter { display: flex; gap: 6px; margin: 4px 0 10px; }
+.meter span { flex: 1; max-width: 56px; height: 10px; border-radius: 3px; border: 1px solid var(--gold); background: transparent; }
+.meter span.on { background: var(--gold); }
+@media (prefers-reduced-motion: reduce) { .listen-fill { transition: none; } }

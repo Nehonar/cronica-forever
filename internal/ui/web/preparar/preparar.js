@@ -7,7 +7,9 @@
   let busy = "";          // paso que espera respuesta («juego», «github»…)
   let errors = {};        // error por paso
   let polling = null;
-  const drafts = { ruta: "", url: "", codigo: "" };
+  const drafts = { ruta: "", url: "", codigo: "", region: "westeurope", clave: "" };
+  let voiceDraft = null;  // voz, velocidad y tono mientras los ajustas
+  let sample = null;      // audio de prueba sonando
 
   function el(tag, attrs, ...kids) {
     const n = document.createElement(tag);
@@ -128,7 +130,7 @@
 
   function step(id, n, title, ok, state, bad, content) {
     const li = $(id);
-    li.className = "step" + (ok ? " ok" : "") + (id === "s-github" ? " optional" : "");
+    li.className = "step" + (ok ? " ok" : "") + (id === "s-github" || id === "s-voz" ? " optional" : "");
     li.replaceChildren(
       el("div", { class: "num", "aria-hidden": "true", text: ok ? "✓" : String(n) }),
       el("h3", { text: title }),
@@ -249,7 +251,98 @@
       body.append(el("p", { class: "hint", text: "En este sistema, abre Crónica tú antes de jugar." }));
     }
     add(body, errLine("arranque"));
-    step("s-arranque", 4, "Arranque", on, on ? "Se abre sola al encender el PC." : "Se abre a mano.", false, body);
+    step("s-arranque", 5, "Arranque", on, on ? "Se abre sola al encender el PC." : "Se abre a mano.", false, body);
+  }
+
+  // ---------- voz del narrador (Azure) ----------
+
+  async function playSample() {
+    errors.voz = "";
+    const d = voiceDraft;
+    const b = $("b-probar");
+    if (b) { b.disabled = true; b.textContent = "Doblando…"; }
+    try {
+      const r = await fetch("/api/preparar/voz/probar", {
+        method: "POST", headers: { "Content-Type": "application/json", "X-Cronica": "1" },
+        body: JSON.stringify({ voz: d.voz, velocidad: d.velocidad, tono: d.tono }),
+      });
+      if (!r.ok) { const j = await r.json().catch(() => ({})); throw new Error(j.error || "No he podido doblar la prueba."); }
+      const url = URL.createObjectURL(await r.blob());
+      if (sample) sample.pause();
+      sample = new Audio(url);
+      await sample.play();
+    } catch (e) { errors.voz = e.message; render(); return; }
+    if (b) { b.disabled = false; b.textContent = "▶ Probar voz"; }
+  }
+
+  function saveVoice(extra) {
+    const d = voiceDraft;
+    act("voz", "/api/preparar/voz", Object.assign({ accion: "ajustar", voz: d.voz, velocidad: d.velocidad, tono: d.tono }, extra || {}));
+  }
+
+  function stepVoice() {
+    const v = st.voz || {};
+    const body = el("div", { class: "body" });
+    const ready = v.tiene_clave && v.activa && !v.error;
+    if (!v.tiene_clave) {
+      body.append(
+        el("p", { text: "El narrador puede leer en voz alta cada historia nueva, con una voz de España, y la web tendrá un botón para escucharla." }),
+        el("p", { class: "hint", text: "Se usa el servicio de Voz de Microsoft Azure con su plan gratuito: 500.000 letras al mes, cientos de historias. Nunca cobra: si se llega al límite, deja de doblar hasta el mes siguiente." }),
+        el("details", null, el("summary", { class: "hint", text: "Cómo conseguir la clave (unos 5 minutos, solo una vez)" }),
+          el("ol", { class: "howto" },
+            el("li", null, "Entra en ", el("a", { href: "https://portal.azure.com", target: "_blank", rel: "noopener", text: "portal.azure.com" }),
+              " con tu cuenta de Microsoft. Si no tienes Azure, crea la cuenta gratuita: te pedirá una tarjeta solo para comprobar que eres tú."),
+            el("li", null, "En el buscador de arriba escribe ", el("b", { text: "Voz" }), " y elige ", el("b", { text: "Servicios de Voz" }), " → ", el("b", { text: "Crear" }), "."),
+            el("li", null, "Grupo de recursos: crea uno (por ejemplo «cronica»). Región: ", el("b", { text: "West Europe" }), ". Nombre: el que quieras. Plan de tarifa: ",
+              el("b", { text: "Free F0" }), ". Después, ", el("b", { text: "Revisar y crear" }), " → ", el("b", { text: "Crear" }), "."),
+            el("li", null, "Cuando termine, pulsa ", el("b", { text: "Ir al recurso" }), " → ", el("b", { text: "Claves y punto de conexión" }),
+              ". Copia la ", el("b", { text: "Clave 1" }), " y la ", el("b", { text: "Ubicación/Región" }), " (por ejemplo «westeurope») y pégalas aquí abajo."))),
+        el("div", { class: "row" },
+          el("input", { class: "field", type: "password", autocomplete: "off", placeholder: "Clave 1 de tu recurso de Voz", "aria-label": "Clave de Azure",
+            value: drafts.clave, oninput: (e) => { drafts.clave = e.target.value; } }),
+          el("input", { class: "field", style: "flex:0 1 180px", placeholder: "westeurope", "aria-label": "Región de Azure",
+            value: drafts.region, oninput: (e) => { drafts.region = e.target.value; } }),
+          btn("Conectar", () => act("voz", "/api/preparar/voz", { accion: "conectar", clave: drafts.clave, region: drafts.region }))),
+        el("p", { class: "hint", text: "La clave se guarda solo en este PC y nunca se sube a GitHub." }));
+      if (busy === "voz") body.append(el("p", { class: "working", text: "Comprobando la clave con Azure" }));
+    } else {
+      if (!voiceDraft) voiceDraft = { voz: v.voz, velocidad: v.velocidad, tono: v.tono };
+      const d = voiceDraft;
+      const list = v.voces && v.voces.length ? v.voces : [{ id: d.voz, nombre: d.voz, genero: "" }];
+      const pct = (n) => (n > 0 ? "+" : "") + n + " %";
+      const sel = el("select", { class: "field", "aria-label": "Voz del narrador",
+        onchange: (e) => { d.voz = e.target.value; saveVoice(); } },
+        list.map((o) => el("option", { value: o.id, selected: o.id === d.voz ? true : null }, o.nombre + (o.genero ? " · " + o.genero.toLowerCase() : ""))));
+      const rateOut = el("b", { text: pct(d.velocidad) });
+      const pitchOut = el("b", { text: pct(d.tono) });
+      const rate = el("input", { type: "range", min: "-30", max: "30", step: "1", value: String(d.velocidad), "aria-label": "Velocidad",
+        oninput: (e) => { d.velocidad = +e.target.value; rateOut.textContent = pct(d.velocidad); }, onchange: () => saveVoice() });
+      const pitch = el("input", { type: "range", min: "-20", max: "20", step: "1", value: String(d.tono), "aria-label": "Tono",
+        oninput: (e) => { d.tono = +e.target.value; pitchOut.textContent = pct(d.tono); }, onchange: () => saveVoice() });
+      body.append(
+        el("button", { class: "toggle", type: "button", role: "switch", "aria-checked": String(!!v.activa), disabled: !!busy,
+          onclick: () => saveVoice({ activa: !v.activa }) },
+          el("span", { class: "track", "aria-hidden": "true" }), "Doblar las historias nuevas"),
+        el("div", { class: "voice-grid" },
+          el("label", null, "Voz", sel),
+          el("label", null, el("span", null, "Velocidad ", rateOut), rate),
+          el("label", null, el("span", null, "Tono ", pitchOut), pitch)),
+        el("p", { class: "hint", text: "Para un narrador de crónica: un poco más lento y más grave que lo normal (−8 % y −4 %)." }),
+        el("div", { class: "row" },
+          el("button", { class: "btn", type: "button", id: "b-probar", onclick: playSample }, "▶ Probar voz"),
+          btn("Doblar ya las que falten", () => act("voz", "/api/preparar/voz", { accion: "doblar" }), "dark"),
+          el("button", { class: "link-btn", type: "button", disabled: !!busy,
+            onclick: () => { if (confirm("¿Quitar la clave de Azure? Las historias nuevas se escribirán sin voz.")) { voiceDraft = null; act("voz", "/api/preparar/voz", { accion: "quitar" }); } } },
+            "Quitar la clave")),
+        el("p", { class: "hint", text: "Clave guardada en este PC" + (v.clave_fin ? " (acaba en …" + v.clave_fin + ")" : "") + " · región " + v.region + "." }));
+      if (v.error) body.append(el("div", { class: "callout" }, el("div", { class: "rubric", text: "AZURE NO RESPONDE" }), el("p", { class: "err", text: v.error })));
+    }
+    add(body, errLine("voz"));
+    const state = !v.tiene_clave ? "Las historias se escriben sin voz."
+      : v.error ? "Hay un problema con la clave."
+      : v.activa ? "Narrando con " + ((v.voces || []).find((o) => o.id === v.voz) || { nombre: v.voz }).nombre + "."
+      : "Conectada, pero apagada.";
+    step("s-voz", 4, "Voz del narrador (opcional)", ready, state, !!v.error, body);
   }
 
   function finale() {
@@ -266,7 +359,6 @@
         el("li", null, "Haz ", el("kbd", { text: "/reload" }), ". El icono de Crónica te propondrá crear la historia de tu personaje con el cronista.")),
       el("div", { class: "row" },
         el("a", { class: "btn", href: "/personaje/" }, "Personajes e historias"),
-        el("a", { class: "btn dark", href: "/misiones/" }, "Misiones en curso"),
         el("a", { class: "btn dark", href: "/" }, "Mi crónica")));
   }
 
@@ -276,7 +368,7 @@
       return;
     }
     $("ver").textContent = st.version ? "v" + st.version : "";
-    stepGame(); stepClaude(); stepGitHub(); stepAutostart(); finale();
+    stepGame(); stepClaude(); stepGitHub(); stepVoice(); stepAutostart(); finale();
     renderTask();
   }
 

@@ -80,6 +80,9 @@ type Group struct {
 	Scenes     []Scene `json:"scenes,omitempty"`
 	Part       int     `json:"part,omitempty"`
 	FirstVisit bool    `json:"firstVisit,omitempty"`
+	// Historias: zonas recorridas, en orden, y puntos reunidos.
+	Zones  []string `json:"zones,omitempty"`
+	Points int      `json:"points,omitempty"`
 }
 
 // Result es la salida de Build.

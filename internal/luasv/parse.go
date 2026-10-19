@@ -40,6 +40,12 @@ func (t *Table) Int(key string) int64 {
 	return 0
 }
 
+// Bool devuelve el valor booleano de una clave (false si no está).
+func (t *Table) Bool(key string) bool {
+	b, _ := t.Get(key).(bool)
+	return b
+}
+
 // Table devuelve la subtabla de una clave, o nil.
 func (t *Table) Table(key string) *Table {
 	if v, ok := t.Get(key).(*Table); ok {

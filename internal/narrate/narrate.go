@@ -164,6 +164,11 @@ func defaultTitle(g group.Group) string {
 		return "Llegada a " + g.Zone
 	case group.Chapter:
 		return g.Zone
+	case group.Story:
+		if g.Zone != "" {
+			return "En " + g.Zone
+		}
+		return "Un paso más"
 	}
 	return "Encargos en " + g.Zone
 }

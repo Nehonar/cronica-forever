@@ -3,7 +3,7 @@
 -- que el juego escribe al salir o al hacer /reload.
 
 local ADDON = ...
-local VERSION = "0.2.0"
+local VERSION = "0.3.0"
 
 -- Valores por defecto de la configuración (por cuenta).
 local DEFAULTS = {
@@ -43,6 +43,7 @@ local function say(msg) DEFAULT_CHAT_FRAME:AddMessage(GOLD .. "Crónica:|r " .. 
 -- ---------------------------------------------------------------------------
 
 local db, char, key
+local histEvent -- cuenta los momentos de la historia en curso (sección «Historias»)
 local sessionStart = GetTime()
 local loginGrace = 0           -- durante unos segundos tras entrar no se registra el equipo
 local detailCache, completeCache = {}, {}
@@ -81,6 +82,7 @@ local function add(ev)
 	ev.level = ev.level or UnitLevel("player")
 	table.insert(char.events, ev)
 	char.level = UnitLevel("player")
+	if histEvent then histEvent(ev) end
 	return ev
 end
 
@@ -146,75 +148,104 @@ local function onQuestComplete()
 end
 
 -- ---------------------------------------------------------------------------
--- Capítulos: el programa escribe un capítulo cuando dejas una zona (3 misiones
--- seguidas entregadas en otra) o cuando una zona pasa de 25 misiones. Aquí se
--- sigue la misma cuenta para avisarte de que ya hay uno listo y hagas /reload.
+-- Historias: el programa escribe una historia corta cuando el personaje reúne
+-- bastantes momentos clave. Aquí se lleva la misma cuenta que el programa
+-- (internal/group/story.go) para avisarte de que ya hay una lista: si cambias
+-- los pesos allí, cámbialos aquí.
 -- ---------------------------------------------------------------------------
-local CAP_SWITCH, CAP_MAX = 3, 25
-local cap -- { zone, n, awayZone, awayRun }
+local HIST_THRESHOLD, HIST_BIG, CHAIN_WINDOW, QUESTS_PER_PT = 8, 4, 90, 5
+local PTS = { level = 1, levelTen = 3, dungeon = 4, chain = 2, blue = 1, epic = 3, standing = 2, newZone = 1 }
+local hist          -- { pts, quests }
+local histSince = 0 -- lo anterior ya está escrito
+local histChain     -- { accepted = {}, len = {}, last = { t, npc, id, len, linked } }
+local histZones     -- zonas ya pisadas
+local histQuiet     -- true mientras se repasa lo guardado (sin avisos)
 
-local function capStep(zone)
-	if not cap then
-		cap = { zone = zone, n = 0, awayRun = 0 }
-	end
-	if zone == "" or zone == cap.zone then
-		cap.n = cap.n + cap.awayRun + 1
-		cap.awayZone, cap.awayRun = nil, 0
-	else
-		if zone == cap.awayZone then cap.awayRun = cap.awayRun + 1 else cap.awayZone, cap.awayRun = zone, 1 end
-		if cap.awayRun >= CAP_SWITCH then
-			local closed = cap.zone
-			cap = { zone = zone, n = cap.awayRun, awayRun = 0 }
-			return closed, "zona"
-		end
-	end
-	if cap.n > CAP_MAX and cap.awayRun == 0 then
-		local closed = cap.zone
-		cap = { zone = cap.zone, n = 1, awayRun = 0 }
-		return closed, "largo"
-	end
-end
-
--- Zona donde se aceptó una misión (el capítulo cuenta por ahí, como el programa).
-local function acceptZone(id, fallback)
-	local evs = char and char.events or {}
-	for i = #evs, 1, -1 do
-		local e = evs[i]
-		if e.type == "quest_accept" and e.id == id then return e.zone or fallback end
-	end
-	return fallback
-end
-
--- Al entrar: se repasa todo lo jugado para saber en qué capítulo estás.
-local function capRebuild()
-	cap = nil
-	local evs = char and char.events or {}
-	local zoneOf = {}
-	for _, e in ipairs(evs) do
-		if e.type == "quest_accept" then zoneOf[e.id] = e.zone or "" end
-		if e.type == "quest_turnin" then capStep(zoneOf[e.id] or e.zone or "") end
-	end
-end
-
-local function capAlert(zone, why)
-	local msg
-	if why == "largo" then
-		msg = ("Llevas mucho vivido en %s: hay un capítulo listo para escribirse. Haz /reload cuando puedas."):format(zone)
-	else
-		msg = ("Has dejado %s: su capítulo está listo para escribirse. Haz /reload cuando puedas."):format(zone)
-	end
-	say(msg)
-	if UIErrorsFrame and UIErrorsFrame.AddMessage then UIErrorsFrame:AddMessage("Crónica: capítulo listo. Haz /reload.", 1, 0.82, 0.3) end
+local function histAlert()
+	if histQuiet then return end
+	say("tu personaje ha vivido bastante: hay una historia lista para escribirse. Haz /reload cuando puedas (o se escribirá al salir).")
+	if UIErrorsFrame and UIErrorsFrame.AddMessage then UIErrorsFrame:AddMessage("Crónica: historia lista. Haz /reload.", 1, 0.82, 0.3) end
 	if PlaySound then pcall(PlaySound, (SOUNDKIT and SOUNDKIT.READY_CHECK) or 8960) end
+end
+
+local function histScore(pts, big)
+	hist.pts = hist.pts + pts
+	if hist.pts >= HIST_THRESHOLD or (big and hist.pts >= HIST_BIG) then
+		hist = { pts = 0, quests = 0 }
+		histAlert()
+	end
+end
+
+-- Da por terminada la cadena de la última entrega si nadie la ha seguido.
+local function histEndChain()
+	local p = histChain.last
+	histChain.last = nil
+	if not p or p.linked or p.len < 3 or p.t <= histSince then return end
+	histScore(PTS.chain, false)
+end
+
+-- Cuenta un suceso (los mismos que guarda el addon).
+histEvent = function(e)
+	if not hist then return end
+	local t = e.t or time()
+	local last = histChain.last
+	if last and t > last.t + CHAIN_WINDOW then histEndChain(); last = nil end
+	local live = t > histSince
+	local ty = e.type
+	if ty == "quest_accept" then
+		if last and not last.linked and e.npc and e.npc ~= "" and e.npc == last.npc and t - last.t <= CHAIN_WINDOW then
+			last.linked = true
+			histChain.len[e.id] = last.len + 1
+		end
+	elseif ty == "quest_turnin" then
+		if last and not last.linked then histEndChain() end
+		local ref = { t = t, npc = e.npc or "", id = e.id, len = histChain.len[e.id] or 1 }
+		histChain.last = ref
+		if not histQuiet and C_Timer then
+			C_Timer.After(CHAIN_WINDOW + 1, function()
+				if histChain.last == ref and not ref.linked then histEndChain() end
+			end)
+		end
+		if live then
+			hist.quests = hist.quests + 1
+			if hist.quests % QUESTS_PER_PT == 0 then histScore(1, false) end
+		end
+	elseif ty == "zone" then
+		local z = e.zone or ""
+		local first = z ~= "" and not histZones[z]
+		histZones[z] = true
+		if live and first then histScore(PTS.newZone, false) end
+	elseif not live then
+		return
+	elseif ty == "level" and (e.level or 0) > 0 then
+		if e.level % 10 == 0 then histScore(PTS.levelTen, true) else histScore(PTS.level, false) end
+	elseif ty == "dungeon" and (e.bosses or 0) > 0 then
+		histScore(PTS.dungeon, true)
+	elseif ty == "equip" and (e.quality or 0) >= 3 then
+		if e.quality >= 4 then histScore(PTS.epic, true) else histScore(PTS.blue, false) end
+	elseif ty == "standing" and (e.standingID or 0) >= 5 then
+		histScore(PTS.standing, false)
+	end
+end
+
+-- Al entrar: se repasa lo guardado desde la última historia escrita.
+local function histRebuild()
+	local h = CronicaHistoria and key and CronicaHistoria[key]
+	histSince = (type(h) == "table" and tonumber(h.desde)) or 0
+	hist = { pts = 0, quests = 0 }
+	histChain = { len = {} }
+	histZones = {}
+	histQuiet = true
+	for _, e in ipairs(char and char.events or {}) do histEvent(e) end
+	if histChain.last and time() > histChain.last.t + CHAIN_WINDOW then histEndChain() end
+	histQuiet = false
 end
 
 local function onTurnedIn(id)
 	if not id or turnedIn[id] then return end
 	turnedIn[id] = true
 	local c = completeCache[id] or {}
-	local ev = add({ type = "quest_turnin", id = id, title = titleFor(id), npc = c.npc or npcName(), reward = c.reward or "" })
-	local closed, why = capStep(acceptZone(id, ev and ev.zone or ""))
-	if closed then capAlert(closed, why) end
+	add({ type = "quest_turnin", id = id, title = titleFor(id), npc = c.npc or npcName(), reward = c.reward or "" })
 end
 
 -- ---------------------------------------------------------------------------
@@ -385,6 +416,7 @@ _G["BINDING_NAME_CLICK CronicaRecargar:LeftButton"] = "Enviar a Crónica (recarg
 -- Eventos
 -- ---------------------------------------------------------------------------
 
+local dungeonCheck -- sección «Mazmorras», más abajo
 local f = CreateFrame("Frame")
 local function on(event, fn) f:RegisterEvent(event); f[event] = fn end
 f:SetScript("OnEvent", function(self, event, ...) if self[event] then self[event](...) end end)
@@ -438,11 +470,12 @@ end)
 
 on("PLAYER_LOGIN", function()
 	setupCharacter()
-	capRebuild()
+	histRebuild()
 end)
 
 on("PLAYER_ENTERING_WORLD", function(isInitialLogin, isReloadingUi)
 	sessionStart = GetTime()
+	C_Timer.After(2, function() dungeonCheck() end)
 	loginGrace = GetTime() + 8
 	C_Timer.After(3, requestPlayed)
 	if isInitialLogin or (isInitialLogin == nil and not isReloadingUi) then
@@ -482,6 +515,7 @@ end)
 
 local lastZone
 on("ZONE_CHANGED_NEW_AREA", function()
+	dungeonCheck()
 	local zone = GetRealZoneText and GetRealZoneText() or ""
 	if zone == "" or zone == lastZone then return end
 	lastZone = zone
@@ -590,6 +624,58 @@ end
 on("CHAT_MSG_COMBAT_FACTION_CHANGE", onFactionMessage)
 on("UPDATE_FACTION", scanSoon)
 
+-- ---------------------------------------------------------------------------
+-- Mazmorras: se apuntan al salir de una en la que has derrotado algún jefe.
+-- Solo el nombre de la mazmorra y de los jefes: nunca los de tu grupo.
+-- ---------------------------------------------------------------------------
+
+local function instanceNow()
+	if not IsInInstance then return nil end
+	local inside, kind = IsInInstance()
+	if not inside or (kind ~= "party" and kind ~= "raid") then return nil end
+	local name = GetInstanceInfo and GetInstanceInfo() or GetRealZoneText()
+	return name
+end
+
+dungeonCheck = function()
+	if not char then return end
+	local name = instanceNow()
+	local run = char.dungeonRun
+	if run and run.name ~= name then
+		-- Has salido (o has pasado a otra): se apunta si cayó algún jefe.
+		char.dungeonRun = nil
+		if (run.bosses or 0) > 0 then
+			add({ type = "dungeon", instance = run.name, zone = run.name, bosses = run.bosses, title = run.last or "", final = run.final or false })
+			say(("%s queda en la crónica (%d jefe(s) derrotado(s))."):format(run.name, run.bosses))
+		end
+		run = nil
+	end
+	if name and not run then
+		char.dungeonRun = { name = name, bosses = 0, killed = {} }
+	end
+end
+
+local function bossDown(bossName)
+	if not char then return end
+	dungeonCheck()
+	local run = char.dungeonRun
+	if not run or not bossName or bossName == "" then return end
+	run.killed = run.killed or {}
+	if run.killed[bossName] then return end
+	run.killed[bossName] = true
+	run.bosses = (run.bosses or 0) + 1
+	run.last = bossName
+end
+
+-- Algunos clientes no tienen estos eventos: registrarlos sin que salte un error.
+local function maybeOn(event, fn)
+	if pcall(f.RegisterEvent, f, event) then f[event] = fn end
+end
+maybeOn("ENCOUNTER_END", function(_, encounterName, _, _, success)
+	if success == 1 or success == true then bossDown(encounterName) end
+end)
+maybeOn("BOSS_KILL", function(_, encounterName) bossDown(encounterName) end)
+
 on("PLAYER_DEAD", function()
 	add({ type = "death" })
 	Cronica_Frase("muerte")
@@ -640,6 +726,7 @@ SlashCmdList.CRONICA = function(msg)
 	else
 		local n = char and #char.events or 0
 		say(("v%s · %s · %d suceso(s) registrado(s)."):format(VERSION, key or "?", n))
+		if hist then say(("historia en curso: %d de %d puntos."):format(hist.pts, HIST_THRESHOLD)) end
 		say("frases: " .. (MODES[db.config.frases] or "?") .. " · espera: " .. math.floor((db.config.espera or 240) / 60) .. " min")
 		if CronicaEstado and CronicaEstado.ok == false then say(RED .. (CronicaEstado.mensaje or "") .. "|r") end
 		say("comandos: /cronica frases no|local|voz · espera <min> · prueba · (para enviar a Crónica: /reload o tu tecla)")

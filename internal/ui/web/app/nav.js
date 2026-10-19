@@ -4,7 +4,6 @@
   "use strict";
   const LINKS = [
     ["/", "Mi crónica"],
-    ["/misiones/", "Misiones en curso"],
     ["/personaje/", "Personajes"],
     ["/preparar/", "Configuración"],
   ];

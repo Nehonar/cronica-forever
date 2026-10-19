@@ -2,10 +2,11 @@
 
 Convierte lo que haces en **WoW: Forever** en la historia de tu personaje.
 
-Un addon registra lo que pasa en el juego (misiones, zonas, niveles, equipo azul o mejor, caídas). Un pequeño programa en tu PC lo lee, agrupa las misiones en **cadenas** y **encargos sueltos**, se los pasa a Claude para que los narre y publica la crónica en GitHub Pages.
+Un addon registra lo que pasa en el juego (misiones, zonas, niveles, mazmorras, equipo azul o mejor, reputación, caídas). Un pequeño programa en tu PC lo lee y, cuando el personaje ha vivido bastantes **momentos clave**, le pide a Claude una **historia corta** (un minuto narrado), la dobla con una voz de España (opcional, gratis con Azure) y publica la crónica en GitHub Pages con un botón para escucharla.
 
 ```
 Addon (juego) ──► Cronica.lua ──► programa «cronica» ──► claude -p ──► docs/data/*.json ──► GitHub Pages
+                                                   ├──► Azure (voz) ──► docs/audio/<personaje>/historia-N.mp3
                                                    └──► CronicaTextos.lua (para leerlo dentro del juego)
 ```
 
@@ -140,14 +141,27 @@ Para borrarlo **todo** (todos los personajes, por ejemplo cuando salga el juego 
 
 El borrado se publica en GitHub como cualquier otro cambio (lo anterior queda en el historial del repositorio).
 
-## Cómo agrupa
+## Cuándo se escribe una historia
 
-- **Cadena**: entregas una misión a un PNJ y ese mismo PNJ te da otra en menos de 90 s. Se narra cuando terminas la cadena, si tiene 3 misiones o más; las de 2 (por ejemplo «ve a hablar con X» y su encargo) se cuentan con las sueltas.
-- **Encargos sueltos**: misiones sin relación. Se juntan de 4 en 4, o antes si cambias de zona.
-- **Hito de equipo**: la primera vez que te pones una pieza azul o mejor.
-- **Hito de reputación**: cada vez que subes de rango con una facción (Amistoso, Honorable, Venerado, Exaltado). El cronista cuenta quién es esa gente con el lore de Warcraft y la descripción oficial de la facción, y cómo empiezan a tratarte.
-- La reputación que ganas con las misiones también aparece, sin cifras, en el relato del tramo en que la ganaste.
-- Las caídas y el equipo nuevo se cuentan una sola vez, en el relato del tramo en el que ocurrieron.
+Desde la 0.6, las misiones ya no se narran una a una (en el juego ya las lee Spoken con su texto completo). El cronista escribe **historias cortas** cuando el personaje reúne **8 puntos** de momentos clave, o en cuanto pasa algo gordo si ya lleva **4**:
+
+| Momento | Puntos |
+|---|---|
+| Subir de nivel | 1 (nivel 10, 20, 30…: 3, momento gordo) |
+| Terminar una mazmorra (algún jefe derrotado) | 4, momento gordo |
+| Terminar una cadena de 3 misiones o más | 2 |
+| Ponerse por primera vez una pieza azul | 1 (morada o mejor: 3, momento gordo) |
+| Subir de rango con una facción (Amistoso o más) | 2 |
+| Pisar una zona por primera vez | 1 |
+| Cada 5 misiones entregadas | 1 |
+
+Las misiones de la historia solo dan el contexto (dónde estaba y a quién ayudaba). Si sales del juego con pocos puntos, no se escribe nada: se sigue sumando la próxima vez. El addon lleva la misma cuenta y te avisa en el juego cuando hay una historia lista (`/cronica` enseña cuántos puntos llevas). Los capítulos por zona de la 0.5 se quedan como estaban.
+
+**Cadena**: entregas una misión a un PNJ y ese mismo PNJ te da otra en menos de 90 s.
+
+## Voz del narrador (opcional)
+
+En *Configuración → Voz del narrador* pegas la clave y la región de un recurso **Servicios de Voz** de Azure con el plan gratuito **F0** (500.000 caracteres al mes; si se acaban, deja de doblar hasta el mes siguiente, nunca cobra). Eliges la voz (por defecto Álvaro, un 8 % más lento y un 4 % más grave), la pruebas y, desde ese momento, cada historia nueva se dobla sola y la web enseña un botón para escucharla. La clave se guarda solo en `cronica.json`, en tu PC.
 
 ## Personajes
 
@@ -159,8 +173,9 @@ Cada personaje tiene su ficha en `personajes/<Nombre>-<Reino>.json` (trasfondo, 
 cmd/cronica/        programa
 internal/luasv/     lector de SavedVariables (Lua)
 internal/model/     eventos que registra el addon
-internal/group/     cadenas, encargos sueltos e hitos
+internal/group/     historias por puntos (y los capítulos y relatos de antes)
 internal/narrate/   prompts y llamada a Claude
+internal/voz/       doblaje con Azure
 internal/store/     JSON de la web y textos para el addon
 docs/               web (GitHub Pages)
 personajes/         fichas de trasfondo

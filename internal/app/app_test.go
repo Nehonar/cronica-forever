@@ -3,6 +3,8 @@ package app
 import (
 	"context"
 	"io"
+	"net/http"
+	"net/http/httptest"
 	"os"
 	"path/filepath"
 	"strings"
@@ -10,6 +12,7 @@ import (
 
 	"github.com/Nehonar/cronica-forever/internal/narrate"
 	"github.com/Nehonar/cronica-forever/internal/store"
+	"github.com/Nehonar/cronica-forever/internal/voz"
 )
 
 // withDemoSheet copia la ficha de demostración al repositorio de prueba.
@@ -76,7 +79,7 @@ func TestProcessIsIncremental(t *testing.T) {
 		t.Fatalf("segunda pasada no debería narrar nada: %+v %v", res, err)
 	}
 	doc, err := store.Paths{Repo: repo}.LoadDoc("Tobias-Demo")
-	if err != nil || len(doc.Chapters) != 1 || doc.Current == nil || doc.Current.Quests != 3 || doc.Stats.QuestsDone != 12 || doc.Stats.Deaths != 1 {
+	if err != nil || len(doc.Chapters) != 1 || doc.Current == nil || doc.Current.Quests != 5 || doc.Current.Points != 3 || doc.Current.Threshold != 8 || doc.Stats.QuestsDone != 12 || doc.Stats.Deaths != 1 {
 		t.Fatalf("documento: %+v %v", doc.Stats, err)
 	}
 	b, err := os.ReadFile(addon)
@@ -131,5 +134,64 @@ func TestWarnsWhenClaudeIsLoggedOut(t *testing.T) {
 	doc, _ := store.Paths{Repo: dir}.LoadDoc("Tobias-Demo")
 	if len(doc.Chapters) != 0 {
 		t.Fatal("no debe guardar capítulos fallidos")
+	}
+}
+
+func TestStoriesGetAVoice(t *testing.T) {
+	var calls int
+	azure := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		if r.Header.Get("Ocp-Apim-Subscription-Key") != "clave" {
+			w.WriteHeader(http.StatusUnauthorized)
+			return
+		}
+		calls++
+		w.Write([]byte(strings.Repeat("\xff\xfb", 300)))
+	}))
+	defer azure.Close()
+	repo := t.TempDir()
+	withDemoSheet(t, repo)
+	r := &Runner{
+		Cfg:      Config{SavedVariables: "../../samples/Cronica.lua", Repo: repo},
+		Narrator: narrate.Fake{},
+		Out:      io.Discard,
+		Voice:    voz.Client{Base: azure.URL},
+	}
+	// Sin voz configurada: la historia se escribe, sin audio.
+	if res, err := r.Process(context.Background()); err != nil || res.NewStories != 1 || res.NewAudio != 0 {
+		t.Fatalf("%+v %v", res, err)
+	}
+	// Con la voz puesta, se dobla lo que faltaba en la siguiente pasada.
+	r.UpdateConfig(func(c *Config) { c.Voz = voz.Config{Active: true, Region: "westeurope", Key: "clave"} })
+	res, err := r.Process(context.Background())
+	if err != nil || res.NewAudio != 1 || calls != 1 {
+		t.Fatalf("%+v %v (llamadas %d)", res, err, calls)
+	}
+	p := store.Paths{Repo: repo}
+	doc, _ := p.LoadDoc("Tobias-Demo")
+	ch := doc.Chapters[0]
+	if ch.ID != "historia-1" || ch.Kind != "historia" || ch.Audio != "audio/Tobias-Demo/historia-1.mp3" || ch.AudioVoice != voz.DefaultVoice {
+		t.Fatalf("historia: %+v", ch)
+	}
+	if fi, err := os.Stat(filepath.Join(repo, "docs", ch.Audio)); err != nil || fi.Size() != 600 {
+		t.Fatalf("audio: %v", err)
+	}
+	// La copia pública no lleva horas.
+	b, _ := os.ReadFile(filepath.Join(p.DataDir(), "Tobias-Demo.json"))
+	if strings.Contains(string(b), "writtenTo") || strings.Contains(string(b), `"end"`) {
+		t.Fatalf("la web no debe saber cuándo juegas:\n%s", b)
+	}
+	// No se vuelve a doblar ni a escribir.
+	if res, _ := r.Process(context.Background()); res.NewAudio != 0 || res.NewStories != 0 || calls != 1 {
+		t.Fatalf("%+v", res)
+	}
+	// Si se borra la historia, no se vuelve a escribir y su audio desaparece.
+	if err := p.RemoveStory("Tobias-Demo", "historia-1"); err != nil {
+		t.Fatal(err)
+	}
+	if _, err := os.Stat(filepath.Join(repo, "docs", ch.Audio)); !os.IsNotExist(err) {
+		t.Fatal("el audio debería borrarse")
+	}
+	if res, _ := r.Process(context.Background()); res.NewStories != 0 {
+		t.Fatalf("no debe reescribir lo borrado: %+v", res)
 	}
 }

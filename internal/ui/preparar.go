@@ -169,6 +169,7 @@ type SetupState struct {
 	Game       GameState   `json:"juego"`
 	Claude     ClaudeState `json:"claude"`
 	GitHub     GitState    `json:"github"`
+	Voice      VoiceState  `json:"voz"`
 	Autostart  bool        `json:"arranque"`
 	CanAuto    bool        `json:"puede_arrancar"`
 	Task       *TaskView   `json:"tarea,omitempty"`
@@ -259,6 +260,7 @@ func (s *Server) setupState(ctx context.Context) SetupState {
 			st.GitHub.Last = p.At.Unix()
 		}
 	}
+	st.Voice = s.voiceState(ctx)
 	st.CanAuto = runtime.GOOS == "windows" || runtime.GOOS == "linux"
 	st.Autostart = system.Installed()
 	return st

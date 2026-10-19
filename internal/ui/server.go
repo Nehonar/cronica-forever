@@ -173,6 +173,8 @@ func (s *Server) Handler() http.Handler {
 	mux.HandleFunc("/api/preparar/arranque", s.apiSetupAutostart)
 	mux.HandleFunc("/api/preparar/publicar", s.apiSetupPublish)
 	mux.HandleFunc("/api/preparar/borrar-todo", s.apiDeleteAll)
+	mux.HandleFunc("/api/preparar/voz", s.apiSetupVoice)
+	mux.HandleFunc("/api/preparar/voz/probar", s.apiVoiceSample)
 	mux.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
 		http.FileServer(http.Dir(filepath.Join(s.Runner.Config().Repo, "docs"))).ServeHTTP(w, r)
 	})
@@ -492,7 +494,11 @@ func (s *Server) apiStories(w http.ResponseWriter, r *http.Request) {
 	}
 	out := []StoryView{}
 	for _, c := range doc.Chapters {
-		out = append(out, StoryView{ID: c.ID, Title: c.Title, Kind: "capitulo", Zone: c.Zone, LevelFrom: c.LevelFrom, LevelTo: c.LevelTo})
+		kind := "capitulo"
+		if c.Kind != "" {
+			kind = string(c.Kind)
+		}
+		out = append(out, StoryView{ID: c.ID, Title: c.Title, Kind: kind, Zone: c.Zone, LevelFrom: c.LevelFrom, LevelTo: c.LevelTo})
 	}
 	for _, st := range doc.Stories {
 		if len(doc.Chapters) > 0 {

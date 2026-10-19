@@ -61,6 +61,13 @@
   kbd { font-family: var(--font-ui); font-size: .9em; padding: 0 5px; border: 1px solid var(--line); border-bottom-width: 2px; border-radius: 3px; background: rgba(255,255,255,.25); }
   .danger { margin-top: 26px; padding: 18px 20px; border: 1px dashed var(--rubric); border-radius: 6px; background: rgba(143,29,22,.05); display: flex; flex-direction: column; gap: 10px; font-family: var(--font-body); font-size: 1.05rem; }
   .danger p { margin: 0; }
+  .voice-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px 18px; }
+  .voice-grid label { display: flex; flex-direction: column; gap: 4px; font-family: var(--font-ui); font-size: .95rem; color: var(--ink-soft); }
+  .voice-grid select.field { flex: none; }
+  .voice-grid input[type=range] { accent-color: var(--gold); min-height: 32px; }
+  .howto { margin: 4px 0 0; padding-left: 1.3em; line-height: 1.55; }
+  .howto li { margin: 4px 0; }
+  .howto li::marker { color: var(--gold); font-family: var(--font-display); }
   .ver { font-family: var(--font-ui); font-size: .8rem; color: var(--frame-muted); }
   @media (max-width: 520px) { .step { grid-template-columns: 40px minmax(0, 1fr); gap: 4px 12px; } .num { width: 36px; height: 36px; font-size: 1.05rem; } }
   @media (prefers-reduced-motion: reduce) { .working::after { animation: none; } .toggle .track, .toggle .track::after { transition: none; } }
@@ -84,11 +91,12 @@
   <main class="page setup">
     <div class="rubric">ANTES DE LA PRIMERA PÁGINA</div>
     <h2>Pon a punto tu crónica</h2>
-    <p class="intro">Cuatro pasos y listo. Lo que ya esté hecho aparece marcado; puedes volver aquí cuando quieras desde el icono de Crónica, en «Configuración».</p>
+    <p class="intro">Unos pocos pasos y listo. Lo que ya esté hecho aparece marcado; puedes volver aquí cuando quieras desde el icono de Crónica, en «Configuración».</p>
     <ol class="steps" aria-live="polite">
       <li class="step" id="s-juego"></li>
       <li class="step" id="s-claude"></li>
       <li class="step optional" id="s-github"></li>
+      <li class="step optional" id="s-voz"></li>
       <li class="step" id="s-arranque"></li>
     </ol>
     <section class="finale" id="finale" hidden></section>

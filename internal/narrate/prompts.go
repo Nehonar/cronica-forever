@@ -86,6 +86,67 @@ func BuildPrompt(sheet Sheet, g group.Group, prev []Previous) (string, string) {
 		}
 		b.WriteString("\nMISIONES DEL CAPÍTULO, EN ORDEN:\n")
 		writeQuestsBrief(&b, g.Quests)
+	case group.Story:
+		b.WriteString("TAREA: escribe la siguiente historia de la crónica. Se va a escuchar en voz alta, como el «anteriormente…» de una serie, así que escríbela para el oído: frases claras y con ritmo, sin paréntesis, sin listas, sin cifras. Entre 150 y 200 palabras (un minuto narrado), en 2 o 3 párrafos.\n")
+		b.WriteString("Los protagonistas son los MOMENTOS CLAVE de abajo: que se noten todos, en orden, unidos en una sola historia. Las misiones NO se cuentan una a una (el jugador ya las ha vivido con su texto completo): úsalas solo como fondo para saber dónde estaba y a quién ayudaba, y como mucho nombra la que más pese. Que acabe dejando al personaje mirando hacia lo siguiente, sin adelantar nada.\n")
+		if len(g.Zones) > 1 {
+			fmt.Fprintf(&b, "Recorrido, en orden: %s.\n", strings.Join(g.Zones, " → "))
+		}
+		fmt.Fprintf(&b, "%s", ctx)
+		b.WriteString("MOMENTOS CLAVE, EN ORDEN (sin cifras ni mecánicas):\n")
+		levels, big := 0, false
+		for _, sc := range g.Scenes {
+			if sc.Kind == "nivel" {
+				levels++
+				big = big || strings.HasSuffix(sc.Title, "0")
+			}
+		}
+		levelSaid := false
+		for _, sc := range g.Scenes {
+			switch sc.Kind {
+			case "nivel":
+				// Varias subidas seguidas se cuentan como una sola idea.
+				if levelSaid {
+					continue
+				}
+				levelSaid = true
+				switch {
+				case big:
+					b.WriteString("- Dio un salto claro en su crecimiento: ya no es el luchador que era.\n")
+				case levels > 1:
+					b.WriteString("- Creció a lo largo de este tramo: se fue haciendo claramente más fuerte.\n")
+				default:
+					b.WriteString("- Se hizo más fuerte: un paso más en su camino como luchador.\n")
+				}
+			case "cadena":
+				fmt.Fprintf(&b, "- Terminó una historia larga de varios encargos seguidos, que acabó con «%s».\n", sc.Title)
+			case "mazmorra":
+				fmt.Fprintf(&b, "- Bajó con su grupo a %s (%s). Cuéntalo como una incursión peligrosa en compañía, sin inventar nombres de compañeros.\n", sc.Title, sc.Detail)
+			case "equipo":
+				if sc.Detail != "" {
+					fmt.Fprintf(&b, "- Empezó a llevar %s, una %s.\n", sc.Title, sc.Detail)
+				} else {
+					fmt.Fprintf(&b, "- Empezó a llevar %s, una pieza de buena factura.\n", sc.Title)
+				}
+			case "reputacion":
+				fmt.Fprintf(&b, "- %s empezó a tratarle de otra manera (%s).\n", sc.Title, strings.ToLower(sc.Detail))
+			case "zona":
+				fmt.Fprintf(&b, "- Pisó por primera vez %s.\n", sc.Title)
+			}
+		}
+		if len(g.Quests) > 0 {
+			b.WriteString("\nFONDO: ENCARGOS QUE CUMPLIÓ, EN ORDEN (solo títulos y quién los daba):\n")
+			for i, q := range g.Quests {
+				fmt.Fprintf(&b, "%d. «%s»", i+1, q.Title)
+				if q.Giver != "" {
+					fmt.Fprintf(&b, " — %s", q.Giver)
+				}
+				if q.Subzone != "" {
+					fmt.Fprintf(&b, " (%s)", q.Subzone)
+				}
+				b.WriteString("\n")
+			}
+		}
 	case group.Rep:
 		st := g.Standing
 		fmt.Fprintf(&b, "TAREA: el personaje acaba de ganarse un nuevo grado de confianza con una facción de Azeroth. Escribe un momento breve sobre ello, entre 90 y 150 palabras: quién es esa gente (usa el lore de Warcraft y la descripción oficial, sin inventar hechos que contradigan el canon), qué significa para él que ahora le vean así y cómo se lo hacen notar (un saludo distinto, una puerta que se abre, una mirada). No digas «reputación» ni nombres de rangos como si fueran números; tradúcelo a cómo le tratan.\n%s\nFACCIÓN: %s\nAHORA LE CONSIDERAN: %s (%s)\n", ctx, st.Faction, strings.ToLower(st.Standing), standingFeel(st.StandingID))

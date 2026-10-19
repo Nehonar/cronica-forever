@@ -21,6 +21,7 @@ import (
 	"github.com/Nehonar/cronica-forever/internal/model"
 	"github.com/Nehonar/cronica-forever/internal/narrate"
 	"github.com/Nehonar/cronica-forever/internal/store"
+	"github.com/Nehonar/cronica-forever/internal/voz"
 	"github.com/Nehonar/cronica-forever/internal/wow"
 )
 
@@ -45,6 +46,11 @@ type Config struct {
 	MaxPerRun int `json:"max_por_pasada"`
 	// Segundos de margen para detectar cadenas.
 	ChainWindow int64 `json:"ventana_cadena_seg"`
+	// Puntos para escribir una historia (por defecto 8) y, con un momento gordo, 4.
+	StoryPoints int `json:"puntos_historia,omitempty"`
+	BigPoints   int `json:"puntos_momento_gordo,omitempty"`
+	// Voz del narrador (Azure). La clave se queda en este archivo, en tu PC.
+	Voz voz.Config `json:"voz"`
 }
 
 // LoadConfig lee la configuración. Las rutas relativas se resuelven respecto al archivo.
@@ -125,6 +131,8 @@ type Runner struct {
 	OnPublish func()
 	// Inform muestra un aviso discreto (misiones nuevas). nil = sin avisos.
 	Inform func(title, message string)
+	// Voice dobla las historias (vacío = Azure de verdad).
+	Voice voz.Client
 
 	mu         sync.Mutex
 	cfgMu      sync.RWMutex
@@ -202,6 +210,73 @@ type Result struct {
 	NeedsBackstory []CharacterInfo
 	LastTitle      string
 	NewEncargos    int
+	// Historias dobladas en esta pasada.
+	NewAudio int
+}
+
+func (r *Runner) now() time.Time {
+	if r.Now != nil {
+		return r.Now()
+	}
+	return time.Now()
+}
+
+// sceneList resume los momentos de una historia para el registro.
+func sceneList(sc []group.Scene) string {
+	var parts []string
+	for _, s := range sc {
+		parts = append(parts, s.Kind+" "+s.Title)
+	}
+	if len(parts) == 0 {
+		return "misiones"
+	}
+	return strings.Join(parts, ", ")
+}
+
+// maxDubPerRun limita los doblajes de una pasada (para no ir a ráfagas).
+const maxDubPerRun = 6
+
+// dub pone voz a las historias que aún no la tienen. Si no hay voz configurada,
+// o Azure no responde, se quedan sin audio y se reintenta en la próxima pasada.
+func (r *Runner) dub(ctx context.Context, paths store.Paths, doc *store.Doc, res *Result) {
+	vc := r.Config().Voz
+	if !vc.Ready() {
+		return
+	}
+	vc = vc.WithDefaults()
+	for i := range doc.Chapters {
+		ch := &doc.Chapters[i]
+		if ch.Kind != group.Story || ch.Audio != "" || strings.TrimSpace(ch.Text) == "" {
+			continue
+		}
+		if res.NewAudio >= maxDubPerRun {
+			return
+		}
+		r.logf("%s · doblando «%s» con %s…", doc.Character.Name, ch.Title, vc.Voice)
+		mp3, err := r.Voice.Speak(ctx, vc, ch.Title, ch.Text)
+		if err != nil {
+			r.logf("  ✗ voz: %v", err)
+			if errors.Is(err, voz.ErrKey) {
+				r.warn("La voz del narrador no funciona: " + err.Error())
+			}
+			return
+		}
+		abs, rel := paths.AudioPath(doc.Key, ch.ID)
+		if err := os.MkdirAll(filepath.Dir(abs), 0o755); err == nil {
+			err = os.WriteFile(abs, mp3, 0o644)
+		}
+		if err != nil {
+			r.logf("  ✗ no he podido guardar el audio: %v", err)
+			return
+		}
+		ch.Audio, ch.AudioVoice = rel, vc.Voice
+		res.NewAudio++
+		r.logf("  ✓ audio guardado en docs/%s", rel)
+		if err := paths.SaveDoc(doc); err != nil {
+			r.logf("  ✗ %v", err)
+			return
+		}
+	}
 }
 
 // CharacterInfo describe un personaje para la bandeja y la entrevista.
@@ -286,41 +361,10 @@ func (r *Runner) process(ctx context.Context) (Result, error) {
 		}
 		doc.Character, doc.Level, doc.Realm = sheet, c.Level, c.Realm
 
-		// Misiones aceptadas: se narran al momento para leerlas en la app.
-		todo := doc.SyncEncargos(questMaps(c.Events))
+		// Las misiones ya no se narran una a una (las lee Spoken en el juego):
+		// solo se lleva la lista, que da contexto a las historias.
+		doc.SyncEncargos(questMaps(c.Events))
 		if sheet.Backstory != "" {
-			var titles []string
-			for _, i := range todo {
-				if res.NewEncargos >= 10 {
-					break
-				}
-				e := &doc.Encargos[i]
-				r.logf("%s · nueva misión: «%s»…", c.Name, e.Title)
-				h, txt, err := narrate.Encargo(ctx, r.Narrator, sheet, narrate.QuestInfo{
-					Title: e.Title, Giver: e.Giver, Zone: e.Zone, Subzone: e.Subzone, Text: e.Original, Objectives: e.Objectives,
-				})
-				if err != nil {
-					r.logf("  ✗ %v", err)
-					if r.CheckClaude(ctx) != nil {
-						break
-					}
-					continue
-				}
-				e.Heading, e.Text, e.Narrated = h, txt, time.Now().UTC().Format(time.RFC3339)
-				res.NewEncargos++
-				titles = append(titles, e.Title)
-				r.logf("  ✓ «%s»", h)
-				if err := paths.SaveDoc(doc); err != nil {
-					return res, err
-				}
-			}
-			if len(titles) > 0 && r.Inform != nil {
-				msg := "«" + titles[0] + "»"
-				if len(titles) > 1 {
-					msg = fmt.Sprintf("%s y %d más", msg, len(titles)-1)
-				}
-				r.Inform("Crónica: nueva misión", msg+". Léela en Misiones.")
-			}
 			if _, ok := paths.LoadPhrases(c.Key); !ok {
 				r.logf("%s · escribiendo sus frases…", c.Name)
 				if ph, err := narrate.Phrases(ctx, r.Narrator, sheet); err != nil {
@@ -333,35 +377,36 @@ func (r *Runner) process(ctx context.Context) (Result, error) {
 			}
 		}
 
-		// La crónica se cuenta por capítulos: uno por zona, al dejarla.
-		copt := group.DefaultChapterOptions()
-		copt.ChainWindow = opt.ChainWindow
-		copt.Removed = map[int64]bool{}
-		for _, id := range doc.Removed {
-			copt.Removed[id] = true
+		// Desde la 0.6 la crónica se cuenta en historias cortas: se escribe una
+		// cuando el personaje reúne bastantes momentos clave. Lo ya escrito
+		// (capítulos de antes incluidos) no se vuelve a contar.
+		sopt := group.DefaultStoryOptions()
+		sopt.ChainWindow = opt.ChainWindow
+		if r.Cfg.StoryPoints > 0 {
+			sopt.Threshold = r.Cfg.StoryPoints
 		}
-		chs := group.Chapters(c.Events, copt)
+		if r.Cfg.BigPoints > 0 {
+			sopt.BigMin = r.Cfg.BigPoints
+		}
+		sopt.Since, sopt.Now = doc.WrittenUntil(), r.now().Unix()
+		chs := group.Stories(c.Events, sopt)
 		doc.Current = nil
-		if chs.Open != nil {
-			doc.Current = &store.CurrentChapter{Zone: chs.Open.Zone, Quests: len(chs.Open.Quests), LevelFrom: chs.Open.LevelFrom, LevelTo: chs.Open.LevelTo}
+		if o := chs.Open; o != nil {
+			doc.Current = &store.CurrentChapter{Zone: o.Zone, Quests: len(o.Quests), LevelFrom: o.LevelFrom, LevelTo: o.LevelTo,
+				Points: o.Points, Threshold: sopt.Threshold, Scenes: o.Scenes}
 		}
 		doc.Pending = store.Pending{Loose: []string{}, OpenChains: [][]string{}}
 		doc.Stats = stats(c)
 		if sheet.Backstory == "" {
 			// Sin trasfondo no se narra: se guarda el progreso y se espera a que lo crees.
-			waiting := 0
-			for _, g := range chs.Closed {
-				if !doc.HasChapter(g.ID) {
-					waiting++
-				}
-			}
+			waiting := len(chs.Closed)
 			res.NeedsBackstory = append(res.NeedsBackstory, CharacterInfo{Key: c.Key, Name: c.FullName(), Race: c.Race, Class: c.Class, Level: c.Level, Waiting: waiting})
 			if r.announced == nil {
 				r.announced = map[string]bool{}
 			}
 			if !r.announced[c.Key] {
 				r.announced[c.Key] = true
-				r.logf("%s aún no tiene trasfondo: guardo su progreso (%d capítulo(s) en espera) hasta que crees su historia.", c.Name, waiting)
+				r.logf("%s aún no tiene trasfondo: guardo su progreso (%d historia(s) en espera) hasta que crees su historia.", c.Name, waiting)
 				if r.Notify != nil {
 					r.Notify("Crónica: personaje nuevo", c.Name+" ("+strings.ToLower(c.Race)+" "+strings.ToLower(c.Class)+") aún no tiene historia. Ábrela desde el icono de Crónica para crearla.")
 				}
@@ -374,14 +419,11 @@ func (r *Runner) process(ctx context.Context) (Result, error) {
 			continue
 		}
 		for _, g := range chs.Closed {
-			if doc.HasChapter(g.ID) {
-				continue
-			}
 			if res.NewStories >= max {
 				res.Pending++
 				continue
 			}
-			r.logf("%s · narrando el capítulo de %s (%d misiones)…", c.Name, g.Zone, len(g.Quests))
+			r.logf("%s · escribiendo una historia (%d puntos: %s)…", c.Name, g.Points, sceneList(g.Scenes))
 			st, err := narrate.Narrate(ctx, r.Narrator, sheet, g, doc.Previous(3))
 			if err != nil {
 				res.Failed++
@@ -390,20 +432,21 @@ func (r *Runner) process(ctx context.Context) (Result, error) {
 					r.warn("El cronista no puede escribir: " + err.Error())
 					return res, err
 				}
-				if r.CheckClaude(ctx) != nil {
-					break
-				}
-				continue
+				r.CheckClaude(ctx)
+				// Las historias van en orden: si una falla, las siguientes esperan.
+				break
 			}
 			r.status = store.Status{OK: true, T: time.Now().Unix()}
+			g.ID = doc.NextStoryID()
 			doc.AddChapter(g, st)
 			res.NewStories++
 			r.logf("  ✓ «%s»", st.Title)
 			res.LastTitle = st.Title
-			if err := paths.SaveDoc(doc); err != nil { // guardar tras cada capítulo
+			if err := paths.SaveDoc(doc); err != nil { // guardar tras cada historia
 				return res, err
 			}
 		}
+		r.dub(ctx, paths, doc, &res)
 		if err := paths.SaveDoc(doc); err != nil {
 			return res, err
 		}
@@ -425,7 +468,9 @@ func (r *Runner) process(ctx context.Context) (Result, error) {
 	}
 	msg := "Crónica: misiones y personajes al día"
 	if res.NewStories > 0 {
-		msg = fmt.Sprintf("Crónica: %d capítulo(s) nuevo(s)", res.NewStories)
+		msg = fmt.Sprintf("Crónica: %d historia(s) nueva(s)", res.NewStories)
+	} else if res.NewAudio > 0 {
+		msg = fmt.Sprintf("Crónica: voz para %d historia(s)", res.NewAudio)
 	}
 	r.PublishNow(msg, nil)
 	return res, nil

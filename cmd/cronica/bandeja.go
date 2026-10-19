@@ -166,7 +166,7 @@ func runTray(args []string) error {
 		return fmt.Errorf("no puedo arrancar el servidor local: %w", err)
 	}
 	defer srv.Stop()
-	fmt.Fprintf(out, "%s  Web local: %s  ·  Misiones: %smisiones/  ·  Cronista: %spersonaje/\n", time.Now().Format("15:04:05"), srv.URL(), srv.URL(), srv.URL())
+	fmt.Fprintf(out, "%s  Web local: %s  ·  Cronista: %spersonaje/\n", time.Now().Format("15:04:05"), srv.URL(), srv.URL())
 
 	// show lleva la pestaña de Crónica ya abierta a path y la trae delante; si
 	// no hay ninguna (o no se puede traer delante), abre una nueva.
