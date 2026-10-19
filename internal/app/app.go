@@ -17,7 +17,10 @@ import (
 	"sync"
 	"time"
 
+	cronicaforever "github.com/Nehonar/cronica-forever"
 	"github.com/Nehonar/cronica-forever/internal/group"
+	"github.com/Nehonar/cronica-forever/internal/luasv"
+	"github.com/Nehonar/cronica-forever/internal/oficios"
 	"github.com/Nehonar/cronica-forever/internal/model"
 	"github.com/Nehonar/cronica-forever/internal/narrate"
 	"github.com/Nehonar/cronica-forever/internal/store"
@@ -317,7 +320,7 @@ func (r *Runner) process(ctx context.Context) (Result, error) {
 	if sv == "" {
 		return res, fmt.Errorf("aún no hay datos del addon: entra al juego con el addon activado y haz /reload o sal")
 	}
-	chars, err := model.LoadSavedVariables(sv)
+	chars, svdb, err := model.LoadSavedVariablesDB(sv)
 	if err != nil {
 		return res, fmt.Errorf("no puedo leer %s: %w", sv, err)
 	}
@@ -455,6 +458,7 @@ func (r *Runner) process(ctx context.Context) (Result, error) {
 	if err := paths.SaveIndex(); err != nil {
 		return res, err
 	}
+	r.writeOficios(chars, svdb)
 	if r.Cfg.AddonTexts != "" {
 		phrases := map[string]store.Phrases{}
 		for _, d := range docs {
@@ -462,7 +466,15 @@ func (r *Runner) process(ctx context.Context) (Result, error) {
 				phrases[d.Key] = ph
 			}
 		}
-		if err := store.WriteAddonTexts(r.Cfg.AddonTexts, docs, 40, r.status, phrases); err != nil {
+		extra := map[string]any{}
+		if ids := oficios.RecipeIDs(cronicaforever.Recetas()); len(ids) > 0 {
+			arr := make([]any, len(ids))
+			for i, id := range ids {
+				arr[i] = id
+			}
+			extra["CronicaOficiosIDs"] = arr
+		}
+		if err := store.WriteAddonTexts(r.Cfg.AddonTexts, docs, 40, r.status, phrases, extra); err != nil {
 			r.logf("No he podido escribir los textos del addon: %v", err)
 		}
 	}
@@ -755,5 +767,30 @@ func (r *Runner) mergeLegacy(paths store.Paths, chars []model.Character) {
 			continue
 		}
 		r.logf("La crónica de %s pasa a %s (%d relato(s); %d quitado(s) por mezclar personajes).", legacy, c.FullName(), kept, dropped)
+	}
+}
+
+// writeOficios publica el banco, las bolsas y las profesiones de cada personaje
+// para la app «Banco y oficios».
+func (r *Runner) writeOficios(chars []model.Character, db *luasv.Table) {
+	paths := store.Paths{Repo: r.Cfg.Repo}
+	var list []oficios.Data
+	for _, c := range chars {
+		if paths.MergedInto(c.Key) != "" || c.Raw == nil {
+			continue
+		}
+		d, ok := oficios.Parse(c.Raw)
+		if !ok {
+			continue
+		}
+		d.Key, d.Name, d.Class, d.Level = c.Key, c.FullName(), c.Class, c.Level
+		list = append(list, d)
+	}
+	if len(list) == 0 {
+		return
+	}
+	names, quality := oficios.Names(db)
+	if err := oficios.Write(filepath.Join(r.Cfg.Repo, "docs"), list, names, quality); err != nil {
+		r.logf("No he podido guardar el banco y los oficios: %v", err)
 	}
 }

@@ -73,6 +73,9 @@ type Character struct {
 	Level     int     `json:"level"`
 	Played    int64   `json:"played"`
 	Events    []Event `json:"-"`
+	// Raw es la tabla del personaje tal cual (para lo que no son sucesos, como
+	// el banco y los oficios).
+	Raw *luasv.Table `json:"-"`
 }
 
 // LoadSavedVariables lee el archivo Cronica.lua del addon.
@@ -86,17 +89,32 @@ func LoadSavedVariables(path string) ([]Character, error) {
 
 // ParseSavedVariables convierte el contenido de Cronica.lua en personajes.
 func ParseSavedVariables(src string) ([]Character, error) {
+	chars, _, err := ParseSavedVariablesDB(src)
+	return chars, err
+}
+
+// LoadSavedVariablesDB lee Cronica.lua y devuelve también la tabla CronicaDB entera.
+func LoadSavedVariablesDB(path string) ([]Character, *luasv.Table, error) {
+	b, err := os.ReadFile(path)
+	if err != nil {
+		return nil, nil, err
+	}
+	return ParseSavedVariablesDB(string(b))
+}
+
+// ParseSavedVariablesDB es ParseSavedVariables más la tabla CronicaDB.
+func ParseSavedVariablesDB(src string) ([]Character, *luasv.Table, error) {
 	vars, err := luasv.Parse(src)
 	if err != nil {
-		return nil, err
+		return nil, nil, err
 	}
 	db, ok := vars["CronicaDB"].(*luasv.Table)
 	if !ok {
-		return nil, fmt.Errorf("el archivo no contiene CronicaDB")
+		return nil, nil, fmt.Errorf("el archivo no contiene CronicaDB")
 	}
 	chars := db.Table("characters")
 	if chars == nil {
-		return nil, nil
+		return nil, db, nil
 	}
 	keys := make([]string, 0, len(chars.Hash))
 	for k := range chars.Hash {
@@ -119,6 +137,7 @@ func ParseSavedVariables(src string) ([]Character, error) {
 			ClassFile: ct.String("classFile"),
 			Level:     int(ct.Int("level")),
 			Played:    ct.Int("played"),
+			Raw:       ct,
 		}
 		if evs := ct.Table("events"); evs != nil {
 			for _, raw := range evs.Array {
@@ -159,7 +178,7 @@ func ParseSavedVariables(src string) ([]Character, error) {
 		sort.SliceStable(c.Events, func(i, j int) bool { return c.Events[i].T < c.Events[j].T })
 		out = append(out, c)
 	}
-	return out, nil
+	return out, db, nil
 }
 
 func statsOf(t *luasv.Table) map[string]int {

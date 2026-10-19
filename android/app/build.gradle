@@ -1,0 +1,33 @@
+plugins { id "com.android.application" }
+
+android {
+    namespace "es.nehonar.banco"
+    compileSdk 34
+    defaultConfig {
+        applicationId "es.nehonar.banco"
+        minSdk 24
+        targetSdk 34
+        versionCode Integer.parseInt(System.getenv("VERSION_CODE") ?: "1")
+        versionName "1.0." + (System.getenv("VERSION_CODE") ?: "1")
+    }
+    // Firma propia (la misma siempre, para poder actualizar sin desinstalar).
+    // Es una app personal que se instala a mano: la clave va en el repositorio.
+    signingConfigs {
+        release {
+            storeFile file("../banco.jks")
+            storePassword "cronica-banco"
+            keyAlias "banco"
+            keyPassword "cronica-banco"
+        }
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            signingConfig signingConfigs.release
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+}

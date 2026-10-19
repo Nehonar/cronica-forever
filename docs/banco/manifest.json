@@ -1,0 +1,17 @@
+{
+  "name": "Banco y oficios · Crónica",
+  "short_name": "Banco y oficios",
+  "description": "Lo que tienen tus personajes de WoW Forever y lo que te falta para subir sus profesiones.",
+  "lang": "es",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#16120c",
+  "theme_color": "#16120c",
+  "icons": [
+    { "src": "icono-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "icono-512.png", "sizes": "512x512", "type": "image/png" },
+    { "src": "icono-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}

@@ -482,7 +482,7 @@ type Status struct {
 	T       int64
 }
 
-func WriteAddonTexts(path string, docs []*Doc, limit int, st Status, phrases map[string]Phrases) error {
+func WriteAddonTexts(path string, docs []*Doc, limit int, st Status, phrases map[string]Phrases, extra ...map[string]any) error {
 	all := map[string]any{}
 	hist := map[string]any{}
 	for _, d := range docs {
@@ -536,6 +536,16 @@ func WriteAddonTexts(path string, docs []*Doc, limit int, st Status, phrases map
 		"CronicaFrases = " + luasv.Encode(frases, 0) + "\n" +
 		"CronicaEstado = " + luasv.Encode(estado, 0) + "\n" +
 		"CronicaHistoria = " + luasv.Encode(hist, 0) + "\n"
+	for _, ex := range extra {
+		keys := make([]string, 0, len(ex))
+		for k := range ex {
+			keys = append(keys, k)
+		}
+		sort.Strings(keys)
+		for _, k := range keys {
+			src += k + " = " + luasv.Encode(ex[k], 0) + "\n"
+		}
+	}
 	if err := os.MkdirAll(filepath.Dir(path), 0o755); err != nil {
 		return err
 	}

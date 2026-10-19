@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#16120c">
+<title>Banco y oficios · Crónica</title>
+<link rel="manifest" href="manifest.json">
+<link rel="icon" href="icono-192.png">
+<link rel="apple-touch-icon" href="icono-192.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Marcellus+SC&family=Alegreya+Sans:wght@400;500;700&display=swap">
+<link rel="stylesheet" href="banco.css">
+</head>
+<body>
+<header class="top">
+  <div class="who">
+    <label class="sr" for="pj">Personaje</label>
+    <select id="pj" aria-label="Personaje"></select>
+    <div class="money" id="money" aria-label="Dinero"></div>
+  </div>
+  <nav class="tabs" role="tablist" aria-label="Secciones">
+    <button role="tab" id="t-inv" aria-selected="true" aria-controls="p-inv">Inventario</button>
+    <button role="tab" id="t-ofi" aria-selected="false" aria-controls="p-ofi">Oficios</button>
+  </nav>
+</header>
+<main>
+  <section id="p-inv" role="tabpanel" aria-labelledby="t-inv">
+    <div class="search"><input id="q" type="search" placeholder="Buscar objeto…" aria-label="Buscar objeto" autocomplete="off"></div>
+    <div id="inv"></div>
+  </section>
+  <section id="p-ofi" role="tabpanel" aria-labelledby="t-ofi" hidden>
+    <div id="ofi"></div>
+  </section>
+  <p class="msg" id="msg" hidden></p>
+</main>
+<div class="sheet" id="sheet" hidden>
+  <div class="sheet-card" role="dialog" aria-modal="true" aria-labelledby="sheet-title">
+    <button class="close" id="sheet-close" type="button" aria-label="Cerrar">✕</button>
+    <div id="sheet-body"></div>
+  </div>
+</div>
+<footer class="foot">Se actualiza cuando sales del juego (o haces /reload) con Crónica abierta en tu PC. Recetas de Classic (wow-classic-items, MIT); los colores se estiman y se corrigen con lo que ves en el juego.</footer>
+<script src="banco.js"></script>
+</body>
+</html>
