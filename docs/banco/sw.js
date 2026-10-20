@@ -1,5 +1,5 @@
 // Funciona sin conexión: la app y los últimos datos quedan guardados en el móvil.
-const CACHE = "banco-v2";
+const CACHE = "banco-v3";
 const SHELL = ["./", "index.html", "banco.css", "banco.js", "manifest.json", "icono-192.png", "../oficios/recetas.json"];
 
 self.addEventListener("install", (e) => {

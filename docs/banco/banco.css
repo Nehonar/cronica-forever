@@ -102,3 +102,35 @@ details.more summary { cursor: pointer; color: var(--muted); min-height: 32px; }
 
 .foot { color: #6f6046; font-size: .8rem; text-align: center; padding: 10px 16px 24px; max-width: 700px; margin: 0 auto; }
 @media (min-width: 700px) { .grid { grid-template-columns: repeat(auto-fill, minmax(76px, 1fr)); } .routes { grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); } }
+
+/* Oficios: recetas desplegables y lista para farmear */
+.prof-head { display: flex; align-items: baseline; gap: 10px; width: 100%; background: none; border: 0; padding: 4px 0; min-height: 44px; cursor: pointer; color: var(--text); text-align: left; }
+.prof-head .pname { font: 1.25rem var(--display); flex: 1; }
+.prof-head .plevel { color: var(--gold); font-variant-numeric: tabular-nums; }
+.prof-head .chev { color: var(--muted); width: 16px; }
+.filters { display: flex; flex-direction: column; gap: 8px; margin: 10px 0; }
+.filters input { width: 100%; min-height: 42px; font: inherit; color: var(--text); background: #0e0b07; border: 1px solid var(--line); border-radius: 6px; padding: 6px 10px; }
+.recipes { display: flex; flex-direction: column; }
+.recipe { border-top: 1px dashed #3a2f1f; }
+.recipe summary { list-style: none; display: flex; align-items: center; gap: 6px; min-height: 48px; cursor: pointer; padding: 4px 0; }
+.recipe summary::-webkit-details-marker { display: none; }
+.recipe .rn { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; color: var(--q, var(--text)); }
+.recipe.unknown .rn { opacity: .7; font-style: italic; }
+.recipe .rl { color: var(--muted); font-variant-numeric: tabular-nums; font-size: .9rem; min-width: 28px; text-align: right; }
+.recipe .add { width: 40px; height: 40px; flex: none; border-radius: 50%; border: 1px solid var(--gold); background: none; color: var(--gold); font-size: 1.3rem; line-height: 1; cursor: pointer; }
+.recipe .add:active { background: var(--gold); color: #16120c; }
+.rbody { padding: 0 0 10px 18px; }
+.matlist { list-style: none; margin: 0; padding: 0; display: grid; gap: 4px; }
+.mat { display: flex; align-items: center; gap: 4px; font-size: .95rem; }
+.mat .mn { flex: 1; }
+.mat .mh { font-variant-numeric: tabular-nums; font-size: .85rem; }
+.mat.ok .mh { color: var(--green); } .mat.short .mh { color: var(--red); }
+.card.list h3 { align-items: baseline; }
+button.link { background: none; border: 0; color: var(--muted); text-decoration: underline; font: .9rem var(--body); cursor: pointer; min-height: 36px; }
+.picked { list-style: none; margin: 8px 0; padding: 0; display: grid; gap: 4px; }
+.picked li { display: flex; align-items: center; gap: 4px; min-height: 40px; }
+.picked .pn { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.stepper { display: inline-flex; align-items: center; gap: 6px; }
+.stepper button { width: 36px; height: 36px; border-radius: 6px; border: 1px solid var(--line); background: #0e0b07; color: var(--text); font-size: 1.1rem; cursor: pointer; }
+.stepper b { min-width: 34px; text-align: center; color: var(--gold); font-variant-numeric: tabular-nums; }
+.sum { color: var(--muted); font-size: .95rem; margin: 10px 0 2px; }

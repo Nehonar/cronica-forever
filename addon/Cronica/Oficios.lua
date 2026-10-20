@@ -75,6 +75,9 @@ end
 
 local function scanBags()
 	if not char then return end
+	-- La mochila siempre tiene huecos: si el juego dice 0, aún no ha cargado
+	-- (o está cerrando) y no hay que borrar lo que había.
+	if slots(0) == 0 then return end
 	local items, q = scan(BAGS)
 	char.oficios.bolsas = items
 	saveQuality(q)
@@ -84,7 +87,7 @@ end
 
 local bankOpen = false
 local function scanBank()
-	if not char or not bankOpen then return end
+	if not char or not bankOpen or slots(-1) == 0 then return end
 	local items, q = scan(BANK)
 	char.oficios.banco = items
 	char.oficios.bancoVisto = true
@@ -358,9 +361,8 @@ on("GET_ITEM_INFO_RECEIVED", function(id, ok)
 		if name then db.nombres[id] = name end
 	end
 end)
-on("PLAYER_LOGOUT", function()
-	if char then scanBags(); scanBank() end
-end)
+-- Al salir no se vuelve a mirar: el juego ya está vaciando las bolsas y lo
+-- guardado durante la partida es lo bueno.
 
 -- /cronica oficios: lo que ha encontrado (para saber qué falla si algo no sale).
 local previous = SlashCmdList and SlashCmdList.CRONICA

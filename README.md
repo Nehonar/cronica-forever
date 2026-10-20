@@ -187,7 +187,7 @@ samples/            datos de ejemplo del addon
 El addon también guarda lo que llevas en las bolsas y en el banco (el banco, cada vez que lo abres), tus profesiones, las recetas que conoces (al abrir la ventana de la profesión, con su color) y lo que enseña el instructor (al abrirlo). Al salir del juego, el programa lo publica en `docs/oficios/datos/` y la app **Banco y oficios** (`docs/banco/`) lo enseña:
 
 - **Inventario**: bolsas y banco en cuadrícula, con los colores de calidad, buscador y en qué recetas se usa cada cosa.
-- **Oficios**: para Herrería y Minería, tres rutas para subir hasta el nivel que elijas (menos materiales, aprovechando tu banco, solo lo que ya sabes), con cuántas veces fabricar cada receta, los materiales que hacen falta, los que tienes, los que faltan (y, si faltan barras, cuántas menas) y qué recetas tienes que aprender.
+- **Oficios**: cada profesión se despliega con sus recetas (las que sabes, las de tu nivel o todas), su color, sus materiales y cuántos tienes. Con «+» las añades a **tu lista para farmear**, que suma los materiales y te dice cuántos tienes y cuántos te faltan (y, si faltan barras, qué hay que fundir). La lista se guarda en el móvil.
 
 La tabla de recetas (`docs/oficios/recetas.json`) sale del paquete [wow-classic-items](https://github.com/Nakroma/wow-classic-items) (MIT) con `tools/recetas.py`. Los umbrales de color de cada receta se estiman y se corrigen con el color que ves en el juego. Los nombres en español los pide el addon al juego.
 

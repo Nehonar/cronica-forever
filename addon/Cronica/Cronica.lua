@@ -3,7 +3,7 @@
 -- que el juego escribe al salir o al hacer /reload.
 
 local ADDON = ...
-local VERSION = "0.4.2"
+local VERSION = "0.4.3"
 
 -- Valores por defecto de la configuración (por cuenta).
 local DEFAULTS = {
