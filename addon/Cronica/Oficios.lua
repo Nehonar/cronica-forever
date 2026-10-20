@@ -339,6 +339,16 @@ on("PLAYERBANKSLOTS_CHANGED", scanBagsSoon)
 on("SKILL_LINES_CHANGED", function() if char then scanSkills() end end)
 on("TRADE_SKILL_SHOW", function() C_Timer.After(0.5, scanTradeSkill) end)
 on("TRADE_SKILL_UPDATE", function() if char then scanTradeSkill() end end)
+-- En el cliente moderno la lista llega con estos otros avisos.
+local tradeSoon = false
+local function scanTradeSoon()
+	if tradeSoon or not char then return end
+	tradeSoon = true
+	C_Timer.After(0.5, function() tradeSoon = false; scanTradeSkill() end)
+end
+on("TRADE_SKILL_LIST_UPDATE", scanTradeSoon)
+on("TRADE_SKILL_DATA_SOURCE_CHANGED", scanTradeSoon)
+on("NEW_RECIPE_LEARNED", scanTradeSoon)
 on("TRAINER_SHOW", function() C_Timer.After(0.5, scanTrainer) end)
 on("TRAINER_UPDATE", function() if char then scanTrainer() end end)
 on("GET_ITEM_INFO_RECEIVED", function(id, ok)
@@ -360,6 +370,7 @@ if SlashCmdList then
 			local say = function(t) DEFAULT_CHAT_FRAME:AddMessage("|cffd8b061Crónica:|r " .. t) end
 			if not char then say("aún cargando…") return end
 			scanSkills(); scanBags(); scanBank()
+			if C_TradeSkillUI and C_TradeSkillUI.IsTradeSkillReady and C_TradeSkillUI.IsTradeSkillReady() then scanTradeSkill() end
 			local api = {}
 			for _, n in ipairs({ "GetProfessions", "GetNumSkillLines", "GetNumTradeSkills", "GetTradeSkillLine" }) do
 				api[#api + 1] = n .. (_G[n] and " sí" or " no")
