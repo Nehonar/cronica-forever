@@ -8,6 +8,8 @@
   const TIERS = [75, 150, 225, 300];
 
   let idx = null, rec = null, d = null;
+  let icons = {};           // id → nombre del icono del juego (iconos.json)
+  const ICON_URL = "https://wow.zamimg.com/images/wow/icons/large/";
   let goals = {};            // objetivo elegido por profesión
   let tab = "inv";
 
@@ -76,6 +78,14 @@
     if (/potion|elixir|oil|flask/.test(en)) return "potion";
     return "pouch";
   }
+  // Icono del juego si lo conocemos; si no (o si no carga), un dibujo propio.
+  function art(id) {
+    const name = icons[id];
+    if (!name) return glyph(id);
+    const img = el("img", { src: ICON_URL + name + ".jpg", alt: "", loading: "lazy", decoding: "async" });
+    img.addEventListener("error", () => img.replaceWith(glyph(id)));
+    return img;
+  }
   function glyph(id) {
     const s = document.createElementNS("http://www.w3.org/2000/svg", "svg");
     s.setAttribute("viewBox", "0 0 24 24"); s.setAttribute("aria-hidden", "true");
@@ -87,10 +97,12 @@
 
   // ---------- inventario ----------
   function slot(st, total) {
-    return el("button", { class: "slot q" + qualityOf(st.id), type: "button", "aria-label": nameOf(st.id) + ", " + st.n,
-      onclick: () => showItem(st.id, total) },
-      glyph(st.id), el("span", { class: "lbl", text: nameOf(st.id) }), el("span", { class: "n", text: st.n > 1 ? st.n : "" }));
+    return el("button", { class: "cell", type: "button", "aria-label": nameOf(st.id) + ", " + st.n, onclick: () => showItem(st.id, total) },
+      el("span", { class: "slot q" + qualityOf(st.id) }, art(st.id), el("span", { class: "n", text: st.n > 1 ? st.n : "" })),
+      el("span", { class: "lbl q" + qualityOf(st.id), text: nameOf(st.id) }));
   }
+  // Icono pequeño para las listas de materiales.
+  function mini(id) { return el("span", { class: "mini q" + qualityOf(id) }, art(id)); }
   function sortItems(list) {
     return list.slice().sort((a, b) => qualityOf(b.id) - qualityOf(a.id) || nameOf(a.id).localeCompare(nameOf(b.id), "es"));
   }
@@ -114,7 +126,8 @@
     const uses = rec ? rec.recetas.filter((r) => r.mats.some((m) => m.id === id)) : [];
     const made = rec ? rec.recetas.find((r) => r.id === id) : null;
     $("sheet-body").replaceChildren(
-      el("h3", { id: "sheet-title", class: "q" + qualityOf(id), text: nameOf(id) }),
+      el("div", { class: "sheet-head" }, el("span", { class: "slot big q" + qualityOf(id) }, art(id)),
+        el("h3", { id: "sheet-title", class: "q" + qualityOf(id), text: nameOf(id) })),
       el("dl", { class: "kv" },
         el("dt", { text: "En bolsas" }), el("dd", { text: bags ? bags.n : 0 }),
         el("dt", { text: "En el banco" }), el("dd", { text: d.bancoVisto ? (bank ? bank.n : 0) : "sin ver" }),
@@ -242,17 +255,17 @@
     kids.push(el("div", { class: "sum", text: "≈ " + p.totalCrafts + " fabricaciones · te faltan " + p.missing + " materiales" + (p.stuck != null ? " · llega hasta " + p.stuck : "") }));
     kids.push(el("ul", { class: "steps" }, p.steps.map((s) => el("li", null,
       el("span", { class: "rng", text: s.from + "→" + s.to }),
-      el("span", null, el("span", { class: "dot c-" + s.color, "aria-hidden": "true" }), nameOf(s.r.id)),
+      el("span", null, el("span", { class: "dot c-" + s.color, "aria-hidden": "true" }), mini(s.r.id), nameOf(s.r.id)),
       el("span", { class: "times", text: "×" + Math.ceil(s.n - 1e-9) })))));
     kids.push(el("table", { class: "mats" },
       el("thead", null, el("tr", null, el("th", { text: "Material" }), el("th", { text: "Hace falta" }), el("th", { text: "Tienes" }), el("th", { text: "Falta" }))),
       el("tbody", null, p.mats.map((m) => el("tr", null,
-        el("td", { class: "q" + qualityOf(m.id), text: nameOf(m.id) }), el("td", { text: m.need }), el("td", { text: m.have }),
+        el("td", { class: "q" + qualityOf(m.id) }, mini(m.id), nameOf(m.id)), el("td", { text: m.need }), el("td", { text: m.have }),
         el("td", { class: m.miss ? "miss" : "ok", text: m.miss || "✓" }))))));
     if (p.smelt.length) {
       kids.push(el("details", { class: "more", open: true }, el("summary", { text: "Las barras que faltan, en menas" }),
         el("table", { class: "mats" }, el("tbody", null, p.smelt.map((x) => el("tr", null,
-          el("td", { text: nameOf(x.id) + " (para " + nameOf(x.for) + ")" }), el("td", { text: x.need }), el("td", { text: x.have }),
+          el("td", null, mini(x.id), nameOf(x.id) + " (para " + nameOf(x.for) + ")"), el("td", { text: x.need }), el("td", { text: x.have }),
           el("td", { class: x.miss ? "miss" : "ok", text: x.miss || "✓" })))))));
     }
     if (p.learn.length) {
@@ -341,6 +354,7 @@
       msg("Aún no hay datos. Instala la última versión de Crónica en tu PC, entra al juego y sal: se publicarán solos.");
       return;
     }
+    try { icons = await getJSON("../oficios/iconos.json"); } catch (_) { icons = {}; }
     const list = idx.personajes || [];
     if (!list.length) { msg("Aún no hay personajes con datos."); return; }
     const sel = $("pj");

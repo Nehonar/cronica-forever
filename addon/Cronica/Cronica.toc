@@ -2,7 +2,7 @@
 ## Title: Crónica
 ## Notes: Registra lo que vive tu personaje (misiones, zonas, niveles, equipo) para que el programa Crónica lo convierta en su historia. Tu personaje también puede pensar o decir frases en voz alta.
 ## Author: Nehonar
-## Version: 0.4.0
+## Version: 0.4.1
 ## SavedVariables: CronicaDB
 ## X-Category: Roleplay
 ## IconTexture: Interface\Icons\INV_Misc_Book_09

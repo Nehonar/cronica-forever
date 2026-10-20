@@ -103,34 +103,70 @@ for _, n in ipairs({ "Herrería", "Minería", "Herboristería", "Desuello", "Alq
 	"Blacksmithing", "Mining", "Herbalism", "Skinning", "Alchemy", "Tailoring", "Leatherworking",
 	"Engineering", "Enchanting", "Cooking", "First Aid", "Fishing" }) do PROFS[n] = true end
 
+local function setSkill(name, rank, max)
+	if not name or not rank or not max or max <= 1 then return end
+	char.oficios.profesiones = char.oficios.profesiones or {}
+	char.oficios.profesiones[name] = { nivel = rank, max = max }
+end
+
+-- Niveles de las profesiones. Se prueban las dos formas que tiene el juego:
+-- la moderna (GetProfessions) y la de Classic (la lista de habilidades).
 local function scanSkills()
-	if not char or not GetNumSkillLines then return end
-	local skills, header = {}, nil
+	if not char then return end
+	if GetProfessions and GetProfessionInfo then
+		local found = false
+		for _, idx in pairs({ GetProfessions() }) do
+			local ok, name, _, rank, max = pcall(GetProfessionInfo, idx)
+			if ok and name then setSkill(name, rank, max); found = true end
+		end
+		if found then return end
+	end
+	if not GetNumSkillLines or not GetSkillLineInfo then return end
+	-- Las cabeceras plegadas esconden sus líneas: se despliegan un momento.
+	local collapsed = {}
+	for i = 1, GetNumSkillLines() do
+		local name, isHeader, isExpanded = GetSkillLineInfo(i)
+		if isHeader and not isExpanded then collapsed[#collapsed + 1] = name end
+	end
+	if #collapsed > 0 and ExpandSkillHeader then pcall(ExpandSkillHeader, 0) end
+	local header
 	for i = 1, GetNumSkillLines() do
 		local name, isHeader, _, rank, _, _, max = GetSkillLineInfo(i)
 		if isHeader then
 			header = name
-		elseif name and max and max > 1 then
-			-- Solo profesiones (primarias y secundarias), no armas ni idiomas.
-			if PROFS[name] or header == TRADE_SKILLS or header == SECONDARY_SKILLS then
-				skills[name] = { nivel = rank, max = max }
+		elseif name and (PROFS[name] or header == TRADE_SKILLS or header == SECONDARY_SKILLS) then
+			setSkill(name, rank, max)
+		end
+	end
+	if #collapsed > 0 and CollapseSkillHeader then
+		for i = GetNumSkillLines(), 1, -1 do
+			local name, isHeader = GetSkillLineInfo(i)
+			for _, c in ipairs(collapsed) do
+				if isHeader and name == c then pcall(CollapseSkillHeader, i) end
 			end
 		end
 	end
-	char.oficios.profesiones = skills
 end
 
 local DIFF = { optimal = "naranja", medium = "amarillo", easy = "verde", trivial = "gris" }
+local RELDIFF = { [0] = "naranja", [1] = "amarillo", [2] = "verde", [3] = "gris" }
 
--- La ventana de una profesión: lo que sabes hacer, su color ahora mismo y sus materiales.
-local function scanTradeSkill()
-	if not char or not GetNumTradeSkills or not GetTradeSkillLine then return end
+local function saveRecipes(prof, rank, max, list)
+	if not prof or prof == "" or prof == "UNKNOWN" or #list == 0 then return end
+	char.oficios.recetas = char.oficios.recetas or {}
+	char.oficios.recetas[prof] = { nivel = rank, max = max, lista = list }
+	setSkill(prof, rank, max)
+end
+
+-- La ventana de una profesión, forma de Classic.
+local function scanTradeSkillOld()
+	if not GetNumTradeSkills or not GetTradeSkillLine then return false end
 	local prof, rank, max = GetTradeSkillLine()
-	if not prof or prof == "UNKNOWN" then return end
+	if not prof or prof == "UNKNOWN" then return false end
 	local list = {}
 	for i = 1, GetNumTradeSkills() do
 		local name, kind = GetTradeSkillInfo(i)
-		if name and kind ~= "header" then
+		if name and kind ~= "header" and kind ~= "subheader" then
 			local link = GetTradeSkillItemLink and GetTradeSkillItemLink(i)
 			local r = { nombre = name, color = DIFF[kind] or kind, id = itemID(link), mats = {} }
 			remember(link)
@@ -143,12 +179,63 @@ local function scanTradeSkill()
 			table.insert(list, r)
 		end
 	end
-	char.oficios.recetas = char.oficios.recetas or {}
-	char.oficios.recetas[prof] = { nivel = rank, max = max, lista = list }
-	if rank and max then
-		char.oficios.profesiones = char.oficios.profesiones or {}
-		char.oficios.profesiones[prof] = { nivel = rank, max = max }
+	saveRecipes(prof, rank, max, list)
+	return #list > 0
+end
+
+-- La ventana de una profesión, forma moderna (C_TradeSkillUI).
+local function scanTradeSkillNew()
+	local T = C_TradeSkillUI
+	if not T or not T.GetAllRecipeIDs then return false end
+	local prof, rank, max
+	if T.GetBaseProfessionInfo then
+		local ok, info = pcall(T.GetBaseProfessionInfo)
+		if ok and type(info) == "table" then prof, rank, max = info.professionName, info.skillLevel, info.maxSkillLevel end
 	end
+	if not prof and T.GetTradeSkillLine then
+		local ok, _, name, r, m = pcall(T.GetTradeSkillLine)
+		if ok then prof, rank, max = name, r, m end
+	end
+	local ok, ids = pcall(T.GetAllRecipeIDs)
+	if not ok or type(ids) ~= "table" then return false end
+	local list = {}
+	for _, rid in ipairs(ids) do
+		local info = T.GetRecipeInfo and T.GetRecipeInfo(rid)
+		if info and info.learned ~= false and info.name then
+			local color = (type(info.difficulty) == "string" and DIFF[info.difficulty]) or RELDIFF[info.relativeDifficulty]
+			local r = { nombre = info.name, color = color, mats = {} }
+			local link = T.GetRecipeItemLink and T.GetRecipeItemLink(rid)
+			if link then r.id = itemID(link); remember(link) end
+			local schem = T.GetRecipeSchematic and select(2, pcall(T.GetRecipeSchematic, rid, false))
+			if type(schem) == "table" then
+				r.id = r.id or schem.outputItemID
+				for _, slot in ipairs(schem.reagentSlotSchematics or {}) do
+					local re = slot.reagents and slot.reagents[1]
+					if re and re.itemID then table.insert(r.mats, { id = re.itemID, n = slot.quantityRequired or 1 }) end
+				end
+			elseif T.GetRecipeNumReagents then
+				for j = 1, T.GetRecipeNumReagents(rid) or 0 do
+					local rname, _, need = T.GetRecipeReagentInfo(rid, j)
+					local rlink = T.GetRecipeReagentItemLink and T.GetRecipeReagentItemLink(rid, j)
+					remember(rlink)
+					table.insert(r.mats, { id = itemID(rlink), nombre = rname, n = need })
+				end
+			end
+			table.insert(list, r)
+		end
+	end
+	saveRecipes(prof, rank, max, list)
+	return #list > 0
+end
+
+local lastTradeScan = "nada"
+local function scanTradeSkill()
+	if not char then return end
+	local ok, done = pcall(scanTradeSkillOld)
+	if ok and done then lastTradeScan = "clásica" return end
+	local ok2, done2 = pcall(scanTradeSkillNew)
+	if ok2 and done2 then lastTradeScan = "moderna" return end
+	lastTradeScan = "sin datos" .. ((not ok and " (error clásica)") or "") .. ((not ok2 and " (error moderna)") or "")
 end
 
 -- El instructor: lo que enseña, desde qué nivel y cuánto cuesta.
@@ -264,3 +351,28 @@ end)
 on("PLAYER_LOGOUT", function()
 	if char then scanBags(); scanBank() end
 end)
+
+-- /cronica oficios: lo que ha encontrado (para saber qué falla si algo no sale).
+local previous = SlashCmdList and SlashCmdList.CRONICA
+if SlashCmdList then
+	SlashCmdList.CRONICA = function(msg)
+		if (msg or ""):lower():match("^%s*oficios") then
+			local say = function(t) DEFAULT_CHAT_FRAME:AddMessage("|cffd8b061Crónica:|r " .. t) end
+			if not char then say("aún cargando…") return end
+			scanSkills(); scanBags(); scanBank()
+			local api = {}
+			for _, n in ipairs({ "GetProfessions", "GetNumSkillLines", "GetNumTradeSkills", "GetTradeSkillLine" }) do
+				api[#api + 1] = n .. (_G[n] and " sí" or " no")
+			end
+			api[#api + 1] = "C_TradeSkillUI" .. (C_TradeSkillUI and C_TradeSkillUI.GetAllRecipeIDs and " sí" or " no")
+			say("funciones del juego: " .. table.concat(api, ", "))
+			local n = 0
+			for name, s in pairs(char.oficios.profesiones or {}) do say(("%s %d/%d"):format(name, s.nivel or 0, s.max or 0)); n = n + 1 end
+			if n == 0 then say("no encuentro profesiones") end
+			for name, r in pairs(char.oficios.recetas or {}) do say(("%s: %d recetas guardadas"):format(name, #(r.lista or {}))) end
+			say("última ventana de profesión: " .. lastTradeScan .. ". Haz /reload para enviarlo a Crónica.")
+			return
+		end
+		if previous then previous(msg) end
+	end
+end

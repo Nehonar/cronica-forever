@@ -36,15 +36,26 @@ h2 small { font: .9rem var(--body); color: var(--muted); letter-spacing: 0; }
 .msg { color: var(--muted); text-align: center; margin: 40px 10px; }
 
 /* Rejilla de huecos, como las bolsas del juego */
-.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(64px, 1fr)); gap: 6px; }
-.slot { position: relative; aspect-ratio: 1; border-radius: 6px; background: radial-gradient(circle at 50% 35%, #3a2f20, #17120b 75%);
-  border: 2px solid var(--q, #5a4a30); box-shadow: inset 0 0 8px rgba(0,0,0,.8); cursor: pointer; padding: 0; color: var(--q, #ddd); }
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(64px, 1fr)); gap: 10px 6px; }
+.cell { display: flex; flex-direction: column; align-items: center; gap: 4px; background: none; border: 0; padding: 0; cursor: pointer; min-width: 0; font: inherit; }
+.slot { position: relative; display: block; width: 100%; aspect-ratio: 1; border-radius: 5px; overflow: hidden;
+  background: radial-gradient(circle at 50% 35%, #3a2f20, #17120b 75%); border: 2px solid var(--q, #5a4a30);
+  box-shadow: inset 0 0 6px rgba(0,0,0,.8), 0 0 6px color-mix(in srgb, var(--q, #000) 35%, transparent); color: var(--q, #ddd); }
+.slot img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
 .slot svg { width: 58%; height: 58%; position: absolute; inset: 21% 21%; fill: currentColor; opacity: .9; }
-.slot .n { position: absolute; right: 4px; bottom: 2px; font-weight: 700; font-size: .95rem; color: #fff; text-shadow: 0 0 2px #000, 0 0 3px #000, 1px 1px 0 #000; }
-.slot .lbl { position: absolute; left: 3px; right: 3px; top: 2px; font-size: .62rem; line-height: 1.1; color: var(--q, #ddd); text-shadow: 0 0 2px #000, 0 0 2px #000;
-  overflow: hidden; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; text-align: left; }
+.slot .n { position: absolute; right: 3px; bottom: 1px; font-weight: 700; font-size: .95rem; color: #fff; text-shadow: 0 0 2px #000, 0 0 3px #000, 1px 1px 0 #000; }
+.lbl { width: 100%; font-size: .72rem; line-height: 1.15; color: var(--q, #ddd); text-align: center; overflow: hidden;
+  display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; }
 .q0 { --q: var(--q0); } .q1 { --q: var(--q1); } .q2 { --q: var(--q2); } .q3 { --q: var(--q3); } .q4 { --q: var(--q4); } .q5 { --q: var(--q5); }
 .q1.slot { border-color: #6b5a3c; }
+.mini { position: relative; display: inline-block; width: 22px; height: 22px; vertical-align: -6px; margin-right: 6px; border: 1px solid var(--q, #6b5a3c);
+  border-radius: 3px; overflow: hidden; background: #17120b; color: var(--q, #ddd); }
+.q1.mini { border-color: #6b5a3c; }
+.mini img { width: 100%; height: 100%; display: block; }
+.mini svg { width: 80%; height: 80%; margin: 10%; fill: currentColor; }
+.sheet-head { display: flex; align-items: center; gap: 12px; margin-right: 34px; }
+.slot.big { width: 56px; flex: none; }
+.sheet-head h3 { margin: 0 !important; }
 
 /* Oficios */
 .card { background: var(--frame); border: 1px solid var(--line); border-radius: 8px; padding: 12px 14px; margin: 12px 0; }

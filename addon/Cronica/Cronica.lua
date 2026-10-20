@@ -3,7 +3,7 @@
 -- que el juego escribe al salir o al hacer /reload.
 
 local ADDON = ...
-local VERSION = "0.4.0"
+local VERSION = "0.4.1"
 
 -- Valores por defecto de la configuración (por cuenta).
 local DEFAULTS = {
@@ -729,6 +729,6 @@ SlashCmdList.CRONICA = function(msg)
 		if hist then say(("historia en curso: %d de %d puntos."):format(hist.pts, HIST_THRESHOLD)) end
 		say("frases: " .. (MODES[db.config.frases] or "?") .. " · espera: " .. math.floor((db.config.espera or 240) / 60) .. " min")
 		if CronicaEstado and CronicaEstado.ok == false then say(RED .. (CronicaEstado.mensaje or "") .. "|r") end
-		say("comandos: /cronica frases no|local|voz · espera <min> · prueba · (para enviar a Crónica: /reload o tu tecla)")
+		say("comandos: /cronica frases no|local|voz · espera <min> · prueba · oficios · (para enviar a Crónica: /reload o tu tecla)")
 	end
 end
