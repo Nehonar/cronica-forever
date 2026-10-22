@@ -5,6 +5,7 @@ import (
 	"io"
 	"os"
 	"path/filepath"
+	"strings"
 	"testing"
 
 	"github.com/Nehonar/cronica-forever/internal/narrate"
@@ -63,21 +64,38 @@ func TestLegacyCharacterMerges(t *testing.T) {
 
 func TestDeleteAllStartsFromScratch(t *testing.T) {
 	repo := t.TempDir()
-	withDemoSheet(t, repo)
-	r := &Runner{Cfg: Config{SavedVariables: "../../samples/Cronica.lua", Repo: repo}, Narrator: narrate.Fake{}, Out: io.Discard}
+	// La muestra con otra clave: el personaje «-Demo» no se borra nunca.
+	src, _ := os.ReadFile("../../samples/Cronica.lua")
+	sv := filepath.Join(repo, "Cronica.lua")
+	os.WriteFile(sv, []byte(strings.ReplaceAll(string(src), "Tobias-Demo", "Tobias-Prueba")), 0o644)
+	sheet, _ := os.ReadFile("../../personajes/Tobias-Demo.json")
+	os.MkdirAll(filepath.Join(repo, "personajes"), 0o755)
+	os.WriteFile(filepath.Join(repo, "personajes", "Tobias-Prueba.json"), []byte(strings.ReplaceAll(string(sheet), "Tobias-Demo", "Tobias-Prueba")), 0o644)
+	os.WriteFile(filepath.Join(repo, "personajes", "Tobias-Demo.json"), sheet, 0o644)
+	r := &Runner{Cfg: Config{SavedVariables: sv, Repo: repo}, Narrator: narrate.Fake{}, Out: io.Discard}
 	if res, err := r.Process(context.Background()); err != nil || res.NewStories == 0 {
 		t.Fatalf("%+v %v", res, err)
 	}
 	paths := store.Paths{Repo: repo}
-	if n, err := paths.DeleteAll(4102444800); err != nil || n == 0 { // «ahora» en el futuro
+	if n, err := paths.DeleteAll(4102444800); err != nil || n != 1 { // «ahora» en el futuro
 		t.Fatalf("n=%d err=%v", n, err)
 	}
 	res, err := r.Process(context.Background())
-	if err != nil || res.NewStories != 0 {
-		t.Fatalf("tras borrar todo no se vuelve a narrar lo anterior: %+v %v", res, err)
+	if err != nil || res.NewStories != 0 || len(res.NeedsBackstory) != 0 {
+		t.Fatalf("tras borrar todo no se vuelve a narrar ni a pedir historia: %+v %v", res, err)
 	}
-	d, _ := paths.LoadDoc("Tobias-Demo")
-	if len(d.Stories) != 0 || d.Character.Backstory != "" {
-		t.Fatalf("debe quedar vacío y sin historia: %+v", d)
+	// Sin jugar desde el borrado, el personaje no vuelve a aparecer.
+	if _, err := os.Stat(filepath.Join(paths.DataDir(), "Tobias-Prueba.json")); !os.IsNotExist(err) {
+		t.Fatal("el personaje borrado no debe volver a aparecer hasta que se juegue")
+	}
+	// Lo que una versión anterior volvió a crear vacío se quita en la siguiente pasada.
+	os.WriteFile(filepath.Join(paths.DataDir(), "Tobias-Prueba.json"), []byte(`{"key":"Tobias-Prueba"}`), 0o644)
+	os.WriteFile(filepath.Join(paths.SheetsDir(), "Tobias-Prueba.json"), []byte(`{"key":"Tobias-Prueba","name":"Tobias"}`), 0o644)
+	r.Process(context.Background())
+	if _, err := os.Stat(filepath.Join(paths.DataDir(), "Tobias-Prueba.json")); !os.IsNotExist(err) {
+		t.Fatal("debe quitarse la página que se volvió a crear")
+	}
+	if _, err := os.Stat(filepath.Join(paths.SheetsDir(), "Tobias-Demo.json")); err != nil {
+		t.Fatal("la ficha de demostración no se borra")
 	}
 }

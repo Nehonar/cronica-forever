@@ -199,6 +199,18 @@ func Write(docs string, chars []Data, names map[string]string, quality map[strin
 			return err
 		}
 	}
+	// Quitar los personajes que ya no están (borrados).
+	keep := map[string]bool{"indice.json": true}
+	for _, c := range chars {
+		keep[c.Key+".json"] = true
+	}
+	if entries, err := os.ReadDir(dir); err == nil {
+		for _, e := range entries {
+			if !e.IsDir() && !keep[e.Name()] {
+				os.Remove(filepath.Join(dir, e.Name()))
+			}
+		}
+	}
 	sort.Slice(idx.Characters, func(i, j int) bool { return idx.Characters[i].Level > idx.Characters[j].Level })
 	return writeIfChanged(filepath.Join(dir, "indice.json"), idx)
 }

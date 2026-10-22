@@ -336,6 +336,7 @@ func (r *Runner) process(ctx context.Context) (Result, error) {
 	r.mergeLegacy(paths, chars)
 
 	var docs []*store.Doc
+	hidden := map[string]bool{} // personajes borrados que no se han vuelto a jugar
 	for _, c := range chars {
 		// Claves antiguas («Nombre-Reino») cuya crónica ya pasó al personaje con apellido.
 		if paths.MergedInto(c.Key) != "" {
@@ -350,6 +351,13 @@ func (r *Runner) process(ctx context.Context) (Result, error) {
 				}
 			}
 			c.Events = evs
+			// Borrado y sin jugar desde entonces: no existe hasta que vuelvas a
+			// entrar con él (con o sin historia, igual que todos).
+			if len(evs) == 0 {
+				hidden[c.Key] = true
+				paths.Forget(c.Key) // por si una versión anterior lo volvió a crear
+				continue
+			}
 		}
 		sheet, created, err := paths.LoadSheet(c.Key, c.FullName(), c.Race, c.Class)
 		if err != nil {
@@ -458,7 +466,7 @@ func (r *Runner) process(ctx context.Context) (Result, error) {
 	if err := paths.SaveIndex(); err != nil {
 		return res, err
 	}
-	r.writeOficios(chars, svdb)
+	r.writeOficios(chars, svdb, hidden)
 	if r.Cfg.AddonTexts != "" {
 		phrases := map[string]store.Phrases{}
 		for _, d := range docs {
@@ -772,11 +780,11 @@ func (r *Runner) mergeLegacy(paths store.Paths, chars []model.Character) {
 
 // writeOficios publica el banco, las bolsas y las profesiones de cada personaje
 // para la app «Banco y oficios».
-func (r *Runner) writeOficios(chars []model.Character, db *luasv.Table) {
+func (r *Runner) writeOficios(chars []model.Character, db *luasv.Table, hidden map[string]bool) {
 	paths := store.Paths{Repo: r.Cfg.Repo}
 	var list []oficios.Data
 	for _, c := range chars {
-		if paths.MergedInto(c.Key) != "" || c.Raw == nil {
+		if paths.MergedInto(c.Key) != "" || c.Raw == nil || hidden[c.Key] {
 			continue
 		}
 		d, ok := oficios.Parse(c.Raw)
@@ -785,9 +793,6 @@ func (r *Runner) writeOficios(chars []model.Character, db *luasv.Table) {
 		}
 		d.Key, d.Name, d.Class, d.Level = c.Key, c.FullName(), c.Class, c.Level
 		list = append(list, d)
-	}
-	if len(list) == 0 {
-		return
 	}
 	names, quality := oficios.Names(db)
 	if err := oficios.Write(filepath.Join(r.Cfg.Repo, "docs"), list, names, quality); err != nil {

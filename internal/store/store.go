@@ -675,6 +675,7 @@ func (p Paths) DeleteCharacter(key string, all bool, now int64) error {
 		}
 	}
 	os.RemoveAll(filepath.Join(p.Repo, "docs", "audio", key))
+	os.Remove(filepath.Join(p.Repo, "docs", "oficios", "datos", key+".json"))
 	m := map[string]int64{}
 	if b, err := os.ReadFile(p.deletedFile()); err == nil {
 		json.Unmarshal(b, &m)
@@ -805,6 +806,9 @@ func (p Paths) DeleteAll(now int64) (int, error) {
 				continue
 			}
 			n = strings.TrimSuffix(strings.TrimSuffix(n, ".json"), ".frases")
+			if strings.HasSuffix(n, "-Demo") { // el personaje de demostración no es tuyo
+				continue
+			}
 			keys[n] = true
 		}
 	}
@@ -814,4 +818,20 @@ func (p Paths) DeleteAll(now int64) (int, error) {
 		}
 	}
 	return len(keys), p.SaveIndex()
+}
+
+// Forget quita lo publicado de un personaje borrado que una versión anterior
+// volvió a crear vacío: su página, su copia privada, su banco y su ficha si
+// está sin historia. No toca la fecha de borrado.
+func (p Paths) Forget(key string) {
+	if key == "" || strings.ContainsAny(key, `/\`) || strings.Contains(key, "..") {
+		return
+	}
+	os.Remove(filepath.Join(p.DataDir(), key+".json"))
+	os.Remove(filepath.Join(p.PrivateDir(), key+".json"))
+	os.Remove(filepath.Join(p.Repo, "docs", "oficios", "datos", key+".json"))
+	if s, ok := p.ReadSheet(key); ok && strings.TrimSpace(s.Backstory) == "" {
+		os.Remove(filepath.Join(p.SheetsDir(), key+".json"))
+		os.Remove(filepath.Join(p.SheetsDir(), key+".frases.json"))
+	}
 }
