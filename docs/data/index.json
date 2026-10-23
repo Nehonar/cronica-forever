@@ -1,14 +1,4 @@
 {
-  "characters": [
-    {
-      "key": "Tobias-Demo",
-      "name": "Tobias Brenn",
-      "epithet": "El hijo del molinero",
-      "race": "Humano",
-      "class": "Guerrero",
-      "level": 6,
-      "stories": 3
-    }
-  ],
+  "characters": [],
   "updated": "2b4c85702640ba19"
 }

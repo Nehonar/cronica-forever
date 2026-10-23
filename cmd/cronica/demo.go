@@ -39,7 +39,7 @@ func runDemo(args []string) error {
 		"docs/index.html":             "docs/index.html",
 		"docs/app.js":                 "docs/app.js",
 		"docs/estilo.css":             "docs/estilo.css",
-		"personajes/Tobias-Demo.json": "personajes/Tobias-Demo.json",
+		"samples/Tobias-Demo.json":    "personajes/Tobias-Demo.json",
 		"samples/Cronica.lua":         "Cronica.lua",
 	}
 	for src, dst := range copies {

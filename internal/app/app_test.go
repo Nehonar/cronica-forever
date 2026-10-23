@@ -18,7 +18,7 @@ import (
 // withDemoSheet copia la ficha de demostración al repositorio de prueba.
 func withDemoSheet(t *testing.T, repo string) {
 	t.Helper()
-	b, err := os.ReadFile("../../personajes/Tobias-Demo.json")
+	b, err := os.ReadFile("../../samples/Tobias-Demo.json")
 	if err != nil {
 		t.Fatal(err)
 	}

@@ -165,7 +165,7 @@ En *Configuración → Voz del narrador* pegas la clave y la región de un recur
 
 ## Personajes
 
-Cada personaje tiene su ficha en `personajes/<Nombre>-<Reino>.json` (trasfondo, voz, hilos abiertos, lema). Si aparece un personaje nuevo, el programa crea su ficha vacía; si ya existe una ficha con trasfondo para el mismo nombre (por ejemplo `Tobias-Demo.json`, el personaje de prueba), la copia como punto de partida.
+Cada personaje tiene su ficha en `personajes/<Nombre>-<Reino>.json` (trasfondo, voz, hilos abiertos, lema). Si aparece un personaje nuevo, el programa crea su ficha vacía; si ya existe una ficha con trasfondo para el mismo nombre, la copia como punto de partida. El personaje de demostración (`samples/Tobias-Demo.json`) solo se usa con `cronica demo` y no aparece en tu web.
 
 ## Estructura
 

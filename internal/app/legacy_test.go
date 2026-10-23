@@ -68,7 +68,7 @@ func TestDeleteAllStartsFromScratch(t *testing.T) {
 	src, _ := os.ReadFile("../../samples/Cronica.lua")
 	sv := filepath.Join(repo, "Cronica.lua")
 	os.WriteFile(sv, []byte(strings.ReplaceAll(string(src), "Tobias-Demo", "Tobias-Prueba")), 0o644)
-	sheet, _ := os.ReadFile("../../personajes/Tobias-Demo.json")
+	sheet, _ := os.ReadFile("../../samples/Tobias-Demo.json")
 	os.MkdirAll(filepath.Join(repo, "personajes"), 0o755)
 	os.WriteFile(filepath.Join(repo, "personajes", "Tobias-Prueba.json"), []byte(strings.ReplaceAll(string(sheet), "Tobias-Demo", "Tobias-Prueba")), 0o644)
 	os.WriteFile(filepath.Join(repo, "personajes", "Tobias-Demo.json"), sheet, 0o644)
