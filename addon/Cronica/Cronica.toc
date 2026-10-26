@@ -1,8 +1,8 @@
-## Interface: 16001
+## Interface: 16001, 11509
 ## Title: Crónica
 ## Notes: Registra lo que vive tu personaje (misiones, zonas, niveles, equipo) para que el programa Crónica lo convierta en su historia. Tu personaje también puede pensar o decir frases en voz alta.
 ## Author: Nehonar
-## Version: 0.4.3
+## Version: 0.4.4
 ## SavedVariables: CronicaDB
 ## X-Category: Roleplay
 ## IconTexture: Interface\Icons\INV_Misc_Book_09
@@ -10,3 +10,4 @@
 CronicaTextos.lua
 Cronica.lua
 Oficios.lua
+Viaje.lua
