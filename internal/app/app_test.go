@@ -195,3 +195,19 @@ func TestStoriesGetAVoice(t *testing.T) {
 		t.Fatalf("no debe reescribir lo borrado: %+v", res)
 	}
 }
+
+func TestTemplateSheetBySurname(t *testing.T) {
+	p := store.Paths{Repo: t.TempDir()}
+	os.MkdirAll(p.SheetsDir(), 0o755)
+	os.WriteFile(filepath.Join(p.SheetsDir(), "NehonarBanthalas-Plantilla.json"), []byte(`{"key":"NehonarBanthalas-Plantilla","name":"Nehonar Banthalas","backstory":"De Anvilas."}`), 0o644)
+	s, created, err := p.LoadSheet("NehonarBanthalas-Reino", "Nehonar Banthalas", "Cielonato", "Guerrero")
+	if err != nil || !created || s.Backstory != "De Anvilas." || s.Key != "NehonarBanthalas-Reino" {
+		t.Fatalf("%+v %v %v", s, created, err)
+	}
+	if n, _ := p.DeleteAll(1); n != 1 {
+		t.Fatalf("la plantilla no se borra al empezar de cero (borrados %d)", n)
+	}
+	if _, err := os.Stat(filepath.Join(p.SheetsDir(), "NehonarBanthalas-Plantilla.json")); err != nil {
+		t.Fatal(err)
+	}
+}

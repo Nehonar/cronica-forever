@@ -410,7 +410,9 @@ func (p Paths) findSheetByName(name string) (narrate.Sheet, bool) {
 	if name == "" {
 		return narrate.Sheet{}, false
 	}
-	files, _ := filepath.Glob(filepath.Join(p.SheetsDir(), name+"-*.json"))
+	// Las claves van sin espacios ni guiones («NehonarBanthalas-Reino»), como en el addon.
+	compact := strings.NewReplacer(" ", "", "-", "").Replace(name)
+	files, _ := filepath.Glob(filepath.Join(p.SheetsDir(), compact+"-*.json"))
 	for _, f := range files {
 		b, err := os.ReadFile(f)
 		if err != nil {
@@ -806,7 +808,9 @@ func (p Paths) DeleteAll(now int64) (int, error) {
 				continue
 			}
 			n = strings.TrimSuffix(strings.TrimSuffix(n, ".json"), ".frases")
-			if strings.HasSuffix(n, "-Demo") { // el personaje de demostración no es tuyo
+			// El personaje de demostración no es tuyo, y las plantillas son fichas
+			// preparadas para personajes que aún no existen.
+			if strings.HasSuffix(n, "-Demo") || strings.HasSuffix(n, "-Plantilla") {
 				continue
 			}
 			keys[n] = true
@@ -834,4 +838,20 @@ func (p Paths) Forget(key string) {
 		os.Remove(filepath.Join(p.SheetsDir(), key+".json"))
 		os.Remove(filepath.Join(p.SheetsDir(), key+".frases.json"))
 	}
+}
+
+// Hidden indica si un personaje está borrado y no se ha vuelto a jugar desde
+// entonces (events son sus sucesos, con la hora en T). Esos personajes no se
+// enseñan en ningún sitio hasta que vuelvas a entrar con ellos.
+func (p Paths) Hidden(key string, times []int64) bool {
+	since := p.DeletedAt(key)
+	if since <= 0 {
+		return false
+	}
+	for _, t := range times {
+		if t >= since {
+			return false
+		}
+	}
+	return true
 }

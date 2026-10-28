@@ -244,6 +244,13 @@ func (s *Server) characters() ([]CharacterView, map[string]model.Character, erro
 		if paths.MergedInto(c.Key) != "" {
 			continue
 		}
+		times := make([]int64, len(c.Events))
+		for i, e := range c.Events {
+			times[i] = e.T
+		}
+		if paths.Hidden(c.Key, times) {
+			continue // borrado y sin jugar desde entonces
+		}
 		sheet, _, err := paths.LoadSheet(c.Key, c.FullName(), c.Race, c.Class)
 		if err != nil {
 			return nil, nil, err

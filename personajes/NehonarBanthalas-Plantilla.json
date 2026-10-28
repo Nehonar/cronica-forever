@@ -1,0 +1,16 @@
+{
+  "key": "NehonarBanthalas-Plantilla",
+  "name": "Nehonar Banthalas",
+  "epithet": "El de Anvilas",
+  "race": "Cielonato",
+  "class": "Guerrero",
+  "voice": "Callado, de pocas palabras y manos ásperas. Habla poco y hace mucho; cuando habla, es directo y sin adornos. Tiene humor seco y una terquedad tranquila. No presume de lo que no ha hecho.",
+  "backstory": "Nehonar Banthalas es un cielonato de Anvilas, una de las islas flotantes que los espíritus del viento alzaron en Celo Vertiente hace milenios para los shen'dorei, el pueblo oculto que huyó de la tiranía de Eldre'Thalas. No es noble ni erudito de la Alta Orden: es un chico corriente que se ha ganado la vida con los brazos. Ha cargado piedra de viento, ha trabajado en la forja y ha estibado cajas en los muelles de las naves celestes. Sabe de metal, de esfuerzo y de aguantar.\n\nEstaba en Zephras de paso, por trabajo, cuando los espíritus del viento desaparecieron. Desde entonces las islas están incomunicadas, las estructuras antiguas fallan y nadie sabe qué hacer. Nehonar no puede volver a casa. No es soldado: es alguien fuerte al que la crisis le ha puesto una espada en la mano porque hace falta gente. Al principio solo sabe una cosa, dar fuerte.\n\nSu objetivo inmediato es ganarse un sitio entre los Guardapaz, la milicia de las islas; su sueño lejano, llegar algún día a ser una Hoja Empírea, la guardia de élite. Su motivo personal es volver a ver Anvilas.\n\nEn las islas no hay leones. Cuando la Alta Orden contactó con la Alianza llegaron historias de un reino lejano cuyo emblema es un león, Ventormenta, y de un guerrero legendario, Anduin Lothar, el León de Azeroth, que protegió a su pueblo cuando su reino cayó. A Nehonar no le importa la política de los humanos: le fascina la idea de alguien que se mantiene en pie y protege a los suyos cuando todo se derrumba. Por eso eligió el león como su animal, uno escogido y no heredado. Como herrero, sueña con forjarse algún día su propio yelmo Corazón de León.",
+  "threads": [
+    "Volver a ver Anvilas y saber qué ha sido de su isla",
+    "Ganarse un sitio entre los Guardapaz y, algún día, llegar a ser una Hoja Empírea",
+    "El león como emblema elegido: forjarse algún día su propio yelmo Corazón de León",
+    "Hacerse un nombre por sí mismo, sin títulos ni linaje"
+  ],
+  "motto": "Que el león se gane, no se herede."
+}

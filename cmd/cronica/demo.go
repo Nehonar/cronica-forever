@@ -36,11 +36,11 @@ func runDemo(args []string) error {
 	}
 	fmt.Printf("Preparando la demostración en %s\n", abs)
 	copies := map[string]string{
-		"docs/index.html":             "docs/index.html",
-		"docs/app.js":                 "docs/app.js",
-		"docs/estilo.css":             "docs/estilo.css",
-		"samples/Tobias-Demo.json":    "personajes/Tobias-Demo.json",
-		"samples/Cronica.lua":         "Cronica.lua",
+		"docs/index.html":          "docs/index.html",
+		"docs/app.js":              "docs/app.js",
+		"docs/estilo.css":          "docs/estilo.css",
+		"samples/Tobias-Demo.json": "personajes/Tobias-Demo.json",
+		"samples/Cronica.lua":      "Cronica.lua",
 	}
 	for src, dst := range copies {
 		b, err := fs.ReadFile(cronicaforever.Files, src)
